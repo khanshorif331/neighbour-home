@@ -5,6 +5,8 @@ function App() {
 	return (
 		<div>
 			<h1>Hello western lab university</h1>
+			<p>hello</p>
+			<p>Noo way</p>
 		</div>
 	)
 }
