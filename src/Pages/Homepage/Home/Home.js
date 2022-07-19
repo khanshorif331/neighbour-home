@@ -1,4 +1,5 @@
 import React from 'react';
+import Cards from '../Cards/Cards';
 import Contact from '../Contact/Contact';
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
         <div>
             This is Home!!!!
             <Contact/>
+            <Cards/>
         </div>
     );
 };
