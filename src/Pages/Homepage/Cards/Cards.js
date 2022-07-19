@@ -10,8 +10,8 @@ const Cards = () => {
   }, []);
   return (
     <div>
-      <h2 className="uppercase font-bold text-3xl text-green-400 my-10">
-        Our Trending Courses
+      <h2 className="uppercase font-bold text-3xl text-green-900 my-10">
+        Our Services
       </h2>
       <div className=" bg-gradient-to-tr from-red-300 to-yellow-200 flex justify-center items-center py-20">
         <div className="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 space-y-4 md:space-y-0">
