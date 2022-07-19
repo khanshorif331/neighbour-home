@@ -120,6 +120,7 @@ const Navbar = () => {
                         </nav>
                     </div>
                 </div>
+
             </header>
             {/* -- end header -- */}
         </div>
