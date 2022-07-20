@@ -5,7 +5,7 @@ const Engineer = ({ engineer }) => {
   const { picture, name, surname } = engineer;
   return (
     <div>
-      <div className=" m-auto  max-w-sm items-center justify-center overflow-hidden  shadow-2xl">
+      <div className=" m-auto  max-w-sm items-center justify-center overflow-hidden  shadow-lg">
         <div className="h-24 bg-[#0D9488]"></div>
         <div className="-mt-20 flex justify-center">
           <img className="w-32 h-32 rounded-full" alt="" src={picture} />
