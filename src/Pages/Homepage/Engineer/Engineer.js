@@ -5,37 +5,29 @@ const Engineer = ({ engineer }) => {
   const { picture, name, surname } = engineer;
   return (
     <div>
-      <div class="cursor-pointer m-auto w-96 max-w-lg items-center justify-center overflow-hidden  shadow-2xl">
-        <div class="h-24 bg-[#0D9488]"></div>
-        <div class="-mt-20 flex justify-center">
-          <img class="w-32 h-32 rounded-full" alt="" src={picture} />
+      <div className=" m-auto  max-w-sm items-center justify-center overflow-hidden  shadow-2xl">
+        <div className="h-24 bg-[#0D9488]"></div>
+        <div className="-mt-20 flex justify-center">
+          <img className="w-32 h-32 rounded-full" alt="" src={picture} />
         </div>
-        <div class="mt-5 mb-1 px-3 text-center text-xl">{name}</div>
-        <div class="mb-5 px-3 text-center text-gray-500 uppercase">
+        <div className="mt-5 mb-1 px-3 text-center text-xl">{name}</div>
+        <div className="mb-5 px-3 text-center text-gray-500 uppercase">
           {surname}
         </div>
         <blockquote>
-          <p class="mx-4 mb-7 text-center text-base">
+          <p className="mx-4 mb-7 text-center text-base">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
             maiores quos, impedit exercitationem minus quidem!
           </p>
         </blockquote>
-        <div class="mt-6 py-6 border-t border-slate-300 text-center">
+        <div className="mt-6 py-6 border-t border-slate-300 text-center">
           <div className="flex justify-around w-2/3 m-auto">
-            <a className="text-7xl" href="/">
-              <BsFacebook
-                size={23}
-                onMouseOver={({ target }) => (target.style.color = "blue")}
-                onMouseOut={({ target }) => (target.style.color = "black")}
-                onTransitionEnd={"3s"}
-              />
+            <a href="/">
+              <BsFacebook size={23} color={"blue"} />
             </a>
             <a href="/">
               {" "}
-              <BsTwitter
-                size={23}
-                color={"skyblue"}
-              />
+              <BsTwitter size={23} color={"skyblue"} />
             </a>
             <a href="/">
               {" "}
