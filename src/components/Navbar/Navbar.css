@@ -5,3 +5,14 @@
 #dropdown-toggle:checked+#dropdown {
     display: block;
 }
+nav li a:hover{
+    color: rgb(0, 238, 255);
+}
+
+.mobile-manu a{
+    margin: 7px auto;
+}
+.mobile-manu a:hover{
+    color: rgb(15, 131, 139);
+
+}
