@@ -112,7 +112,7 @@ const Navbar = () => {
 
                     <div className="hidden md:block w-full md:w-auto" id="menu">
                         <nav
-                            className="w-full bg-teal-400 text-white md:bg-transparent rounded shadow-lg px-6 py-10 mt-4 text-center md:p-0 md:mt-0 md:shadow-none">
+                            className="w-full bg-teal-100  md:bg-transparent rounded shadow-lg px-6 py-10 mt-4 text-center md:p-0 md:mt-0 md:shadow-none">
                             <ul className="md:flex items-center">
                                 <li><a className="py-2 inline-block md:text-white md:hidden lg:block font-semibold" href="#">Home</a></li>
                                 <li className="md:ml-4"><a className="py-2 inline-block md:text-white md:px-2 font-semibold"
@@ -124,7 +124,7 @@ const Navbar = () => {
                                 <li className="md:ml-4"><a className="py-2 inline-block md:text-white md:px-2 font-semibold" href="#">Contact
                                     Us</a></li>
                                 <li className="md:ml-6 mt-3 md:mt-0">
-                                    <a className="inline-block font-semibold sm:px-4 sm:py-2 sm:hover:bg-white sm:hover:text-teal-900 text-white md:bg-teal-800 md:text-white  border-white rounded"
+                                    <a className="inline-block font-semibold px-4 py-2 hover:bg-white hover:text-teal-900  bg-teal-800 text-white  border-white rounded"
                                         href="book-appointment.html">Buy Apartment</a>
                                 </li>
                             </ul>

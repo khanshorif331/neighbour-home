@@ -13,7 +13,7 @@ const Banner = () => {
                     <div className="lg:w-3/4 xl:w-7/12 relative z-10 h-100 lg:mt-16">
                          <div>
                               <h1 className="text-white text-3xl sm:text-4xl font-bold leading-tight">Welcome to Building Contraction Innovative for a better Tomorrow</h1>
-                              <p className="text-blue-100 md:text-xl leading-snug mt-2 sm:mt-4">Creating from raw materials - the act of creating something that is different</p>
+                              <p className="text-blue-100 md:text-lg leading-snug mt-2 sm:px-0 px-5 sm:mt-4">Building construction means any physical activity on the site involved in the erection of a structure, cladding, external finish, formwork, fixture, fitting of service installation</p>
                               <a href="#" className="px-8 py-3 bg-teal-900 hover:bg-white hover:text-teal-900  transition text-white rounded inline-block mt-4 sm:mt-8 font-semibold">Buy Apartment</a>
                          </div>
                     </div>
