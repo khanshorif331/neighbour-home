@@ -1,23 +1,33 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { MdDashboardCustomize, MdOutlineClose } from 'react-icons/md';
+import { GoThreeBars } from 'react-icons/go';
 import "./Navbar.css"
 
 const Navbar = () => {
     const [colorChange, setColorchange] = useState(false);
-  const changeNavbarColor = () =>{
-     if(window.scrollY >= 80){
-       setColorchange(true);
-     }
-     else{
-       setColorchange(false);
-     }
-  };
-  window.addEventListener('scroll', changeNavbarColor);
-//   console.log(colorChange);
+    let [toggle, setToggle] = useState(false);
+    // const [user, loading] = useAuthState(auth);
+    // let navigat = useNavigate();
+
+    // console.log(user);
+    const navBtnHndle = () => {
+        setToggle(!toggle)
+    }
+    const changeNavbarColor = () => {
+        if (window.scrollY >= 80) {
+            setColorchange(true);
+        }
+        else {
+            setColorchange(false);
+        }
+    };
+    window.addEventListener('scroll', changeNavbarColor);
+    //   console.log(colorChange);
     return (
         <div className=''>
             {/* start header  */}
-            <header className={`fixed top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 ${colorChange && "bg-teal-900"}`}>
+            <header className={`fixed duration-300 top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 ${colorChange && "bg-teal-900"}`}>
                 <div className="hidden md:flex justify-between items-center py-2 border-b text-sm "
                 // style="border-color: rgba(255,255,255,.25)"
                 >
@@ -94,7 +104,7 @@ const Navbar = () => {
 
                 <div className="flex flex-wrap items-center justify-between py-6 sm:px-2 px-5">
                     <div className="w-4/5 md:w-auto">
-                        <a style={{letterSpacing:"2px"}} href="index.html" className="text-white font-semibold  text-2xl">
+                        <a style={{ letterSpacing: "2px" }} href="index.html" className="text-white font-semibold  text-2xl">
                             Neighbour Home
                         </a>
                         {/* <Link to="#">
@@ -102,13 +112,29 @@ const Navbar = () => {
                         </Link> */}
                     </div>
 
-                    <label htmlFor="menu-toggle" className="pointer-cursor md:hidden block"><svg className="fill-current text-white"
+                    {/* <label htmlFor="menu-toggle" className="pointer-cursor md:hidden block"><svg className="fill-current text-white"
                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                         <title>menu</title>
                         <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
                     </svg></label>
 
-                    <input className="hidden" type="checkbox" id="menu-toggle" />
+                    <input className="hidden" type="checkbox" id="menu-toggle" /> */}
+                    <span onClick={navBtnHndle} className='md:hidden text-white text-2xl absolute right-6  top-[28px]'>{toggle ? <MdOutlineClose></MdOutlineClose> : <GoThreeBars></GoThreeBars>}</span>
+                    <ul onClick={navBtnHndle} className={`mobile-manu flex md:hidden flex-col text-center z-10   left-0 w-full bg-teal-100  absolute  py-4 duration-500 ${toggle ? " opacity-100  top-20" : " top-[-250px] opacity-0"}`}>
+                        <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/"}>Home</NavLink>
+                        <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/"}>Appartments</NavLink>
+                        <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/"}>Testimonials</NavLink>
+                        <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/"}>Contact Us</NavLink>
+                        <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/"}>Blogs</NavLink>
+                        <Link className="inline-block w-44 mx-auto font-semibold px-4 py-2 hover:bg-white hover:text-teal-900  bg-teal-800 text-white  border-white rounded"
+                                        to={"/"}>Buy Apartment</Link>
+
+                        {/* {user ?
+                        <button onClick={handleLogout} className='uppercase my-0.5 md:my-0 text-left   mx-auto md:mx-0 md:pb-0.5' >LogOut</button>
+                        :
+                        <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/login"}>Login</NavLink>
+                    } */}
+                    </ul>
 
                     <div className="hidden md:block w-full md:w-auto" id="menu">
                         <nav
@@ -124,7 +150,7 @@ const Navbar = () => {
                                 <li className="md:ml-4"><a className="py-2 inline-block md:text-white md:px-2 font-semibold" href="#">Contact
                                     Us</a></li>
                                 <li className="md:ml-6 mt-3 md:mt-0">
-                                    <a className="inline-block font-semibold px-4 py-2 hover:bg-white hover:text-teal-900  bg-teal-800 text-white  border-white rounded"
+                                    <a className={`inline-block font-semibold px-4 py-2 ${colorChange ? "hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white" : "hover:bg-white hover:text-teal-900 text-white bg-teal-900"}   border-white rounded`}
                                         href="book-appointment.html">Buy Apartment</a>
                                 </li>
                             </ul>
