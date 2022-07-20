@@ -14,7 +14,7 @@ const Card = ({ course }) => {
             {discount}
           </p> */}
         </div>
-        <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">
+        <h1 className="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">
           {title}
         </h1>
         <p>

@@ -5,3 +5,6 @@
 #dropdown-toggle:checked+#dropdown {
     display: block;
 }
+nav li a:hover{
+    color: rgb(0, 238, 255);
+}

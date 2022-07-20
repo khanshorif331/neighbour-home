@@ -1,17 +1,20 @@
 import React from "react";
+import Banner from "../Banner/Banner";
 import Cards from "../Cards/Cards";
 import Contact from "../Contact/Contact";
 import Engineers from "../Engineers/Engineers";
 import Notice from "../Notice/Notice";
+import Guide from "../Guide/Guide";
 
 const Home = () => {
   return (
     <div>
-      This is Home!!!!
-      <Contact />
+      <Banner />
+      <Guide />
       <Cards />
       <Engineers />
       <Notice />
+      <Contact />
     </div>
   );
 };
