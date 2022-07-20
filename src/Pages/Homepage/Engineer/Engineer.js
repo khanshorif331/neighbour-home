@@ -5,8 +5,8 @@ const Engineer = ({ engineer }) => {
   const { picture, name, surname } = engineer;
   return (
     <div class="container max-w-full">
-      <div class="cursor-pointer m-auto my-14 w-96 max-w-lg items-center justify-center overflow-hidden rounded-2xl bg-slate-100 shadow-xl">
-        <div class="h-24 bg-amber-100"></div>
+      <div class="cursor-pointer m-auto my-14 w-96 max-w-lg items-center justify-center overflow-hidden  shadow-2xl">
+        <div class="h-24 bg-gray-100"></div>
         <div class="-mt-20 flex justify-center">
           <img class="w-32 h-32 rounded-full" alt="" src={picture} />
         </div>
