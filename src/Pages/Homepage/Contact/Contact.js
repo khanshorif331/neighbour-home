@@ -6,10 +6,8 @@ const Contact = () => {
             <form>
                 <section className="text-white body-font relative">
                     <div className="container px-5 py-24 mx-auto">
-                        <div className="flex flex-col text-center w-full mb-12">
+                        <div className="lg:w-2/3 md:w-2/3 mx-auto border p-5 md:px-16 shadow-md rounded">
                             <h2 className='text-center text-4xl font-bold underline underline-offset-8 decoration-blue-500 text-blue-500 mb-5'>Contact Us</h2>
-                        </div>
-                        <div className="lg:w-1/2 md:w-2/3 mx-auto">
                             <div className="flex flex-wrap -m-2">
                                 <div className="p-2 md:w-1/2 w-full">
                                     <div className="relative">
