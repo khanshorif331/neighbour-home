@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./Navbar.css"
 
 const Navbar = () => {
+    const [colorChange, setColorchange] = useState(false);
+  const changeNavbarColor = () =>{
+     if(window.scrollY >= 80){
+       setColorchange(true);
+     }
+     else{
+       setColorchange(false);
+     }
+  };
+  window.addEventListener('scroll', changeNavbarColor);
+//   console.log(colorChange);
     return (
         <div className=''>
             {/* start header  */}
-            <header className="absolute top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 ">
+            <header className={`fixed top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 ${colorChange && "bg-teal-900"}`}>
                 <div className="hidden md:flex justify-between items-center py-2 border-b text-sm "
                 // style="border-color: rgba(255,255,255,.25)"
                 >
@@ -81,14 +92,14 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-between py-6">
-                    <div className="w-1/2 md:w-auto">
-                        {/* <a href="index.html" className="text-white font-bold text-2xl">
-                            DentalPro
-                        </a> */}
-                        <Link to="#">
+                <div className="flex flex-wrap items-center justify-between py-6 sm:px-2 px-5">
+                    <div className="w-4/5 md:w-auto">
+                        <a style={{letterSpacing:"2px"}} href="index.html" className="text-white font-semibold  text-2xl">
+                            Neighbour Home
+                        </a>
+                        {/* <Link to="#">
                             <img className='w-40' src="https://i.ibb.co/Mh84735/logo.png" alt="" />
-                        </Link>
+                        </Link> */}
                     </div>
 
                     <label htmlFor="menu-toggle" className="pointer-cursor md:hidden block"><svg className="fill-current text-white"
@@ -101,7 +112,7 @@ const Navbar = () => {
 
                     <div className="hidden md:block w-full md:w-auto" id="menu">
                         <nav
-                            className="w-full bg-white md:bg-transparent rounded shadow-lg px-6 py-4 mt-4 text-center md:p-0 md:mt-0 md:shadow-none">
+                            className="w-full bg-teal-400 text-white md:bg-transparent rounded shadow-lg px-6 py-10 mt-4 text-center md:p-0 md:mt-0 md:shadow-none">
                             <ul className="md:flex items-center">
                                 <li><a className="py-2 inline-block md:text-white md:hidden lg:block font-semibold" href="#">Home</a></li>
                                 <li className="md:ml-4"><a className="py-2 inline-block md:text-white md:px-2 font-semibold"
@@ -113,7 +124,7 @@ const Navbar = () => {
                                 <li className="md:ml-4"><a className="py-2 inline-block md:text-white md:px-2 font-semibold" href="#">Contact
                                     Us</a></li>
                                 <li className="md:ml-6 mt-3 md:mt-0">
-                                    <a className="inline-block font-semibold px-4 py-2 text-white md:bg-teal-800 md:text-white  border-white rounded"
+                                    <a className="inline-block font-semibold sm:px-4 sm:py-2 sm:hover:bg-white sm:hover:text-teal-900 text-white md:bg-teal-800 md:text-white  border-white rounded"
                                         href="book-appointment.html">Buy Apartment</a>
                                 </li>
                             </ul>

@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom';
 const Banner = () => {
      return (
           <div className="bg-gray-100">
-               <section className="cover bg-blue-teal-gradient relative bg-teal-600 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 overflow-hidden py-48 flex
-          items-center min-h-screen">
+               <section className="cover bg-blue-teal-gradient text-center sm:text-left relative bg-teal-600 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 overflow-hidden sm:py-48 flex
+          items-end sm:items-center h-[550px]  sm:pb-40 pb-16  sm:min-h-screen">
                     <div className="h-full absolute top-0 left-0 right-0 z-0">
                          <img src="https://bangladeshpost.net/webroot/uploads/featureimage/2019-12/5df111b34395a.jpg" alt="" className="w-full h-full object-cover opacity-20" />
                     </div>
 
                     <div className="lg:w-3/4 xl:w-7/12 relative z-10 h-100 lg:mt-16">
                          <div>
-                              <h1 className="text-white text-4xl font-bold leading-tight">Welcome to Building Contraction Innovative for a better Tomorrow</h1>
-                              <p className="text-blue-100 md:text-xl leading-snug mt-4">Creating from raw materials - the act of creating something that is different</p>
-                              <a href="#" className="px-8 py-3 bg-teal-900 hover:bg-white hover:text-teal-900  transition text-white rounded inline-block mt-8 font-semibold">Buy Apartment</a>
+                              <h1 className="text-white text-3xl sm:text-4xl font-bold leading-tight">Welcome to Building Contraction Innovative for a better Tomorrow</h1>
+                              <p className="text-blue-100 md:text-xl leading-snug mt-2 sm:mt-4">Creating from raw materials - the act of creating something that is different</p>
+                              <a href="#" className="px-8 py-3 bg-teal-900 hover:bg-white hover:text-teal-900  transition text-white rounded inline-block mt-4 sm:mt-8 font-semibold">Buy Apartment</a>
                          </div>
                     </div>
                </section>
