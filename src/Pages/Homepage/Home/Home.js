@@ -5,6 +5,7 @@ import Contact from "../Contact/Contact";
 import Engineers from "../Engineers/Engineers";
 import Notice from "../Notice/Notice";
 import Guide from "../Guide/Guide";
+import Testimonials from "../Testimonials/Testimonials";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <Cards />
       <Engineers />
       <Notice />
+      <Testimonials></Testimonials>
       <Contact />
     </div>
   );
