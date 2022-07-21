@@ -23,7 +23,7 @@ const Testimonials = () => {
                     <div className='w-7/12 flex justify-evenly flex-wrap'>
 
 
-                         <div className='bg-teal-100 w-[320px] p-10 rounded-tr-3xl rounded-bl-3xl'>
+                         <div className='bg-teal-100 w-[320px] p-8 rounded-tr-3xl rounded-bl-3xl'>
                               <q>Publishing packages and web page now use Lorem Ipsum as their mel text, and a search for lorem more than one articel a is very important which can be help us for building a beauiful construction</q>
                               <div className="flex items-center mt-3">
                                    <img className='h-14 w-14 rounded-full mr-3' src="https://htmldemo.net/oxybuild/oxybuild/assets/images/testimonial/avatar/1-1-46x46.png" alt="" />
