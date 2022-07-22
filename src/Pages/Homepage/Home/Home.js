@@ -6,7 +6,7 @@ import Engineers from "../Engineers/Engineers";
 import Notice from "../Notice/Notice";
 import Guide from "../Guide/Guide";
 import Testimonials from "../Testimonials/Testimonials";
-import NewsLetter from "../../NewsLetter/NewsLetter";
+import NewsLetter from "../NewsLetter/NewsLetter";
 
 const Home = () => {
   return (
