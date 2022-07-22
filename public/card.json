@@ -8,7 +8,8 @@
     "duration": "90 days",
     "assignment": "9 Assignment",
     "discount": "17% Discount",
-    "price": "$32"
+    "price": "$32",
+    "description": "We are providing big mall project for you. You can choose our designed projects or meet our engineers for custom build your project"
   },
   {
     "_id": "623853b2578d1ae0de9e6ad5",
@@ -19,7 +20,8 @@
     "duration": "90 days",
     "assignment": "9 Assignment",
     "discount": "17% Discount",
-    "price": "$32"
+    "price": "$32",
+    "description": "We are providing repairing service for your old project. You can choose our designed projects or meet our engineers for custom build your project"
   },
   {
     "_id": "623853b2d2ee71fb149b76c7",
@@ -30,7 +32,8 @@
     "duration": "90 days",
     "assignment": "9 Assignment",
     "discount": "17% Discount",
-    "price": "$32"
+    "price": "$32",
+    "description": "We do home building engineering project for you. You can choose our designed projects or meet our engineers for custom build your project"
   },
   {
     "_id": "623853b2e91c88cde579245e",
@@ -41,7 +44,8 @@
     "duration": "90 days",
     "assignment": "9 Assignment",
     "discount": "17% Discount",
-    "price": "$32"
+    "price": "$32",
+    "description": "We have lot of Architecture Engineers. You can Design your project from us. We providing lifetime support for every customer."
   },
   {
     "_id": "623853bgf39582e48409ccc6",
@@ -52,7 +56,8 @@
     "duration": "90 days",
     "assignment": "9 Assignment",
     "discount": "17% Discount",
-    "price": "$32"
+    "price": "$32",
+    "description": "We are providing Construction Services project for you. You can choose our designed projects or meet our engineers for custom build your project"
   },
   {
     "_id": "623853b2cddafgtbc294f791",
@@ -63,6 +68,7 @@
     "duration": "90 days",
     "assignment": "9 Assignment",
     "discount": "17% Discount",
-    "price": "$32"
+    "price": "$32",
+    "description": "We are providing Construction Management project for you. You can choose our designed projects or meet our engineers for custom build your project"
   }
 ]

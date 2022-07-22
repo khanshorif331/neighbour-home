@@ -5,7 +5,7 @@ const Engineers = () => {
   
   return (
     <div>
-      <h2 className="uppercase text-3xl font-bold text-center py-4">
+      <h2 style={{fontFamily:"'Rajdhani', sans-serif"}} className="uppercase text-3xl font-bold text-center py-3">
         Our Engineers and Architecture's
       </h2>
       <div className="flex justify-center">

@@ -54,7 +54,7 @@ const Engineer = () => {
 
         {
           engineers.map(engineer => {
-            const { picture, name, surname } = engineer;
+            const { picture, name, surname, bio } = engineer;
             return (
               <SwiperSlide>
                 <div>
@@ -69,8 +69,7 @@ const Engineer = () => {
                     </div>
                     <blockquote>
                       <p className="mx-4 mb-7 text-center text-base">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
-                        maiores quos, impedit exercitationem minus quidem!
+                        {bio}
                       </p>
                     </blockquote>
                     <div className="mt-6 py-6 border-t border-slate-300 text-center">
