@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
 import { BsFacebook, BsGoogle } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -8,6 +9,7 @@ import Loading from '../../Shared/Loading/Loading';
 const Register = () => {
 
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth)
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     if (googleLoading) {
         return <Loading />
@@ -21,6 +23,11 @@ const Register = () => {
         console.error(googleError);
     }
 
+    const handleLogin = (data) => {
+        console.log(data);
+        reset()
+    }
+
     return (
         <section className='mt-[129px]'>
             <div className="bg-white font-family-karla">
@@ -31,20 +38,64 @@ const Register = () => {
 
                         <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
                             <p className="text-center text-3xl">Register Now!</p>
-                            <form className="flex flex-col pt-3 md:pt-8">
+                            <form onSubmit={handleSubmit(handleLogin)} className="flex flex-col pt-3 md:pt-8">
                                 <div className="flex flex-col pt-4">
                                     <label htmlFor="name" className="text-lg">Name</label>
-                                    <input type="text" id="name" placeholder="John Smith" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+                                    <input {...register('name', {
+                                        required: {
+                                            value: true,
+                                            message: 'Name is Required'
+                                        },
+                                        minLength: {
+                                            value: 3,
+                                            message: 'Must be 3 character or longer'
+                                        }
+                                    })} type='text' id="name" placeholder="John Smith" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+                                    <label>
+                                        {errors.name?.type === 'required' && <p className='text-red-600 text-sm font-semibold'>{errors.name.message}</p>}
+                                        {errors.name?.type === 'minLength' && <p className='text-red-600 text-sm font-semibold'>{errors.name.message}</p>}
+                                    </label>
                                 </div>
 
                                 <div className="flex flex-col pt-4">
                                     <label htmlFor="email" className="text-lg">Email</label>
-                                    <input type="email" id="email" placeholder="your@email.com" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+                                    <input {...register('email', {
+                                        required: {
+                                            value: true,
+                                            message: "Email is Required"
+                                        },
+                                        pattern: {
+                                            value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                                            message: "Provide a valid email"
+                                        }
+                                    })} type="email" id="email" placeholder="your@email.com" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+                                    <label>
+                                        {errors.email?.type === 'required' && <p className='text-red-600 text-sm font-semibold'>{errors.email.message}</p>}
+                                        {errors.email?.type === 'pattern' && <p className='text-red-600 text-sm font-semibold'>{errors.email.message}</p>}
+                                    </label>
                                 </div>
 
                                 <div className="flex flex-col pt-4">
                                     <label htmlFor="password" className="text-lg">Password</label>
-                                    <input type="password" id="password" placeholder="Password" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+                                    <input {...register('password', {
+                                    required: {
+                                        value: true,
+                                        message: 'Password is Required'
+                                    },
+                                    minLength: {
+                                        value: 6,
+                                        message: 'Must be 6 character or longer'
+                                    },
+                                    pattern: {
+                                        value: /(?=.*?[A-Z])/,
+                                        message: 'At least One Uppercase'
+                                    },
+                                })} type="password" id="password" placeholder="Password" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+                                    <label>
+                                        {errors.password?.type === 'required' && <p className='text-red-600 text-sm font-semibold'>{errors.password.message}</p>}
+                                        {errors.password?.type === 'pattern' && <p className='text-red-600 text-sm font-semibold'>{errors.password.message}</p>}
+                                        {errors.password?.type === 'minLength' && <p className='text-red-600 text-sm font-semibold'>{errors.password.message}</p>}
+                                    </label>
                                 </div>
 
                                 <input type="submit" value="Register" className="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8 cursor-pointer" />
