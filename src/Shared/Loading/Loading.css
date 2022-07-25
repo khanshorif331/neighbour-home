@@ -1,0 +1,36 @@
+.spinner-container {
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    text-align: center;
+    background-color: rgb(227, 28, 28);
+  }
+  .spinner {
+    margin: auto;
+    border: 2px solid #eee; 
+    /*
+    change to dotted for something cool.
+    change width to 1px for tapered bar
+    */
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    position: absolute;
+    top: 45%;
+    border-radius: 50%;
+    border-right: 3px solid #018df7;
+    text-align:center;
+    animation-name: spin;
+    animation-duration: 700ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
