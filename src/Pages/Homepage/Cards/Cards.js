@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
 
 const Cards = () => {
+  // state declare 
   const [courses, setCourses] = useState([]);
   useEffect(() => {
     fetch("card.json")
