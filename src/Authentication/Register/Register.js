@@ -1,17 +1,15 @@
 import React from 'react';
+import { BsFacebook, BsGoogle } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
     return (
-        <div className='mt-[129px]'>
+        <section className='mt-[129px]'>
             <div className="bg-white font-family-karla">
 
                 <div className="w-full flex flex-wrap">
 
                     <div className="w-full md:w-1/2 flex flex-col">
-
-                        <div className="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-12">
-                            <a href="/" className="bg-black text-white font-bold text-xl p-4" alt="Logo">Logo</a>
-                        </div>
 
                         <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
                             <p className="text-center text-3xl">Register Now!</p>
@@ -33,8 +31,17 @@ const Register = () => {
 
                                 <input type="submit" value="Register" className="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8 cursor-pointer" />
                             </form>
+                            <div className='flex'>
+                                <div className="w-[40%] flex m-auto border-b-2 border-b-gray-500" />
+                                <div>or</div>
+                                <div className="w-[40%] flex m-auto border-b-2 border-b-gray-500" />
+                            </div>
+                            <div className='flex mx-auto space-x-6 pt-2'>
+                                <BsGoogle className='border bg-gray-200 p-2 rounded cursor-pointer' size={50} color={'green'} />
+                                <BsFacebook className='border bg-gray-200 p-2 rounded cursor-pointer' size={50} color={'blue'} />
+                            </div>
                             <div className="text-center pt-12 pb-12">
-                                <p>Already have an account? <a href="login.html" className="underline font-semibold">Log in here.</a></p>
+                                <p>Already have an account? <Link to='/login' className="underline font-semibold">Log in here.</Link></p>
                             </div>
                         </div>
 
@@ -47,7 +54,7 @@ const Register = () => {
 
             </div>
 
-        </div>
+        </section>
     );
 };
 
