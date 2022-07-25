@@ -23,7 +23,7 @@ const Register = () => {
         console.error(googleError);
     }
 
-    const handleLogin = (data) => {
+    const handleRegister = (data) => {
         console.log(data);
         reset()
     }
@@ -38,7 +38,7 @@ const Register = () => {
 
                         <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
                             <p className="text-center text-3xl">Register Now!</p>
-                            <form onSubmit={handleSubmit(handleLogin)} className="flex flex-col pt-3 md:pt-8">
+                            <form onSubmit={handleSubmit(handleRegister)} className="flex flex-col pt-3 md:pt-8">
                                 <div className="flex flex-col pt-4">
                                     <label htmlFor="name" className="text-lg">Name</label>
                                     <input {...register('name', {
