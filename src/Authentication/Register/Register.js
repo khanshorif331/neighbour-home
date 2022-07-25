@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { BsFacebook, BsGoogle } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
@@ -9,22 +9,31 @@ import Loading from '../../Shared/Loading/Loading';
 const Register = () => {
 
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth)
+    const [
+        createUserWithEmailAndPassword,
+        emailUser,
+        emailLoading,
+        emailError,
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    if (googleLoading) {
+    if (googleLoading || emailLoading) {
         return <Loading />
     }
 
-    if (googleUser) {
-        console.log(googleUser);
+    if (googleUser || emailUser) {
+        console.log(googleUser || emailUser);
     }
 
-    if (googleError) {
-        console.error(googleError);
+    if (googleError || emailError) {
+        console.error(googleError || emailError);
     }
 
     const handleRegister = (data) => {
         console.log(data);
+        const email = data.email
+        const password = data.password
+        createUserWithEmailAndPassword(email, password)
         reset()
     }
 
@@ -78,19 +87,19 @@ const Register = () => {
                                 <div className="flex flex-col pt-4">
                                     <label htmlFor="password" className="text-lg">Password</label>
                                     <input {...register('password', {
-                                    required: {
-                                        value: true,
-                                        message: 'Password is Required'
-                                    },
-                                    minLength: {
-                                        value: 6,
-                                        message: 'Must be 6 character or longer'
-                                    },
-                                    pattern: {
-                                        value: /(?=.*?[A-Z])/,
-                                        message: 'At least One Uppercase'
-                                    },
-                                })} type="password" id="password" placeholder="Password" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+                                        required: {
+                                            value: true,
+                                            message: 'Password is Required'
+                                        },
+                                        minLength: {
+                                            value: 6,
+                                            message: 'Must be 6 character or longer'
+                                        },
+                                        pattern: {
+                                            value: /(?=.*?[A-Z])/,
+                                            message: 'At least One Uppercase'
+                                        },
+                                    })} type="password" id="password" placeholder="Password" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
                                     <label>
                                         {errors.password?.type === 'required' && <p className='text-red-600 text-sm font-semibold'>{errors.password.message}</p>}
                                         {errors.password?.type === 'pattern' && <p className='text-red-600 text-sm font-semibold'>{errors.password.message}</p>}
