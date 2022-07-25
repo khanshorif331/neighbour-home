@@ -4,8 +4,7 @@ import './Loading.css'
 const Loading = () => {
     return (
         <div className='min-h-screen flex justify-center items-center'>
-            <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
-            </div>
+            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-gray-900"></div>
         </div>
     );
 };
