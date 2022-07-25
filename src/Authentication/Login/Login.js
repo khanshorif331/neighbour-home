@@ -1,8 +1,26 @@
 import React from 'react';
 import { BsGoogle, BsFacebook } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth'
+import auth from '../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 
 const Login = () => {
+
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth)
+
+    if (googleLoading) {
+        return <Loading />
+    }
+
+    if (googleUser) {
+        console.log(googleUser);
+    }
+
+    if(googleError) {
+        console.error(googleError);
+    }
+
     return (
         <section className='mt-[129px]'>
             <div className="bg-white font-family-karla">
@@ -32,7 +50,7 @@ const Login = () => {
                                 <div className="w-[40%] flex m-auto border-b-2 border-b-gray-500" />
                             </div>
                             <div className='flex mx-auto space-x-6 pt-2'>
-                                <BsGoogle className='border bg-gray-200 p-2 rounded cursor-pointer' size={50} color={'green'} />
+                                <BsGoogle onClick={() => signInWithGoogle()} className='border bg-gray-200 p-2 rounded cursor-pointer' size={50} color={'green'} />
                                 <BsFacebook className='border bg-gray-200 p-2 rounded cursor-pointer' size={50} color={'blue'} />
                             </div>
                             <div className="text-center py-5">
