@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsGoogle, BsFacebook } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth'
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init';
 import { useForm } from 'react-hook-form';
 import Loading from '../../Shared/Loading/Loading';
@@ -9,23 +9,32 @@ import Loading from '../../Shared/Loading/Loading';
 const Login = () => {
 
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth)
+    const [
+        signInWithEmailAndPassword,
+        emailUser,
+        emailLoading,
+        emailError,
+      ] = useSignInWithEmailAndPassword(auth);
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
 
-    if (googleLoading) {
+    if (googleLoading || emailLoading) {
         return <Loading />
     }
 
-    if (googleUser) {
-        console.log(googleUser);
+    if (googleUser || emailUser) {
+        console.log(googleUser || emailUser);
     }
 
-    if (googleError) {
-        console.error(googleError);
+    if (googleError || emailError) {
+        console.error(googleError || emailError);
     }
 
     const handleLogin = data => {
         console.log(data);
+        const email = data.email
+        const password = data.password
+        signInWithEmailAndPassword(email, password)
         reset()
     }
 
