@@ -1,7 +1,7 @@
 import React from "react";
 
 const Card = ({ course }) => {
-  const { title, picture } = course;
+  const { title, picture, description } = course;
   return (
     <div>
       <div className="max-w-sm bg-white px-6 pt-6 pb-2 border shadow-lg transform hover:scale-105 transition duration-500">
@@ -18,8 +18,7 @@ const Card = ({ course }) => {
           {title}
         </h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem,
-          itaque!
+          {description}
         </p>
         <div className="my-4">
           <button className="mt-4 text-xl w-full text-white bg-[#0D9488] py-2 rounded shadow-lg">
