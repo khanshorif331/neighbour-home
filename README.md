@@ -3,6 +3,8 @@ Name: NeighborHome ( management portal type website )
 Goal: 
 
 Our most important target is E-builder. We want to provide a technology-based commercial system.  Building Management Systems Play an important role in the current instructional system. The authorities nowadays are using this amazing Management System to manage and supply a better experience by a software system to both ( Buyers and sellers ) effectively.  That's our goal.
+
+
 Features: 
 
 Home Model __:__  The model information can be found and can be bought by the seller. Admin can update those.

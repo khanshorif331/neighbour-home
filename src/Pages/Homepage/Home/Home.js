@@ -9,6 +9,7 @@ import Testimonials from "../Testimonials/Testimonials";
 import NewsLetter from "../NewsLetter/NewsLetter";
 import Reviews from "../Reviews/Reviews";
 import AboutUs from "../AboutUs/AboutUs";
+import Statistics from "../Statistics/Statistics";
 import { DarkModeContext } from "../../../App";
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
       <Banner />
       <Guide />
       <Cards />
+      <Statistics/>
       <Engineers />
       <Notice />
       <Testimonials />
