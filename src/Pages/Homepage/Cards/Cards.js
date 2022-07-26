@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { DarkModeContext } from "../../../App";
 import Card from "../Card/Card";
 
 const Cards = () => {
   const [courses, setCourses] = useState([]);
+  const [darkMode, setDarkMode] = useContext(DarkModeContext)
+
   useEffect(() => {
     fetch("card.json")
       .then((res) => res.json())
@@ -10,7 +13,7 @@ const Cards = () => {
   }, []);
   return (
     <div>
-      <h2 style={{fontFamily:"'Rajdhani', sans-serif"}} className="uppercase  font-bold text-3xl py-3 text-center">Our Services</h2>
+      <h2 style={{fontFamily:"'Rajdhani', sans-serif"}} className={`${darkMode && "text-white"} uppercase  font-bold text-3xl py-3 text-center`}>Our Services</h2>
       <div className="flex justify-center">
         <div className=" rounded-md w-32 h-1 bg-[#0D9488]"></div>
         <div className=" rounded-md w-4 h-1 mx-2 bg-[#0D9488]"></div>
