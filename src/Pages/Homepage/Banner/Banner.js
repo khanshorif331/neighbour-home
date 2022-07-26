@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { DarkModeContext } from '../../../App'
 
 const Banner = () => {
+	const [darkMode, setDarkMode] = useContext(DarkModeContext)
+
 	return (
 		<div className='bg-gray-100'>
 			<section
-				className='cover bg-blue-teal-gradient text-center sm:text-left relative bg-teal-600 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 overflow-hidden sm:py-48 flex
-          items-end sm:items-center h-[550px]  sm:pb-40 pb-16  sm:min-h-screen'
+				className={`${darkMode ? "bg-gray-900" : "bg-teal-600"} cover bg-blue-teal-gradient text-center sm:text-left relative   px-4 sm:px-8 lg:px-16 xl:px-28 2xl:px-64 overflow-hidden sm:py-48 flex
+				items-end sm:items-center h-[550px]  sm:pb-40 pb-16  sm:min-h-screen`}
 			>
 				<div className='h-full absolute top-0 left-0 right-0 z-0'>
 					<img

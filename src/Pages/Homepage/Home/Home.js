@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Banner from "../Banner/Banner";
 import Cards from "../Cards/Cards";
 import Contact from "../Contact/Contact";
@@ -9,8 +9,11 @@ import Testimonials from "../Testimonials/Testimonials";
 import NewsLetter from "../NewsLetter/NewsLetter";
 import Reviews from "../Reviews/Reviews";
 import AboutUs from "../AboutUs/AboutUs";
+import { DarkModeContext } from "../../../App";
 
 const Home = () => {
+  const [darkMode, setDarkMode] = useContext(DarkModeContext)
+
   return (
     <div>
       <Banner />
