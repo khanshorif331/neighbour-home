@@ -39,7 +39,7 @@ const Register = () => {
 
     return (
         <section className='mt-[129px]'>
-            <div className="bg-white font-family-karla">
+            <div className="font-family-karla">
 
                 <div className="w-full flex flex-wrap">
 
