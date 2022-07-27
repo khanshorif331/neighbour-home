@@ -3,37 +3,22 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.dark-theme{
+  background:  rgb(25, 34, 60);
+  /* color: #297bbe; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* scrollbar design here */
+html::-webkit-scrollbar{
+  width:1.4rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+html::-webkit-scrollbar-track{
+  background:rgba(159, 159, 159, 0.187);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+html::-webkit-scrollbar-thumb{
+  background:#225d50;
+  border-radius: 10px;
+  border: 3px outset #0d9488;
 }

@@ -9,7 +9,7 @@ const Review = ({review}) => {
                     <img className='h-14 w-14 rounded-full mr-3' src={review.img} alt="" />
                     <div>
                          <h4 className='font-semibold leading-none mb-1 text-teal-900'>{review.name}</h4>
-                         <h5 className='leading-none'>{review.positon}</h5>
+                         <h5 className='leading-none'>{review.position}</h5>
                     </div>
                </div>
           </div>

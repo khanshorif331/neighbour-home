@@ -1,13 +1,16 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Fade } from 'react-reveal';
 import { Link } from 'react-router-dom';
+import { DarkModeContext } from '../../../App';
 import Review from './Review';
 
 const Testimonials = () => {
      const [reviews, setReviews] = useState([])
+     const [darkMode] = useContext(DarkModeContext)
+
      useEffect(() => {
-          
+
           axios.get(`reviews.json`)
                .then(data => {
                     setReviews(data.data)
@@ -18,8 +21,9 @@ const Testimonials = () => {
 
      return (
           <div
+               style={{ fontFamily: "'Rajdhani', sans-serif" }}
                className='sm:px-24 px-10 text-center sm:text-left py-16'>
-               <h2 className="uppercase text-3xl font-bold text-center ">
+               <h2 className={`${darkMode&& "text-white"} uppercase text-3xl font-bold text-center `}>
                     Testimonials
                </h2>
                <div className="flex justify-center">
@@ -29,8 +33,8 @@ const Testimonials = () => {
                </div>
                <div className="flex pt-10 flex-wrap">
                     <Fade right duration='2000'>
-                         <div className='w-full sm:w-5/12 pb-8 sm:pb-0'>
-                              <h1 className="text-4xl sm:text-6xl font-bold uppercase text-teal-900">Reviews from happy client</h1>
+                         <div className={`${darkMode&& "text-gray-200"} w-full sm:w-5/12 pb-8 sm:pb-0`}>
+                              <h1 className={`${darkMode?"text-teal-600":"text-teal-900"} text-4xl sm:text-6xl font-bold uppercase `}>Reviews from happy client</h1>
                               <p className='sm:pr-10 pt-3 sm:py-8'>Construction of itself, because it is pain some
                                    some proper style design occur in toil and pain we have expert team some master</p>
                               <Link className='border-b border-teal-900 duration-150 text-lg hover:text-teal-500' to={""}>view more</Link>
@@ -47,18 +51,6 @@ const Testimonials = () => {
                                         review={review}
                                    ></Review>)
                               }
-
-                              {/* <div className='bg-teal-100 w-[320px] p-10 rounded-tr-3xl rounded-bl-3xl'>
-                                   <q>Publishing packages and web page now use Lorem Ipsum as their mel text, and a search for lorem more than one articel a is very important which can be help us for building a beauiful construction</q>
-                                   <div className="flex items-center mt-3">
-                                        <img className='h-14 w-14 rounded-full mr-3' src="https://htmldemo.net/oxybuild/oxybuild/assets/images/testimonial/avatar/1-2-46x46.png" alt="" />
-                                        <div>
-                                             <h4 className='font-semibold leading-none mb-1 text-teal-900'>Rayana Begum</h4>
-                                             <h5 className='leading-none'>CEO, Xerox Ltd. Group</h5>
-                                        </div>
-                                   </div>
-                              </div> */}
-
 
                          </div>
                     </Fade>
