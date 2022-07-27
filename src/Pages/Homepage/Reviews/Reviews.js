@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BsFacebook, BsTwitter, BsLinkedin, BsGithub } from "react-icons/bs";
 import { Autoplay, FreeMode, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { DarkModeContext } from "../../../App";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
+  const [darkMode] = useContext(DarkModeContext)
+
   useEffect(() => {
     fetch("review.json")
       .then((res) => res.json())
@@ -14,7 +17,7 @@ const Reviews = () => {
     <div>
       <h2
         style={{ fontFamily: "'Rajdhani', sans-serif" }}
-        className="uppercase text-3xl font-bold text-center py-3"
+        className={`${darkMode && "text-white"} uppercase text-3xl font-bold text-center py-3`}
       >
         Review
       </h2>
@@ -53,7 +56,7 @@ const Reviews = () => {
             const { picture, name, date, stars, reviewTxt, _id } = review;
             return (
               <SwiperSlide className="m-10" key={_id}>
-                <div class="container flex flex-col max-w-lg p-6 mx-auto divide-y rounded-md shadow-xl border text-gray-900">
+                <div className={`${darkMode ? "text-white" : "text-gray-900"} container flex flex-col max-w-lg p-6 mx-auto divide-y rounded-md shadow-xl border `}>
                   <div class="flex justify-between p-4">
                     <div class="flex space-x-4">
                       <div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BsFacebook, BsTwitter, BsLinkedin, BsGithub } from "react-icons/bs";
 import { Autoplay, FreeMode, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -14,9 +14,12 @@ import {
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
+import { DarkModeContext } from "../../../App";
 
 const Engineer = () => {
   const [engineers, setEngineers] = useState([]);
+	const [darkMode] = useContext(DarkModeContext)
+
   useEffect(() => {
     fetch("engineers.json")
       .then((res) => res.json())
@@ -58,13 +61,13 @@ const Engineer = () => {
             return (
               <SwiperSlide>
                 <div>
-                  <div className=" m-auto  max-w-sm items-center justify-center overflow-hidden  shadow-lg">
+                  <div className={`${darkMode && "text-white"} m-auto  max-w-sm items-center justify-center overflow-hidden  shadow-lg`}>
                     <div className="h-24 bg-[#0D9488]"></div>
                     <div className="-mt-20 flex justify-center">
                       <img className="w-32 h-32 rounded-full" alt="" src={picture} />
                     </div>
                     <div className="mt-5 mb-1 px-3 text-center text-xl">{name}</div>
-                    <div className="mb-5 px-3 text-center text-gray-500 uppercase">
+                    <div className={`${darkMode? "text-gray-400": "text-gray-500"} mb-5 px-3 text-center  uppercase`}>
                       {surname}
                     </div>
                     <blockquote>
