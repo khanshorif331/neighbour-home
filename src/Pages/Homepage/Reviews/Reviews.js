@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BsFacebook, BsTwitter, BsLinkedin, BsGithub } from "react-icons/bs";
+import { AiOutlineStar } from "react-icons/ai";
 import { Autoplay, FreeMode, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { DarkModeContext } from "../../../App";
+import { Link } from "react-router-dom";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
+  const [darkMode, setDarkMode] = useContext(DarkModeContext);
   useEffect(() => {
     fetch("review.json")
       .then((res) => res.json())
@@ -23,7 +27,7 @@ const Reviews = () => {
         <div className=" rounded-md w-4 h-1 mx-2 bg-[#0D9488]"></div>
         <div className=" rounded-md w-2 h-1 bg-[#0D9488]"></div>
       </div>
-      <div className='h-[400px] p-6 md:px-16'>
+      <div className="p-6 md:px-16">
         <Swiper
           slidesPerView={1}
           spaceBetween={30}
@@ -87,6 +91,20 @@ const Reviews = () => {
             );
           })}
         </Swiper>
+      </div>
+      <div className=" flex justify-center ">
+        <Link to="addReview">
+          <button
+            className={`${
+              darkMode
+                ? "hover:bg-white bg-teal-900 text-white border border-teal-900 hover:text-teal-900"
+                : "hover:bg-teal-800 bg-white text-teal-900 border border-teal-900 hover:text-white"
+            } sm:px-7 px-5 transition py-1.5 sm:py-2.5 rounded-[3px] mt-5 uppercase flex justify-center items-center`}
+          >
+            add review{" "}
+            <AiOutlineStar className="ml-2 text-orange-400 font-bold text-lg" />
+          </button>
+        </Link>
       </div>
     </div>
   );
