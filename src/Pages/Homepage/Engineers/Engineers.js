@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DarkModeContext } from "../../../App";
 import Engineer from "../Engineer/Engineer";
 
 const Engineers = () => {
-  
+  const [darkMode, setDarkMode] = useContext(DarkModeContext)
+
   return (
     <div>
-      <h2 style={{fontFamily:"'Rajdhani', sans-serif"}} className="uppercase text-3xl font-bold text-center py-3">
+      <h2 style={{fontFamily:"'Rajdhani', sans-serif"}} className={`${darkMode && "text-white"} uppercase text-3xl font-bold text-center py-3`}>
         Our Engineers and Architecture's
       </h2>
       <div className="flex justify-center">
