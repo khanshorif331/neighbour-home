@@ -1,7 +1,7 @@
 import React from "react";
-
-const Card = ({ course }) => {
-  const { title, picture, description } = course;
+import { Link } from 'react-router-dom';
+const Card = ({ service }) => {
+  const { title, picture, _id, description } = service;
   return (
     <div>
       <div className="max-w-sm bg-white px-6 pt-6 pb-2 border shadow-lg transform hover:scale-105 transition duration-500">
@@ -21,9 +21,9 @@ const Card = ({ course }) => {
           {description}
         </p>
         <div className="my-4">
-          <button className="mt-4 text-xl w-full text-white bg-[#0D9488] py-2 rounded shadow-lg">
-            Details
-          </button>
+          <Link to={`/details/${_id}`} className='d-block'>
+            <button className='mt-4 text-xl w-full text-white bg-[#0D9488] py-2 rounded shadow-lg'>Details</button>
+          </Link>
         </div>
       </div>
     </div>

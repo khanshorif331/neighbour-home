@@ -11,7 +11,7 @@ const NewsLetter = () => {
      return (
           <div className='mt-7 sm:mt-10'>
                {/* <h1 className="text-3xl sm:text-4xl border-b-4  mb-3 mt-4 border-primary inline-block">News Letter</h1> */}
-               <div style={{ backgroundImage: "url(https://thumbs.dreamstime.com/b/abstract-architectural-background-building-lines-futuristic-backdrop-architecture-building-construction-black-linear-d-173068008.jpg)", fontFamily: 'Oswald' }} className='h-[300px]  sm:h-[400px] text-center bg-center bg-cover  w-full px-2 rounded-md sm:rounded-none sm:px-0  flex justify-center items-center text-white Container'>
+               <div style={{ backgroundImage: "url(https://i.ibb.co/fpXYGwM/abstract-architectural-background-building-lines-futuristic-backdrop-architecture-building-construct.jpg)", fontFamily: 'Oswald' }} className='h-[300px]  sm:h-[400px] text-center bg-center bg-cover  w-full px-2 rounded-md sm:rounded-none sm:px-0  flex justify-center items-center text-white Container'>
                     <div>
                          <Fade top  duration='2000'>
                          <h3 className="text-xl sm:text-2xl uppercase text-white tracking-wider">SPECIAL <span className='text-primary'>OFFER</span> FOR SUBSCRIPTION</h3>
