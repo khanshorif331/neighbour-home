@@ -1,29 +1,40 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { DarkModeContext } from '../../../App';
 
 const Contact = () => {
+    const [darkMode] = useContext(DarkModeContext)
+
     return (
         <section>
             <form>
                 <section className="text-white body-font relative">
                     <div className="container px-5 py-6 mx-auto">
-                        <div className="lg:w-2/3 md:w-2/3 mx-auto border p-5 md:px-16 shadow-md rounded">
-                            <h2 className='text-center text-4xl font-bold underline underline-offset-8 decoration-black text-black mb-5'>Contact Us</h2>
+                        <div className="lg:w-2/3 md:w-2/3 mx-auto border px-5 py-12 md:px-16 shadow-md  rounded">
+                            {/* <h2 className='text-center text-4xl font-bold underline underline-offset-8 decoration-black text-black mb-5'>Contact Us</h2> */}
+                            <h2 className={`${darkMode ? "text-white": "text-black"}  uppercase text-3xl font-bold text-center`}>
+                                Contact Us
+                            </h2>
+                            <div className="flex justify-center mb-10">
+                                <div className=" rounded-md w-40 h-1 bg-[#0D9488]"></div>
+                                <div className=" rounded-md w-4 h-1 mx-2 bg-[#0D9488]"></div>
+                                <div className=" rounded-md w-2 h-1 bg-[#0D9488]"></div>
+                            </div>
                             <div className="flex flex-wrap -m-2">
                                 <div className="p-2 md:w-1/2 w-full">
                                     <div className="relative">
-                                        <label htmlFor="name" className="leading-7 text-sm text-black font-medium">Name</label>
+                                        <label htmlFor="name" className={`${darkMode ? "text-white" : "text-black"}  leading-7 text-sm  font-medium`}>Name</label>
                                         <input type="text" id="name" name="name" className="w-full bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                     </div>
                                 </div>
                                 <div className="p-2 md:w-1/2 w-full">
                                     <div className="relative">
-                                        <label htmlFor="email" className="leading-7 text-sm text-black font-medium">Email</label>
+                                        <label htmlFor="email" className={`${darkMode ? "text-white" : "text-black"}  leading-7 text-sm  font-medium`}>Email</label>
                                         <input type="email" id="email" name="email" className="w-full bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                     </div>
                                 </div>
                                 <div className="p-2 w-full">
                                     <div className="relative">
-                                        <label htmlFor="message" className="leading-7 text-sm text-black font-medium">Message</label>
+                                        <label htmlFor="message" className={`${darkMode ? "text-white" : "text-black"}  leading-7 text-sm  font-medium`}>Message</label>
                                         <textarea id="message" name="message" className="w-full bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                                     </div>
                                 </div>

@@ -16,7 +16,7 @@ function App() {
 	const [darkMode, setDarkMode] = useState(false)
 	return (
 		<DarkModeContext.Provider value={[darkMode, setDarkMode]}>
-			<section  className={`${darkMode && "dark-theme"}`}>
+			<section  className={`${darkMode && "dark-theme"} duration-300`}>
 				<Navbar />
 				<Routes>
 					<Route path='/' element={<Home />} />
