@@ -1,0 +1,74 @@
+@keyframes pop-up{
+    0% {transform: translateY(80%); opacity:0;}
+    60% {transform: translateY(-10px);opacity: 1;}
+    80% {transform: translateY(5px)}
+    100% {transform: translateY(0);}
+}
+
+@keyframes blink{
+    20% {transform: scaleY(1);}
+    25% {transform: scaleY(0.1);}
+    30% {transform: scaleY(1);}
+}
+
+@keyframes blink-fancy{
+    0%, 25%, 28.33%, 45%, 48.33%, 51.67%, 93.33%, 96.67%{transform: scaleY(1);}
+    26.67%, 46.67%, 50%, 95% {transform: scaleY(0.1);}
+}
+
+@keyframes looky-loo{
+    0%, 42.31%, 50%, 69.23%, 100% {transform: translate3d(0,0,0);}
+    7.69%, 23.08% {transform: translate3d(-5px,0,0);}
+    26.92%, 38.46% {transform: translate3d(5px, 0,0);}
+    53.85%, 65.38%{transform: translate3d(0, -10px,0);}  
+}
+
+@keyframes looky-loo-ears{
+    0%, 42.31%, 50%, 69.23%, 100% {transform: translate3d(0,0,0);}
+    7.69%, 23.08% {transform: translate3d(3px,0,0);}
+    26.92%, 38.46% {transform: translate3d(-3px, 0,0);}
+    53.85%, 65.38%{transform: translate3d(0, 5px,0);}  
+}
+
+@keyframes looky-loo-beard{
+    50%, 69.23%, 100% {transform: translate3d(0,0,0);}
+    53.85%, 65.38%{transform: translate3d(0, -10px, 0);}   
+}
+
+@keyframes cloud-right{
+    50% {transform: translateX(10px);}
+    100% {transform: translateX(0);}
+}
+
+@keyframes cloud-left{
+    50% {transform: translateX(-8px);}
+    100% {transform: translateX(0);}
+}
+
+circle.blinking-eyes{
+    animation: blink-fancy 6s linear infinite;
+}
+
+#Dave{
+    animation: pop-up 1s ease-in-out 1;
+}
+#Eyes, #unibrow, #moustache, #Blush {animation: looky-loo 13s ease-in-out infinite; animation-delay: 2s;}
+
+#Ears  {animation: looky-loo-ears 13s ease-in-out infinite; animation-delay: 2s}
+
+#beard-lower, #beard-innershadow, #Neck-Innershadow{
+    animation: looky-loo-beard 13s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+#cloud-right{animation: cloud-right 5s ease-in-out infinite;}
+#cloud-left{animation: cloud-left 5s ease-in-out infinite; animation-delay:1s}
+
+#easter-egg{
+    opacity:0;
+    transition: all 0.1s ease-in-out;
+}
+svg:hover #easter-egg{
+    opacity: 1;
+    transition: all 0.1s ease-in-out;
+}

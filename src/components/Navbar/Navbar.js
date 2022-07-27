@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { MdDashboardCustomize, MdOutlineClose } from 'react-icons/md';
+import React, { useContext, useState } from 'react';
+import { Link, NavLink , useLocation} from 'react-router-dom';
+import { MdModeNight, MdNightsStay, MdLightMode, MdOutlineClose } from 'react-icons/md';
 import { GoThreeBars } from 'react-icons/go';
 import "./Navbar.css"
+import { DarkModeContext } from '../../App';
 
 const Navbar = () => {
     const [colorChange, setColorchange] = useState(false);
     let [toggle, setToggle] = useState(false);
     // const [user, loading] = useAuthState(auth);
     // let navigat = useNavigate();
+    let location = useLocation().pathname;
+    const [darkMode, setDarkMode] = useContext(DarkModeContext)
 
-    // console.log(user);
+    // console.log(darkMode);
     const navBtnHndle = () => {
         setToggle(!toggle)
     }
@@ -27,7 +30,7 @@ const Navbar = () => {
     return (
         <div className=''>
             {/* start header  */}
-            <header className={`fixed duration-300 top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 ${colorChange && "bg-teal-900"}`}>
+            <header className={`fixed duration-300 top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-28 2xl:px-64 ${colorChange && (darkMode? "bg-teal-600" : "bg-teal-900")} ${location !== "/" && (darkMode ? "bg-teal-600" : "bg-teal-900")} `}>
                 <div className="hidden md:flex justify-between items-center py-2 border-b text-sm "
                 // style="border-color: rgba(255,255,255,.25)"
                 >
@@ -140,15 +143,24 @@ const Navbar = () => {
                         <nav
                             className="w-full bg-teal-100  md:bg-transparent rounded shadow-lg px-6 py-10 mt-4 text-center md:p-0 md:mt-0 md:shadow-none">
                             <ul className="md:flex items-center">
-                                <li><a className="py-2 inline-block md:text-white md:hidden lg:block font-semibold" href="#">Home</a></li>
-                                <li className="md:ml-4"><a className="py-2 inline-block md:text-white md:px-2 font-semibold"
-                                    href="#">Aparments</a></li>
-                                <li className="md:ml-4"><a className="py-2 inline-block md:text-white md:px-2 font-semibold"
-                                    href="#">Testimonials</a></li>
-                                <li className="md:ml-4 md:hidden lg:block"><a className="py-2 inline-block md:text-white md:px-2 font-semibold"
-                                    href="#">Blogs</a></li>
-                                <li className="md:ml-4"><a className="py-2 inline-block md:text-white md:px-2 font-semibold" href="#">Contact
-                                    Us</a></li>
+                                <li><Link to={"/"}  className="py-2 inline-block md:text-white md:hidden lg:block font-semibold" href="#">Home</Link></li>
+                                <li className="md:ml-2.5"><Link to={"/"} className="py-2 inline-block md:text-white md:px-2 font-semibold"
+                                    href="#">Aparments</Link></li>
+                                <li className="md:ml-2.5"><Link to={"/"} className="py-2 inline-block md:text-white md:px-2 font-semibold"
+                                    href="#">Testimonials</Link></li>
+                                <li className="md:ml-2.5 md:hidden lg:block"><Link to={"/"} className="py-2 inline-block md:text-white md:px-2 font-semibold"
+                                    href="#">Blogs</Link></li>
+
+                                <li  className="md:ml-2.5"><Link to={"/"} className="py-2 inline-block md:text-white md:px-2 font-semibold" href="#">Contact
+                                    Us</Link></li>
+                                
+                                {   darkMode ?
+                                    
+                                    <li className="md:ml-2.5"><button onClick={()=> setDarkMode(false)} className="py-2 inline-block md:text-white md:px-2 font-semibold" href="#"><MdLightMode className='text-2xl'></MdLightMode></button></li>
+                                    :
+                                    <li className="md:ml-2.5"><button onClick={()=> setDarkMode(true)} className="py-2 inline-block md:text-white md:px-2 font-semibold" href="#"><MdNightsStay className='text-2xl'></MdNightsStay></button></li>
+                                }
+
                                 <li className="md:ml-6 mt-3 md:mt-0">
                                     <a className={`inline-block font-semibold px-4 py-2 ${colorChange ? "hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white" : "hover:bg-white hover:text-teal-900 text-white bg-teal-900"}   border-white rounded`}
                                         href="book-appointment.html">Buy Apartment</a>

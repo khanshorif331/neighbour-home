@@ -1,0 +1,14 @@
+[
+     {
+          "name": "Christoper Luis",
+          "img": "https://htmldemo.net/oxybuild/oxybuild/assets/images/testimonial/avatar/1-1-46x46.png",
+          "comment": "Publishing packages and web page now use Lorem Ipsum as their mel text, and a search for lorem more than one articel a is very important which can be help us for building a beauiful construction",
+          "position": "CEO, Octafact Group"
+     },
+     {
+          "name": "Rayana Begum",
+          "img": "https://htmldemo.net/oxybuild/oxybuild/assets/images/testimonial/avatar/1-2-46x46.png",
+          "comment": "Publishing packages and web page now use Lorem Ipsum as their mel text, and a search for lorem more than one articel a is very important which can be help us for building a beauiful construction",
+          "position": "CEO, Xerox Ltd. Group"
+     }
+]
