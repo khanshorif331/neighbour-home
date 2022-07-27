@@ -57,9 +57,9 @@ const Engineer = () => {
 
         {
           engineers.map(engineer => {
-            const { picture, name, surname, bio } = engineer;
+            const { picture, name, surname, bio, _id } = engineer;
             return (
-              <SwiperSlide>
+              <SwiperSlide key={_id}>
                 <div>
                   <div className={`${darkMode && "text-white"} m-auto  max-w-sm items-center justify-center overflow-hidden  shadow-lg`}>
                     <div className="h-24 bg-[#0D9488]"></div>
