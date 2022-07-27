@@ -7,3 +7,18 @@
   background:  rgb(25, 34, 60);
   /* color: #297bbe; */
 }
+
+/* scrollbar design here */
+html::-webkit-scrollbar{
+  width:1.4rem;
+}
+
+html::-webkit-scrollbar-track{
+  background:rgba(159, 159, 159, 0.187);
+}
+
+html::-webkit-scrollbar-thumb{
+  background:#225d50;
+  border-radius: 10px;
+  border: 3px outset #0d9488;
+}
