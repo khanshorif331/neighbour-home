@@ -8,6 +8,7 @@ import Register from './Authentication/Register/Register'
 import { createContext, useState } from 'react'
 import Guides from './Pages/Homepage/Guides/Guides'
 import NotFound from './components/NotFound/NotFound'
+import UserData from './Pages/UserData/UserData'
 
 export const DarkModeContext = createContext("")
 
@@ -22,6 +23,7 @@ function App() {
 					<Route path='/login' element={<Login />} />
 					<Route path='/register' element={<Register />} />
 					<Route path='/guides' element={<Guides />} />
+					<Route path='/user_data' element={<UserData/>} />
 					<Route path='*' element={<NotFound/>} />
 				</Routes>
 				<Footer />
