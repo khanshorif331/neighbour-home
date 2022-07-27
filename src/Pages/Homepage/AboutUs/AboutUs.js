@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { GiCheckMark } from 'react-icons/gi';
+import { DarkModeContext } from '../../../App';
 
 const AboutUs = () => {
+     const [darkMode] = useContext(DarkModeContext)
+
      return (
-          <div style={{ fontFamily: "'Rajdhani', sans-serif" }} className='py-16 px-10 sm:px-20'>
-               <h2 className="uppercase text-3xl font-bold text-center">
+          <div style={{ fontFamily: "'Rajdhani', sans-serif" }} className={`${darkMode && "text-white"}  py-16 px-10 sm:px-20`}>
+               <h2 className={`${darkMode && "text-white"} uppercase text-3xl font-bold text-center`}>
                     About Us
                </h2>
                <div className="flex justify-center mb-16">
@@ -25,7 +28,7 @@ const AboutUs = () => {
                     </div>
                     <div className='w-11/12 sm:w-6/12 text-center sm:text-left sm:mt-0 mt-8'>
                          {/* <h5 className="font-semibold">About Us</h5> */}
-                         <h2 className="text-3xl font-bold sm:w-7/12">We Have <span className='text-teal-900'>25</span> Years of Experience With a big fame <span className='text-teal-900'>our and company</span></h2>
+                         <h2 className="text-3xl font-bold sm:w-7/12">We Have <span className={`${darkMode ? "text-teal-600" : "text-teal-900"} `}>25</span> Years of Experience With a big fame <span className={`${darkMode ? "text-teal-600" : "text-teal-900"} `}>our and company</span></h2>
                          <p className='py-3'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti aliquam aspernatur itaque corrupti iste repellendus architecto adipisci recusandae enim doloribus?</p>
                          <ul className='flex flex-wrap justify-between'>
                               <li className='flex items-center my-1 w-full  pl-10 sm:w-5/12'> <GiCheckMark className='text-green-700 mr-2 '></GiCheckMark> Hight Quality Work</li>

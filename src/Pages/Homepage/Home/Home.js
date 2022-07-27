@@ -13,7 +13,6 @@ import Statistics from "../Statistics/Statistics";
 import { DarkModeContext } from "../../../App";
 
 const Home = () => {
-  const [darkMode, setDarkMode] = useContext(DarkModeContext)
 
   return (
     <div>
