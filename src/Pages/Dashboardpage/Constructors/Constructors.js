@@ -47,7 +47,7 @@ const Constructors = () => {
 							></Constructor>
 						))}
 					</tbody>
-					<tfoot>
+					{/* <tfoot>
 						<tr>
 							<th></th>
 							<th>Name</th>
@@ -57,7 +57,7 @@ const Constructors = () => {
 							<th>Last Login</th>
 							<th>Favorite Color</th>
 						</tr>
-					</tfoot>
+					</tfoot> */}
 				</table>
 			</div>
 		</div>
