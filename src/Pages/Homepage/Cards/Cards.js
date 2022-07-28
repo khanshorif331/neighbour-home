@@ -1,26 +1,24 @@
-<<<<<<< HEAD
-import React, { useEffect, useState } from "react";
+import React, {useContext, useEffect, useState } from "react";
 import useServices from "../../../hooks/useServices";
 import Card from "../Card/Card";
-
-const Cards = () => {
-  // state declare 
-  const [services] = useServices([]);
-=======
-import React, { useContext, useEffect, useState } from "react";
 import { DarkModeContext } from "../../../App";
-import Card from "../Card/Card";
+// import Card from "../Card";
+// const Cards = () => {
+//   // state declare 
+
+
+
 
 const Cards = () => {
-  const [courses, setCourses] = useState([]);
+  const [services] = useServices([]);
+  // const [courses, setCourses] = useState([]);
   const [darkMode, setDarkMode] = useContext(DarkModeContext)
 
-  useEffect(() => {
-    fetch("card.json")
-      .then((res) => res.json())
-      .then((data) => setCourses(data));
-  }, []);
->>>>>>> b775cd741a3cef23fa18fe00bb100fce855f1712
+  // useEffect(() => {
+  //   fetch("card.json")
+  //     .then((res) => res.json())
+  //     .then((data) => setCourses(data));
+  // }, []);
   return (
     <div>
       <h2 style={{fontFamily:"'Rajdhani', sans-serif"}} className={`${darkMode && "text-white"} uppercase  font-bold text-3xl py-3 text-center`}>Our Services</h2>

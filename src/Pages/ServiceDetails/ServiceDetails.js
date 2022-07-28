@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import useServiceDetails from '../../hooks/useServiceDetails';
 
 const ServiceDetails = () => {
@@ -14,7 +14,21 @@ const ServiceDetails = () => {
                     <div>
                         <h1 class="text-5xl font-bold">{title}</h1>
                         <p class="py-6">{description}</p>
-                        <button class="btn btn-primary">Get Started</button>
+                        <div>
+                            <Link to={`/engineer`} >
+                                <button
+                                    className='px-8 py-3 border-2 border-teal-900 bg-teal-900 hover:bg-white hover:text-teal-900  duration-200 text-white rounded uppercase inline-block mt-4 sm:mt-8 font-semibold'>
+                                    hire a engineer
+                                </button>
+                            </Link>
+                            <Link to={`/engineer`} >
+                                <button
+                                    className='px-8 py-3 border-2 border-teal-900 bg-teal-900 hover:bg-white hover:text-teal-900  duration-200 text-white rounded uppercase inline-block mt-4 sm:mt-8 font-semibold'>
+                                    hire workers
+                                </button>
+                            </Link>
+
+                        </div>
                     </div>
                 </div>
             </div>
