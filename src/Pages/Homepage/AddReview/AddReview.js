@@ -54,7 +54,7 @@ const AddReview = () => {
             value: true,
             message: 'Name is Required'
           }
-        })} value={user.displayName} />
+        })} value={user?.displayName} />
         <label className="label">
           {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
         </label>
@@ -98,7 +98,7 @@ const AddReview = () => {
         </label>
 
         <input
-          style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class="hover:bg-white transition w-40 mx-auto text-center bg-primary  hover:text-primary rounded-full text-white border-2 border-primary py-2" type={'submit'} value={'Post Review'} />
+          style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class="hover:bg-white transition w-40 mx-auto text-center bg-primary  hover:text-primary rounded-full text-white border-2 border-primary py-2 cursor-pointer" type={'submit'} value={'Post Review'} />
       </form>
     </div>
     // <div className=" h-screen">
