@@ -24,7 +24,7 @@ const Dashboard = () => {
                               <li><Link className='shadow-lg my-1' to={"/dashboard"}>Users</Link></li>
 
                               <li><Link className='shadow-lg my-1' to={"/dashboard"}>Manage Books</Link></li>
-                              <li><Link className='shadow-lg my-1' to={"/dashboard"}>Add a Review</Link></li>
+                              <li><Link className='shadow-lg my-1' to={"/dashboard/addReview"}>Add a Review</Link></li>
                               <li><Link className='shadow-lg my-1' to={"/dashboard"}>Manage Engineers</Link></li>
                               <li><Link className='shadow-lg my-1' to={"/dashboard"}>Manage Constructors</Link></li>
 
