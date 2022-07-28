@@ -8,7 +8,7 @@ const Dashboard = () => {
 	return (
 		<div
 			style={{ fontFamily: "'Rajdhani', sans-serif" }}
-			className='sm:mt-[129px] mt-[80px] mt-[80px]'
+			className='sm:mt-[129px] mt-[80px]'
 		>
 			<div class='drawer drawer-mobile mt-[64px]'>
 				<input

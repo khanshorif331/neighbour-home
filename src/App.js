@@ -14,11 +14,7 @@ import BookReview from './Pages/Homepage/BookReview/BookReview'
 import Dashboard from './Pages/Dashboardpage/Dashboard/Dashboard'
 import Users from './Pages/Dashboardpage/Users/Users'
 import Constructors from './Pages/Dashboardpage/Constructors/Constructors'
-import {
-	QueryClient,
-	QueryClientProvider,
-	useQuery,
-} from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 export const DarkModeContext = createContext('')
 const queryClient = new QueryClient()
