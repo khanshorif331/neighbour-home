@@ -15,6 +15,9 @@ import Dashboard from './Pages/Dashboardpage/Dashboard/Dashboard'
 import Users from './Pages/Dashboardpage/Users/Users'
 import Constructors from './Pages/Dashboardpage/Constructors/Constructors'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import ManageBooks from './Pages/Dashboardpage/ManageBooks/ManageBooks'
+import ServiceDetails from './Pages/ServiceDetails/ServiceDetails'
+import ManageEngineers from './Pages/Dashboardpage/ManageEngineers/ManageEngineers'
 
 export const DarkModeContext = createContext('')
 const queryClient = new QueryClient()
@@ -35,9 +38,21 @@ function App() {
 								path='constructors'
 								element={<Constructors />}
 							></Route>
+							<Route
+								path='manageBooks'
+								element={<ManageBooks />}
+							></Route>
+							<Route
+								path='manageEngineers'
+								element={<ManageEngineers />}
+							></Route>
 						</Route>
 						<Route path='/login' element={<Login />} />
 						<Route path='/register' element={<Register />} />
+						<Route
+							path='/details/:serviceId'
+							element={<ServiceDetails />}
+						/>
 						<Route path='/guides' element={<Guides />} />
 						<Route path='/user_data' element={<UserData />} />
 						<Route path='/addReview' element={<AddReview />} />
