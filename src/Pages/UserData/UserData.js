@@ -18,7 +18,7 @@ const UserData = () => {
     }
 
     return (
-        <section className='mt-[129px]'>
+        <section className='sm:mt-[129px] mt-[80px] mt-[80px]'>
             <h1 className={`text-4xl text-center my-3 ${darkMode && "text-white"}`}>Welcome To Neighbour Home!</h1>
             <div className='border p-7 rounded-lg cs-card-shadow w-full md:w-2/3 mx-auto my-3'>
                 <h1 className={`text-3xl font-medium text-center mb-12 ${darkMode && 'text-white'}`}>Fill Up This Form For Next Step</h1>
