@@ -11,7 +11,7 @@ const Reviews = () => {
   const [darkMode] = useContext(DarkModeContext);
 
   useEffect(() => {
-    fetch("review.json")
+    fetch("https://neighbour-home--server.herokuapp.com/review")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
@@ -66,7 +66,7 @@ const Reviews = () => {
                   } container flex flex-col max-w-lg p-6 mx-auto divide-y rounded-md shadow-xl border `}
                 >
                   <div className="flex justify-between p-4">
-                    <div className="flex space-x-4">
+                    <div className="flex items-center space-x-4">
                       <div>
                         <img
                           src={picture}
@@ -76,9 +76,6 @@ const Reviews = () => {
                       </div>
                       <div>
                         <h4 className="font-bold">{name}</h4>
-                        <span className="text-xs dark:text-gray-400">
-                          {date}
-                        </span>
                       </div>
                     </div>
                     <div className="flex items-center space-x-2 dark:text-yellow-500">
