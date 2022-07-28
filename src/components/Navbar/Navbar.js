@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { Link, NavLink , useLocation} from 'react-router-dom';
-import { MdModeNight, MdNightsStay, MdLightMode, MdOutlineClose } from 'react-icons/md';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { MdModeNight, MdDashboardCustomize, MdNightsStay, MdLightMode, MdOutlineClose } from 'react-icons/md';
 import { GoThreeBars } from 'react-icons/go';
 import "./Navbar.css"
 import { DarkModeContext } from '../../App';
@@ -13,7 +13,7 @@ const Navbar = () => {
     let location = useLocation().pathname;
     const [darkMode, setDarkMode] = useContext(DarkModeContext)
 
-    // console.log(darkMode);
+    console.log(location);
     const navBtnHndle = () => {
         setToggle(!toggle)
     }
@@ -30,11 +30,11 @@ const Navbar = () => {
     return (
         <div className=''>
             {/* start header  */}
-            <header className={`fixed duration-300 top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-28 2xl:px-64 ${colorChange && (darkMode? "bg-teal-600" : "bg-teal-900")} ${location !== "/" && (darkMode ? "bg-teal-600" : "bg-teal-900")} `}>
-                <div className="hidden md:flex justify-between items-center py-2 border-b text-sm "
+            <header className={`fixed duration-300 top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-28 2xl:px-64 ${colorChange && (darkMode ? "bg-teal-600" : "bg-teal-900")} ${location !== "/" && (darkMode ? "bg-teal-600" : "bg-teal-900")} `}>
+                <div className={`${colorChange ? "md:hidden opacity-0" : "md:flex opacity-100"} hidden justify-between duration-500 items-center py-2 border-b text-sm`}
                 // style="border-color: rgba(255,255,255,.25)"
                 >
-                    <div className="">
+                    <div>
                         <ul className="flex text-white">
                             <li className='hover:text-teal-300 transition cursor-pointer'>
                                 <div className="flex items-center">
@@ -105,9 +105,16 @@ const Navbar = () => {
                     </div>
                 </div>
 
+
+                {/* phone navbar */}
                 <div className="flex flex-wrap items-center justify-between py-6 sm:px-2 px-5">
-                    <div className="w-4/5 md:w-auto">
-                        <a style={{ letterSpacing: "2px" }} href="index.html" className="text-white font-semibold  text-2xl">
+
+                    <label for="dashboard-drower" tabindex="1" class={`${location === "/dashboard" ? "block" :"hidden"} md:hidden text-white cursor-pointer`}>
+                        <MdDashboardCustomize className='h-5 w-5'></MdDashboardCustomize>
+                    </label>
+
+                    <div className=" md:w-auto">
+                        <a style={{ letterSpacing: "2px" }} href="#" className="text-white font-semibold  text-2xl">
                             Neighbour Home
                         </a>
                         {/* <Link to="#">
@@ -122,15 +129,23 @@ const Navbar = () => {
                     </svg></label>
 
                     <input className="hidden" type="checkbox" id="menu-toggle" /> */}
-                    <span onClick={navBtnHndle} className='md:hidden text-white text-2xl absolute right-6  top-[28px]'>{toggle ? <MdOutlineClose></MdOutlineClose> : <GoThreeBars></GoThreeBars>}</span>
-                    <ul onClick={navBtnHndle} className={`mobile-manu flex md:hidden flex-col text-center z-10   left-0 w-full bg-teal-100  absolute  py-4 duration-500 ${toggle ? " opacity-100  top-20" : " top-[-250px] opacity-0"}`}>
+
+                    <span onClick={navBtnHndle} className='md:hidden text-white text-2xl cursor-pointer'>{toggle ? <MdOutlineClose></MdOutlineClose> : <GoThreeBars></GoThreeBars>}</span>
+                    
+                    <ul onClick={navBtnHndle} className={`mobile-manu flex md:hidden flex-col text-center z-10   left-0 w-full bg-teal-100  absolute  py-4 duration-500 ${toggle ? " opacity-100  top-20" : " top-[-350px] opacity-0"}`}>
                         <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/"}>Home</NavLink>
                         <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/"}>Appartments</NavLink>
                         <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/"}>Testimonials</NavLink>
-                        <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/"}>Contact Us</NavLink>
+                        <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/dashboard"}>Dashboard</NavLink>
                         <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/"}>Blogs</NavLink>
+                        {darkMode ?
+
+                            <li className="md:ml-2.5"><button onClick={() => setDarkMode(false)} className="py-2 mx-auto md:text-white md:px-2  flex items-center" href="#">Light <MdLightMode className='ml-1 text-2xl font-semibold'></MdLightMode></button></li>
+                            :
+                            <li className="md:ml-2.5"><button onClick={() => setDarkMode(true)} className="py-2 mx-auto  md:text-white md:px-2 flex items-center " href="#">Dark <MdNightsStay className='ml-1 text-2xl font-semibold'></MdNightsStay></button></li>
+                        }
                         <Link className="inline-block w-44 mx-auto font-semibold px-4 py-2 hover:bg-white hover:text-teal-900  bg-teal-800 text-white  border-white rounded"
-                                        to={"/"}>Buy Apartment</Link>
+                            to={"/"}>Buy Apartment</Link>
 
                         {/* {user ?
                         <button onClick={handleLogout} className='uppercase my-0.5 md:my-0 text-left   mx-auto md:mx-0 md:pb-0.5' >LogOut</button>
@@ -139,11 +154,13 @@ const Navbar = () => {
                     } */}
                     </ul>
 
+
+                    {/* desktop navbar  */}
                     <div className="hidden md:block w-full md:w-auto" id="menu">
                         <nav
                             className="w-full bg-teal-100  md:bg-transparent rounded shadow-lg px-6 py-10 mt-4 text-center md:p-0 md:mt-0 md:shadow-none">
                             <ul className="md:flex items-center">
-                                <li><Link to={"/"}  className="py-2 inline-block md:text-white md:hidden lg:block font-semibold" href="#">Home</Link></li>
+                                <li><Link to={"/"} className="py-2 inline-block md:text-white md:hidden lg:block font-semibold" href="#">Home</Link></li>
                                 <li className="md:ml-2.5"><Link to={"/"} className="py-2 inline-block md:text-white md:px-2 font-semibold"
                                     href="#">Aparments</Link></li>
                                 <li className="md:ml-2.5"><Link to={"/"} className="py-2 inline-block md:text-white md:px-2 font-semibold"
@@ -151,14 +168,13 @@ const Navbar = () => {
                                 <li className="md:ml-2.5 md:hidden lg:block"><Link to={"/"} className="py-2 inline-block md:text-white md:px-2 font-semibold"
                                     href="#">Blogs</Link></li>
 
-                                <li  className="md:ml-2.5"><Link to={"/"} className="py-2 inline-block md:text-white md:px-2 font-semibold" href="#">Contact
-                                    Us</Link></li>
-                                
-                                {   darkMode ?
-                                    
-                                    <li className="md:ml-2.5"><button onClick={()=> setDarkMode(false)} className="py-2 inline-block md:text-white md:px-2 font-semibold" href="#"><MdLightMode className='text-2xl'></MdLightMode></button></li>
+                                <li className="md:ml-2.5"><Link to={"/dashboard"} className="py-2 inline-block md:text-white md:px-2 font-semibold" href="#">Dashboard</Link></li>
+
+                                {darkMode ?
+
+                                    <li className="md:ml-2.5"><button onClick={() => setDarkMode(false)} className="py-2 inline-block md:text-white md:px-2 font-semibold" href="#"><MdLightMode className='text-2xl'></MdLightMode></button></li>
                                     :
-                                    <li className="md:ml-2.5"><button onClick={()=> setDarkMode(true)} className="py-2 inline-block md:text-white md:px-2 font-semibold" href="#"><MdNightsStay className='text-2xl'></MdNightsStay></button></li>
+                                    <li className="md:ml-2.5"><button onClick={() => setDarkMode(true)} className="py-2 inline-block md:text-white md:px-2 font-semibold" href="#"><MdNightsStay className='text-2xl'></MdNightsStay></button></li>
                                 }
 
                                 <li className="md:ml-6 mt-3 md:mt-0">
