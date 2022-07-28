@@ -14,33 +14,44 @@ import BookReview from './Pages/Homepage/BookReview/BookReview'
 import Dashboard from './Pages/Dashboardpage/Dashboard/Dashboard'
 import Users from './Pages/Dashboardpage/Users/Users'
 import Constructors from './Pages/Dashboardpage/Constructors/Constructors'
+import {
+	QueryClient,
+	QueryClientProvider,
+	useQuery,
+} from '@tanstack/react-query'
 
 export const DarkModeContext = createContext('')
+const queryClient = new QueryClient()
 
 function App() {
 	const [darkMode, setDarkMode] = useState(false)
 	return (
-		<DarkModeContext.Provider value={[darkMode, setDarkMode]}>
-			<section className={`${darkMode && 'dark-theme'} duration-300`}>
-				<Navbar />
-				<Routes>
-					<Route path='/' element={<Home />} />
-					<Route path='/dashboard' element={<Dashboard />}>
-						<Route index element={<Users />}></Route>
-						<Route path='addReview' element={<AddReview />}></Route>
-						<Route path='constructors' element={<Constructors />}></Route>
-					</Route>
-					<Route path='/login' element={<Login />} />
-					<Route path='/register' element={<Register />} />
-					<Route path='/guides' element={<Guides />} />
-					<Route path='/user_data' element={<UserData />} />
-					<Route path='/addReview' element={<AddReview />} />
-					<Route path='/bookDetail/:_id' element={<BookReview />} />
-					<Route path='*' element={<NotFound />} />
-				</Routes>
-				<Footer />
-			</section>
-		</DarkModeContext.Provider>
+		<QueryClientProvider client={queryClient}>
+			<DarkModeContext.Provider value={[darkMode, setDarkMode]}>
+				<section className={`${darkMode && 'dark-theme'} duration-300`}>
+					<Navbar />
+					<Routes>
+						<Route path='/' element={<Home />} />
+						<Route path='/dashboard' element={<Dashboard />}>
+							<Route index element={<Users />}></Route>
+							<Route path='addReview' element={<AddReview />}></Route>
+							<Route
+								path='constructors'
+								element={<Constructors />}
+							></Route>
+						</Route>
+						<Route path='/login' element={<Login />} />
+						<Route path='/register' element={<Register />} />
+						<Route path='/guides' element={<Guides />} />
+						<Route path='/user_data' element={<UserData />} />
+						<Route path='/addReview' element={<AddReview />} />
+						<Route path='/bookDetail/:_id' element={<BookReview />} />
+						<Route path='*' element={<NotFound />} />
+					</Routes>
+					<Footer />
+				</section>
+			</DarkModeContext.Provider>
+		</QueryClientProvider>
 	)
 }
 
