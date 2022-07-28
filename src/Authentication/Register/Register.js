@@ -38,7 +38,7 @@ const Register = () => {
     }
 
     return (
-        <section className='mt-[129px]'>
+        <section className='sm:mt-[129px] mt-[80px] mt-[80px]'>
             <div className="font-family-karla">
 
                 <div className="w-full flex flex-wrap">

@@ -4,7 +4,7 @@ import './NotFound.css'
 
 const NotFound = () => {
     return (
-        <section className='mt-[129px]'>
+        <section className='sm:mt-[129px] mt-[80px] mt-[80px]'>
             <div className='flex min-h-screen justify-center items-center flex-col'>
                 <svg id="404-Dave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 250">
                     <defs>

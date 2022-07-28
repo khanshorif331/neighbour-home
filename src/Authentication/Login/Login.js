@@ -14,7 +14,7 @@ const Login = () => {
         emailUser,
         emailLoading,
         emailError,
-      ] = useSignInWithEmailAndPassword(auth);
+    ] = useSignInWithEmailAndPassword(auth);
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
 
@@ -39,7 +39,7 @@ const Login = () => {
     }
 
     return (
-        <section className='mt-[129px]'>
+        <section className='sm:mt-[129px] mt-[80px] mt-[80px]'>
             <div className="bg-white font-family-karla">
 
                 <div className="w-full flex flex-wrap flex-row-reverse">
