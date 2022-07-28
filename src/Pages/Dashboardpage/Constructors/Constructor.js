@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Constructor = () => {
+const Constructor = ({ constructor }) => {
+	console.log(constructor)
 	return (
 		<tr>
 			<th>1</th>

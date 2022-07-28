@@ -30,13 +30,13 @@ const Constructors = () => {
 				<table class='table table-compact w-full'>
 					<thead>
 						<tr>
-							<th></th>
-							<th>Name</th>
-							<th>Job</th>
-							<th>company</th>
-							<th>location</th>
-							<th>Last Login</th>
-							<th>Favorite Color</th>
+							<th>Sl.</th>
+							<th>Title</th>
+							<th>Type</th>
+							<th>Price</th>
+							<th>Duration</th>
+							<th>Discount</th>
+							<th>Assignment</th>
 						</tr>
 					</thead>
 					<tbody>
