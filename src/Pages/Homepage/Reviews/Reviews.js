@@ -99,7 +99,7 @@ const Reviews = () => {
         </Swiper>
       </div>
       <div className=" flex justify-center ">
-        <Link to="addReview">
+        <Link to="/dashboard/addReview">
           <button
             className={`${
               darkMode
