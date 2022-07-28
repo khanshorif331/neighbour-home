@@ -13,27 +13,29 @@ import UserData from './Pages/UserData/UserData'
 import BookReview from './Pages/Homepage/BookReview/BookReview'
 import Dashboard from './Pages/Dashboardpage/Dashboard/Dashboard'
 import Users from './Pages/Dashboardpage/Users/Users'
+import Constructors from './Pages/Dashboardpage/Constructors/Constructors'
 
-export const DarkModeContext = createContext("")
+export const DarkModeContext = createContext('')
 
 function App() {
 	const [darkMode, setDarkMode] = useState(false)
 	return (
 		<DarkModeContext.Provider value={[darkMode, setDarkMode]}>
-			<section className={`${darkMode && "dark-theme"} duration-300`}>
+			<section className={`${darkMode && 'dark-theme'} duration-300`}>
 				<Navbar />
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/dashboard' element={<Dashboard />}>
-						<Route index element={<Users />} ></Route>
-						<Route path='addReview' element={<AddReview />} ></Route>
+						<Route index element={<Users />}></Route>
+						<Route path='addReview' element={<AddReview />}></Route>
+						<Route path='constructors' element={<Constructors />}></Route>
 					</Route>
 					<Route path='/login' element={<Login />} />
 					<Route path='/register' element={<Register />} />
 					<Route path='/guides' element={<Guides />} />
 					<Route path='/user_data' element={<UserData />} />
 					<Route path='/addReview' element={<AddReview />} />
-					<Route path="/bookDetail/:_id" element={<BookReview />} />
+					<Route path='/bookDetail/:_id' element={<BookReview />} />
 					<Route path='*' element={<NotFound />} />
 				</Routes>
 				<Footer />
