@@ -30,7 +30,7 @@ const Guides = () => {
           <div className="flex items-center flex-col sm:flex-row sm:px-28 py-10">
             <Fade right duration="1500">
               <div className="w-full sm:w-5/12">
-                <img className="w-6git /12 mx-auto" src={picture} alt="" />
+                <img className="w-6/12 mx-auto" src={picture} alt="" />
               </div>
             </Fade>
             <Fade left duration="1500">
