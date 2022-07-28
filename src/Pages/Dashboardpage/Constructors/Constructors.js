@@ -40,9 +40,10 @@ const Constructors = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{constructors.map(constructor => (
+						{constructors.map((constructor, index) => (
 							<Constructor
 								key={constructor._id}
+								index={index}
 								constructor={constructor}
 							></Constructor>
 						))}

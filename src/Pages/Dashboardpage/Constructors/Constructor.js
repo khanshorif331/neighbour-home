@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Constructor = ({ constructor }) => {
+const Constructor = ({ constructor, index }) => {
 	console.log(constructor)
 	return (
 		<tr>
-			<th>1</th>
+			<th>{index + 1}</th>
 			<td>Cy Ganderton</td>
 			<td>Quality Control Specialist</td>
 			<td>Littel, Schaden and Vandervort</td>
