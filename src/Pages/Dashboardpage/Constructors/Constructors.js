@@ -23,7 +23,6 @@ const Constructors = () => {
 
 	return (
 		<div className='sm:px-10 px-2 pb-5'>
-			<h1>Heelo world</h1>
 			{/* starting the table */}
 
 			<div class='overflow-x-auto'>

@@ -17,7 +17,7 @@ const Dashboard = () => {
 					class='drawer-toggle'
 				/>
 				<div class='drawer-content'>
-					<h3 className='text-2xl text-center sm:text-left sm:px-10 pb-3 pt-5 text-purple-500 font-bold'>
+					<h3 className='text-2xl text-left md:text-center sm:px-10 pb-3 pt-5 text-purple-500 font-bold'>
 						Dashboard
 					</h3>
 					{/* <!-- Page content here --> */}
