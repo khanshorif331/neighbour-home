@@ -21,12 +21,12 @@ const Dashboard = () => {
                          <ul className={`${darkMode ? "bg-[#171e36] text-gray-300" : "bg-white  text-base-content"} menu p-4 overflow-y-auto w-80 `}>
                               {/* <!-- Sidebar content here --> */}
 
-                              <li><Link className='shadow-lg my-1' to={"/dashboard"}>My Profile</Link></li>
+                              <li><Link className='shadow-lg my-1' to={"/dashboard"}>Users</Link></li>
 
-                              <li><Link className='shadow-lg my-1' to={"/dashboard"}>Manage All Orders</Link></li>
-                              <li><Link className='shadow-lg my-1' to={"/dashboard"}>Add a Product</Link></li>
-                              <li><Link className='shadow-lg my-1' to={"/dashboard"}>Manage Product</Link></li>
-                              <li><Link className='shadow-lg my-1' to={"/dashboard"}>Make Admin</Link></li>
+                              <li><Link className='shadow-lg my-1' to={"/dashboard"}>Manage Books</Link></li>
+                              <li><Link className='shadow-lg my-1' to={"/dashboard"}>Add a Review</Link></li>
+                              <li><Link className='shadow-lg my-1' to={"/dashboard"}>Manage Engineers</Link></li>
+                              <li><Link className='shadow-lg my-1' to={"/dashboard"}>Manage Constructors</Link></li>
 
                               {/* {
                           admin ?
