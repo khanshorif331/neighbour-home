@@ -13,6 +13,7 @@ import UserData from './Pages/UserData/UserData'
 import BookReview from './Pages/Homepage/BookReview/BookReview'
 import Dashboard from './Pages/Dashboardpage/Dashboard/Dashboard'
 import Users from './Pages/Dashboardpage/Users/Users'
+import ServiceDetails from './Pages/ServiceDetails/ServiceDetails'
 
 export const DarkModeContext = createContext("")
 
@@ -30,6 +31,7 @@ function App() {
 					</Route>
 					<Route path='/login' element={<Login />} />
 					<Route path='/register' element={<Register />} />
+					<Route path='/details/:serviceId' element={<ServiceDetails />} />
 					<Route path='/guides' element={<Guides />} />
 					<Route path='/user_data' element={<UserData />} />
 					<Route path='/addReview' element={<AddReview />} />
