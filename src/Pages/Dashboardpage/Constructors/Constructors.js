@@ -24,6 +24,9 @@ const Constructors = () => {
 	return (
 		<div className='sm:px-10 px-2 pb-5'>
 			{/* starting the table */}
+			<div className='text-end mb-2 w-full'>
+				<button class='btn w-full md:btn-wide'>Add New</button>
+			</div>
 
 			<div class='overflow-x-auto'>
 				<table class='table table-zebra w-full'>
@@ -48,17 +51,6 @@ const Constructors = () => {
 							></Constructor>
 						))}
 					</tbody>
-					{/* <tfoot>
-						<tr>
-							<th></th>
-							<th>Name</th>
-							<th>Job</th>
-							<th>company</th>
-							<th>location</th>
-							<th>Last Login</th>
-							<th>Favorite Color</th>
-						</tr>
-					</tfoot> */}
 				</table>
 			</div>
 		</div>

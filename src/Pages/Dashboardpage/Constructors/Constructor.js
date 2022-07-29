@@ -35,17 +35,17 @@ const Constructor = ({ constructor, index }) => {
 									'Your file has been deleted.',
 									'success'
 								)
-							} else if (
-								/* Read more about handling dismissals below */
-								result.dismiss === Swal.DismissReason.cancel
-							) {
-								swalWithBootstrapButtons.fire(
-									'Cancelled',
-									'Your imaginary file is safe :)',
-									'error'
-								)
 							}
 						})
+				} else if (
+					/* Read more about handling dismissals below */
+					result.dismiss === Swal.DismissReason.cancel
+				) {
+					swalWithBootstrapButtons.fire(
+						'Cancelled',
+						'Your imaginary file is safe :)',
+						'error'
+					)
 				}
 			})
 	}
@@ -58,7 +58,6 @@ const Constructor = ({ constructor, index }) => {
 		},
 		buttonsStyling: false,
 	})
-	console.log(constructor)
 	return (
 		<tr>
 			<th>{index + 1}</th>
