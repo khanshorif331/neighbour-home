@@ -4,7 +4,6 @@ import { useContext } from "react";
 import { DarkModeContext } from "../../../App";
 const Card = ({ service }) => {
   const { title, picture, _id, description } = service;
-console.log(_id);
   const [darkMode, setDarkMode] = useContext(DarkModeContext)
   return (
     <div>
