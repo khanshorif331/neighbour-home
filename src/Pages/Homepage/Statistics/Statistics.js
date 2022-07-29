@@ -9,7 +9,7 @@ const Statistics = () => {
     <section
       className={`${darkMode ? "text-gray-400" : "text-gray-600"} body-font`}
     >
-      <div className="container px-5 py-24 mx-auto">
+      <div className="container px-5 pt-24 pb-4 mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <h1
             class={`${

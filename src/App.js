@@ -18,6 +18,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import ManageBooks from './Pages/Dashboardpage/ManageBooks/ManageBooks'
 import ServiceDetails from './Pages/ServiceDetails/ServiceDetails'
 import ManageEngineers from './Pages/Dashboardpage/ManageEngineers/ManageEngineers'
+import Engineers from './Pages/Homepage/Engineers/Engineers'
 
 export const DarkModeContext = createContext('')
 const queryClient = new QueryClient()
