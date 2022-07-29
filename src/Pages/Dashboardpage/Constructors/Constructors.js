@@ -26,7 +26,7 @@ const Constructors = () => {
 			{/* starting the table */}
 
 			<div class='overflow-x-auto'>
-				<table class='table table-compact w-full'>
+				<table class='table table-zebra w-full'>
 					<thead>
 						<tr>
 							<th>Sl.</th>
@@ -36,6 +36,7 @@ const Constructors = () => {
 							<th>Duration</th>
 							<th>Discount</th>
 							<th>Assignment</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
