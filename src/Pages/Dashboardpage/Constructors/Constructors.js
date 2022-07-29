@@ -19,7 +19,7 @@ const Constructors = () => {
 		fetch('https://neighbour-home--server.herokuapp.com/constructor')
 			.then(res => res.json())
 			.then(data => setConstructors(data))
-	}, [])
+	}, [constructors])
 
 	return (
 		<div className='sm:px-10 px-2 pb-5'>

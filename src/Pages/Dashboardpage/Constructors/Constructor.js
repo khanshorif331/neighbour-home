@@ -14,24 +14,38 @@ const Constructor = ({ constructor, index }) => {
 				showCancelButton: true,
 				confirmButtonText: 'Yes, delete it!',
 				cancelButtonText: 'No, cancel!',
-				reverseButtons: true,
+				reverseButtons: false,
 			})
 			.then(result => {
 				if (result.isConfirmed) {
-					swalWithBootstrapButtons.fire(
-						'Deleted!',
-						'Your file has been deleted.',
-						'success'
+					fetch(
+						`https://neighbour-home--server.herokuapp.com/constructor/${id}`,
+						{
+							method: 'DELETE',
+							headers: {
+								'Content-Type': 'application/json',
+							},
+						}
 					)
-				} else if (
-					/* Read more about handling dismissals below */
-					result.dismiss === Swal.DismissReason.cancel
-				) {
-					swalWithBootstrapButtons.fire(
-						'Cancelled',
-						'Your imaginary file is safe :)',
-						'error'
-					)
+						.then(res => res.json())
+						.then(data => {
+							if (data.message) {
+								swalWithBootstrapButtons.fire(
+									'Deleted!',
+									'Your file has been deleted.',
+									'success'
+								)
+							} else if (
+								/* Read more about handling dismissals below */
+								result.dismiss === Swal.DismissReason.cancel
+							) {
+								swalWithBootstrapButtons.fire(
+									'Cancelled',
+									'Your imaginary file is safe :)',
+									'error'
+								)
+							}
+						})
 				}
 			})
 	}
@@ -40,7 +54,7 @@ const Constructor = ({ constructor, index }) => {
 	const swalWithBootstrapButtons = Swal.mixin({
 		customClass: {
 			confirmButton: 'btn btn-success',
-			cancelButton: 'btn btn-danger',
+			cancelButton: 'btn btn-error',
 		},
 		buttonsStyling: false,
 	})
@@ -58,7 +72,7 @@ const Constructor = ({ constructor, index }) => {
 				<button class='btn btn-xs mb-1'>Edit</button>
 				<button
 					onClick={() => handleDelete(constructor._id)}
-					class='btn btn-xs '
+					class='btn btn-xs btn-warning'
 				>
 					Delete
 				</button>
