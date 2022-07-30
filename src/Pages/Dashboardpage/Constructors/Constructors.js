@@ -15,65 +15,71 @@ const Constructors = () => {
 		handleSubmit,
 		reset,
 	} = useForm()
+	const { isLoading, error, data, refetch } = useQuery(['constructor'], () =>
+		fetch('https://neighbour-home--server.herokuapp.com/constructor').then(
+			res => res.json()
+		)
+	)
 	const imgStorageKey = '75bc4682c9291f359647ab98df5f76de'
-
-	const getData = async data => {
-		console.log(data)
-
-		const image = data?.photo[0]
-		const formData = new FormData()
-		formData.append('image', image)
-		const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`
-
-		fetch(url, {
-			method: 'POST',
-			body: formData,
-		})
-			.then(res => res.json())
-			.then(result => {
-				if (result.success) {
-					const photo = result.data.display_url
-					console.log(photo)
-					const constructor = {
-						photo: photo,
-						title: data.title,
-						type: data.type,
-						duration: data.duration,
-						assignment: data.assignment,
-						discount: data.discount,
-						price: data.price,
-						description: data.description,
-					}
-					fetch(``, {
-						method: 'PUT',
-						headers: {
-							'content-type': 'application/json',
-						},
-					})
-						.then(res => res.json())
-						.then(updatedData => {
-							if (updatedData.modifiedCount > 0) {
-								console.log('Thanks For Your Information')
-							} else {
-								console.error('Failed To Submit')
-							}
-						})
-				}
-			})
-		console.log(data, 'hello data')
+	console.log('before')
+	const getData = data => {
+		console.log('gooing to submit')
 	}
+	// const getData = data => {
+	// 	console.log(data, 'hello data')
+	// 	console.log('form submission')
+
+	// 	const image = data?.photo[0]
+	// 	const formData = new FormData()
+	// 	formData.append('image', image)
+	// 	const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`
+
+	// 	// fetch(url, {
+	// 	// 	method: 'POST',
+	// 	// 	body: formData,
+	// 	// })
+	// 	// 	.then(res => res.json())
+	// 	// 	.then(result => {
+	// 	// 		if (result.success) {
+	// 	// 			const photo = result.data.display_url
+	// 	// 			console.log(photo)
+	// 	// 			const constructor = {
+	// 	// 				photo: photo,
+	// 	// 				title: data.title,
+	// 	// 				type: data.type,
+	// 	// 				duration: data.duration,
+	// 	// 				assignment: data.assignment,
+	// 	// 				discount: data.discount,
+	// 	// 				price: data.price,
+	// 	// 				description: data.description,
+	// 	// }
+	// 	// console.log(constructor)
+	// 	// fetch(``, {
+	// 	// 	method: 'PUT',
+	// 	// 	headers: {
+	// 	// 		'content-type': 'application/json',
+	// 	// 	},
+	// 	// })
+	// 	// 	.then(res => res.json())
+	// 	// 	.then(updatedData => {
+	// 	// 		if (updatedData.modifiedCount > 0) {
+	// 	// 			console.log('Thanks For Your Information')
+	// 	// 		} else {
+	// 	// 			console.error('Failed To Submit')
+	// 	// 		}
+	// 	// 	})
+	// 	// 		}
+	// 	// 	})
+	// 	// console.log(data, 'hello data')
+	// }
+	console.log('after')
 
 	// const handleDataSubmit = data => {
 	//     console.log(data, selectOption)
 	//     reset()
 	// }
 
-	const { isLoading, error, data, refetch } = useQuery(['constructor'], () =>
-		fetch('https://neighbour-home--server.herokuapp.com/constructor').then(
-			res => res.json()
-		)
-	)
-	console.log(data)
+	// console.log(data)
 
 	if (isLoading) return <Loading></Loading>
 
