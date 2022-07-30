@@ -85,7 +85,7 @@ const Constructors = () => {
 		fetch('https://neighbour-home--server.herokuapp.com/constructor')
 			.then(res => res.json())
 			.then(data => setConstructors(data))
-	}, [constructors])
+	}, [])
 
 	return (
 		<div className='sm:px-10 px-2 pb-5'>
@@ -141,14 +141,14 @@ const Constructors = () => {
 									placeholder='Mega Constructions'
 								/>
 								<label>
-									{errors.name?.type === 'required' && (
+									{errors.title?.type === 'required' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.name.message}
+											{errors.title.message}
 										</p>
 									)}
-									{errors.name?.type === 'minLength' && (
+									{errors.title?.type === 'minLength' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.name.message}
+											{errors.title.message}
 										</p>
 									)}
 								</label>
@@ -179,12 +179,12 @@ const Constructors = () => {
 								<label>
 									{errors.username?.type === 'required' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.username.message}
+											{errors.type.message}
 										</p>
 									)}
-									{errors.username?.type === 'minLength' && (
+									{errors.type?.type === 'minLength' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.username.message}
+											{errors.type.message}
 										</p>
 									)}
 								</label>
@@ -217,29 +217,29 @@ const Constructors = () => {
 								</label>
 							</div>
 
-							{/* something else */}
+							{/* duration data input field */}
 							<div>
 								<label
 									className={`${darkMode && 'text-white'}`}
 									htmlFor=''
 								>
-									Zip/Postal
+									Duration
 								</label>
 								<input
-									{...register('zip', {
+									{...register('duration', {
 										required: {
 											value: true,
-											message: 'zip code is required',
+											message: 'Duration is required',
 										},
 									})}
-									type='number'
+									type='text'
 									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
 									placeholder='LinkdIne Link'
 								/>
 								<label>
-									{errors.zip?.type === 'required' && (
+									{errors.duration?.type === 'required' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.zip.message}
+											{errors.duration.message}
 										</p>
 									)}
 								</label>
