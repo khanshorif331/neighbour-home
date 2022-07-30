@@ -103,7 +103,7 @@ const Constructors = () => {
 			{/* <!-- Put this part before </body> tag --> */}
 			<input type='checkbox' id='my-modal-3' class='modal-toggle' />
 			<div class='modal'>
-				<div class='modal-box block mt-40 '>
+				<div class='modal-box block mt-40 mb-10 h-[400px] border rounded-lg'>
 					<label
 						for='my-modal-3'
 						class='btn btn-sm btn-circle absolute right-2 top-2'
