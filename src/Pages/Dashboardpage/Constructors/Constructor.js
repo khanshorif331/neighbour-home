@@ -1,5 +1,7 @@
 import React from 'react'
 import Swal from 'sweetalert2'
+// import './UpdateModal'
+import UpdateModal from './UpdateModal'
 
 const Constructor = ({ constructor, index }) => {
 	const { title, type, price, picture, duration, discount, assignment, _id } =
@@ -68,7 +70,10 @@ const Constructor = ({ constructor, index }) => {
 			<td>{discount}</td>
 			<td>{assignment}</td>
 			<td className='flex flex-col'>
-				<button class='btn btn-xs mb-1'>Edit</button>
+				{/* <button class='btn btn-xs mb-1'>Edit</button> */}
+				<label for={_id} class='btn modal-button btn-xs mb-1'>
+					Edit
+				</label>
 				<button
 					onClick={() => handleDelete(_id)}
 					class='btn btn-xs btn-warning'
@@ -76,6 +81,7 @@ const Constructor = ({ constructor, index }) => {
 					Delete
 				</button>
 			</td>
+			<UpdateModal id={_id}></UpdateModal>
 		</tr>
 	)
 }
