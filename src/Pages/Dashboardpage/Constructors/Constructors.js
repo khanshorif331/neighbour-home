@@ -174,8 +174,8 @@ const Constructors = () => {
 										},
 									})}
 									type='text'
-									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='username69'
+									className='input input-bordered w-full focus:outline-none focus:border-sky-500'
+									placeholder='New Trending'
 								/>
 								<label>
 									{errors.username?.type === 'required' && (
@@ -206,7 +206,7 @@ const Constructors = () => {
 										},
 									})}
 									type='file'
-									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
+									className='input input-bordered w-full focus:outline-none focus:border-sky-500'
 									placeholder='Your Photo'
 								/>
 								<label>
@@ -234,8 +234,8 @@ const Constructors = () => {
 										},
 									})}
 									type='text'
-									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='LinkdIne Link'
+									className='input input-bordered w-full focus:outline-none focus:border-sky-500'
+									placeholder='Duration'
 								/>
 								<label>
 									{errors.duration?.type === 'required' && (
@@ -266,7 +266,7 @@ const Constructors = () => {
 										},
 									})}
 									type='text'
-									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
+									className='input input-bordered w-full focus:outline-none focus:border-sky-500'
 									placeholder='Assignment'
 								/>
 								<label>
