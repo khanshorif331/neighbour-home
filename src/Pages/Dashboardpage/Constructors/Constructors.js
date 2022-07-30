@@ -14,8 +14,24 @@ const Constructors = () => {
 		handleSubmit,
 		reset,
 	} = useForm()
+	const imgStorageKey = '75bc4682c9291f359647ab98df5f76de'
 
-	const getData = data => {
+	const getData = async data => {
+		console.log(data)
+
+		const image = data?.photo[0]
+		console.log(image)
+		const formData = new FormData()
+		formData.append('image', image)
+		const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`
+		console.log(url, 'url')
+
+		fetch(url, {
+			method: 'POST',
+			body: formData,
+		})
+			.then(res => res.json())
+			.then(data => console.log(data, 'result image'))
 		console.log(data, 'hello data')
 	}
 
@@ -143,7 +159,35 @@ const Constructors = () => {
 									)}
 								</label>
 							</div>
+							{/* Adding picture field */}
+							<div>
+								<label
+									className={`${darkMode && 'text-white'}`}
+									htmlFor=''
+								>
+									Your Photo
+								</label>
+								<input
+									{...register('photo', {
+										required: {
+											value: true,
+											message: 'Photo is required',
+										},
+									})}
+									type='file'
+									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
+									placeholder='Your Photo'
+								/>
+								<label>
+									{errors.photo?.type === 'required' && (
+										<p className='text-red-600 text-sm font-semibold'>
+											{errors.photo.message}
+										</p>
+									)}
+								</label>
+							</div>
 
+							{/* something else */}
 							<div>
 								<label
 									className={`${darkMode && 'text-white'}`}
