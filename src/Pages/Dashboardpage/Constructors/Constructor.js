@@ -3,7 +3,7 @@ import Swal from 'sweetalert2'
 // import './UpdateModal'
 import UpdateModal from './UpdateModal'
 
-const Constructor = ({ constructor, index }) => {
+const Constructor = ({ constructor, index, refetch }) => {
 	const { title, type, price, picture, duration, discount, assignment, _id } =
 		constructor
 
@@ -38,6 +38,7 @@ const Constructor = ({ constructor, index }) => {
 									'Your file has been deleted.',
 									'success'
 								)
+								refetch()
 							}
 						})
 				} else if (

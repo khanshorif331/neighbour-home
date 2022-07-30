@@ -5,7 +5,7 @@ import { DarkModeContext } from '../../../App'
 import { useForm } from 'react-hook-form'
 
 const Constructors = () => {
-	const [constructors, setConstructors] = useState([])
+	// const [constructors, setConstructors] = useState([])
 
 	const [darkMode] = useContext(DarkModeContext)
 	const {
@@ -62,7 +62,7 @@ const Constructors = () => {
 		// 		}
 
 		// 	})
-		console.log(data, 'hello data')
+		// console.log(data, 'hello data')
 	}
 
 	// const handleDataSubmit = data => {
@@ -70,22 +70,22 @@ const Constructors = () => {
 	//     reset()
 	// }
 
-	// const { isLoading, error, data } = useQuery('constructor', () =>
-	// 	fetch('https://neighbour-home--server.herokuapp.com/constructor').then(
-	// 		res => res.json()
-	// 	)
-	// )
-	// console.log(data)
+	const { isLoading, error, data, refetch } = useQuery(['constructor'], () =>
+		fetch('https://neighbour-home--server.herokuapp.com/constructor').then(
+			res => res.json()
+		)
+	)
+	console.log(data)
 
-	// if (isLoading) return 'Loading...'
+	if (isLoading) return 'Loading...'
 
-	// if (error) return 'An error has occurred: ' + error.message
+	if (error) return 'An error has occurred: ' + error.message
 
-	useEffect(() => {
-		fetch('https://neighbour-home--server.herokuapp.com/constructor')
-			.then(res => res.json())
-			.then(data => setConstructors(data))
-	}, [])
+	// useEffect(() => {
+	// 	fetch('https://neighbour-home--server.herokuapp.com/constructor')
+	// 		.then(res => res.json())
+	// 		.then(data => setConstructors(data))
+	// }, [constructors])
 
 	return (
 		<div className='sm:px-10 px-2 pb-5'>
@@ -102,7 +102,7 @@ const Constructors = () => {
 			{/* <!-- Put this part before </body> tag --> */}
 			<input type='checkbox' id='my-modal-3' class='modal-toggle' />
 			<div class='modal'>
-				<div class='modal-box block mt-40 mb-20'>
+				<div class='modal-box block mt-40 mb-10'>
 					<label
 						for='my-modal-3'
 						class='btn btn-sm btn-circle absolute right-2 top-2'
@@ -292,13 +292,6 @@ const Constructors = () => {
                                 </select>
                             </div> */}
 						</div>
-						{/* <div className='text-center'>
-							<input
-								className='bg-sky-600 hover:bg-sky-500 duration-300 p-2 rounded ease-in-out hover:scale-125 text-white mt-9 cursor-pointer'
-								type='submit'
-								value='Submit Now'
-							/>
-						</div> */}
 						{/* modal-action */}
 						<div class=' flex justify-center'>
 							{/* <label for='' class='btn w-full md:btn-wide'>
@@ -311,13 +304,6 @@ const Constructors = () => {
 							/>
 						</div>
 					</form>
-
-					{/* mod */}
-					{/* <div class='modal-action flex justify-center'>
-						<label for='my-modal-3' class='btn w-full md:btn-wide'>
-							Submit
-						</label>
-					</div> */}
 				</div>
 			</div>
 
@@ -336,11 +322,12 @@ const Constructors = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{constructors.map((constructor, index) => (
+						{data.map((constructor, index) => (
 							<Constructor
 								key={constructor._id}
 								index={index}
 								constructor={constructor}
+								refetch={refetch}
 							></Constructor>
 						))}
 					</tbody>
