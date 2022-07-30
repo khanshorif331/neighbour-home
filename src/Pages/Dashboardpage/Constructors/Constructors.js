@@ -16,7 +16,7 @@ const Constructors = () => {
 	} = useForm()
 
 	const getData = data => {
-		console.log(data)
+		console.log(data, 'hello data')
 	}
 
 	// const [selectOption, setSelectOption] = useState('')
@@ -62,7 +62,7 @@ const Constructors = () => {
 			{/* <!-- Put this part before </body> tag --> */}
 			<input type='checkbox' id='my-modal-3' class='modal-toggle' />
 			<div class='modal'>
-				<div class='modal-box relative'>
+				<div class='modal-box block mt-40'>
 					<label
 						for='my-modal-3'
 						class='btn btn-sm btn-circle absolute right-2 top-2'
@@ -148,32 +148,7 @@ const Constructors = () => {
 									)}
 								</label>
 							</div>
-							<div>
-								<label
-									className={`${darkMode && 'text-white'}`}
-									htmlFor=''
-								>
-									Address
-								</label>
-								<input
-									{...register('address', {
-										required: {
-											value: true,
-											message: 'address is required',
-										},
-									})}
-									type='text'
-									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='Road 12, Mirpur, Dhaka'
-								/>
-								<label>
-									{errors.address?.type === 'required' && (
-										<p className='text-red-600 text-sm font-semibold'>
-											{errors.address.message}
-										</p>
-									)}
-								</label>
-							</div>
+
 							<div>
 								<label
 									className={`${darkMode && 'text-white'}`}
@@ -236,32 +211,6 @@ const Constructors = () => {
 									)}
 								</label>
 							</div>
-							<div>
-								<label
-									className={`${darkMode && 'text-white'}`}
-									htmlFor=''
-								>
-									Country
-								</label>
-								<input
-									{...register('country', {
-										required: {
-											value: true,
-											message: 'country is required',
-										},
-									})}
-									type='text'
-									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='Your Country'
-								/>
-								<label>
-									{errors.country?.type === 'required' && (
-										<p className='text-red-600 text-sm font-semibold'>
-											{errors.country.message}
-										</p>
-									)}
-								</label>
-							</div>
 
 							{/* <div>
                                 <label className={`${darkMode && 'text-white'}`} htmlFor="">What Are Your</label>
@@ -282,9 +231,14 @@ const Constructors = () => {
 						</div> */}
 						{/* modal-action */}
 						<div class=' flex justify-center'>
-							<label for='my-modal-3' class='btn w-full md:btn-wide'>
+							{/* <label for='' class='btn w-full md:btn-wide'>
 								Submit
-							</label>
+							</label> */}
+							<input
+								className='btn w-full md:btn-wide mt-4'
+								type='submit'
+								value='Submit'
+							/>
 						</div>
 					</form>
 
