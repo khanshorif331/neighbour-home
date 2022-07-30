@@ -364,7 +364,7 @@ const Constructors = () => {
 									className={`${darkMode && 'text-white'}`}
 									htmlFor=''
 								>
-									Price
+									Description
 								</label>
 								<input
 									{...register('description', {
