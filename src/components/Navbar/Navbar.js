@@ -4,16 +4,26 @@ import { MdModeNight, MdDashboardCustomize, MdNightsStay, MdLightMode, MdOutline
 import { GoThreeBars } from 'react-icons/go';
 import "./Navbar.css"
 import { DarkModeContext } from '../../App';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
+import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
     const [colorChange, setColorchange] = useState(false);
     let [toggle, setToggle] = useState(false);
-    // const [user, loading] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     // let navigat = useNavigate();
     let location = useLocation().pathname;
     const [darkMode, setDarkMode] = useContext(DarkModeContext)
 
-    console.log(location);
+    if(loading) {
+        return <Loading/>
+    }
+
+    console.log(user?.email)
+
+    // console.log(location); 
     const navBtnHndle = () => {
         setToggle(!toggle)
     }
@@ -109,7 +119,7 @@ const Navbar = () => {
                 {/* phone navbar */}
                 <div className="flex flex-wrap items-center justify-between py-6 sm:px-2 px-5">
 
-                    <label for="dashboard-drower" tabindex="1" class={`${location === "/dashboard" ? "block" :"hidden"} md:hidden text-white cursor-pointer`}>
+                    <label for="dashboard-drower" tabindex="1" class={`${location === "/dashboard" ? "block" : "hidden"} md:hidden text-white cursor-pointer`}>
                         <MdDashboardCustomize className='h-5 w-5'></MdDashboardCustomize>
                     </label>
 
@@ -131,7 +141,7 @@ const Navbar = () => {
                     <input className="hidden" type="checkbox" id="menu-toggle" /> */}
 
                     <span onClick={navBtnHndle} className='md:hidden text-white text-2xl cursor-pointer'>{toggle ? <MdOutlineClose></MdOutlineClose> : <GoThreeBars></GoThreeBars>}</span>
-                    
+
                     <ul onClick={navBtnHndle} className={`mobile-manu flex md:hidden flex-col text-center z-10   left-0 w-full bg-teal-100  absolute  py-4 duration-500 ${toggle ? " opacity-100  top-20" : " top-[-350px] opacity-0"}`}>
                         <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/"}>Home</NavLink>
                         <NavLink className={({ isActive }) => (isActive ? 'activeLink' : 'navLink')} to={"/"}>Appartments</NavLink>
@@ -177,10 +187,18 @@ const Navbar = () => {
                                     <li className="md:ml-2.5"><button onClick={() => setDarkMode(true)} className="py-2 inline-block md:text-white md:px-2 font-semibold" href="#"><MdNightsStay className='text-2xl'></MdNightsStay></button></li>
                                 }
 
-                                <li className="md:ml-6 mt-3 md:mt-0">
-                                    <a className={`inline-block font-semibold px-4 py-2 ${colorChange ? "hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white" : "hover:bg-white hover:text-teal-900 text-white bg-teal-900"}   border-white rounded`}
-                                        href="book-appointment.html">Buy Apartment</a>
-                                </li>
+                                {
+                                    user ?
+                                        <li className="md:ml-6 mt-3 md:mt-0">
+                                            <a onClick={ () => signOut(auth) } className={`inline-block font-semibold px-4 py-2 ${colorChange ? "hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white" : "hover:bg-white hover:text-teal-900 text-white bg-teal-900"}   border-white rounded cursor-pointer`}
+                                            >Sign Out</a>
+                                        </li>
+                                        :
+                                        <li className="md:ml-6 mt-3 md:mt-0">
+                                            <Link className={`inline-block font-semibold px-4 py-2 ${colorChange ? "hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white" : "hover:bg-white hover:text-teal-900 text-white bg-teal-900"}   border-white rounded`}
+                                                to="/login">Login</Link>
+                                        </li>
+                                }
                             </ul>
                         </nav>
                     </div>
