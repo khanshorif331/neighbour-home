@@ -3,9 +3,6 @@ import React from 'react'
 const UpdateModal = ({ id }) => {
 	return (
 		<div>
-			{/* <label for='my-modal-3' class='btn modal-button w-full md:btn-wide'>
-				Add New
-			</label> */}
 			{/* <!-- Put this part before </body> tag --> */}
 			<input type='checkbox' id={id} class='modal-toggle' />
 			<div class='modal'>
