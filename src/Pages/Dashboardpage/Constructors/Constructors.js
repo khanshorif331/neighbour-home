@@ -244,38 +244,39 @@ const Constructors = () => {
 									)}
 								</label>
 							</div>
+							{/* assignment */}
 							<div>
 								<label
 									className={`${darkMode && 'text-white'}`}
 									htmlFor=''
 								>
-									Phone
+									Assignment
 								</label>
 								<input
-									{...register('phone', {
+									{...register('assignment', {
 										required: {
 											value: true,
-											message: 'phone is required',
+											message: 'assignment is required',
 										},
 										minLength: {
 											value: 5,
 											message:
-												'Phone Must be 10 character or longer',
+												'Assignment Must be 5 character or longer',
 										},
 									})}
-									type='number'
+									type='text'
 									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='+8801XXXXXXXXX'
+									placeholder='Assignment'
 								/>
 								<label>
-									{errors.phone?.type === 'required' && (
+									{errors.assignment?.type === 'required' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.phone.message}
+											{errors.assignment.message}
 										</p>
 									)}
-									{errors.phone?.type === 'minLength' && (
+									{errors.assignment?.type === 'minLength' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.zip.message}
+											{errors.assignment.message}
 										</p>
 									)}
 								</label>
