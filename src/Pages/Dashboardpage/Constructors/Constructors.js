@@ -103,7 +103,7 @@ const Constructors = () => {
 			{/* <!-- Put this part before </body> tag --> */}
 			<input type='checkbox' id='my-modal-3' class='modal-toggle' />
 			<div class='modal'>
-				<div class='modal-box block mt-40 mb-10'>
+				<div class='modal-box block mt-40 '>
 					<label
 						for='my-modal-3'
 						class='btn btn-sm btn-circle absolute right-2 top-2'
@@ -138,7 +138,7 @@ const Constructors = () => {
 										},
 									})}
 									type='text'
-									className='input input-bordered w-full focus:outline-none focus:border-sky-500'
+									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
 									placeholder='Mega Constructions'
 								/>
 								<label>
@@ -174,8 +174,8 @@ const Constructors = () => {
 										},
 									})}
 									type='text'
-									className='input input-bordered w-full focus:outline-none focus:border-sky-500'
-									placeholder='New Trending'
+									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
+									placeholder='username69'
 								/>
 								<label>
 									{errors.username?.type === 'required' && (
@@ -206,7 +206,7 @@ const Constructors = () => {
 										},
 									})}
 									type='file'
-									className='input input-bordered w-full focus:outline-none focus:border-sky-500'
+									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
 									placeholder='Your Photo'
 								/>
 								<label>
@@ -234,8 +234,8 @@ const Constructors = () => {
 										},
 									})}
 									type='text'
-									className='input input-bordered w-full focus:outline-none focus:border-sky-500'
-									placeholder='Duration'
+									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
+									placeholder='LinkdIne Link'
 								/>
 								<label>
 									{errors.duration?.type === 'required' && (
@@ -266,7 +266,7 @@ const Constructors = () => {
 										},
 									})}
 									type='text'
-									className='input input-bordered w-full focus:outline-none focus:border-sky-500'
+									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
 									placeholder='Assignment'
 								/>
 								<label>
@@ -278,6 +278,44 @@ const Constructors = () => {
 									{errors.assignment?.type === 'minLength' && (
 										<p className='text-red-600 text-sm font-semibold'>
 											{errors.assignment.message}
+										</p>
+									)}
+								</label>
+							</div>
+
+							{/* discount */}
+							<div>
+								<label
+									className={`${darkMode && 'text-white'}`}
+									htmlFor=''
+								>
+									Discount
+								</label>
+								<input
+									{...register('discount', {
+										required: {
+											value: true,
+											message: 'discount is required',
+										},
+										minLength: {
+											value: 5,
+											message:
+												'Discount Must be 5 character or longer',
+										},
+									})}
+									type='text'
+									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
+									placeholder='15% Discount'
+								/>
+								<label>
+									{errors.assignment?.type === 'required' && (
+										<p className='text-red-600 text-sm font-semibold'>
+											{errors.discount.message}
+										</p>
+									)}
+									{errors.assignment?.type === 'minLength' && (
+										<p className='text-red-600 text-sm font-semibold'>
+											{errors.discount.message}
 										</p>
 									)}
 								</label>
