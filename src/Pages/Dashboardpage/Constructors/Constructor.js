@@ -70,7 +70,7 @@ const Constructor = ({ constructor, index }) => {
 			<td className='flex flex-col'>
 				<button class='btn btn-xs mb-1'>Edit</button>
 				<button
-					onClick={() => handleDelete(constructor._id)}
+					onClick={() => handleDelete(_id)}
 					class='btn btn-xs btn-warning'
 				>
 					Delete
