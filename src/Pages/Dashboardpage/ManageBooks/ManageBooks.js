@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import swal from 'sweetalert';
+
 
 const ManageBooks = () => {
   const [manageBooks, setManageBooks] = useState([]);
@@ -7,6 +9,7 @@ const ManageBooks = () => {
       .then((res) => res.json())
       .then((data) => setManageBooks(data));
   }, []);
+
   return (
     <div className="sm:px-10 px-2 pb-5">
       <h5 className="text-lg text-left font-bold  mb-2 text-primary">
@@ -29,6 +32,39 @@ const ManageBooks = () => {
           </thead>
           {manageBooks.map((manageBook) => {
             const { name, _id } = manageBook;
+            const handleDeleteBook = (id) => {
+              swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              })
+              .then((willDelete) => {
+                if (willDelete) {
+                  {
+                    const url = `https://neighbour-home--server.herokuapp.com/book/${_id}`;
+                    fetch(url, {
+                      method: "DELETE",
+                    })
+                      .then((res) => res.json())
+                      .then((data) => {
+                        console.log(data);
+                        const remaining = manageBooks.filter(
+                          (inventory) => inventory._id !== id
+                        );
+                        console.log(remaining);
+                        setManageBooks(remaining);
+                      });
+                    }
+                  swal("Your file has been deleted!", {
+                    icon: "success",
+                  });
+                }/*  else {
+                  swal("Your file is safe!");
+                } */
+              });
+            };
             return (
               <tbody>
                 <tr>
@@ -42,7 +78,10 @@ const ManageBooks = () => {
                     <button class="h-5 sm:h-6  sm:px-3 uppercase bg-green-500 border-none  hover:bg-green-600 rounded-full text-white">
                       Update book
                     </button>
-                    <button class="h-5 sm:h-6 ml-2 sm:px-3 uppercase bg-red-500 border-none  hover:bg-red-600 rounded-full text-white">
+                    <button
+                      onClick={() => handleDeleteBook(_id)}
+                      class="h-5 sm:h-6 ml-2 sm:px-3 uppercase bg-red-500 border-none  hover:bg-red-600 rounded-full text-white"
+                    >
                       Delete book
                     </button>
                   </td>
