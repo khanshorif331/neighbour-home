@@ -25,45 +25,42 @@ const Constructors = () => {
 		formData.append('image', image)
 		const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`
 
-		// fetch(url, {
-		// 	method: 'POST',
-		// 	body: formData,
-		// })
-		// 	.then(res => res.json())
-		// 	.then(result => {
-		// 		if(result.success) {
-		// 			const photo = result.data.display_url
-		// 			console.log(photo);
-		// 			const userData = {
-		// 				photo: photo,
-		// 				name: data.name,
-		// 				username: data.username,
-		// 				address: data.address,
-		// 				zip: data.zip,
-		// 				phone: data.phone,
-		// 				country: data.country,
-		// 				nid: data.nid,
-		// 				// role: selectOption
-		// 			}
-		// 			fetch(``, {
-		// 				method: "PUT",
-		// 				headers: {
-		// 					'content-type': 'application/json'
-		// 				}
-		// 			})
-		// 			.then(res => res.json())
-		// 			.then(updatedData => {
-		// 				if(updatedData.modifiedCount > 0) {
-		// 					console.log("Thanks For Your Information");
-		// 				}
-		// 				else {
-		// 					console.error("Failed To Submit");
-		// 				}
-		// 			})
-		// 		}
-
-		// 	})
-		// console.log(data, 'hello data')
+		fetch(url, {
+			method: 'POST',
+			body: formData,
+		})
+			.then(res => res.json())
+			.then(result => {
+				if (result.success) {
+					const photo = result.data.display_url
+					console.log(photo)
+					const constructor = {
+						photo: photo,
+						title: data.title,
+						type: data.type,
+						duration: data.duration,
+						assignment: data.assignment,
+						discount: data.discount,
+						price: data.price,
+						description: data.description,
+					}
+					fetch(``, {
+						method: 'PUT',
+						headers: {
+							'content-type': 'application/json',
+						},
+					})
+						.then(res => res.json())
+						.then(updatedData => {
+							if (updatedData.modifiedCount > 0) {
+								console.log('Thanks For Your Information')
+							} else {
+								console.error('Failed To Submit')
+							}
+						})
+				}
+			})
+		console.log(data, 'hello data')
 	}
 
 	// const handleDataSubmit = data => {
@@ -175,7 +172,7 @@ const Constructors = () => {
 									})}
 									type='text'
 									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='username69'
+									placeholder='New Trending,Home Improvement,Office Renovation,Government'
 								/>
 								<label>
 									{errors.username?.type === 'required' && (
@@ -412,7 +409,7 @@ const Constructors = () => {
 								Submit
 							</label> */}
 							<input
-								className='btn w-full md:btn-wide mt-4'
+								className='btn w-full mt-4'
 								type='submit'
 								value='Submit'
 							/>
