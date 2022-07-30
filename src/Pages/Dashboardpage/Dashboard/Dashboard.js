@@ -42,7 +42,10 @@ const Dashboard = () => {
 						</li>
 
 						<li>
-							<Link className='shadow-lg my-1' to={'/dashboard/manageBooks'}>
+							<Link
+								className='shadow-lg my-1'
+								to={'/dashboard/manageBooks'}
+							>
 								Manage Books
 							</Link>
 						</li>
@@ -55,7 +58,10 @@ const Dashboard = () => {
 							</Link>
 						</li>
 						<li>
-							<Link className='shadow-lg my-1' to={'/dashboard/manageEngineers'}>
+							<Link
+								className='shadow-lg my-1'
+								to={'/dashboard/manageEngineers'}
+							>
 								Manage Engineers
 							</Link>
 						</li>

@@ -19,12 +19,6 @@ const Constructors = () => {
 		console.log(data, 'hello data')
 	}
 
-	// const [selectOption, setSelectOption] = useState('')
-
-	// const handleChange = e => {
-	//     setSelectOption(e.target.value);
-	// }
-
 	// const handleDataSubmit = data => {
 	//     console.log(data, selectOption)
 	//     reset()
@@ -77,27 +71,28 @@ const Constructors = () => {
 					<form onSubmit={handleSubmit(getData)}>
 						{/* className='grid grid-cols-1 md:grid-cols-2 gap-7' */}
 						<div>
+							{/* taking the title value */}
 							<div>
 								<label
 									className={`${darkMode && 'text-white'}`}
 									htmlFor=''
 								>
-									Name
+									Title
 								</label>
 								<input
-									{...register('name', {
+									{...register('title', {
 										required: {
 											value: true,
-											message: 'Name is Required',
+											message: 'Title is Required',
 										},
 										minLength: {
 											value: 3,
-											message: 'Name Must be 3 character or longer',
+											message: 'Title Must be 3 character or longer',
 										},
 									})}
 									type='text'
 									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='John Doe'
+									placeholder='Mega Constructions'
 								/>
 								<label>
 									{errors.name?.type === 'required' && (
