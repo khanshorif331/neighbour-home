@@ -358,6 +358,44 @@ const Constructors = () => {
 								</label>
 							</div>
 
+							{/* description field */}
+							<div>
+								<label
+									className={`${darkMode && 'text-white'}`}
+									htmlFor=''
+								>
+									Price
+								</label>
+								<input
+									{...register('description', {
+										required: {
+											value: true,
+											message: 'Description is required',
+										},
+										minLength: {
+											value: 10,
+											message:
+												'description Must be 10 character or longer',
+										},
+									})}
+									type='text'
+									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
+									placeholder='Description'
+								/>
+								<label>
+									{errors.description?.type === 'required' && (
+										<p className='text-red-600 text-sm font-semibold'>
+											{errors.description.message}
+										</p>
+									)}
+									{errors.description?.type === 'minLength' && (
+										<p className='text-red-600 text-sm font-semibold'>
+											{errors.description.message}
+										</p>
+									)}
+								</label>
+							</div>
+
 							{/* <div>
                                 <label className={`${darkMode && 'text-white'}`} htmlFor="">What Are Your</label>
                                 <select onChange={handleChange} defaultValue={'DEFAULT'} className='select mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'>
