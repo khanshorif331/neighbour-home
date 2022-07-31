@@ -4,6 +4,7 @@ import Constructor from './Constructor'
 import { DarkModeContext } from '../../../App'
 import { useForm } from 'react-hook-form'
 import Loading from '../../../Shared/Loading/Loading'
+import Swal from 'sweetalert2'
 
 const Constructors = () => {
 	// const [constructors, setConstructors] = useState([])
@@ -60,7 +61,42 @@ const Constructors = () => {
 						}
 					)
 						.then(res => res.json())
-						.then(data => console.log(data))
+						.then(data => {
+							if (data.message === 'Constructor created successfully') {
+								reset()
+								Swal.fire({
+									position: 'center',
+									icon: 'success',
+									title: 'Your Data has been saved',
+									showConfirmButton: false,
+									timer: 1500,
+								})
+								// let timerInterval
+								// Swal.fire({
+								// 	title: 'Auto close alert!',
+								// 	html: 'I will close in <b></b> milliseconds.',
+								// 	timer: 2000,
+								// 	timerProgressBar: true,
+								// 	didOpen: () => {
+								// 		Swal.showLoading()
+								// 		const b =
+								// 			Swal.getHtmlContainer().querySelector('b')
+								// 		timerInterval = setInterval(() => {
+								// 			b.textContent = Swal.getTimerLeft()
+								// 		}, 100)
+								// 	},
+								// 	willClose: () => {
+								// 		clearInterval(timerInterval)
+								// 	},
+								// }).then(result => {
+								// 	/* Read more about handling dismissals below */
+								// 	if (result.dismiss === Swal.DismissReason.timer) {
+								// 		console.log('I was closed by the timer')
+								// 	}
+								// })
+							}
+							console.log(data)
+						})
 				}
 			})
 
