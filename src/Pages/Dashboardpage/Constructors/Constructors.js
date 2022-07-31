@@ -23,7 +23,7 @@ const Constructors = () => {
 	const imgStorageKey = '75bc4682c9291f359647ab98df5f76de'
 	console.log('before')
 	const getData = data => {
-		console.log('gooing to submit')
+		console.log('gooing to submit', data)
 	}
 	// const getData = data => {
 	// 	console.log(data, 'hello data')
@@ -119,9 +119,7 @@ const Constructors = () => {
 					{/* form */}
 
 					<form onSubmit={handleSubmit(getData)}>
-						{/* className='grid grid-cols-1 md:grid-cols-2 gap-7' */}
-						<div>
-							{/* taking the title value */}
+						<div className='grid grid-cols-1 md:grid-cols-2 gap-7'>
 							<div>
 								<label
 									className={`${darkMode && 'text-white'}`}
@@ -147,53 +145,201 @@ const Constructors = () => {
 								<label>
 									{errors.title?.type === 'required' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.title.message}
+											{errors.title?.message}
 										</p>
 									)}
 									{errors.title?.type === 'minLength' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.title.message}
+											{errors.title?.message}
 										</p>
 									)}
 								</label>
 							</div>
-							{/* Taking data for type */}
 							<div>
 								<label
 									className={`${darkMode && 'text-white'}`}
 									htmlFor=''
 								>
-									Type
+									Username
 								</label>
 								<input
-									{...register('type', {
+									{...register('username', {
 										required: {
 											value: true,
-											message: 'type is required',
+											message: 'username is required',
 										},
 										minLength: {
-											value: 3,
-											message: 'Type Must be 3 character or longer',
+											value: 5,
+											message:
+												'Username Must be 5 character or longer',
 										},
 									})}
 									type='text'
 									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='New Trending,Home Improvement,Office Renovation,Government'
+									placeholder='username69'
 								/>
 								<label>
 									{errors.username?.type === 'required' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.type.message}
+											{errors.username.message}
 										</p>
 									)}
-									{errors.type?.type === 'minLength' && (
+									{errors.username?.type === 'minLength' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.type.message}
+											{errors.username.message}
 										</p>
 									)}
 								</label>
 							</div>
-							{/* Adding picture field */}
+							<div>
+								<label
+									className={`${darkMode && 'text-white'}`}
+									htmlFor=''
+								>
+									Address
+								</label>
+								<input
+									{...register('address', {
+										required: {
+											value: true,
+											message: 'address is required',
+										},
+									})}
+									type='text'
+									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
+									placeholder='Road 12, Mirpur, Dhaka'
+								/>
+								<label>
+									{errors.address?.type === 'required' && (
+										<p className='text-red-600 text-sm font-semibold'>
+											{errors.address.message}
+										</p>
+									)}
+								</label>
+							</div>
+							<div>
+								<label
+									className={`${darkMode && 'text-white'}`}
+									htmlFor=''
+								>
+									Zip/Postal
+								</label>
+								<input
+									{...register('zip', {
+										required: {
+											value: true,
+											message: 'zip code is required',
+										},
+									})}
+									type='number'
+									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
+									placeholder='LinkdIne Link'
+								/>
+								<label>
+									{errors.zip?.type === 'required' && (
+										<p className='text-red-600 text-sm font-semibold'>
+											{errors.zip.message}
+										</p>
+									)}
+								</label>
+							</div>
+							<div>
+								<label
+									className={`${darkMode && 'text-white'}`}
+									htmlFor=''
+								>
+									Phone
+								</label>
+								<input
+									{...register('phone', {
+										required: {
+											value: true,
+											message: 'phone is required',
+										},
+										minLength: {
+											value: 5,
+											message:
+												'Phone Must be 10 character or longer',
+										},
+									})}
+									type='number'
+									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
+									placeholder='+8801XXXXXXXXX'
+								/>
+								<label>
+									{errors.phone?.type === 'required' && (
+										<p className='text-red-600 text-sm font-semibold'>
+											{errors.phone.message}
+										</p>
+									)}
+									{errors.phone?.type === 'minLength' && (
+										<p className='text-red-600 text-sm font-semibold'>
+											{errors.zip.message}
+										</p>
+									)}
+								</label>
+							</div>
+							<div>
+								<label
+									className={`${darkMode && 'text-white'}`}
+									htmlFor=''
+								>
+									Country
+								</label>
+								<input
+									{...register('country', {
+										required: {
+											value: true,
+											message: 'country is required',
+										},
+									})}
+									type='text'
+									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
+									placeholder='Your Country'
+								/>
+								<label>
+									{errors.country?.type === 'required' && (
+										<p className='text-red-600 text-sm font-semibold'>
+											{errors.country.message}
+										</p>
+									)}
+								</label>
+							</div>
+							<div>
+								<label
+									className={`${darkMode && 'text-white'}`}
+									htmlFor=''
+								>
+									NID
+								</label>
+								<input
+									{...register('nid', {
+										required: {
+											value: true,
+											message: 'nid is required',
+										},
+										minLength: {
+											value: 11,
+											message: 'NID Must be 11 character or longer',
+										},
+									})}
+									type='text'
+									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
+									placeholder='Your NID Card Number'
+								/>
+								<label>
+									{errors.nid?.type === 'required' && (
+										<p className='text-red-600 text-sm font-semibold'>
+											{errors.nid.message}
+										</p>
+									)}
+									{errors.nid?.type === 'minLength' && (
+										<p className='text-red-600 text-sm font-semibold'>
+											{errors.nid.message}
+										</p>
+									)}
+								</label>
+							</div>
 							<div>
 								<label
 									className={`${darkMode && 'text-white'}`}
@@ -220,185 +366,6 @@ const Constructors = () => {
 									)}
 								</label>
 							</div>
-
-							{/* duration data input field */}
-							<div>
-								<label
-									className={`${darkMode && 'text-white'}`}
-									htmlFor=''
-								>
-									Duration
-								</label>
-								<input
-									{...register('duration', {
-										required: {
-											value: true,
-											message: 'Duration is required',
-										},
-									})}
-									type='text'
-									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='LinkdIne Link'
-								/>
-								<label>
-									{errors.duration?.type === 'required' && (
-										<p className='text-red-600 text-sm font-semibold'>
-											{errors.duration.message}
-										</p>
-									)}
-								</label>
-							</div>
-							{/* assignment */}
-							<div>
-								<label
-									className={`${darkMode && 'text-white'}`}
-									htmlFor=''
-								>
-									Assignment
-								</label>
-								<input
-									{...register('assignment', {
-										required: {
-											value: true,
-											message: 'assignment is required',
-										},
-										minLength: {
-											value: 5,
-											message:
-												'Assignment Must be 5 character or longer',
-										},
-									})}
-									type='text'
-									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='Assignment'
-								/>
-								<label>
-									{errors.assignment?.type === 'required' && (
-										<p className='text-red-600 text-sm font-semibold'>
-											{errors.assignment.message}
-										</p>
-									)}
-									{errors.assignment?.type === 'minLength' && (
-										<p className='text-red-600 text-sm font-semibold'>
-											{errors.assignment.message}
-										</p>
-									)}
-								</label>
-							</div>
-
-							{/* price field */}
-							<div>
-								<label
-									className={`${darkMode && 'text-white'}`}
-									htmlFor=''
-								>
-									Price
-								</label>
-								<input
-									{...register('price', {
-										required: {
-											value: true,
-											message: 'Price is required',
-										},
-										minLength: {
-											value: 2,
-											message: 'Price Must be 2 character or longer',
-										},
-									})}
-									type='number'
-									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='1000'
-								/>
-								<label>
-									{errors.assignment?.type === 'required' && (
-										<p className='text-red-600 text-sm font-semibold'>
-											{errors.price.message}
-										</p>
-									)}
-									{errors.assignment?.type === 'minLength' && (
-										<p className='text-red-600 text-sm font-semibold'>
-											{errors.price.message}
-										</p>
-									)}
-								</label>
-							</div>
-
-							{/* discount */}
-							<div>
-								<label
-									className={`${darkMode && 'text-white'}`}
-									htmlFor=''
-								>
-									Discount
-								</label>
-								<input
-									{...register('discount', {
-										required: {
-											value: true,
-											message: 'discount is required',
-										},
-										minLength: {
-											value: 5,
-											message:
-												'Discount Must be 5 character or longer',
-										},
-									})}
-									type='number'
-									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='15% Discount'
-								/>
-								<label>
-									{errors.assignment?.type === 'required' && (
-										<p className='text-red-600 text-sm font-semibold'>
-											{errors.discount.message}
-										</p>
-									)}
-									{errors.assignment?.type === 'minLength' && (
-										<p className='text-red-600 text-sm font-semibold'>
-											{errors.discount.message}
-										</p>
-									)}
-								</label>
-							</div>
-
-							{/* description field */}
-							<div>
-								<label
-									className={`${darkMode && 'text-white'}`}
-									htmlFor=''
-								>
-									Description
-								</label>
-								<input
-									{...register('description', {
-										required: {
-											value: true,
-											message: 'Description is required',
-										},
-										minLength: {
-											value: 10,
-											message:
-												'description Must be 10 character or longer',
-										},
-									})}
-									type='text'
-									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='Description'
-								/>
-								<label>
-									{errors.description?.type === 'required' && (
-										<p className='text-red-600 text-sm font-semibold'>
-											{errors.description.message}
-										</p>
-									)}
-									{errors.description?.type === 'minLength' && (
-										<p className='text-red-600 text-sm font-semibold'>
-											{errors.description.message}
-										</p>
-									)}
-								</label>
-							</div>
-
 							{/* <div>
                                 <label className={`${darkMode && 'text-white'}`} htmlFor="">What Are Your</label>
                                 <select onChange={handleChange} defaultValue={'DEFAULT'} className='select mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'>
@@ -409,15 +376,11 @@ const Constructors = () => {
                                 </select>
                             </div> */}
 						</div>
-						{/* modal-action */}
-						<div class=' flex justify-center'>
-							{/* <label for='' class='btn w-full md:btn-wide'>
-								Submit
-							</label> */}
+						<div className='text-center'>
 							<input
-								className='btn w-full mt-4'
+								className='bg-sky-600 hover:bg-sky-500 duration-300 p-2 rounded ease-in-out hover:scale-125 text-white mt-9 cursor-pointer'
 								type='submit'
-								value='Submit'
+								value='Submit Now'
 							/>
 						</div>
 					</form>
