@@ -47,6 +47,7 @@ const Constructors = () => {
 						price: data.price,
 						description: data.description,
 					}
+					console.log(constructor)
 					fetch(
 						'https://neighbour-home--server.herokuapp.com/constructor',
 						{
@@ -108,7 +109,7 @@ const Constructors = () => {
 						✕
 					</label>
 					<h3 class='text-lg font-bold'>
-						Congratulations random Internet user!
+						Please provide the following information!
 					</h3>
 					{/* form */}
 
@@ -311,6 +312,7 @@ const Constructors = () => {
 									Description
 								</label>
 								<textarea
+									defaultValue='hello ami tumi ar danish'
 									{...register('description', {
 										required: {
 											value: true,

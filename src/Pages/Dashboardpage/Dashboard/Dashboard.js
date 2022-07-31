@@ -30,7 +30,7 @@ const Dashboard = () => {
 						className={`${
 							darkMode
 								? 'bg-[#171e36] text-gray-300'
-								: 'bg-white  text-base-content'
+								: 'bg-white text-base-content'
 						} menu p-4 overflow-y-auto w-80 `}
 					>
 						{/* <!-- Sidebar content here --> */}
