@@ -7,8 +7,6 @@ import Loading from '../../../Shared/Loading/Loading'
 import Swal from 'sweetalert2'
 
 const Constructors = () => {
-	// const [constructors, setConstructors] = useState([])
-
 	const [darkMode] = useContext(DarkModeContext)
 	const {
 		register,
@@ -38,7 +36,6 @@ const Constructors = () => {
 			.then(result => {
 				if (result.success) {
 					const photo = result.data.display_url
-					// console.log(photo, 'photo')
 					const constructor = {
 						photo: photo,
 						title: data.title,
@@ -49,7 +46,6 @@ const Constructors = () => {
 						price: data.price,
 						description: data.description,
 					}
-					console.log(constructor, 'constructor')
 					fetch(
 						'https://neighbour-home--server.herokuapp.com/constructor',
 						{
@@ -71,91 +67,22 @@ const Constructors = () => {
 									showConfirmButton: false,
 									timer: 1500,
 								})
-								// let timerInterval
-								// Swal.fire({
-								// 	title: 'Auto close alert!',
-								// 	html: 'I will close in <b></b> milliseconds.',
-								// 	timer: 2000,
-								// 	timerProgressBar: true,
-								// 	didOpen: () => {
-								// 		Swal.showLoading()
-								// 		const b =
-								// 			Swal.getHtmlContainer().querySelector('b')
-								// 		timerInterval = setInterval(() => {
-								// 			b.textContent = Swal.getTimerLeft()
-								// 		}, 100)
-								// 	},
-								// 	willClose: () => {
-								// 		clearInterval(timerInterval)
-								// 	},
-								// }).then(result => {
-								// 	/* Read more about handling dismissals below */
-								// 	if (result.dismiss === Swal.DismissReason.timer) {
-								// 		console.log('I was closed by the timer')
-								// 	}
-								// })
+								refetch()
+							} else {
+								Swal.fire({
+									icon: 'error',
+									title: 'Oops...',
+									text: 'Something went wrong!',
+								})
 							}
-							console.log(data)
 						})
 				}
 			})
-
-		// fetch(url, {
-		// 	method: 'POST',
-		// 	body: formData,
-		// })
-		// 	.then(res => res.json())
-		// 	.then(result => {
-		// 		if (result.success) {
-		// 			const photo = result.data.display_url
-		// 			console.log(photo)
-		// 			const constructor = {
-		// 				photo: photo,
-		// 				title: data.title,
-		// 				type: data.type,
-		// 				duration: data.duration,
-		// 				assignment: data.assignment,
-		// 				discount: data.discount,
-		// 				price: data.price,
-		// 				description: data.description,
-		// }
-		// console.log(constructor)
-		// fetch(``, {
-		// 	method: 'PUT',
-		// 	headers: {
-		// 		'content-type': 'application/json',
-		// 	},
-		// })
-		// 	.then(res => res.json())
-		// 	.then(updatedData => {
-		// 		if (updatedData.modifiedCount > 0) {
-		// 			console.log('Thanks For Your Information')
-		// 		} else {
-		// 			console.error('Failed To Submit')
-		// 		}
-		// 	})
-		// 		}
-		// 	})
-		// console.log(data, 'hello data')
 	}
-	console.log('after')
-
-	// const handleDataSubmit = data => {
-	//     console.log(data, selectOption)
-	//     reset()
-	// }
-
-	// console.log(data)
 
 	if (isLoading) return <Loading></Loading>
 
 	if (error) return 'An error has occurred: ' + error.message
-
-	// useEffect(() => {
-	// 	fetch('https://neighbour-home--server.herokuapp.com/constructor')
-	// 		.then(res => res.json())
-	// 		.then(data => setConstructors(data))
-	// }, [constructors])
 
 	return (
 		<div className='sm:px-10 px-2 pb-5'>
