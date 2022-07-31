@@ -23,7 +23,7 @@ const Login = () => {
         if(token.report === 'inserted') {
             navigate('/user_data')
         } else if (token.report === 'exist') {
-            navigate('/home')
+            navigate('/')
         }
         
     }, [token.report, navigate] )
