@@ -19,11 +19,11 @@ const UpdateModal = ({ id, constructor }) => {
 						Congratulations random Internet user! {id}
 					</h3>
 					<FormConstructor constructor={constructor}></FormConstructor>
-					<div class='modal-action flex justify-center'>
+					{/* <div class='modal-action flex justify-center'>
 						<label for={id} class='btn w-full md:btn-wide'>
 							Submit
 						</label>
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</div>

@@ -39,7 +39,7 @@ const Constructors = () => {
 				if (result.success) {
 					const photo = result.data.display_url
 					const constructor = {
-						photo: photo,
+						picture: photo,
 						title: data.title,
 						type: data.type,
 						duration: data.duration,

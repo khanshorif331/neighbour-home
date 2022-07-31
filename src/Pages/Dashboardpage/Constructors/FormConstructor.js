@@ -1,10 +1,30 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { useForm } from 'react-hook-form'
 import { DarkModeContext } from '../../../App'
 const FormConstructor = ({ getData, constructor }) => {
-	const { title, type, price, picture, duration, discount, assignment, _id } =
-		constructor
+	const [toggleFunction, setToggleFunction] = useState(getData)
+
+	const submitToggleFunc = () => {
+		if (!constructor._id) {
+			return setToggleFunction(getData)
+		} else {
+			return console.log('constructor noot available')
+		}
+	}
+	console.log(toggleFunction, 'toggleFunction')
+	const {
+		title,
+		type,
+		price,
+		picture,
+		duration,
+		discount,
+		assignment,
+		_id,
+		description,
+	} = constructor
+	console.log('hello', constructor)
 	const [darkMode] = useContext(DarkModeContext)
 	const {
 		register,
@@ -54,6 +74,7 @@ const FormConstructor = ({ getData, constructor }) => {
 						Type
 					</label>
 					<input
+						defaultValue={constructor ? type : ''}
 						{...register('type', {
 							required: {
 								value: true,
@@ -87,6 +108,7 @@ const FormConstructor = ({ getData, constructor }) => {
 						Duration
 					</label>
 					<input
+						defaultValue={constructor ? duration : ''}
 						{...register('duration', {
 							required: {
 								value: true,
@@ -111,6 +133,7 @@ const FormConstructor = ({ getData, constructor }) => {
 						Assignment
 					</label>
 					<input
+						defaultValue={constructor ? assignment : ''}
 						{...register('assignment', {
 							required: {
 								value: true,
@@ -135,6 +158,7 @@ const FormConstructor = ({ getData, constructor }) => {
 						Price
 					</label>
 					<input
+						defaultValue={constructor ? price : ''}
 						{...register('price', {
 							required: {
 								value: true,
@@ -168,6 +192,7 @@ const FormConstructor = ({ getData, constructor }) => {
 						Discount
 					</label>
 					<input
+						defaultValue={constructor ? discount : ''}
 						{...register('discount', {
 							required: {
 								value: true,
@@ -192,7 +217,8 @@ const FormConstructor = ({ getData, constructor }) => {
 						Description
 					</label>
 					<textarea
-						defaultValue='hello ami tumi ar'
+						defaultValue={constructor ? description : ''}
+						// defaultValue={constructor ? description : ''}
 						{...register('description', {
 							required: {
 								value: true,
@@ -221,29 +247,34 @@ const FormConstructor = ({ getData, constructor }) => {
 					</label>
 				</div>
 				{/* image field */}
-				<div>
-					<label className={`${darkMode && 'text-white'}`} htmlFor=''>
-						Your Photo
-					</label>
-					<input
-						{...register('photo', {
-							required: {
-								value: true,
-								message: 'Photo is required',
-							},
-						})}
-						type='file'
-						className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-						placeholder='Your Photo'
-					/>
-					<label>
-						{errors.photo?.type === 'required' && (
-							<p className='text-red-600 text-sm font-semibold'>
-								{errors.photo.message}
-							</p>
-						)}
-					</label>
-				</div>
+				{picture ? (
+					''
+				) : (
+					<div>
+						<label className={`${darkMode && 'text-white'}`} htmlFor=''>
+							Your Photo
+						</label>
+						<input
+							// defaultValue={constructor ? picture : ''}
+							{...register('photo', {
+								required: {
+									value: true,
+									message: 'Photo is required',
+								},
+							})}
+							type='file'
+							className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
+							placeholder='Your Photo'
+						/>
+						<label>
+							{errors.photo?.type === 'required' && (
+								<p className='text-red-600 text-sm font-semibold'>
+									{errors.photo.message}
+								</p>
+							)}
+						</label>
+					</div>
+				)}
 			</div>
 			<div className='text-center'>
 				<input
