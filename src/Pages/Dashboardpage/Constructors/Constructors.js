@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import Constructor from './Constructor'
 import { DarkModeContext } from '../../../App'
@@ -8,6 +8,7 @@ import Swal from 'sweetalert2'
 
 const Constructors = () => {
 	const [darkMode] = useContext(DarkModeContext)
+	const [loading, setLoading] = useState(false)
 	const {
 		register,
 		formState: { errors },
