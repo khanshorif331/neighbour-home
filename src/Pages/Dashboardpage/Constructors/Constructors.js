@@ -21,57 +21,79 @@ const Constructors = () => {
 		)
 	)
 	const imgStorageKey = '75bc4682c9291f359647ab98df5f76de'
-	console.log('before')
-	const getData = data => {
-		console.log('gooing to submit', data)
-	}
+
+	// console.log('before')
 	// const getData = data => {
-	// 	console.log(data, 'hello data')
-	// 	console.log('form submission')
-
-	// 	const image = data?.photo[0]
-	// 	const formData = new FormData()
-	// 	formData.append('image', image)
-	// 	const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`
-
-	// 	// fetch(url, {
-	// 	// 	method: 'POST',
-	// 	// 	body: formData,
-	// 	// })
-	// 	// 	.then(res => res.json())
-	// 	// 	.then(result => {
-	// 	// 		if (result.success) {
-	// 	// 			const photo = result.data.display_url
-	// 	// 			console.log(photo)
-	// 	// 			const constructor = {
-	// 	// 				photo: photo,
-	// 	// 				title: data.title,
-	// 	// 				type: data.type,
-	// 	// 				duration: data.duration,
-	// 	// 				assignment: data.assignment,
-	// 	// 				discount: data.discount,
-	// 	// 				price: data.price,
-	// 	// 				description: data.description,
-	// 	// }
-	// 	// console.log(constructor)
-	// 	// fetch(``, {
-	// 	// 	method: 'PUT',
-	// 	// 	headers: {
-	// 	// 		'content-type': 'application/json',
-	// 	// 	},
-	// 	// })
-	// 	// 	.then(res => res.json())
-	// 	// 	.then(updatedData => {
-	// 	// 		if (updatedData.modifiedCount > 0) {
-	// 	// 			console.log('Thanks For Your Information')
-	// 	// 		} else {
-	// 	// 			console.error('Failed To Submit')
-	// 	// 		}
-	// 	// 	})
-	// 	// 		}
-	// 	// 	})
-	// 	// console.log(data, 'hello data')
+	// 	console.log('gooing to submit', data)
 	// }
+	const getData = data => {
+		const image = data?.photo[0]
+		const formData = new FormData()
+		formData.append('image', image)
+		const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`
+
+		// posting image to imgbb for getting hosted link
+		fetch(url, {
+			method: 'POST',
+			body: formData,
+		})
+			.then(res => res.json())
+			.then(result => {
+				if (result.success) {
+					const photo = result.data.display_url
+					// console.log(photo, 'photo')
+					const constructor = {
+						photo: photo,
+						title: data.title,
+						type: data.type,
+						duration: data.duration,
+						assignment: data.assignment,
+						discount: data.discount,
+						price: data.price,
+						description: data.description,
+					}
+					console.log(constructor, 'constructor')
+				}
+			})
+
+		// fetch(url, {
+		// 	method: 'POST',
+		// 	body: formData,
+		// })
+		// 	.then(res => res.json())
+		// 	.then(result => {
+		// 		if (result.success) {
+		// 			const photo = result.data.display_url
+		// 			console.log(photo)
+		// 			const constructor = {
+		// 				photo: photo,
+		// 				title: data.title,
+		// 				type: data.type,
+		// 				duration: data.duration,
+		// 				assignment: data.assignment,
+		// 				discount: data.discount,
+		// 				price: data.price,
+		// 				description: data.description,
+		// }
+		// console.log(constructor)
+		// fetch(``, {
+		// 	method: 'PUT',
+		// 	headers: {
+		// 		'content-type': 'application/json',
+		// 	},
+		// })
+		// 	.then(res => res.json())
+		// 	.then(updatedData => {
+		// 		if (updatedData.modifiedCount > 0) {
+		// 			console.log('Thanks For Your Information')
+		// 		} else {
+		// 			console.error('Failed To Submit')
+		// 		}
+		// 	})
+		// 		}
+		// 	})
+		// console.log(data, 'hello data')
+	}
 	console.log('after')
 
 	// const handleDataSubmit = data => {
@@ -308,41 +330,43 @@ const Constructors = () => {
 									)}
 								</label>
 							</div>
+							{/* description field */}
 							<div>
 								<label
 									className={`${darkMode && 'text-white'}`}
 									htmlFor=''
 								>
-									NID
+									Description
 								</label>
 								<input
-									{...register('nid', {
+									{...register('description', {
 										required: {
 											value: true,
-											message: 'nid is required',
+											message: 'Description is required',
 										},
 										minLength: {
-											value: 11,
-											message: 'NID Must be 11 character or longer',
+											value: 10,
+											message: ' Must be 10 character or longer',
 										},
 									})}
 									type='text'
 									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='Your NID Card Number'
+									placeholder='This is a project'
 								/>
 								<label>
-									{errors.nid?.type === 'required' && (
+									{errors.description?.type === 'required' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.nid.message}
+											{errors.description.message}
 										</p>
 									)}
-									{errors.nid?.type === 'minLength' && (
+									{errors.description?.type === 'minLength' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.nid.message}
+											{errors.description.message}
 										</p>
 									)}
 								</label>
 							</div>
+							{/* image field */}
 							<div>
 								<label
 									className={`${darkMode && 'text-white'}`}
@@ -380,10 +404,11 @@ const Constructors = () => {
                             </div> */}
 						</div>
 						<div className='text-center'>
+							{/* bg-sky-600 hover:bg-sky-500 duration-300 p-2 rounded ease-in-out hover:scale-125 text-white mt-9 cursor-pointer */}
 							<input
-								className='bg-sky-600 hover:bg-sky-500 duration-300 p-2 rounded ease-in-out hover:scale-125 text-white mt-9 cursor-pointer'
+								className='btn w-full mt-4'
 								type='submit'
-								value='Submit Now'
+								value='Submit To Add'
 							/>
 						</div>
 					</form>
