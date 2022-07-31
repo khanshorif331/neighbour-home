@@ -191,28 +191,29 @@ const Constructors = () => {
 									)}
 								</label>
 							</div>
+							{/* duration data input */}
 							<div>
 								<label
 									className={`${darkMode && 'text-white'}`}
 									htmlFor=''
 								>
-									Address
+									Duration
 								</label>
 								<input
-									{...register('address', {
+									{...register('duration', {
 										required: {
 											value: true,
-											message: 'address is required',
+											message: 'Duration is required',
 										},
 									})}
 									type='text'
 									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='Road 12, Mirpur, Dhaka'
+									placeholder='90 Days'
 								/>
 								<label>
-									{errors.address?.type === 'required' && (
+									{errors.duration?.type === 'required' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.address.message}
+											{errors.duration?.message}
 										</p>
 									)}
 								</label>
