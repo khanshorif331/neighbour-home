@@ -83,7 +83,7 @@ const Constructor = ({ constructor, index, refetch }) => {
 					Delete
 				</button>
 			</td>
-			<UpdateModal id={_id}></UpdateModal>
+			<UpdateModal id={_id} constructor={constructor}></UpdateModal>
 		</tr>
 	)
 }
