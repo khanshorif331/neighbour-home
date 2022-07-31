@@ -281,29 +281,29 @@ const Constructors = () => {
 									)}
 								</label>
 							</div>
-
+							{/*discount field  */}
 							<div>
 								<label
 									className={`${darkMode && 'text-white'}`}
 									htmlFor=''
 								>
-									Country
+									Discount
 								</label>
 								<input
-									{...register('country', {
+									{...register('discount', {
 										required: {
 											value: true,
-											message: 'country is required',
+											message: 'Discount is required',
 										},
 									})}
-									type='text'
+									type='number'
 									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='Your Country'
+									placeholder='30%'
 								/>
 								<label>
-									{errors.country?.type === 'required' && (
+									{errors.discount?.type === 'required' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.country.message}
+											{errors.discount.message}
 										</p>
 									)}
 								</label>
