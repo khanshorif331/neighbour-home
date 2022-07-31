@@ -155,38 +155,38 @@ const Constructors = () => {
 									)}
 								</label>
 							</div>
+							{/* taking data for */}
 							<div>
 								<label
 									className={`${darkMode && 'text-white'}`}
 									htmlFor=''
 								>
-									Username
+									Type
 								</label>
 								<input
-									{...register('username', {
+									{...register('type', {
 										required: {
 											value: true,
-											message: 'username is required',
+											message: 'Type is required',
 										},
 										minLength: {
-											value: 5,
-											message:
-												'Username Must be 5 character or longer',
+											value: 3,
+											message: 'Type Must be 3 character or longer',
 										},
 									})}
 									type='text'
 									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='username69'
+									placeholder='New Trending,Home Improvement,Office Renovation,Government'
 								/>
 								<label>
-									{errors.username?.type === 'required' && (
+									{errors.type?.type === 'required' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.username.message}
+											{errors.type?.message}
 										</p>
 									)}
-									{errors.username?.type === 'minLength' && (
+									{errors.type?.type === 'minLength' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.username.message}
+											{errors.type?.message}
 										</p>
 									)}
 								</label>
