@@ -218,28 +218,29 @@ const Constructors = () => {
 									)}
 								</label>
 							</div>
+							{/*assignment field */}
 							<div>
 								<label
 									className={`${darkMode && 'text-white'}`}
 									htmlFor=''
 								>
-									Zip/Postal
+									Assignment
 								</label>
 								<input
-									{...register('zip', {
+									{...register('assignment', {
 										required: {
 											value: true,
-											message: 'zip code is required',
+											message: 'Assignment is required',
 										},
 									})}
-									type='number'
+									type='text'
 									className='mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'
-									placeholder='LinkdIne Link'
+									placeholder='10 Projects'
 								/>
 								<label>
-									{errors.zip?.type === 'required' && (
+									{errors.assignment?.type === 'required' && (
 										<p className='text-red-600 text-sm font-semibold'>
-											{errors.zip.message}
+											{errors.assignment.message}
 										</p>
 									)}
 								</label>
