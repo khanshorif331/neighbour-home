@@ -22,10 +22,6 @@ const Constructors = () => {
 	)
 	const imgStorageKey = '75bc4682c9291f359647ab98df5f76de'
 
-	// console.log('before')
-	// const getData = data => {
-	// 	console.log('gooing to submit', data)
-	// }
 	const getData = data => {
 		const image = data?.photo[0]
 		const formData = new FormData()
@@ -53,6 +49,18 @@ const Constructors = () => {
 						description: data.description,
 					}
 					console.log(constructor, 'constructor')
+					fetch(
+						'https://neighbour-home--server.herokuapp.com/constructor',
+						{
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json',
+							},
+							body: JSON.stringify(constructor),
+						}
+					)
+						.then(res => res.json())
+						.then(data => console.log(data))
 				}
 			})
 
