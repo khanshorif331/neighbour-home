@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { DarkModeContext } from '../../App';
 import { useForm } from 'react-hook-form'
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const UserData = () => {
 
@@ -8,6 +10,7 @@ const UserData = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [selectOption, setSelectOption] = useState('')
     const imageStorageKey = '7da2b2086b902054d13e6c94a30f0b6a'
+    const [user] = useAuthState(auth)
 
     const handleChange = e => {
         setSelectOption(e.target.value);
@@ -39,7 +42,7 @@ const UserData = () => {
                     role: selectOption
                 }
                 console.log(userData);
-                fetch(``, {
+                fetch(`https://neighbour-home--server.herokuapp.com/user?email=${user.email}`, {
                     method: "PUT",
                     headers: {
                         'content-type': 'application/json'
@@ -47,7 +50,8 @@ const UserData = () => {
                 })
                 .then(res => res.json())
                 .then(updatedData => {
-                    if(updatedData.modifiedCount > 0) {
+                    console.log(updatedData);
+                    if(updatedData.message === 'User data was updated successfully') {
                         console.log("Thanks For Your Information");
                     }
                     else {
