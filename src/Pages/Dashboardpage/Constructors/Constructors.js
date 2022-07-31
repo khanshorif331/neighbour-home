@@ -309,7 +309,7 @@ const Constructors = () => {
 								>
 									Description
 								</label>
-								<input
+								<textarea
 									{...register('description', {
 										required: {
 											value: true,
