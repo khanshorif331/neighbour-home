@@ -7,7 +7,6 @@ import Login from './Authentication/Login/Login'
 import Register from './Authentication/Register/Register'
 import { createContext, useState } from 'react'
 import Guides from './Pages/Homepage/Guides/Guides'
-import AddReview from './Pages/Homepage/AddReview/AddReview'
 import NotFound from './components/NotFound/NotFound'
 import UserData from './Pages/UserData/UserData'
 import BookReview from './Pages/Homepage/BookReview/BookReview'
@@ -21,6 +20,7 @@ import ManageEngineers from './Pages/Dashboardpage/ManageEngineers/ManageEnginee
 import Engineers from './Pages/Homepage/Engineers/Engineers'
 import { Toaster } from 'react-hot-toast'
 import UserDetails from './Pages/UserDetails/UserDetails'
+import AddReview from './Pages/Homepage/AddReview/AddReview'
 
 export const DarkModeContext = createContext('')
 const queryClient = new QueryClient()
@@ -37,7 +37,7 @@ function App() {
 						<Route path='/' element={<Home />} />
 						<Route path='/dashboard' element={<Dashboard />}>
 							<Route index element={<Users />}></Route>
-							<Route path='addReview' element={<AddReview />}></Route>
+							<Route path='addReview' element={<AddReview/>}></Route>
 							<Route path='manageBooks' element={<ManageBooks />}></Route>
 							<Route path='manageEngineers' element={<ManageEngineers />}></Route>
 							<Route
