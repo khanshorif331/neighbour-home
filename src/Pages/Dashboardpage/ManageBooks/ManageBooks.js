@@ -16,12 +16,17 @@ const ManageBooks = () => {
   // imgStorage api
   const imgStorage_key = `7a0f43e157252e0ca3031dea1d8dcccd`
   const handleUpdateBook = async e => {
-    const bookInfo = {
-      name : e.target.bookName.value,
-      pdf : e.target.pdfLink.value,
-      description : e.target.description.value
-    }
-    console.log(bookInfo);
+    e.preventDefault()
+
+    // const bookInfo = {
+    //   name : e.target.bookName.value,
+    //   pdf : e.target.pdfLink.value,
+    //   description : e.target.description.value
+    // }
+    // console.log(bookInfo);
+
+    console.log(e.target.bookPic);
+
 
     // const img = data.img[0];
     // const formData = new FormData();
@@ -183,6 +188,7 @@ const ManageBooks = () => {
 
                             {/* updated button here */}
                             <button
+                              type="submit"
                               className="btn btn-xs bg-teal-800 w-1/4 h-5 sm:h-6 ml-2 mr-2 sm:px-3 uppercase rounded-lg text-white font-bold duration-1000">
                               Update
                             </button>
