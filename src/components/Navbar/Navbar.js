@@ -21,7 +21,7 @@ const Navbar = () => {
         return <Loading/>
     }
 
-    console.log(user?.email)
+    // console.log(user?.email)
 
     // console.log(location); 
     const navBtnHndle = () => {
@@ -110,6 +110,7 @@ const Navbar = () => {
                                         </path>
                                     </svg>
                                 </a>
+
                             </li>
                         </ul>
                     </div>
