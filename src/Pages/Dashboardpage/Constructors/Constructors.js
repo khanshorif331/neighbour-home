@@ -48,7 +48,6 @@ const Constructors = () => {
 						price: data.price,
 						description: data.description,
 					}
-					console.log(constructor)
 					fetch(
 						'https://neighbour-home--server.herokuapp.com/constructor',
 						{
@@ -70,6 +69,7 @@ const Constructors = () => {
 									showConfirmButton: false,
 									timer: 1500,
 								})
+
 								refetch()
 							} else {
 								Swal.fire({
@@ -127,7 +127,7 @@ const Constructors = () => {
 							<th>Price</th>
 							<th>Duration</th>
 							<th>Discount</th>
-							<th>Assignment</th>
+							<th>Projects</th>
 							<th>Action</th>
 						</tr>
 					</thead>

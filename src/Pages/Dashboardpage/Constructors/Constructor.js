@@ -60,17 +60,17 @@ const Constructor = ({ constructor, index, refetch }) => {
 			confirmButton: 'btn btn-success',
 			cancelButton: 'btn btn-error',
 		},
-		buttonsStyling: false,
+		buttonsStyling: true,
 	})
 	return (
 		<tr>
 			<th>{index + 1}</th>
 			<td>{title}</td>
 			<td>{type}</td>
-			<td>{price}</td>
-			<td>{duration}</td>
+			<td>{price} USD</td>
+			<td>{duration} days</td>
 			<td>{discount}%</td>
-			<td>{assignment}</td>
+			<td>{assignment} projects</td>
 			<td className='flex flex-col'>
 				{/* <button class='btn btn-xs mb-1'>Edit</button> */}
 				<label for={_id} class='btn modal-button btn-xs mb-1'>
@@ -83,7 +83,11 @@ const Constructor = ({ constructor, index, refetch }) => {
 					Delete
 				</button>
 			</td>
-			<UpdateModal id={_id} constructor={constructor}></UpdateModal>
+			<UpdateModal
+				id={_id}
+				constructor={constructor}
+				refetch={refetch}
+			></UpdateModal>
 		</tr>
 	)
 }
