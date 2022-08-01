@@ -1,6 +1,11 @@
 import React, { useContext } from 'react'
 import { Outlet, Link } from 'react-router-dom'
 import { DarkModeContext } from '../../../App'
+import bookSvg from '../../../Assest/book-svgrepo-com.svg'
+import userSvg from '../../../Assest/user-dashbord.svg'
+import engineerSvg from '../../../Assest/engineer-dashbord.svg'
+import reviewSvg from '../../../Assest/review-dashbord.svg'
+import constructionSvg from '../../../Assest/construction-dashbord.svg'
 
 const Dashboard = () => {
 	const [darkMode] = useContext(DarkModeContext)
@@ -36,40 +41,52 @@ const Dashboard = () => {
 						{/* <!-- Sidebar content here --> */}
 
 						<li>
-							<Link className='shadow-lg my-1' to={'/dashboard'}>
+							<Link
+								className='shadow-lg my-1 font-bold text-gray-500'
+								to={'/dashboard'}
+							>
+								<img className='w-4' src={userSvg} alt='book svg' />{' '}
 								Users
 							</Link>
 						</li>
 
 						<li>
 							<Link
-								className='shadow-lg my-1'
+								className='shadow-lg my-1 font-bold text-gray-500'
 								to={'/dashboard/manageBooks'}
 							>
+								<img className='w-4' src={bookSvg} alt='book svg' />{' '}
 								Manage Books
 							</Link>
 						</li>
 						<li>
 							<Link
-								className='shadow-lg my-1'
+								className='shadow-lg my-1 font-bold text-gray-500'
 								to={'/dashboard/addReview'}
 							>
+								<img className='w-4' src={reviewSvg} alt='book svg' />{' '}
 								Add a Review
 							</Link>
 						</li>
 						<li>
 							<Link
-								className='shadow-lg my-1'
+								className='shadow-lg my-1 font-bold text-gray-500'
 								to={'/dashboard/manageEngineers'}
 							>
+								<img className='w-4' src={engineerSvg} alt='book svg' />{' '}
 								Manage Engineers
 							</Link>
 						</li>
 						<li>
 							<Link
-								className='shadow-lg my-1'
+								className='shadow-lg my-1 font-bold text-gray-500'
 								to={'/dashboard/constructors'}
 							>
+								<img
+									className='w-4'
+									src={constructionSvg}
+									alt='book svg'
+								/>{' '}
 								Manage Constructors
 							</Link>
 						</li>

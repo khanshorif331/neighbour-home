@@ -15,16 +15,11 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { DarkModeContext } from "../../../App";
+import useEngineers from "../../../hooks/useEngineers";
 
 const Engineer = () => {
-  const [engineers, setEngineers] = useState([]);
+  const [engineers] = useEngineers([]);
 	const [darkMode] = useContext(DarkModeContext)
-
-  useEffect(() => {
-    fetch("engineers.json")
-      .then((res) => res.json())
-      .then((data) => setEngineers(data));
-  }, []);
   // console.log(engineers);
   return (
     <div className='h-[400px] p-6 md:px-16'>

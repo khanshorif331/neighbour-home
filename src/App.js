@@ -18,6 +18,9 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import ManageBooks from './Pages/Dashboardpage/ManageBooks/ManageBooks'
 import ServiceDetails from './Pages/ServiceDetails/ServiceDetails'
 import ManageEngineers from './Pages/Dashboardpage/ManageEngineers/ManageEngineers'
+import Engineers from './Pages/Homepage/Engineers/Engineers'
+import { Toaster } from 'react-hot-toast'
+import UserDetails from './Pages/UserDetails/UserDetails'
 
 export const DarkModeContext = createContext('')
 const queryClient = new QueryClient()
@@ -29,6 +32,7 @@ function App() {
 			<DarkModeContext.Provider value={[darkMode, setDarkMode]}>
 				<section className={`${darkMode && 'dark-theme'} duration-300`}>
 					<Navbar />
+					<Toaster></Toaster>
 					<Routes>
 						<Route path='/' element={<Home />} />
 						<Route path='/dashboard' element={<Dashboard />}>
@@ -49,6 +53,7 @@ function App() {
 								element={<ManageEngineers />}
 							></Route>
 						</Route>
+						<Route path='/user/:id' element={<UserDetails />} />
 						<Route path='/login' element={<Login />} />
 						<Route path='/register' element={<Register />} />
 						<Route

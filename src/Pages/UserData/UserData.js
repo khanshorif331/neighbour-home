@@ -1,20 +1,68 @@
 import React, { useContext, useState } from 'react';
 import { DarkModeContext } from '../../App';
 import { useForm } from 'react-hook-form'
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const UserData = () => {
 
     const [darkMode] = useContext(DarkModeContext)
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [selectOption, setSelectOption] = useState('')
+    const imageStorageKey = '7da2b2086b902054d13e6c94a30f0b6a'
+    const [user] = useAuthState(auth)
 
     const handleChange = e => {
         setSelectOption(e.target.value);
     }
 
     const handleDataSubmit = data => {
-        console.log(data, selectOption)
-        reset()
+
+        const image = data.photo[0]
+        const formData = new FormData()
+        formData.append('image', image)
+        const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}` 
+        fetch(url, {
+            method: "POST",
+            body: formData
+        })
+        .then(res => res.json())
+        .then(result => {
+            if(result.success) {
+                const photo = result.data.display_url
+                const userData = {
+                    photo: photo,
+                    name: data.name,
+                    username: data.username,
+                    address: data.address,
+                    zip: data.zip,
+                    phone: data.phone,
+                    country: data.country,
+                    nid: data.nid,
+                    role: selectOption
+                }
+                console.log(userData);
+                fetch(`https://neighbour-home--server.herokuapp.com/user?email=${user.email}`, {
+                    method: "PUT",
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+                })
+                .then(res => res.json())
+                .then(updatedData => {
+                    console.log(updatedData);
+                    if(updatedData.message === 'User data was updated successfully') {
+                        console.log("Thanks For Your Information");
+                    }
+                    else {
+                        console.error("Failed To Submit");
+                    }
+                })
+            }
+        })
+
+        // console.log(data, selectOption)
+        // reset()
     }
 
     return (
