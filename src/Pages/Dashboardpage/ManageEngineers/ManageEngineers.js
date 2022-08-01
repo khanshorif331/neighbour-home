@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import swal from "sweetalert";
 
 const ManageEngineers = () => {
   const [manageEngrs, setManageEngrs] = useState([]);
@@ -21,7 +22,39 @@ const ManageEngineers = () => {
         </thead>
         <tbody>
           {manageEngrs.map((engineer) => {
-            const { name, picture, role, surname } = engineer;
+            const { name, picture, role, surname, _id } = engineer;
+            const handleDeleteEng = (id) => {
+              swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              }).then((willDelete) => {
+                if (willDelete) {
+                  {
+                    const url = `https://neighbour-home--server.herokuapp.com/engineer/${_id}`;
+                    fetch(url, {
+                      method: "DELETE",
+                    })
+                      .then((res) => res.json())
+                      .then((data) => {
+                        console.log(data);
+                        const remaining = manageEngrs.filter(
+                          (inventory) => inventory._id !== id
+                        );
+                        console.log(remaining);
+                        setManageEngrs(remaining);
+                      });
+                  }
+                  swal("Your file has been deleted!", {
+                    icon: "success",
+                  });
+                } /*  else {
+                  swal("Your file is safe!");
+                } */
+              });
+            };
             return (
               <tr>
                 <td>
@@ -46,7 +79,10 @@ const ManageEngineers = () => {
                   <button class="h-5 sm:h-6  sm:px-3 uppercase bg-green-500 border-none  hover:bg-green-600 rounded-full text-white font-normal">
                     edit
                   </button>
-                  <button class="h-5 sm:h-6 ml-2 sm:px-3 uppercase bg-red-500 border-none  hover:bg-red-600 rounded-full text-white font-normal">
+                  <button
+                    onClick={() => handleDeleteEng(_id)}
+                    class="h-5 sm:h-6 ml-2 sm:px-3 uppercase bg-red-500 border-none  hover:bg-red-600 rounded-full text-white font-normal"
+                  >
                     Delete
                   </button>
                 </th>

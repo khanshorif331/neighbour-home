@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { BsFacebook, BsGoogle } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import Loading from '../../Shared/Loading/Loading';
 
 const Register = () => {
@@ -17,13 +18,24 @@ const Register = () => {
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
+    const [token] = useToken(googleUser || emailUser)
+    const navigate = useNavigate()
+
+    useEffect( () => {
+        if(token.report === 'inserted') {
+            navigate('/user_data')
+        } else if (token.report === 'exist') {
+            navigate('/home')
+        }
+    }, [token.report, navigate] )
+
     if (googleLoading || emailLoading) {
         return <Loading />
     }
 
-    if (googleUser || emailUser) {
-        console.log(googleUser || emailUser);
-    }
+    // if (googleUser || emailUser) {
+    //     console.log(googleUser || emailUser);
+    // }
 
     if (googleError || emailError) {
         console.error(googleError || emailError);
