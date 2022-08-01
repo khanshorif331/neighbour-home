@@ -7,67 +7,20 @@ import totalSvg from '../../../Assest/virustotal-svgrepo-com.svg'
 
 const ManageBooks = () => {
   const [manageBooks, setManageBooks] = useState([]);
+  const [manageBooksModal, setManageBooksModal] = useState(false);
+  console.log(manageBooksModal);
+
   // get api 
   useEffect(() => {
     fetch("https://neighbour-home--server.herokuapp.com/book")
       .then((res) => res.json())
       .then((data) => setManageBooks(data));
-  }, []);
+  }, [manageBooks]);
   // imgStorage api
   const imgStorage_key = `7a0f43e157252e0ca3031dea1d8dcccd`
-  const handleUpdateBook = async e => {
-    e.preventDefault()
-
-    // const bookInfo = {
-    //   name : e.target.bookName.value,
-    //   pdf : e.target.pdfLink.value,
-    //   description : e.target.description.value
-    // }
-    // console.log(bookInfo);
-
-    console.log(e.target.bookPic);
 
 
-    // const img = data.img[0];
-    // const formData = new FormData();
-    // formData.append('image', img);
-    // const url = `https://api.imgbb.com/1/upload?key=${imgStorage_key}`;
-    // fetch(url, {
-    //     method: 'POST',
-    //     body: formData
-    // })
-    //     .then(res => res.json())
-    //     .then(result => {
-    //         if (result.success) {
-    //             const imgUrl = result.data.url;
-    //             const part = {
-    //                 name: data.name,
-    //                 price: data.price,
-    //                 description: data.description,
-    //                 minimumOrderQuanity: data.minimunOrderQuantity,
-    //                 availableQuanity: data.availableQuantity,
-    //                 img: imgUrl
-    //             }
-    //             console.log(part);
-    //             axios.post(`https://shielded-waters-86658.herokuapp.com/part`, part)
-    //                 .then(data => {
-    //                     // console.log(data.data.success);
-    //                     // console.log(data.data);
-    //                     if (data.data.success) {
-    //                         toast.success(`${data.data.message}`)
-    //                         // reset()
-    //                     }
-    //                     else {
-    //                         toast.success(`${data.data.message}`)
 
-    //                     }
-
-    //                 })
-
-    //         }
-    //     })
-
-  }
   return (
     <div className="sm:px-10 px-2 pb-5">
       {/* book functionality manage card */}
@@ -127,77 +80,116 @@ const ManageBooks = () => {
           </thead>
           {manageBooks.map((manageBook) => {
             const { name, pdf, description, _id } = manageBook;
+            // handleUpdateBook
+            const handleUpdateBook = async e => {
+              e.preventDefault()
+
+              const picture = e.target.bookPic.files[0];
+              // console.log(e.target.bookPic.files[0]);
+
+              const formData = new FormData();
+              formData.append('image', picture);
+              const url = `https://api.imgbb.com/1/upload?key=${imgStorage_key}`;
+              fetch(url, {
+                method: 'POST',
+                body: formData
+              })
+                .then(res => res.json())
+                .then(result => {
+                  if (result.success) {
+                    const imgUrl = result.data.url;
+                    console.log(imgUrl);
+
+                    const bookInfo = {
+                      name: e.target.bookName.value,
+                      pdf: e.target.pdfLink.value,
+                      description: e.target.description.value,
+                      picture: imgUrl
+                    }
+                    console.log(bookInfo);
+                    axios.put(`https://neighbour-home--server.herokuapp.com/book/${_id}`, bookInfo)
+                      .then(data => {
+                        toast.success(`${bookInfo.name} successfully updated !`)
+                        setManageBooksModal(false)
+
+                      })
+
+                  }
+                })
+
+            }
             return (
               <tbody key={_id}>
                 <tr>
                   <td className="px-4 text-lg text-gray-500 font-bold hover:text-teal-900 hover:bg-slate-100 duration-1000 rounded-xl">{name}</td>
 
                   <td className="py-2 text-[11px] md:text-[13px]  sm:py-4 text-center flex justify-center bg-slate-100 rounded-xl lg:rounded-none">
+
                     {/* _________________________ */}
 
                     {/* <!-- The button to open modal --> */}
-                    <label for={_id} class="btn modal-button btn-outline btn-xs btn-warning h-5 sm:h-6  sm:px-3 uppercase  rounded-full text-white duration-1000">Edit</label>
+                    <label onClick={() => setManageBooksModal(true)} for={_id} class="btn modal-button btn-outline btn-xs btn-warning h-5 sm:h-6  sm:px-3 uppercase  rounded-full text-white duration-1000">Edit</label>
 
+                    {
+                      manageBooksModal &&
+                      <>
+                        <input type="checkbox" id={_id} class="modal-toggle" />
+                        <div class="modal">
+                          <div class="modal-box relative">
+                            {/* updated form */}
+                            <form onSubmit={handleUpdateBook}>
+                              <label for={_id} class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                              <h3 class="text-lg font-bold text-teal-900">Book Id : {_id}</h3>
 
-                    <input type="checkbox" id={_id} class="modal-toggle" />
-                    <div class="modal">
-                      <div class="modal-box relative">
+                              {/* input */}
+                              <label className=" block text-start lg:pl-16 text-md text-gray-400 font-bold mt-2" htmlFor="bookName">Book Name</label>
 
+                              <input
+                                className="w-full lg:w-3/4 font-serif font-bold px-4 py-2 border-2 border-teal-700 outline-teal-900 rounded-lg focus:bg-slate-200"
+                                type="text"
+                                name="bookName"
+                                id="bookName"
+                                defaultValue={name} />
 
+                              <label className=" block text-start lg:pl-16 text-md text-gray-400 font-bold my-0" htmlFor="pdfLink">PDF Link</label>
+                              <input
+                                className="w-full lg:w-3/4 font-serif font-bold px-4 py-2 border-2 border-teal-700 outline-teal-900 rounded-lg focus:bg-slate-200"
+                                type="text"
+                                name="pdfLink"
+                                id="pdfLink"
+                                defaultValue={pdf} />
 
+                              {/* textarea  */}
+                              <textarea
+                                name="description"
+                                id="description"
+                                defaultValue={description}
+                                className="w-full lg:w-3/4 font-serif font-bold text-justify px-4 py-2 mt-2 border-2 border-teal-700 outline-teal-900 rounded-lg overflow-scroll focus:bg-slate-200" rows="5">
 
-                        {/* updated form */}
-                        <form onSubmit={handleUpdateBook}>
-                          <label for={_id} class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                          <h3 class="text-lg font-bold text-teal-900">Book Id : {_id}</h3>
+                              </textarea>
 
-                          {/* input */}
-                          <label className=" block text-start lg:pl-16 text-md text-gray-400 font-bold mt-2" htmlFor="bookName">Book Name</label>
+                              {/* take picture and submit*/}
+                              <div className="flex justify-center ">
+                                <input
+                                  className="w-2/4 font-serif font-bold pl-2"
+                                  type="file"
+                                  name="bookPic"
+                                  id="bookPic" />
 
-                          <input
-                            className="w-full lg:w-3/4 font-serif font-bold px-4 py-2 border-2 border-teal-700 outline-teal-900 rounded-lg focus:bg-slate-200"
-                            type="text"
-                            name="bookName"
-                            id="bookName"
-                            defaultValue={name} />
+                                {/* updated button here */}
+                                <button
+                                  type="submit"
+                                  className="btn btn-xs bg-teal-800 w-1/4 h-5 sm:h-6 ml-2 mr-2 sm:px-3 uppercase rounded-lg text-white font-bold duration-1000">
+                                  Update
+                                </button>
 
-                          <label className=" block text-start lg:pl-16 text-md text-gray-400 font-bold my-0" htmlFor="pdfLink">PDF Link</label>
-                          <input
-                            className="w-full lg:w-3/4 font-serif font-bold px-4 py-2 border-2 border-teal-700 outline-teal-900 rounded-lg focus:bg-slate-200"
-                            type="text"
-                            name="pdfLink"
-                            id="pdfLink"
-                            defaultValue={pdf} />
-
-                          {/* textarea  */}
-                          <textarea
-                            name="description"
-                            id="description"
-                            defaultValue={description}
-                            className="w-full lg:w-3/4 font-serif font-bold text-justify px-4 py-2 mt-2 border-2 border-teal-700 outline-teal-900 rounded-lg overflow-scroll focus:bg-slate-200" rows="5">
-
-                          </textarea>
-
-                          {/* take picture and submit*/}
-                          <div className="flex justify-center ">
-                            <input
-                              className="w-2/4 font-serif font-bold pl-2"
-                              type="file"
-                              name="bookPic"
-                              id="bookPic" />
-
-                            {/* updated button here */}
-                            <button
-                              type="submit"
-                              className="btn btn-xs bg-teal-800 w-1/4 h-5 sm:h-6 ml-2 mr-2 sm:px-3 uppercase rounded-lg text-white font-bold duration-1000">
-                              Update
-                            </button>
-
+                              </div>
+                            </form>
                           </div>
-                        </form>
-                        
-                      </div>
-                    </div>
+                        </div>
+                      </>
+                    }
+
                     {/* _________________________ */}
 
 
