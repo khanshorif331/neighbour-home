@@ -2,17 +2,7 @@ import React, { useContext, useState } from 'react'
 
 import { useForm } from 'react-hook-form'
 import { DarkModeContext } from '../../../App'
-const FormConstructor = ({ getData, constructor }) => {
-	const [toggleFunction, setToggleFunction] = useState(getData)
-
-	const submitToggleFunc = () => {
-		if (!constructor._id) {
-			return setToggleFunction(getData)
-		} else {
-			return console.log('constructor noot available')
-		}
-	}
-	console.log(toggleFunction, 'toggleFunction')
+const FormConstructor = ({ getData, constructor, updateInfo }) => {
 	const {
 		title,
 		type,
@@ -33,7 +23,9 @@ const FormConstructor = ({ getData, constructor }) => {
 		reset,
 	} = useForm()
 	return (
-		<form onSubmit={handleSubmit(getData)}>
+		<form
+			onSubmit={getData ? handleSubmit(getData) : handleSubmit(updateInfo)}
+		>
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-7'>
 				<div>
 					<label className={`${darkMode && 'text-white'}`} htmlFor=''>
