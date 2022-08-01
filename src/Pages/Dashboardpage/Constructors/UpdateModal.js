@@ -1,8 +1,29 @@
 import React from 'react'
+import Swal from 'sweetalert2'
 import FormConstructor from './FormConstructor'
 
 const UpdateModal = ({ id, constructor }) => {
 	const updateInfo = data => {
+		fetch(`https://neighbour-home--server.herokuapp.com/constructor/${id}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		})
+			.then(res => res.json())
+			.then(data => {
+				if (data.message === 'Constructor data was updated successfully') {
+					Swal.fire({
+						position: 'center',
+						icon: 'success',
+						title: 'Your Data has been updated successfully!',
+						showConfirmButton: false,
+						timer: 1500,
+					})
+					// refetch()
+				}
+			})
 		console.log(data, 'from form update data')
 	}
 

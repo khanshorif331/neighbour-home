@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 
 import { useForm } from 'react-hook-form'
 import { DarkModeContext } from '../../../App'
@@ -14,7 +14,6 @@ const FormConstructor = ({ getData, constructor, updateInfo }) => {
 		_id,
 		description,
 	} = constructor
-	console.log('hello', constructor)
 	const [darkMode] = useContext(DarkModeContext)
 	const {
 		register,
