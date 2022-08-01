@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BsGoogle, BsFacebook } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init';
 import { useForm } from 'react-hook-form';
 import Loading from '../../Shared/Loading/Loading';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
 
@@ -14,22 +15,34 @@ const Login = () => {
         emailUser,
         emailLoading,
         emailError,
-      ] = useSignInWithEmailAndPassword(auth);
+    ] = useSignInWithEmailAndPassword(auth);
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
-
-
+    const [token] = useToken(googleUser || emailUser)
+    const navigate = useNavigate()
+    useEffect( () => {
+        if(token.report === 'inserted') {
+            navigate('/user_data')
+        } else if (token.report === 'exist') {
+            navigate('/')
+        }
+        
+    }, [token.report, navigate] )
+    
     if (googleLoading || emailLoading) {
         return <Loading />
     }
 
-    if (googleUser || emailUser) {
-        console.log(googleUser || emailUser);
-    }
-
+    // if (googleUser || emailUser) {
+    //     console.log(googleUser || emailUser);
+    // }
+    console.log(token);
+    
+    
+    
     if (googleError || emailError) {
         console.error(googleError || emailError);
     }
-
+    
     const handleLogin = data => {
         console.log(data);
         const email = data.email
@@ -39,7 +52,7 @@ const Login = () => {
     }
 
     return (
-        <section className='mt-[129px]'>
+        <section className='sm:mt-[129px] mt-[80px] '>
             <div className="bg-white font-family-karla">
 
                 <div className="w-full flex flex-wrap flex-row-reverse">

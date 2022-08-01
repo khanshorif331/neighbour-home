@@ -7,7 +7,7 @@ const Guides = () => {
   const [darkMode, setDarkMode] = useContext(DarkModeContext);
   const [books, setBooks] = useState([]);
   useEffect(() => {
-    fetch("books.json")
+    fetch("https://neighbour-home--server.herokuapp.com/book")
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, []);
@@ -30,7 +30,7 @@ const Guides = () => {
           <div className="flex items-center flex-col sm:flex-row sm:px-28 py-10">
             <Fade right duration="1500">
               <div className="w-full sm:w-5/12">
-                <img className="w-7/12 mx-auto" src={picture} alt="" />
+                <img className="w-6/12 mx-auto" src={picture} alt="" />
               </div>
             </Fade>
             <Fade left duration="1500">
@@ -42,9 +42,9 @@ const Guides = () => {
                   {name}
                 </p>
                 <p className={`${darkMode ? "text-white" : "text-gray-500"}`}>
-                  {description}
+                  {description.slice(0, 200)}
                 </p>
-                <button
+                {/* <button
                   className={`${
                     darkMode
                       ? "hover:bg-white bg-teal-900 text-white border border-teal-900 hover:text-teal-900"
@@ -52,14 +52,14 @@ const Guides = () => {
                   } sm:px-7 px-5 transition py-1.5 sm:py-2.5 rounded-[3px] mt-5 uppercase `}
                 >
                   Download
-                </button>
+                </button> */}
                 <Link to={`/bookDetail/${_id}`}>
                   <button
                     className={`${
                       darkMode
                         ? "hover:bg-white bg-teal-900 text-white border border-teal-900 hover:text-teal-900"
-                        : "hover:bg-teal-800 bg-white text-teal-900 border border-teal-900 hover:text-white"
-                    } sm:px-7 px-5 ml-2 transition py-1.5 sm:py-2.5 rounded-[3px] mt-5 uppercase `}
+                        : "bg-teal-800 border border-teal-900 text-white hover:bg-white hover:text-teal-900 "
+                    } sm:px-7 px-5 transition py-1.5 sm:py-2.5 rounded-[3px] mt-5 uppercase `}
                   >
                     Details
                   </button>
