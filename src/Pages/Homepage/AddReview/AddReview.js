@@ -10,39 +10,44 @@ import Loading from "../../../Shared/Loading/Loading";
 import "./AddReview.css";
 
 const AddReview = () => {
-  const [rating, setRating] = useState(0);
-  console.log(rating);
+  const [ratings, setRating] = useState(0);
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-  
+
   const [darkMode, setDarkMode] = useContext(DarkModeContext);
   const navigate = useNavigate();
 
   let [user, loading, error] = useAuthState(auth);
 
   const onSubmit = (data) => {
-    console.log(data);
-    // const review = {
-    //   name: data.name,
-    //   review: data.Description,
-    //   rating: data.rating,
-    //   img:
-    //     user?.photoURL ||
-    //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN-MOxuRwldA5D6vQQM5-Cje2zSAUESGvewA&usqp=CAU",
-    // };
-    // console.log(review);
-    // axios
-    //   .post(`https://shielded-waters-86658.herokuapp.com/reviews`, review)
-    //   .then((data) => {
-    //     console.log(data.data);
-    //     if (data.data.insertedId) {
-    //       reset();
-    //       toast.success(`Your Review Succesfully Posted`);
-    //     }
-    //   });
+    // console.log(data);
+    const review = {
+      name: data.name,
+      reviewTxt: data.Description,
+      star: ratings,
+      picture:
+        user?.photoURL ||
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN-MOxuRwldA5D6vQQM5-Cje2zSAUESGvewA&usqp=CAU",
+    };
+
+    console.log(review);
+    const url = `https://neighbour-home--server.herokuapp.com/review`;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(review),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        toast("review updated successfully");
+      });
+    navigate("/dashboard");
   };
   if (loading) {
     return <Loading></Loading>;
@@ -65,22 +70,17 @@ const AddReview = () => {
         <input
           className="mb-3 text-center outline-none bg-white"
           placeholder="Your Name Here"
-          disabled
-          {...register("name", {
-            required: {
-              value: true,
-              message: "Name is Required",
-            },
-          })}
+          // disabled
+          {...register("name")}
           value={user?.displayName}
         />
-        {/* <label className="label">
+        <label className="label">
           {errors.name?.type === "required" && (
             <span className="label-text-alt text-red-500">
               {errors.name.message}
             </span>
           )}
-        </label> */}
+        </label>
         <div className="flex items-center justify-center mb-3">
           {
             <div className="star-rating">
@@ -90,7 +90,7 @@ const AddReview = () => {
                   <button
                     type="button"
                     key={index}
-                    className={index <= rating ? "on" : "off"}
+                    className={index <= ratings ? "on" : "off"}
                     onClick={() => setRating(index)}
                   >
                     <span className="star text-4xl">&#9733;</span>
@@ -103,23 +103,9 @@ const AddReview = () => {
             className="ml-5 w-5 text-xl font-bold outline-none bg-white"
             width="20px"
             placeholder="Rating"
-            value={rating}
-            disabled
-            {...register("rating", {
-              required: {
-                value: true,
-                message: "Rating is Required",
-              },
-
-              maxLength: {
-                value: 1,
-                message: "please enter 1 number of rating",
-              },
-              max: {
-                value: 5,
-                message: "please rate 1 - 5",
-              },
-            })}
+            value={ratings}
+            // disabled
+            // {...register("rating")}
           />
         </div>
         {/* <label className="label">
