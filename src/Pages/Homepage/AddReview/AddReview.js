@@ -11,6 +11,7 @@ import "./AddReview.css";
 
 const AddReview = () => {
   const [rating, setRating] = useState(0);
+  console.log(rating);
   const {
     register,
     formState: { errors },
@@ -24,15 +25,15 @@ const AddReview = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    const review = {
-      name: data.name,
-      review: data.Description,
-      rating: data.rating,
-      img:
-        user?.photoURL ||
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN-MOxuRwldA5D6vQQM5-Cje2zSAUESGvewA&usqp=CAU",
-    };
-    console.log(review);
+    // const review = {
+    //   name: data.name,
+    //   review: data.Description,
+    //   rating: data.rating,
+    //   img:
+    //     user?.photoURL ||
+    //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN-MOxuRwldA5D6vQQM5-Cje2zSAUESGvewA&usqp=CAU",
+    // };
+    // console.log(review);
     // axios
     //   .post(`https://shielded-waters-86658.herokuapp.com/reviews`, review)
     //   .then((data) => {

@@ -75,16 +75,21 @@ const ManageEngineers = () => {
                 </td>
                 <td>{surname}</td>
                 <td>{role}</td>
+                {/* button to update the engineer */}
                 <th className="text-center">
                   <button class="h-5 sm:h-6  sm:px-3 uppercase bg-green-500 border-none  hover:bg-green-600 rounded-full text-white font-normal">
                     edit
                   </button>
+                  {/* button to update the engineer */}
+
+              {/* button to delete the engineer */}
                   <button
                     onClick={() => handleDeleteEng(_id)}
                     class="h-5 sm:h-6 ml-2 sm:px-3 uppercase bg-red-500 border-none  hover:bg-red-600 rounded-full text-white font-normal"
                   >
                     Delete
                   </button>
+                  {/* button to delete the engineer */}
                 </th>
               </tr>
             );
