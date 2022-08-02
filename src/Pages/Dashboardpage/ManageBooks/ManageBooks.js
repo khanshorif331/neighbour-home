@@ -1,26 +1,72 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 import downloadLogo from '../../../Assest/download-svgrepo-com.svg'
 import minimumUser from '../../../Assest/user-profile-svgrepo-com.svg'
 import totalSvg from '../../../Assest/virustotal-svgrepo-com.svg'
+import Loading from "../../../Shared/Loading/Loading";
 
 const ManageBooks = () => {
   const [manageBooks, setManageBooks] = useState([]);
+  const [manageBooksLoading, setManageBooksLoading] = useState(true);
+  const [bookUpadateLoadin, setBookUpadateLoadin] = useState(false);
   const [manageBooksModal, setManageBooksModal] = useState(false);
-  console.log(manageBooksModal);
+  const [manageAddModal, setManageAddModal] = useState(false);
+  // console.log(manageBooksModal);
 
   // get api 
   useEffect(() => {
     fetch("https://neighbour-home--server.herokuapp.com/book")
       .then((res) => res.json())
-      .then((data) => setManageBooks(data));
+      .then((data) => {
+        setManageBooks(data)
+        setManageBooksLoading(false)
+      });
   }, [manageBooks]);
   // imgStorage api
   const imgStorage_key = `7a0f43e157252e0ca3031dea1d8dcccd`
+  // add a new book
+  const handelAddNewBook = async e => {
+    e.preventDefault()
+
+    const picture = e.target.bookPic.files[0];
+    // console.log(e.target.bookPic.files[0]);
+
+    const formData = new FormData();
+    formData.append('image', picture);
+    const url = `https://api.imgbb.com/1/upload?key=${imgStorage_key}`;
+    fetch(url, {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => res.json())
+      .then(result => {
+        if (result.success) {
+          const imgUrl = result.data.url;
+          // console.log(imgUrl);
+
+          const bookInfo = {
+            name: e.target.bookName.value,
+            pdf: e.target.pdfLink.value,
+            description: e.target.description.value,
+            picture: imgUrl
+          }
+          // console.log(bookInfo);
+          axios.post(`https://neighbour-home--server.herokuapp.com/book/`, bookInfo)
+            .then(data => {
+              toast.success(`successfully updated !`)
+              setManageAddModal(false)
+
+            })
+
+        }
+      })
+
+  }
 
 
-
+  if (manageBooksLoading || bookUpadateLoadin) return <Loading />
   return (
     <div className="sm:px-10 px-2 pb-5">
       {/* book functionality manage card */}
@@ -61,8 +107,71 @@ const ManageBooks = () => {
       {/* table section where manage book by admin */}
       <div className="flex justify-between">
         <h5 className="text-lg font-bold  mb-2 text-primary">Manage Books</h5>
-        <h5 className="btn btn-sm btn-outline btn-accent font-bold mb-2 text-lg text-primary duration-1000">Add New Books</h5>
+
+        {/* <!-- The button to open modal --> */}
+        <label onClick={() => setManageAddModal(true)} for="AddBook" class="btn btn-sm btn-outline btn-accent font-bold mb-2 text-lg text-primary duration-1000">ADD NEW BOOK</label>
+
+        {
+          manageAddModal &&
+          <>
+            <input type="checkbox" id="AddBook" class="modal-toggle" />
+            <div class="modal text-center ">
+              <div class="modal-box mx-auto mt-40 flex justify-center">
+                {/* updated form */}
+                <form className="w-10/12 mx-auto" onSubmit={handelAddNewBook}>
+                  <label for="AddBook" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                  <h3 class="text-lg font-bold text-teal-900">Add a new book !</h3>
+
+                  {/* input */}
+                  <label className=" block text-start lg:pl-2 text-md text-gray-400 font-bold mt-2" htmlFor="bookName">Book Name</label>
+
+                  <input
+                    className="w-full lg:w-[98%] font-serif font-bold px-4 py-2 border-2 border-teal-700 outline-teal-900 rounded-lg focus:bg-slate-200"
+                    type="text"
+                    name="bookName"
+                    id="bookName"
+                  />
+
+                  <label className=" block text-start lg:pl-2 text-md text-gray-400 font-bold my-0" htmlFor="pdfLink">PDF Link </label>
+                  <input
+                    className="w-full lg:w-[98%] font-serif font-bold px-4 py-2 border-2 border-teal-700 outline-teal-900 rounded-lg focus:bg-slate-200"
+                    type="text"
+                    name="pdfLink"
+                    id="pdfLink"
+                  />
+                  {/* textarea  */}
+                  <textarea
+                    name="description"
+                    id="description"
+                    className="w-full lg:w-[98%] font-serif font-bold text-justify px-4 py-2 mt-2 border-2 border-teal-700 outline-teal-900 rounded-lg overflow-scroll focus:bg-slate-200" rows="5">
+
+                  </textarea>
+
+                  {/* take picture and submit*/}
+                  <div className="flex justify-between mt-3 ">
+                    <input
+                      className="w-2/4 font-serif font-bold pl-2"
+                      type="file"
+                      name="bookPic"
+                      id="bookPic" />
+
+                    {/* updated button here */}
+                    <button
+                      type="submit"
+                      className="btn btn-xs bg-teal-800  h-5 sm:h-7 ml-2 mr-2 sm:px-3 uppercase rounded-lg text-white font-bold duration-1000">
+                      Add New Books
+                    </button>
+
+                  </div>
+                </form>
+              </div>
+            </div>
+          </>
+        }
+
+        {/* <h5 className="btn btn-sm btn-outline btn-accent font-bold mb-2 text-lg text-primary duration-1000">Add New Books</h5> */}
       </div>
+
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full  text-left ">
           <thead className="text-sm font-bold uppercase  bg-gray-200 text-gray-600">
@@ -80,15 +189,15 @@ const ManageBooks = () => {
           </thead>
           {manageBooks.map((manageBook) => {
             const { name, pdf, description, _id } = manageBook;
+
             // handleUpdateBook
             const handleUpdateBook = async e => {
               e.preventDefault()
-
-              const picture = e.target.bookPic.files[0];
+              setBookUpadateLoadin(true)
+              const imgFile = e.target.bookPic.files[0];
               // console.log(e.target.bookPic.files[0]);
-
               const formData = new FormData();
-              formData.append('image', picture);
+              formData.append('image', imgFile);
               const url = `https://api.imgbb.com/1/upload?key=${imgStorage_key}`;
               fetch(url, {
                 method: 'POST',
@@ -96,10 +205,10 @@ const ManageBooks = () => {
               })
                 .then(res => res.json())
                 .then(result => {
+                  // console.log(result);
                   if (result.success) {
                     const imgUrl = result.data.url;
-                    console.log(imgUrl);
-
+                    // console.log(imgUrl);
                     const bookInfo = {
                       name: e.target.bookName.value,
                       pdf: e.target.pdfLink.value,
@@ -111,13 +220,64 @@ const ManageBooks = () => {
                       .then(data => {
                         toast.success(`${bookInfo.name} successfully updated !`)
                         setManageBooksModal(false)
+                        setBookUpadateLoadin(false)
+                      })
+                  }
+                  if (result.error) {
+                    // console.log(result.error);
+                    const bookInfo = {
+                      name: e.target.bookName.value,
+                      pdf: e.target.pdfLink.value,
+                      description: e.target.description.value,
+                    }
+                    console.log(bookInfo);
+                    axios.put(`https://neighbour-home--server.herokuapp.com/book/${_id}`, bookInfo)
+                      .then(data => {
+                        toast.success(`${bookInfo.name} successfully updated !`)
+                        setManageBooksModal(false)
+                        setBookUpadateLoadin(false)
 
                       })
-
                   }
                 })
 
             }
+
+            // delete book 
+            const deleteBook = (id, name) => {
+              
+              Swal.fire({
+                  title: 'Are you sure?',
+                  text: "You won't be able to revert this!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#d33',
+                  cancelButtonColor: '#3085d6',
+                  confirmButtonText: `Yes, delete it!`
+              }).then((result) => {
+                  if (result.isConfirmed) {
+                      axios.delete(`https://neighbour-home--server.herokuapp.com/book/${id}`)
+                          .then(data => {
+                              console.log(data.data);
+                              Swal.fire(
+                                  'Deleted!',
+                                  `${name} has been Deleted Succesfully.`,
+                                  'success'
+                              )
+                          }).catch(error => {
+                              console.log(error.response.data);
+                              if (error.response.status === 403) {
+                                  toast.error("You are Not Admin")
+                              }
+                          })
+
+
+                      
+
+                  }
+              })
+
+          }
             return (
               <tbody key={_id}>
                 <tr>
@@ -134,8 +294,8 @@ const ManageBooks = () => {
                       manageBooksModal &&
                       <>
                         <input type="checkbox" id={_id} class="modal-toggle" />
-                        <div class="modal">
-                          <div class="modal-box relative">
+                        <div class="modal ">
+                          <div class="modal-box  mt-36 block">
                             {/* updated form */}
                             <form onSubmit={handleUpdateBook}>
                               <label for={_id} class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
@@ -145,7 +305,7 @@ const ManageBooks = () => {
                               <label className=" block text-start lg:pl-16 text-md text-gray-400 font-bold mt-2" htmlFor="bookName">Book Name</label>
 
                               <input
-                                className="w-full lg:w-3/4 font-serif font-bold px-4 py-2 border-2 border-teal-700 outline-teal-900 rounded-lg focus:bg-slate-200"
+                                className="w-full lg:w-9/12 font-serif font-bold px-4 py-2 border-2 border-teal-700 outline-teal-900 rounded-lg focus:bg-slate-200"
                                 type="text"
                                 name="bookName"
                                 id="bookName"
@@ -153,7 +313,7 @@ const ManageBooks = () => {
 
                               <label className=" block text-start lg:pl-16 text-md text-gray-400 font-bold my-0" htmlFor="pdfLink">PDF Link</label>
                               <input
-                                className="w-full lg:w-3/4 font-serif font-bold px-4 py-2 border-2 border-teal-700 outline-teal-900 rounded-lg focus:bg-slate-200"
+                                className="w-full lg:w-9/12 font-serif font-bold px-4 py-2 border-2 border-teal-700 outline-teal-900 rounded-lg focus:bg-slate-200"
                                 type="text"
                                 name="pdfLink"
                                 id="pdfLink"
@@ -164,12 +324,12 @@ const ManageBooks = () => {
                                 name="description"
                                 id="description"
                                 defaultValue={description}
-                                className="w-full lg:w-3/4 font-serif font-bold text-justify px-4 py-2 mt-2 border-2 border-teal-700 outline-teal-900 rounded-lg overflow-scroll focus:bg-slate-200" rows="5">
+                                className="w-full lg:w-9/12 font-serif font-bold text-justify px-4 py-2 mt-2 border-2 border-teal-700 outline-teal-900 rounded-lg overflow-scroll focus:bg-slate-200" rows="5">
 
                               </textarea>
 
                               {/* take picture and submit*/}
-                              <div className="flex justify-center ">
+                              <div className="flex justify-center mt-3">
                                 <input
                                   className="w-2/4 font-serif font-bold pl-2"
                                   type="file"
@@ -193,7 +353,7 @@ const ManageBooks = () => {
                     {/* _________________________ */}
 
 
-                    <button className="btn btn-outline btn-xs btn-error h-5 sm:h-6 ml-2 sm:px-3 uppercase rounded-full text-white duration-1000">
+                    <button onClick={()=> deleteBook(_id, name)} className="btn btn-outline btn-xs btn-error h-5 sm:h-6 ml-2 sm:px-3 uppercase rounded-full text-white duration-1000">
                       Delete
                     </button>
                   </td>
