@@ -4,23 +4,30 @@ import toast from "react-hot-toast";
 import downloadLogo from '../../../Assest/download-svgrepo-com.svg'
 import minimumUser from '../../../Assest/user-profile-svgrepo-com.svg'
 import totalSvg from '../../../Assest/virustotal-svgrepo-com.svg'
+import Loading from "../../../Shared/Loading/Loading";
 
 const ManageBooks = () => {
   const [manageBooks, setManageBooks] = useState([]);
+  const [manageBooksLoading, setManageBooksLoading] = useState(true);
+  const [bookUpadateLoadin, setBookUpadateLoadin] = useState(false);
   const [manageBooksModal, setManageBooksModal] = useState(false);
-  console.log(manageBooksModal);
+  // console.log(manageBooksModal);
 
   // get api 
   useEffect(() => {
     fetch("https://neighbour-home--server.herokuapp.com/book")
       .then((res) => res.json())
-      .then((data) => setManageBooks(data));
+      .then((data) => {
+        setManageBooks(data)
+        setManageBooksLoading(false)
+      });
   }, [manageBooks]);
   // imgStorage api
   const imgStorage_key = `7a0f43e157252e0ca3031dea1d8dcccd`
 
 
 
+  if (manageBooksLoading || bookUpadateLoadin ) return <Loading />
   return (
     <div className="sm:px-10 px-2 pb-5">
       {/* book functionality manage card */}
@@ -83,12 +90,11 @@ const ManageBooks = () => {
             // handleUpdateBook
             const handleUpdateBook = async e => {
               e.preventDefault()
-
-              const picture = e.target.bookPic.files[0];
+              setBookUpadateLoadin(true)
+              const imgFile = e.target.bookPic.files[0];
               // console.log(e.target.bookPic.files[0]);
-
               const formData = new FormData();
-              formData.append('image', picture);
+              formData.append('image', imgFile);
               const url = `https://api.imgbb.com/1/upload?key=${imgStorage_key}`;
               fetch(url, {
                 method: 'POST',
@@ -96,10 +102,10 @@ const ManageBooks = () => {
               })
                 .then(res => res.json())
                 .then(result => {
+                  // console.log(result);
                   if (result.success) {
                     const imgUrl = result.data.url;
-                    console.log(imgUrl);
-
+                    // console.log(imgUrl);
                     const bookInfo = {
                       name: e.target.bookName.value,
                       pdf: e.target.pdfLink.value,
@@ -111,9 +117,26 @@ const ManageBooks = () => {
                       .then(data => {
                         toast.success(`${bookInfo.name} successfully updated !`)
                         setManageBooksModal(false)
+                        setBookUpadateLoadin(false)
 
                       })
 
+                  }
+                  if (result.error) {
+                    // console.log(result.error);
+                    const bookInfo = {
+                      name: e.target.bookName.value,
+                      pdf: e.target.pdfLink.value,
+                      description: e.target.description.value,
+                    }
+                    console.log(bookInfo);
+                    axios.put(`https://neighbour-home--server.herokuapp.com/book/${_id}`, bookInfo)
+                      .then(data => {
+                        toast.success(`${bookInfo.name} successfully updated !`)
+                        setManageBooksModal(false)
+                        setBookUpadateLoadin(false)
+
+                      })
                   }
                 })
 

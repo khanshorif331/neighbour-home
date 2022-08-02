@@ -21,13 +21,13 @@ const Register = () => {
     const [token] = useToken(googleUser || emailUser)
     const navigate = useNavigate()
 
-    useEffect( () => {
-        if(token.report === 'inserted') {
+    useEffect(() => {
+        if (token.report === 'inserted') {
             navigate('/user_data')
         } else if (token.report === 'exist') {
-            navigate('/home')
+            navigate('/')
         }
-    }, [token.report, navigate] )
+    }, [token.report, navigate])
 
     if (googleLoading || emailLoading) {
         return <Loading />

@@ -1,20 +1,25 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Loading from '../../Shared/Loading/Loading';
 
 const UserDetails = () => {
      const [user, setUser] = useState([])
+     const [userLoading, setUserLoading] = useState(true)
      const { id } = useParams()
      axios.get(`https://neighbour-home--server.herokuapp.com/user/${id}`)
           .then(data => {
                // console.log(data.data);
                setUser(data.data)
+               setUserLoading(false)
           })
+
+     if (userLoading) return <Loading />
      return (
-          <div 
-          style={{ fontFamily: "'Rajdhani', sans-serif" }}
-           className='pb-10 sm:py-0 sm:mt-[150px] mt-[80px] mb-10 w-10/12 mx-auto'>
-               <div class="bg-white w-11/12 mx-auto  shadow overflow-hidden sm:rounded-lg">
+          <div
+               style={{ fontFamily: "'Rajdhani', sans-serif" }}
+               className='pb-10 sm:py-0 sm:mt-[150px] mt-[80px] mb-10 w-10/12 mx-auto'>
+               <div class="bg-white w-11/12 mx-auto shadow overflow-hidden sm:rounded-lg">
                     <div class="px-4 py-4 sm:px-6">
                          <h3 class="text-2xl leading-6 font-medium text-primary">User Information</h3>
                          <p class="mt-1 text-sm text-gray-600">Use a permanent address where you can receive mail.</p>
