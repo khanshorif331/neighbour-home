@@ -3,6 +3,8 @@ import { DarkModeContext } from '../../App';
 import { useForm } from 'react-hook-form'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import {useNavigate} from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const UserData = () => {
 
@@ -11,6 +13,7 @@ const UserData = () => {
     const [selectOption, setSelectOption] = useState('')
     const imageStorageKey = '7da2b2086b902054d13e6c94a30f0b6a'
     const [user] = useAuthState(auth)
+    const navigate = useNavigate();
 
     const handleChange = e => {
         setSelectOption(e.target.value);
@@ -52,10 +55,14 @@ const UserData = () => {
                 .then(updatedData => {
                     console.log(updatedData);
                     if(updatedData.message === 'User data was updated successfully') {
-                        console.log("Thanks For Your Information");
+                        // console.log("Thanks For Your Information");
+                        toast.success("Thanks For Your Information");
+                        navigate("/");
+
                     }
                     else {
                         console.error("Failed To Submit");
+
                     }
                 })
             }
