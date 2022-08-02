@@ -35,7 +35,8 @@ const ManageEngineers = () => {
         </thead>
         <tbody>
           {manageEngrs.map((engineer) => {
-            const { name, picture, role, surname, _id } = engineer;
+            const { name, picture, role, surname, _id, bio } = engineer;
+            console.log(engineer);
             const handleDeleteEng = (id) => {
               swal({
                 title: "Are you sure?",
@@ -90,89 +91,115 @@ const ManageEngineers = () => {
                 <td>{surname}</td>
                 <td>{role}</td>
                 <th className="text-center">
-                  {/* button to update the engineer */}
+                  {/*------------- button to update the engineer ---------------*/}
                   <label
-                    for="my-modal-3"
+                    for={_id}
                     class=" btn modal-button btn-outline btn-xs btn-success h-5 sm:h-6  sm:px-3 uppercase  rounded-full text-white duration-1000"
                   >
                     edit
                   </label>
 
-                  {/* modal */}
-                  <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+                  {/* -------------modal open from here------------------------- */}
+                  <input type="checkbox" id={_id} class="modal-toggle" />
                   <div class="modal">
-                    <div class="modal-box relative">
+                    <div class="modal-box block mt-40 mb-10 h-[400px] border rounded-lg">
                       <label
-                        for="my-modal-3"
+                        for={_id}
                         class="btn btn-sm btn-circle absolute right-2 top-2"
                       >
                         ✕
                       </label>
+                      <h3 className="text-xl mb-2">Updating data for {_id}</h3>
                       <form
-                        className=" text-center"
                         onSubmit={handleSubmit(onSubmit)}
+                        className="flex flex-col w-11/12 sm:w-7/12 mx-auto font-medium"
                       >
+                        <label className="text-left">Name:</label>
                         <input
-                          className="p-2"
-                          placeholder="Name"
+                          className="bg-white border outline-emerald-600 p-2 rounded"
+                          placeholder="Jhon Doe"
+                          defaultValue={name}
                           {...register("name", {
-                            required: true,
-                            maxLength: 8,
+                            required: {
+                              value: true,
+                              message: "name is Required",
+                            },
                           })}
-                        />{" "}
-                        <label>
-                          {errors.name?.name === "required" && (
-                            <p className="text-red-600 text-sm font-semibold">
-                              {errors.name?.message}
-                            </p>
-                          )}
-                          {errors.name?.name === "maxLength" && (
-                            <p className="text-red-600 text-sm font-semibold">
-                              {errors.name?.message}
-                            </p>
+                        />
+                        <label className="label">
+                          {errors.name?.type === "required" && (
+                            <span className="label-text-alt text-red-500">
+                              {errors.name.message}
+                            </span>
                           )}
                         </label>
-                        <br />
+                        <label className="text-left">Profession:</label>
                         <input
-                          className="p-2 "
-                          placeholder="Get Star"
-                          {...register("star", {
-                            required: true,
-                            maxLength: 5,
-                          })}
-                        />{" "}
-                        <label>
-                          {errors.star?.star === "required" && (
-                            <p className="text-red-600 text-sm font-semibold">
-                              {errors.star?.message}
-                            </p>
-                          )}
-                          {errors.star?.star === "maxLength" && (
-                            <p className="text-red-600 text-sm font-semibold">
-                              {errors.star?.message}
-                            </p>
-                          )}
-                        </label>
-                        <br />
-                        <input
-                          className="p-2"
-                          placeholder="Review"
-                          {...register("review")}
-                        />{" "}
-                        <label>
-                          {errors.review?.review === "required" && (
-                            <p className="text-red-600 text-sm font-semibold">
-                              {errors.review?.message}
-                            </p>
+                          className="border outline-emerald-600 p-2 rounded"
+                          width="20px"
+                          placeholder="Electrical Engineer"
+                          defaultValue={surname}
+                          /* {...register("profession", {
+                            required: {
+                              value: true,
+                              message: "profession is Required",
+                            },
+                          })} */
+                        />
+                        <label className="label">
+                          {errors.profession?.type === "required" && (
+                            <span className="label-text-alt text-red-500">
+                              {errors.profession.message}
+                            </span>
                           )}
                         </label>
-                        <br />
-                        
-                        <br />
+                        <label className="text-left">Role:</label>
                         <input
-                          className="btn btn-primary  mt-5"
-                          type="submit"
-                          value="Add Review"
+                          className="border outline-emerald-600 p-2 rounded"
+                          width="20px"
+                          placeholder="Engineer"
+                          defaultValue={role}
+                          /* {...register("role", {
+                            required: {
+                              value: true,
+                              message: "role is Required",
+                            },
+                          })} */
+                        />
+                        <label className="label">
+                          {errors.role?.type === "required" && (
+                            <span className="label-text-alt text-red-500">
+                              {errors.role.message}
+                            </span>
+                          )}
+                        </label>
+                        <label className="text-left">Bio:</label>
+                        <textarea
+                          className=" h-32 border outline-emerald-600 p-2 rounded"
+                          placeholder="Bio Details"
+                          defaultValue={bio}
+                          /* {...register("Bio", {
+                            required: {
+                              value: true,
+                              message: "Bio is Required",
+                            },
+                          })} */
+                        />
+                        <label className="label">
+                          {errors.Bio?.type === "required" && (
+                            <span className="label-text-alt text-red-500">
+                              {errors.Bio.message}
+                            </span>
+                          )}
+                        </label>
+
+                        <input
+                          style={{
+                            fontFamily: "Open Sans, sans-serif",
+                          }}
+                          className="hover:bg-white transition w-40 mx-auto text-center bg-primary  hover:text-primary rounded  text-white border-2 py-2 cursor-pointer font-thin"
+                          type={"submit"}
+                          value={"Update Changes"}
                         />
                       </form>
                     </div>
