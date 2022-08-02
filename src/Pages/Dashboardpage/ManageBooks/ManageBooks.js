@@ -8,7 +8,8 @@ import totalSvg from '../../../Assest/virustotal-svgrepo-com.svg'
 const ManageBooks = () => {
   const [manageBooks, setManageBooks] = useState([]);
   const [manageBooksModal, setManageBooksModal] = useState(false);
-  console.log(manageBooksModal);
+  const [manageAddModal, setManageAddModal] = useState(false);
+  // console.log(manageBooksModal);
 
   // get api 
   useEffect(() => {
@@ -18,7 +19,44 @@ const ManageBooks = () => {
   }, [manageBooks]);
   // imgStorage api
   const imgStorage_key = `7a0f43e157252e0ca3031dea1d8dcccd`
+  // add a new book
+  const handelAddNewBook = async e => {
+    e.preventDefault()
 
+    const picture = e.target.bookPic.files[0];
+    // console.log(e.target.bookPic.files[0]);
+
+    const formData = new FormData();
+    formData.append('image', picture);
+    const url = `https://api.imgbb.com/1/upload?key=${imgStorage_key}`;
+    fetch(url, {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => res.json())
+      .then(result => {
+        if (result.success) {
+          const imgUrl = result.data.url;
+          // console.log(imgUrl);
+
+          const bookInfo = {
+            name: e.target.bookName.value,
+            pdf: e.target.pdfLink.value,
+            description: e.target.description.value,
+            picture: imgUrl
+          }
+          // console.log(bookInfo);
+          axios.post(`https://neighbour-home--server.herokuapp.com/book/`, bookInfo)
+            .then(data => {
+              toast.success(`successfully updated !`)
+              setManageAddModal(false)
+
+            })
+
+        }
+      })
+
+  }
 
 
   return (
@@ -61,8 +99,71 @@ const ManageBooks = () => {
       {/* table section where manage book by admin */}
       <div className="flex justify-between">
         <h5 className="text-lg font-bold  mb-2 text-primary">Manage Books</h5>
-        <h5 className="btn btn-sm btn-outline btn-accent font-bold mb-2 text-lg text-primary duration-1000">Add New Books</h5>
+
+        {/* <!-- The button to open modal --> */}
+        <label onClick={() => setManageAddModal(true)} for="AddBook" class="btn btn-sm btn-outline btn-accent font-bold mb-2 text-lg text-center text-primary duration-1000">ADD NEW BOOK</label>
+
+        {
+          manageAddModal &&
+          <>
+            <input type="checkbox" id="AddBook" class="modal-toggle" />
+            <div class="modal">
+              <div class="modal-box mx-auto mt-40 flex justify-center">
+                {/* updated form */}
+                <form className="" onSubmit={handelAddNewBook}>
+                  <label for="AddBook" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                  <h3 class="text-lg font-bold text-teal-900">Add a new book !</h3>
+
+                  {/* input */}
+                  <label className=" block text-start lg:pl-2 text-md text-gray-400 font-bold mt-2" htmlFor="bookName">Book Name</label>
+
+                  <input
+                    className="w-full lg:w-3/4 font-serif font-bold px-4 py-2 border-2 border-teal-700 outline-teal-900 rounded-lg focus:bg-slate-200"
+                    type="text"
+                    name="bookName"
+                    id="bookName"
+                    />
+
+                  <label className=" block text-start lg:pl-2 text-md text-gray-400 font-bold my-0" htmlFor="pdfLink">PDF Link </label>
+                  <input
+                    className="w-full lg:w-3/4 font-serif font-bold px-4 py-2 border-2 border-teal-700 outline-teal-900 rounded-lg focus:bg-slate-200"
+                    type="text"
+                    name="pdfLink"
+                    id="pdfLink"
+                    />
+                    {/* textarea  */}
+                  <textarea
+                    name="description"
+                    id="description"
+                    className="w-full lg:w-3/4 font-serif font-bold text-justify px-4 py-2 mt-2 border-2 border-teal-700 outline-teal-900 rounded-lg overflow-scroll focus:bg-slate-200" rows="5">
+
+                  </textarea>
+
+                  {/* take picture and submit*/}
+                  <div className="flex justify-center ">
+                    <input
+                      className="w-2/4 font-serif font-bold pl-2"
+                      type="file"
+                      name="bookPic"
+                      id="bookPic" />
+
+                    {/* updated button here */}
+                    <button
+                      type="submit"
+                      className="btn btn-xs bg-teal-800 w-1/4 h-5 sm:h-6 ml-2 mr-2 sm:px-3 uppercase rounded-lg text-white font-bold duration-1000">
+                      Add New Books
+                    </button>
+
+                  </div>
+                </form>
+              </div>
+            </div>
+          </>
+        }
+
+        {/* <h5 className="btn btn-sm btn-outline btn-accent font-bold mb-2 text-lg text-primary duration-1000">Add New Books</h5> */}
       </div>
+
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full  text-left ">
           <thead className="text-sm font-bold uppercase  bg-gray-200 text-gray-600">
@@ -98,7 +199,7 @@ const ManageBooks = () => {
                 .then(result => {
                   if (result.success) {
                     const imgUrl = result.data.url;
-                    console.log(imgUrl);
+                    // console.log(imgUrl);
 
                     const bookInfo = {
                       name: e.target.bookName.value,
@@ -135,7 +236,7 @@ const ManageBooks = () => {
                       <>
                         <input type="checkbox" id={_id} class="modal-toggle" />
                         <div class="modal">
-                          <div class="modal-box relative">
+                          <div class="modal-box  mt-40 block">
                             {/* updated form */}
                             <form onSubmit={handleUpdateBook}>
                               <label for={_id} class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
