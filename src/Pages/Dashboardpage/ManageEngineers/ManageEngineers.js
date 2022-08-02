@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import swal from "sweetalert";
+import { useForm } from "react-hook-form";
 
 const ManageEngineers = () => {
   const [manageEngrs, setManageEngrs] = useState([]);
@@ -8,6 +9,18 @@ const ManageEngineers = () => {
       .then((res) => res.json())
       .then((data) => setManageEngrs(data));
   }, []);
+
+  // handle update engineer
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data, "submitted");
+  };
+  // console.log(errors);
+
   return (
     <div class="overflow-x-auto w-full">
       <table class="table w-full">
@@ -55,6 +68,7 @@ const ManageEngineers = () => {
                 } */
               });
             };
+
             return (
               <tr>
                 <td>
@@ -75,21 +89,102 @@ const ManageEngineers = () => {
                 </td>
                 <td>{surname}</td>
                 <td>{role}</td>
-                {/* button to update the engineer */}
                 <th className="text-center">
-                  <button class="h-5 sm:h-6  sm:px-3 uppercase bg-green-500 border-none  hover:bg-green-600 rounded-full text-white font-normal">
-                    edit
-                  </button>
                   {/* button to update the engineer */}
+                  <label
+                    for="my-modal-3"
+                    class=" btn modal-button btn-outline btn-xs btn-success h-5 sm:h-6  sm:px-3 uppercase  rounded-full text-white duration-1000"
+                  >
+                    edit
+                  </label>
 
-              {/* button to delete the engineer */}
+                  {/* modal */}
+                  <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+                  <div class="modal">
+                    <div class="modal-box relative">
+                      <label
+                        for="my-modal-3"
+                        class="btn btn-sm btn-circle absolute right-2 top-2"
+                      >
+                        ✕
+                      </label>
+                      <form
+                        className=" text-center"
+                        onSubmit={handleSubmit(onSubmit)}
+                      >
+                        <input
+                          className="p-2"
+                          placeholder="Name"
+                          {...register("name", {
+                            required: true,
+                            maxLength: 8,
+                          })}
+                        />{" "}
+                        <label>
+                          {errors.name?.name === "required" && (
+                            <p className="text-red-600 text-sm font-semibold">
+                              {errors.name?.message}
+                            </p>
+                          )}
+                          {errors.name?.name === "maxLength" && (
+                            <p className="text-red-600 text-sm font-semibold">
+                              {errors.name?.message}
+                            </p>
+                          )}
+                        </label>
+                        <br />
+                        <input
+                          className="p-2 "
+                          placeholder="Get Star"
+                          {...register("star", {
+                            required: true,
+                            maxLength: 5,
+                          })}
+                        />{" "}
+                        <label>
+                          {errors.star?.star === "required" && (
+                            <p className="text-red-600 text-sm font-semibold">
+                              {errors.star?.message}
+                            </p>
+                          )}
+                          {errors.star?.star === "maxLength" && (
+                            <p className="text-red-600 text-sm font-semibold">
+                              {errors.star?.message}
+                            </p>
+                          )}
+                        </label>
+                        <br />
+                        <input
+                          className="p-2"
+                          placeholder="Review"
+                          {...register("review")}
+                        />{" "}
+                        <label>
+                          {errors.review?.review === "required" && (
+                            <p className="text-red-600 text-sm font-semibold">
+                              {errors.review?.message}
+                            </p>
+                          )}
+                        </label>
+                        <br />
+                        
+                        <br />
+                        <input
+                          className="btn btn-primary  mt-5"
+                          type="submit"
+                          value="Add Review"
+                        />
+                      </form>
+                    </div>
+                  </div>
+
+                  {/* button to delete the engineer */}
                   <button
                     onClick={() => handleDeleteEng(_id)}
-                    class="h-5 sm:h-6 ml-2 sm:px-3 uppercase bg-red-500 border-none  hover:bg-red-600 rounded-full text-white font-normal"
+                    class="btn modal-button btn-outline btn-xs btn-error h-5 sm:h-6  sm:px-3 uppercase  rounded-full text-white duration-1000 border"
                   >
                     Delete
                   </button>
-                  {/* button to delete the engineer */}
                 </th>
               </tr>
             );
