@@ -59,6 +59,7 @@ const FormConstructor = ({ getData, constructor, updateInfo }) => {
 						)}
 					</label>
 				</div>
+				{/* {getData && reset()} */}
 				{/* taking data for */}
 				<div>
 					<label className={`${darkMode && 'text-white'}`} htmlFor=''>
