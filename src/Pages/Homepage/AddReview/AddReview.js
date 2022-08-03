@@ -20,17 +20,15 @@ const AddReview = () => {
   const [darkMode, setDarkMode] = useContext(DarkModeContext);
   const navigate = useNavigate();
 
-  let [user, loading, error] = useAuthState(auth);
+  let [user, loading] = useAuthState(auth);
 
   const onSubmit = (data) => {
     // console.log(data);
     const review = {
       name: data.name,
       reviewTxt: data.Description,
-      star: ratings,
-      picture:
-        user?.photoURL ||
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN-MOxuRwldA5D6vQQM5-Cje2zSAUESGvewA&usqp=CAU",
+      stars: ratings,
+      picture: user?.photoURL || "https://i.ibb.co/K035fHn/149071.png",
     };
 
     console.log(review);
@@ -67,13 +65,16 @@ const AddReview = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col w-11/12 sm:w-7/12 mx-auto"
       >
-        <input
-          className="mb-3 text-center outline-none bg-white"
-          placeholder="Your Name Here"
-          // disabled
-          {...register("name")}
-          value={user?.displayName}
-        />
+        <div>
+          <span className="font-bold">Name:</span>
+          <input
+            className="mb-3 text-2xl text-gray-500 font-bold text-center outline-none w-24 bg-white"
+            placeholder="Your Name Here"
+            readOnly
+            {...register("name")}
+            defaultValue={user?.displayName}
+          />
+        </div>
         <label className="label">
           {errors.name?.type === "required" && (
             <span className="label-text-alt text-red-500">
@@ -99,14 +100,16 @@ const AddReview = () => {
               })}
             </div>
           }
-          <input
+          {/* <input
             className="ml-5 w-5 text-xl font-bold outline-none bg-white"
             width="20px"
             placeholder="Rating"
-            value={ratings}
+            // defaultValue={0}
+            // value={ratings}
+            onChange={(e) => setRating(e.target.value)}
             // disabled
             // {...register("rating")}
-          />
+          /> */}
         </div>
         {/* <label className="label">
           {errors.rating?.type === "required" && (

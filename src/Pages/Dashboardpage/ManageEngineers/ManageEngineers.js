@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import swal from "sweetalert";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const ManageEngineers = () => {
   const [manageEngrs, setManageEngrs] = useState([]);
@@ -10,16 +11,11 @@ const ManageEngineers = () => {
       .then((data) => setManageEngrs(data));
   }, []);
 
-  // handle update engineer
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data, "submitted");
-  };
-  // console.log(errors);
 
   return (
     <div class="overflow-x-auto w-full">
@@ -36,7 +32,6 @@ const ManageEngineers = () => {
         <tbody>
           {manageEngrs.map((engineer) => {
             const { name, picture, role, surname, _id, bio } = engineer;
-            console.log(engineer);
             const handleDeleteEng = (id) => {
               swal({
                 title: "Are you sure?",
@@ -69,6 +64,26 @@ const ManageEngineers = () => {
                 } */
               });
             };
+
+            /*   ---------- handle update engineer-------------------- */
+
+            const onSubmit = (data) => {
+              console.log(data, "submitted");
+              const url = `https://neighbour-home--server.herokuapp.com/engineer/${_id}`;
+              fetch(url, {
+                method: "PUT",
+                headers: {
+                  "content-type": "application/json",
+                },
+                body: JSON.stringify(data),
+              })
+                .then((res) => res.json())
+                .then((result) => {
+                  console.log(result);
+                  toast("Engineer Edited successfully");
+                });
+            };
+            // console.log(errors);
 
             return (
               <tr>
@@ -139,12 +154,12 @@ const ManageEngineers = () => {
                           width="20px"
                           placeholder="Electrical Engineer"
                           defaultValue={surname}
-                          /* {...register("profession", {
+                          {...register("profession", {
                             required: {
                               value: true,
                               message: "profession is Required",
                             },
-                          })} */
+                          })}
                         />
                         <label className="label">
                           {errors.profession?.type === "required" && (
@@ -157,14 +172,14 @@ const ManageEngineers = () => {
                         <input
                           className="border outline-emerald-600 p-2 rounded"
                           width="20px"
-                          placeholder="Engineer"
-                          defaultValue={role}
-                          /* {...register("role", {
+                          placeholder="Electrical Engineer"
+                          defaultValue={surname}
+                          {...register("role", {
                             required: {
                               value: true,
                               message: "role is Required",
                             },
-                          })} */
+                          })}
                         />
                         <label className="label">
                           {errors.role?.type === "required" && (
