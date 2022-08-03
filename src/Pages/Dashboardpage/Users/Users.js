@@ -104,20 +104,6 @@ const Users = () => {
                                     }
                                 })
 
-
-                                //  axiosPrivate.put(`https://shielded-waters-86658.herokuapp.com/user/deleteAdmin/${user?.email}`)
-                                //      .then(data => {
-                                //          console.log(data.data);
-                                //          if (data?.data.acknowledged) {
-                                //              toast.success(`${user.email} has been Successfully Delete from Admin!`)
-                                //              refetch()
-                                //          }
-                                //      }).catch(error => {
-                                //          console.log(error.response);
-                                //          if (error.response.status === 403) {
-                                //              toast.error("You are Not Admin")
-                                //          }
-                                //      })
                             }
 
                             return (
@@ -140,21 +126,21 @@ const Users = () => {
                                     <td class='py-2 text-[13px] sm:py-4 text-center'>
                                         {user?.role === 'admin' ?
 
-                                            <button onClick={deleteAdmin} class='h-5 sm:h-6  pt-0.5  sm:px-3 uppercase bg-red-500 border-none  hover:bg-red-800 rounded-full text-white'>
+                                            <button onClick={deleteAdmin} class='btn btn-xs btn-warning'>
                                                 Delete Admin
                                             </button>
                                             :
 
                                             <button
                                                 onClick={makeAdmin}
-                                                class='h-5 sm:h-6 pt-0.5 sm:px-3 uppercase bg-teal-400 border-none hover:bg-teal-600 rounded-full text-white'
+                                                class='btn btn-xs btn-success mb-1'
                                             >
                                                 Make Admin
                                             </button>
                                         }
                                     </td>
                                     <td class='py-2 text-[13px] sm:py-4 text-center'>
-                                        <Link className='hover:border-b border-teal-900 duration-200' to={`/user/${user._id}`} >Details</Link>
+                                        <Link className='btn btn-xs btn-ghost duration-200' to={`/user/${user._id}`} >Details</Link>
                                         
                                     </td>
                                 </tr>
