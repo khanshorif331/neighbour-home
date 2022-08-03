@@ -21,6 +21,8 @@ import ManageEngineers from './Pages/Dashboardpage/ManageEngineers/ManageEnginee
 import Engineers from './Pages/Homepage/Engineers/Engineers'
 import { Toaster } from 'react-hot-toast'
 import UserDetails from './Pages/UserDetails/UserDetails'
+import EngineersTable from './Pages/ServiceDetails/EngineersTable'
+import EngineerDetails from './Pages/EngineerDetails/EngineerDetails'
 
 export const DarkModeContext = createContext('')
 const queryClient = new QueryClient()
@@ -60,6 +62,8 @@ function App() {
 							path='/details/:serviceId'
 							element={<ServiceDetails />}
 						/>
+						<Route path='/engineers' element={<EngineersTable></EngineersTable>}></Route>
+						<Route path='/engineers/engineer/:engineerId' element={<EngineerDetails />}></Route>
 						<Route path='/guides' element={<Guides />} />
 						<Route path='/user_data' element={<UserData />} />
 						<Route path='/addReview' element={<AddReview />} />
