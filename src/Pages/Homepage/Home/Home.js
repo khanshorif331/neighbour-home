@@ -11,6 +11,7 @@ import Reviews from "../Reviews/Reviews";
 import AboutUs from "../AboutUs/AboutUs";
 import Statistics from "../Statistics/Statistics";
 import { DarkModeContext } from "../../../App";
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 const Home = () => {
 
@@ -19,14 +20,18 @@ const Home = () => {
       <Banner />
       <Guide />
       <Cards />
-      <Statistics/>
+      <Statistics />
       <Engineers />
       <Notice />
       <Testimonials />
-      <Reviews/>
+      <Reviews />
       <AboutUs></AboutUs>
       <Contact />
       <NewsLetter />
+      <MessengerCustomerChat
+        pageId="106349278843956"
+        appId="795027431626775"
+      />
     </div>
   );
 };
