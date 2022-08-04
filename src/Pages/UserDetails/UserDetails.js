@@ -22,7 +22,7 @@ const UserDetails = () => {
           <div
                style={{ fontFamily: "'Rajdhani', sans-serif" }}
                className='pb-10 sm:py-0 sm:mt-[129px] h-[80vh] flex items-center mt-[80px] mb-10 w-10/12 mx-auto'>
-               <div class={`${darkMode? "bg-gray-600": "bg-white"}   w-11/12 mx-auto shadow overflow-hidden sm:rounded-lg`}>
+               <div class={`${darkMode? "bg-gray-700": "bg-white"}   w-11/12 mx-auto shadow overflow-hidden sm:rounded-lg`}>
                     <div class="px-4 py-4 sm:px-6">
                          <h3 class={`${darkMode? "text-teal-400": "text-primary"}  text-2xl leading-6 font-medium `}>User Information</h3>
                          <p class={`${darkMode? "text-gray-100": "text-gray-600"}  mt-1 text-sm `}>Use a permanent address where you can receive mail.</p>
@@ -33,7 +33,7 @@ const UserDetails = () => {
                                    <dt class={`text-sm font-medium ${darkMode? "text-gray-200": "text-gray-500"} `}>Full name</dt>
                                    <dd class={`${darkMode? "text-white": "text-gray-900"}  mt-1 text-sm  sm:mt-0 sm:col-span-2`}>{user.name}</dd>
                               </div>
-                              <div class={`${darkMode? "bg-gray-400": "bg-white"}   px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}>
+                              <div class={`${darkMode? "bg-gray-600": "bg-white"}   px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}>
                                    <dt class={`text-sm font-medium ${darkMode? "text-gray-200": "text-gray-500"} `}>Email address</dt>
                                    <dd class={`${darkMode? "text-white": "text-gray-900"}  mt-1 text-sm  sm:mt-0 sm:col-span-2`}>{user.email}</dd>
                               </div>
@@ -41,7 +41,7 @@ const UserDetails = () => {
                                    <dt class={`text-sm font-medium ${darkMode? "text-gray-200": "text-gray-500"} `}>Number</dt>
                                    <dd class={`${darkMode? "text-white": "text-gray-900"}  mt-1 text-sm  sm:mt-0 sm:col-span-2`}>{user.phone}</dd>
                               </div>
-                              <div class={`${darkMode? "bg-gray-400": "bg-white"}   px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}>
+                              <div class={`${darkMode? "bg-gray-600": "bg-white"}   px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}>
                                    <dt class={`text-sm font-medium ${darkMode? "text-gray-200": "text-gray-500"} `}>Address</dt>
                                    <dd class={`${darkMode? "text-white": "text-gray-900"}  mt-1 text-sm  sm:mt-0 sm:col-span-2`}>{user.address}, {user.country}</dd>
                               </div>
@@ -49,7 +49,7 @@ const UserDetails = () => {
                                    <dt class={`text-sm font-medium ${darkMode? "text-gray-200": "text-gray-500"} `}>Zip</dt>
                                    <dd class={`${darkMode? "text-white": "text-gray-900"}  mt-1 text-sm  sm:mt-0 sm:col-span-2`}>{user.zip}</dd>
                               </div>
-                              <div class={`${darkMode? "bg-gray-400": "bg-white"}   px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}>
+                              <div class={`${darkMode? "bg-gray-600": "bg-white"}   px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}>
                                    <dt class={`text-sm font-medium ${darkMode? "text-gray-200": "text-gray-500"} `}>Role</dt>
                                    <dd class={`${darkMode? "text-white": "text-gray-900"}  mt-1 text-sm  sm:mt-0 sm:col-span-2`}>{user.role}</dd>
                               </div>
