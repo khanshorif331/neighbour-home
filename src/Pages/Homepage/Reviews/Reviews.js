@@ -41,11 +41,11 @@ const Reviews = () => {
           }}
           breakpoints={{
             640: {
-              slidesPerView: 2,
+              slidesPerView: 1,
               spaceBetween: 20,
             },
             768: {
-              slidesPerView: 3,
+              slidesPerView: 2,
               spaceBetween: 40,
             },
             1024: {
@@ -59,11 +59,11 @@ const Reviews = () => {
           {reviews.map((review) => {
             const { picture, name, date, stars, reviewTxt, _id } = review;
             return (
-              <SwiperSlide className="m-10" key={_id}>
+              <SwiperSlide className="sm:m-10" key={_id}>
                 <div
                   className={`${
                     darkMode ? "text-white" : "text-gray-900"
-                  } container flex flex-col max-w-lg p-6 mx-auto divide-y rounded-md shadow-xl border `}
+                  } sm:container flex flex-col max-w-lg p-6 mx-auto divide-y rounded-md shadow-xl border `}
                 >
                   <div className="flex justify-between p-4">
                     <div className="flex items-center space-x-4">
