@@ -24,8 +24,8 @@ import UserDetails from './Pages/UserDetails/UserDetails'
 import EngineersTable from './Pages/ServiceDetails/EngineersTable'
 import EngineerDetails from './Pages/EngineerDetails/EngineerDetails'
 
-export const DarkModeContext = createContext("");
-const queryClient = new QueryClient();
+export const DarkModeContext = createContext('')
+const queryClient = new QueryClient()
 
 function App() {
 	const [darkMode, setDarkMode] = useState(false)
@@ -40,8 +40,14 @@ function App() {
 						<Route path='/dashboard' element={<Dashboard />}>
 							<Route index element={<Users />}></Route>
 							<Route path='addReview' element={<AddReview />}></Route>
-							<Route path='manageBooks' element={<ManageBooks />}></Route>
-							<Route path='manageEngineers' element={<ManageEngineers />}></Route>
+							<Route
+								path='manageBooks'
+								element={<ManageBooks />}
+							></Route>
+							<Route
+								path='manageEngineers'
+								element={<ManageEngineers />}
+							></Route>
 							<Route
 								path='constructors'
 								element={<Constructors />}
@@ -62,8 +68,14 @@ function App() {
 							path='/details/:serviceId'
 							element={<ServiceDetails />}
 						/>
-						<Route path='/engineers' element={<EngineersTable></EngineersTable>}></Route>
-						<Route path='/engineers/engineer/:engineerId' element={<EngineerDetails />}></Route>
+						<Route
+							path='/engineers'
+							element={<EngineersTable></EngineersTable>}
+						></Route>
+						<Route
+							path='/engineers/engineer/:engineerId'
+							element={<EngineerDetails />}
+						></Route>
 						<Route path='/guides' element={<Guides />} />
 						<Route path='/user_data' element={<UserData />} />
 						<Route path='/addReview' element={<AddReview />} />
@@ -77,4 +89,4 @@ function App() {
 	)
 }
 
-export default App;
+export default App
