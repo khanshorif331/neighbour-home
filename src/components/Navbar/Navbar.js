@@ -120,7 +120,7 @@ const Navbar = () => {
                 {/* phone navbar */}
                 <div className="flex flex-wrap items-center justify-between py-6 sm:px-2 px-5">
 
-                    <label for="dashboard-drower" tabindex="1" class={`${location === "/dashboard" ? "block" : "hidden"} md:hidden text-white cursor-pointer`}>
+                    <label for="dashboard-drower" tabindex="1" class={`${location.includes("dashboard") ? "block" : "hidden"} md:hidden text-white cursor-pointer`}>
                         <MdDashboardCustomize className='h-5 w-5'></MdDashboardCustomize>
                     </label>
 

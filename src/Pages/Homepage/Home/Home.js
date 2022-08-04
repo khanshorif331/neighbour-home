@@ -10,7 +10,6 @@ import NewsLetter from "../NewsLetter/NewsLetter";
 import Reviews from "../Reviews/Reviews";
 import AboutUs from "../AboutUs/AboutUs";
 import Statistics from "../Statistics/Statistics";
-import { DarkModeContext } from "../../../App";
 import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 const Home = () => {
