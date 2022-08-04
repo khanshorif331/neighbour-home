@@ -1,13 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
-import React from 'react'
+import React, { useContext } from 'react'
 import Loading from '../../../Shared/Loading/Loading'
 import axios from 'axios';
 import toast from 'react-hot-toast'
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import { DarkModeContext } from '../../../App';
 
 const Users = () => {
     // const [constructors, setConstructors] = useState([])
+    const [darkMode] = useContext(DarkModeContext)
     const { isLoading, error, data, refetch } = useQuery(['allUser'], () =>
         fetch('https://neighbour-home--server.herokuapp.com/user').then(
             res => res.json()
@@ -25,8 +27,8 @@ const Users = () => {
                 Make Admin
             </h5>
             <div class='relative overflow-x-auto shadow-md sm:rounded-lg'>
-                <table class='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
-                    <thead class='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+                <table class={`${darkMode? "text-gray-400": "text-gray-500"} w-full text-sm text-left  `}>
+                    <thead class={`${darkMode? "bg-gray-700 text-gray-400": "text-gray-700  bg-gray-50 "} text-xs uppercase`}>
                         <tr>
                             <th scope='col' class='py-2  sm:py-3'></th>
                             <th scope='col' class='py-2 sm:py-3'>
@@ -109,11 +111,11 @@ const Users = () => {
                             return (
                                 <tr
                                     key={user._id}
-                                    class='border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700'
+                                    class={`${darkMode? " bg-gray-800 border-gray-700 odd:bg-gray-800 even:bg-gray-700": "border-b odd:bg-white even:bg-gray-50"}   `}
                                 >
                                     <th
                                         scope='row'
-                                        class='px-3 sm:pr-0 sm:pl-8 py-2  sm:py-4 font-medium text-gray-900 dark:text-white whitespace-nowraptext-[13px]'
+                                        class={`${darkMode? "text-white": "text-gray-900"}  px-3 sm:pr-0 sm:pl-8 py-2  sm:py-4 font-medium  whitespace-nowraptext-[13px]`}
                                     >
                                         {i + 1}
                                     </th>

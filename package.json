@@ -19,6 +19,7 @@
     "react-hook-form": "^7.34.0",
     "react-hot-toast": "^2.3.0",
     "react-icons": "^4.4.0",
+    "react-messenger-customer-chat": "^0.8.0",
     "react-query": "^4.0.0",
     "react-redux": "^8.0.2",
     "react-reveal": "^1.2.2",
