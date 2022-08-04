@@ -42,15 +42,22 @@ function App() {
 	return (
 		<>
 			{loading ? (
-				<div className='flex justify-center items-center w-full h-[100vh] bg-black flex-col'>
-					<h1 className='text-red-500'>NeighBour Home</h1>
+				<div className='flex justify-center items-center w-full h-[100vh] bg-black flex-col mb-4'>
+					<p
+						// style={{ color: 'red' }}
+						className=' font-bold uppercase text-2xl pb-4 text-teal-500 inline-block'
+					>
+						NB{' '}
+						<span className='bg-teal-500 text-white p-2 rounded-sm'>
+							Home
+						</span>
+					</p>
 					<BarLoader
 						color={'#36D7B7'}
 						loading={loading}
-						// cssOverride={override}
 						size={450}
-						width={150}
-						speedMultiplier={0.7}
+						width={130}
+						speedMultiplier={0.6}
 						height={4}
 					/>
 				</div>
