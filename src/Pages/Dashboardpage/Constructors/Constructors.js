@@ -125,10 +125,20 @@ const Constructors = () => {
 			</div>
 
 			<div class='overflow-x-auto'>
-				<table class='table table-zebra w-full'>
-					<thead>
+				<table
+					class={`${
+						darkMode ? 'text-gray-400' : 'text-gray-500 table table-zebra'
+					} w-full`}
+				>
+					<thead
+						class={`${
+							darkMode
+								? 'bg-gray-700 text-gray-400'
+								: 'text-gray-700  bg-gray-50 '
+						} text-xs uppercase`}
+					>
 						<tr>
-							<th>Sl.</th>
+							<th className='py-2'>Sl.</th>
 							<th>Title</th>
 							<th>Type</th>
 							<th>Price</th>
@@ -138,7 +148,9 @@ const Constructors = () => {
 							<th>Action</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody
+						className={`${darkMode ? 'text-gray-400' : 'text-gray-500'}`}
+					>
 						{data.map((constructor, index) => (
 							<Constructor
 								key={constructor._id}
@@ -150,15 +162,6 @@ const Constructors = () => {
 					</tbody>
 				</table>
 			</div>
-			{/* <div>
-                                <label className={`${darkMode && 'text-white'}`} htmlFor="">What Are Your</label>
-                                <select onChange={handleChange} defaultValue={'DEFAULT'} className='select mt-1 px-3 py-2 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 w-full rounded-md sm:text-sm focus:ring-1'>
-                                    <option disabled value='DEFAULT'>Pick your role</option>
-                                    <option value={'Engineer'}>Engineer</option>
-                                    <option value={'Worker'}>Worker</option>
-                                    <option value={'Buyer'}>Buyer</option>
-                                </select>
-                            </div> */}
 		</div>
 	)
 }

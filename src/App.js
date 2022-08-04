@@ -5,7 +5,7 @@ import Home from './Pages/Homepage/Home/Home'
 import Footer from './components/Footer/Footer'
 import Login from './Authentication/Login/Login'
 import Register from './Authentication/Register/Register'
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import Guides from './Pages/Homepage/Guides/Guides'
 import AddReview from './Pages/Homepage/AddReview/AddReview'
 import NotFound from './components/NotFound/NotFound'
@@ -23,58 +23,112 @@ import { Toaster } from 'react-hot-toast'
 import UserDetails from './Pages/UserDetails/UserDetails'
 import EngineersTable from './Pages/ServiceDetails/EngineersTable'
 import EngineerDetails from './Pages/EngineerDetails/EngineerDetails'
+import { BarLoader } from 'react-spinners'
 
-export const DarkModeContext = createContext("");
-const queryClient = new QueryClient();
+export const DarkModeContext = createContext('')
+const queryClient = new QueryClient()
 
 function App() {
 	const [darkMode, setDarkMode] = useState(false)
+	const [loading, setLoading] = useState(false)
+
+	useEffect(() => {
+		setLoading(true)
+		setTimeout(() => {
+			setLoading(false)
+		}, [5000])
+	}, [])
+
 	return (
-		<QueryClientProvider client={queryClient}>
-			<DarkModeContext.Provider value={[darkMode, setDarkMode]}>
-				<section className={`${darkMode && 'dark-theme'} duration-300`}>
-					<Navbar />
-					<Toaster></Toaster>
-					<Routes>
-						<Route path='/' element={<Home />} />
-						<Route path='/dashboard' element={<Dashboard />}>
-							<Route index element={<Users />}></Route>
-							<Route path='addReview' element={<AddReview />}></Route>
-							<Route path='manageBooks' element={<ManageBooks />}></Route>
-							<Route path='manageEngineers' element={<ManageEngineers />}></Route>
-							<Route
-								path='constructors'
-								element={<Constructors />}
-							></Route>
-							<Route
-								path='manageBooks'
-								element={<ManageBooks />}
-							></Route>
-							<Route
-								path='manageEngineers'
-								element={<ManageEngineers />}
-							></Route>
-						</Route>
-						<Route path='/user/:id' element={<UserDetails />} />
-						<Route path='/login' element={<Login />} />
-						<Route path='/register' element={<Register />} />
-						<Route
-							path='/details/:serviceId'
-							element={<ServiceDetails />}
-						/>
-						<Route path='/engineers' element={<EngineersTable></EngineersTable>}></Route>
-						<Route path='/engineers/engineer/:engineerId' element={<EngineerDetails />}></Route>
-						<Route path='/guides' element={<Guides />} />
-						<Route path='/user_data' element={<UserData />} />
-						<Route path='/addReview' element={<AddReview />} />
-						<Route path='/bookDetail/:_id' element={<BookReview />} />
-						<Route path='*' element={<NotFound />} />
-					</Routes>
-					<Footer />
-				</section>
-			</DarkModeContext.Provider>
-		</QueryClientProvider>
+		<>
+			{loading ? (
+				<div className='flex justify-center items-center w-full h-[100vh] bg-black flex-col mb-4'>
+					<p
+						// style={{ color: 'red' }}
+						className=' font-bold uppercase text-2xl pb-4 text-teal-500 inline-block'
+					>
+						NB{' '}
+						<span className='bg-teal-500 text-white p-2 rounded-sm'>
+							Home
+						</span>
+					</p>
+					<BarLoader
+						color={'#36D7B7'}
+						loading={loading}
+						size={450}
+						width={130}
+						speedMultiplier={0.6}
+						height={4}
+					/>
+				</div>
+			) : (
+				<QueryClientProvider client={queryClient}>
+					<DarkModeContext.Provider value={[darkMode, setDarkMode]}>
+						<section
+							className={`${darkMode && 'dark-theme'} duration-300`}
+						>
+							<Navbar />
+							<Toaster></Toaster>
+							<Routes>
+								<Route path='/' element={<Home />} />
+								<Route path='/dashboard' element={<Dashboard />}>
+									<Route index element={<Users />}></Route>
+									<Route
+										path='addReview'
+										element={<AddReview />}
+									></Route>
+									<Route
+										path='manageBooks'
+										element={<ManageBooks />}
+									></Route>
+									<Route
+										path='manageEngineers'
+										element={<ManageEngineers />}
+									></Route>
+									<Route
+										path='constructors'
+										element={<Constructors />}
+									></Route>
+									<Route
+										path='manageBooks'
+										element={<ManageBooks />}
+									></Route>
+									<Route
+										path='manageEngineers'
+										element={<ManageEngineers />}
+									></Route>
+								</Route>
+								<Route path='/user/:id' element={<UserDetails />} />
+								<Route path='/login' element={<Login />} />
+								<Route path='/register' element={<Register />} />
+								<Route
+									path='/details/:serviceId'
+									element={<ServiceDetails />}
+								/>
+								<Route
+									path='/engineers'
+									element={<EngineersTable></EngineersTable>}
+								></Route>
+								<Route
+									path='/engineers/engineer/:engineerId'
+									element={<EngineerDetails />}
+								></Route>
+								<Route path='/guides' element={<Guides />} />
+								<Route path='/user_data' element={<UserData />} />
+								<Route path='/addReview' element={<AddReview />} />
+								<Route
+									path='/bookDetail/:_id'
+									element={<BookReview />}
+								/>
+								<Route path='*' element={<NotFound />} />
+							</Routes>
+							<Footer />
+						</section>
+					</DarkModeContext.Provider>
+				</QueryClientProvider>
+			)}
+		</>
 	)
 }
 
-export default App;
+export default App
