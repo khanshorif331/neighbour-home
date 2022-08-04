@@ -42,7 +42,7 @@ const Dashboard = () => {
 
 						<li>
 							<Link
-								className='shadow-lg my-1 font-bold text-gray-500'
+								className={` shadow-lg my-1 font-bold ${darkMode? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 ":" text-gray-500"}`}
 								to={'/dashboard'}
 							>
 								<img className='w-4' src={userSvg} alt='book svg' />{' '}
@@ -52,7 +52,7 @@ const Dashboard = () => {
 
 						<li>
 							<Link
-								className='shadow-lg my-1 font-bold text-gray-500'
+								className={` shadow-lg my-1 font-bold ${darkMode? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 ":" text-gray-500"}`}
 								to={'/dashboard/manageBooks'}
 							>
 								<img className='w-4' src={bookSvg} alt='book svg' />{' '}
@@ -61,7 +61,7 @@ const Dashboard = () => {
 						</li>
 						<li>
 							<Link
-								className='shadow-lg my-1 font-bold text-gray-500'
+								className={` shadow-lg my-1 font-bold ${darkMode? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 ":" text-gray-500"}`}
 								to={'/dashboard/addReview'}
 							>
 								<img className='w-4' src={reviewSvg} alt='book svg' />{' '}
@@ -70,7 +70,7 @@ const Dashboard = () => {
 						</li>
 						<li>
 							<Link
-								className='shadow-lg my-1 font-bold text-gray-500'
+								className={` shadow-lg my-1 font-bold ${darkMode? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 ":" text-gray-500"}`}
 								to={'/dashboard/manageEngineers'}
 							>
 								<img className='w-4' src={engineerSvg} alt='book svg' />{' '}
@@ -79,7 +79,7 @@ const Dashboard = () => {
 						</li>
 						<li>
 							<Link
-								className='shadow-lg my-1 font-bold text-gray-500'
+								className={` shadow-lg my-1 font-bold ${darkMode? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 ":" text-gray-500"}`}
 								to={'/dashboard/constructors'}
 							>
 								<img

@@ -23,12 +23,12 @@ const Users = () => {
     // console.log(data);
     return (
         <div className='sm:px-10 px-2 pb-5'>
-            <h5 className='text-lg text-left font-bold  mb-2 text-primary'>
+            <h5 className={`${darkMode ? "text-teal-400" : "text-primary"} text-lg text-left font-bold  mb-2 `}>
                 Make Admin
             </h5>
             <div class='relative overflow-x-auto shadow-md sm:rounded-lg'>
-                <table class={`${darkMode? "text-gray-400": "text-gray-500"} w-full text-sm text-left  `}>
-                    <thead class={`${darkMode? "bg-gray-700 text-gray-400": "text-gray-700  bg-gray-50 "} text-xs uppercase`}>
+                <table class={`${darkMode ? "text-gray-400" : "text-gray-500"} w-full text-sm text-left  `}>
+                    <thead class={`${darkMode ? "bg-gray-700 text-gray-400" : "text-gray-700  bg-gray-50 "} text-xs uppercase`}>
                         <tr>
                             <th scope='col' class='py-2  sm:py-3'></th>
                             <th scope='col' class='py-2 sm:py-3'>
@@ -70,7 +70,7 @@ const Users = () => {
 
                             const deleteAdmin = () => {
                                 const userData = {
-                                    role : ""
+                                    role: ""
 
                                 }
 
@@ -101,7 +101,7 @@ const Users = () => {
                                             })
 
 
-                                        
+
 
                                     }
                                 })
@@ -111,11 +111,11 @@ const Users = () => {
                             return (
                                 <tr
                                     key={user._id}
-                                    class={`${darkMode? " bg-gray-800 border-gray-700 odd:bg-gray-800 even:bg-gray-700": "border-b odd:bg-white even:bg-gray-50"}   `}
+                                    class={`${darkMode ? " bg-gray-800 border-gray-700 odd:bg-gray-800 even:bg-gray-700" : "border-b odd:bg-white even:bg-gray-50"}   `}
                                 >
                                     <th
                                         scope='row'
-                                        class={`${darkMode? "text-white": "text-gray-900"}  px-3 sm:pr-0 sm:pl-8 py-2  sm:py-4 font-medium  whitespace-nowraptext-[13px]`}
+                                        class={`${darkMode ? "text-white" : "text-gray-900"}  px-3 sm:pr-0 sm:pl-8 py-2  sm:py-4 font-medium  whitespace-nowraptext-[13px]`}
                                     >
                                         {i + 1}
                                     </th>
@@ -135,15 +135,14 @@ const Users = () => {
 
                                             <button
                                                 onClick={makeAdmin}
-                                                class='btn btn-xs btn-success mb-1'
-                                            >
+                                                class='btn btn-xs btn-success'>
                                                 Make Admin
                                             </button>
                                         }
                                     </td>
                                     <td class='py-2 text-[13px] sm:py-4 text-center'>
                                         <Link className='btn btn-xs btn-ghost duration-200' to={`/user/${user._id}`} >Details</Link>
-                                        
+
                                     </td>
                                 </tr>
                             )
