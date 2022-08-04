@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
-// import { useQuery } from '@tanstack/react-query'
 import Constructor from './Constructor'
 import { DarkModeContext } from '../../../App'
 import { useForm } from 'react-hook-form'
@@ -62,7 +61,8 @@ const Constructors = () => {
 						.then(res => res.json())
 						.then(data => {
 							if (data.message === 'Constructor created successfully') {
-								reset()
+								// e.target.reset()
+								// reset()
 								Swal.fire({
 									position: 'center',
 									icon: 'success',
@@ -114,7 +114,13 @@ const Constructors = () => {
 						Please provide the following information!
 					</h3>
 					{/* form */}
-					<FormConstructor getData={getData}></FormConstructor>
+					<FormConstructor
+						getData={getData}
+						// reset={reset}
+						// handleSubmit={handleSubmit}
+						// errors={errors}
+						// register={register}
+					></FormConstructor>
 				</div>
 			</div>
 

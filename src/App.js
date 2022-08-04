@@ -24,8 +24,8 @@ import UserDetails from './Pages/UserDetails/UserDetails'
 import EngineersTable from './Pages/ServiceDetails/EngineersTable'
 import EngineerDetails from './Pages/EngineerDetails/EngineerDetails'
 
-export const DarkModeContext = createContext('')
-const queryClient = new QueryClient()
+export const DarkModeContext = createContext("");
+const queryClient = new QueryClient();
 
 function App() {
 	const [darkMode, setDarkMode] = useState(false)
@@ -77,4 +77,4 @@ function App() {
 	)
 }
 
-export default App
+export default App;

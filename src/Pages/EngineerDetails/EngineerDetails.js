@@ -13,7 +13,11 @@ const EngineerDetails = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth);
     const onSubmit = data => {
-        console.log(data);
+        const result = {
+            data: data,
+            engineer: engineer
+        }
+        console.log(result);
         reset();
     }
     return (
@@ -22,18 +26,18 @@ const EngineerDetails = () => {
             <div className="card lg:card-side bg-base-100 shadow-xl">
                 <div className="card-body">
                     <img className='w-72 h-72 hidden  lg:block rounded-xl' src={picture} alt={picture} />
-                    <input type="text" name='uName' disabled value={user?.displayName || ''} className="input input-bordered w-full max-w-xs" />
-                    <input type="email"  value={user.email || ''} className="input input-bordered w-full max-w-xs" {...register("customerEmail")} />
+                    <input type="text" name='eName' disabled value={name || ''} className="input input-bordered w-full max-w-xs" />
+                    <input type="text" disabled value={surname || ''} className="input input-bordered w-full max-w-xs"/>
                     <img className='lg:hidden w-80 h-48 rounded-xl' src={picture} alt={picture} />
                 </div>
                 <div className="mt-8 pr-4">
-                    <h1 className="text-xl font-bold">Engineer ID: {_id}</h1>
-                    <h1 className="text-xl font-bold">Name: {name}</h1>
-                    <p className="w-6/12 my-1">Profession: {surname}</p>
+                    <h1 className="text-sm font-bold">Engineer ID: {_id}</h1>
                     <p className="w-6/12 my-1">Phone: {1<0 ? '**********' : ['*****',num[1]]}</p>
                     <p className="w-6/12 my-1">Email: {1<0 ? '*******@**.com' : 'xyz****@**.com'}</p>
                     <p className="w-6/12 my-1">Location: 'Dhaka mohakali'</p>
                     <p className="w-6/12 my-1">per hours: ${Math.floor(Math.random() * 10) + 20}</p>
+                    <input type="text" name='uName' disabled value={user?.displayName || ''} className="input input-bordered w-full max-w-xs"  {...register("customerEmail")}/>
+                    <input type="email" disabled value={user.email || ''} className="input my-2 input-bordered w-full max-w-xs" {...register("customerEmail")} />
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control w-full max-w-xs">
                             <input
@@ -51,14 +55,11 @@ const EngineerDetails = () => {
                                 {errors.address?.type === 'required' && <span className="label-text-alt text-red-500">{errors.address?.message}</span>}
                             </label>
                         </div>
-                        <input className='opacity-0 absolute' type="text" defaultValue={name} {...register("engineerName")} />
-                        <input className='opacity-0 absolute' type="text" defaultValue={num} {...register("engineerEmail")} />
-                        <input className='opacity-0 absolute' type="text" defaultValue={num} {...register("engineerPhone")} />
                         <div className="form-control w-full max-w-xs">
                             <input
                                 type="number"
                                 placeholder="Phone Number"
-                                className="input input-bordered w-full max-w-xs"
+                                className="input py-1 input-bordered w-full max-w-xs"
                                 {...register("customerPhone", {
                                     required: {
                                         value: true,
@@ -71,7 +72,7 @@ const EngineerDetails = () => {
                             </label>
                         </div>
 
-                        <input type="submit" className="btn btn-primary rounded w-6/12 font-bold uppercase text-white bg-gradient-to-r from-secondary to-primary hover:bg-gradient-to-l from-primary to-secondary" value="connect with me"></input>
+                        <input type="submit" className="btn btn-primary rounded w-6/12 font-bold uppercase text-white bg-gradient-to-r from-secondary to-primary hover:bg-gradient-to-l from-primary to-secondary mb-4" value="connect with me"></input>
                     </form>
                 </div>
             </div>

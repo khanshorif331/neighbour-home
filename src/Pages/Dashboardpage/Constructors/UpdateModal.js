@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Swal from 'sweetalert2'
 import FormConstructor from './FormConstructor'
 
 const UpdateModal = ({ id, constructor, refetch }) => {
-	// const [toggleModal, setToggleModal] = useState(false)
 	const updateInfo = data => {
 		fetch(`https://neighbour-home--server.herokuapp.com/constructor/${id}`, {
 			method: 'PUT',
@@ -22,7 +21,6 @@ const UpdateModal = ({ id, constructor, refetch }) => {
 						showConfirmButton: false,
 						timer: 1500,
 					})
-					// setToggleModal(false)
 					refetch()
 				} else {
 					Swal.fire({
@@ -37,13 +35,7 @@ const UpdateModal = ({ id, constructor, refetch }) => {
 	return (
 		<div>
 			{/* <!-- Modal from daisy ui..this input is for toggling/opening the modal --> */}
-			<input
-				// onClick={() => setToggleModal(true)}
-				type='checkbox'
-				id={id}
-				class='modal-toggle'
-			/>
-			{/* {toggleModal ? ( */}
+			<input type='checkbox' id={id} class='modal-toggle' />
 			<div class='modal'>
 				<div class='modal-box block mt-40 mb-10 h-[400px] border rounded-lg'>
 					<label
@@ -61,9 +53,6 @@ const UpdateModal = ({ id, constructor, refetch }) => {
 					></FormConstructor>
 				</div>
 			</div>
-			{/* ) : ( */}
-			{/* '' */}
-			{/* )} */}
 		</div>
 	)
 }
