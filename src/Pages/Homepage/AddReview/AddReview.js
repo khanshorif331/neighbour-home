@@ -17,7 +17,7 @@ const AddReview = () => {
     handleSubmit,
   } = useForm();
 
-  const [darkMode, setDarkMode] = useContext(DarkModeContext);
+  const [darkMode] = useContext(DarkModeContext);
   const navigate = useNavigate();
 
   let [user, loading] = useAuthState(auth);
@@ -53,7 +53,11 @@ const AddReview = () => {
 
   return (
     <div className="text-center">
-      <h2 className="text-3xl  font-bold inline-block pb-1 px-5">
+      <h2
+        className={`${
+          darkMode ? "text-white" : "text-gray-600"
+        } text-3xl font-bold inline-block pb-1 px-5`}
+      >
         Add A Review
       </h2>
       <div className="flex justify-center mb-8">
@@ -66,9 +70,15 @@ const AddReview = () => {
         className="flex flex-col w-11/12 sm:w-7/12 mx-auto"
       >
         <div>
-          <span className="font-bold">Name:</span>
+          <span
+            className={`${darkMode ? "text-white" : "text-gray-600"} font-bold`}
+          >
+            Name:
+          </span>
           <input
-            className="mb-3 text-2xl text-gray-500 font-bold text-center outline-none w-24 bg-white"
+            className={`${
+              darkMode ? "bg-gray-800" : " bg-white"
+            } mb-3 text-2xl text-gray-500 font-bold text-center outline-none w-24`}
             placeholder="Your Name Here"
             readOnly
             {...register("name")}
