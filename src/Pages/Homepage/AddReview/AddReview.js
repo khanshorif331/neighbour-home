@@ -71,14 +71,16 @@ const AddReview = () => {
       >
         <div>
           <span
-            className={`${darkMode ? "text-white" : "text-gray-600"} font-bold`}
+            className={`${
+              darkMode ? "text-white" : "text-gray-600"
+            } font-bold mx-1`}
           >
             Name:
           </span>
           <input
             className={`${
               darkMode ? "bg-gray-800" : " bg-white"
-            } mb-3 text-2xl text-gray-500 font-bold text-center outline-none w-24`}
+            } mb-3 text-2xl text-black font-bold text-center outline-none w-32`}
             placeholder="Your Name Here"
             readOnly
             {...register("name")}
