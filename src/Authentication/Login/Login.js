@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { BsGoogle, BsFacebook } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init';
@@ -59,7 +58,7 @@ const Login = () => {
 
                 <div className="w-full flex flex-wrap flex-row-reverse">
 
-                    <div className="w-full md:w-1/2 flex flex-col">
+                    <div className="w-full md:w-1/2 flex flex-col border-l-2 border-l-gray-400">
 
                         <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
                             <p className="text-center text-3xl">Login Here!</p>
@@ -112,9 +111,15 @@ const Login = () => {
                                 <div>or</div>
                                 <div className="w-[40%] flex m-auto border-b-2 border-b-gray-500" />
                             </div>
-                            <div className='flex mx-auto space-x-6 pt-2'>
-                                <img onClick={() => signInWithGoogle()} className='w-14 border bg-gray-200 p-2 rounded cursor-pointer' src={google} alt="" />
-                                <BsFacebook className='border bg-gray-200 p-2 rounded cursor-pointer' size={55} color={'blue'} />
+                            <div className='flex flex-col pt-2 space-y-2'>
+                                <div onClick={() => signInWithGoogle()} className="flex justify-center items-center cursor-pointer space-x-3 border py-2">
+                                    <img className='w-7' src={google} alt="" />
+                                    <p className='text-xl font-medium text-black'>Continue With Google</p>
+                                </div>
+                                <div className="flex justify-center items-center cursor-pointer space-x-3 border py-2">
+                                    <img className='w-7' src={facebook} alt="" />
+                                    <p className='text-xl font-medium text-black'>Continue With Facebook</p>
+                                </div>
                             </div>
                             <div className="text-center py-5">
                                 <p>Already have an account? <Link to='/register' className="underline font-semibold">Register here.</Link></p>
