@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { BsGoogle, BsFacebook } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init';
