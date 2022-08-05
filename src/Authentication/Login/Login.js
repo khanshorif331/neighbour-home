@@ -6,6 +6,8 @@ import auth from '../../firebase.init';
 import { useForm } from 'react-hook-form';
 import Loading from '../../Shared/Loading/Loading';
 import useToken from '../../hooks/useToken';
+import google from '../../Assest/google.svg';
+import facebook from '../../Assest/facebook.svg'
 
 const Login = () => {
 
@@ -19,15 +21,15 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [token] = useToken(googleUser || emailUser)
     const navigate = useNavigate()
-    useEffect( () => {
-        if(token.report === 'inserted') {
+    useEffect(() => {
+        if (token.report === 'inserted') {
             navigate('/user_data')
         } else if (token.report === 'exist') {
             navigate('/')
         }
-        
-    }, [token.report, navigate] )
-    
+
+    }, [token.report, navigate])
+
     if (googleLoading || emailLoading) {
         return <Loading />
     }
@@ -36,13 +38,13 @@ const Login = () => {
     //     console.log(googleUser || emailUser);
     // }
     console.log(token);
-    
-    
-    
+
+
+
     if (googleError || emailError) {
         console.error(googleError || emailError);
     }
-    
+
     const handleLogin = data => {
         console.log(data);
         const email = data.email
@@ -111,8 +113,8 @@ const Login = () => {
                                 <div className="w-[40%] flex m-auto border-b-2 border-b-gray-500" />
                             </div>
                             <div className='flex mx-auto space-x-6 pt-2'>
-                                <BsGoogle onClick={() => signInWithGoogle()} className='border bg-gray-200 p-2 rounded cursor-pointer' size={50} color={'green'} />
-                                <BsFacebook className='border bg-gray-200 p-2 rounded cursor-pointer' size={50} color={'blue'} />
+                                <img onClick={() => signInWithGoogle()} className='w-14 border bg-gray-200 p-2 rounded cursor-pointer' src={google} alt="" />
+                                <BsFacebook className='border bg-gray-200 p-2 rounded cursor-pointer' size={55} color={'blue'} />
                             </div>
                             <div className="text-center py-5">
                                 <p>Already have an account? <Link to='/register' className="underline font-semibold">Register here.</Link></p>
