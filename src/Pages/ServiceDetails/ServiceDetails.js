@@ -16,12 +16,12 @@ const ServiceDetails = () => {
                     <Fade right duration="1500">
                         <div>
 
-                            <img src={picture} class="max-w-sm rounded-lg shadow-2xl" alt='' />
+                            <img src={picture} class="lg:max-w-sm max-w-xs rounded-lg shadow-2xl" alt='' />
                         </div>
 
                     </Fade>
                     <Fade left duration="1500">
-                        <div className={`ml-4 ${darkMode ? "text-white" : "black"}`}>
+                        <div className={`lg:ml-4 ${darkMode ? "text-white" : "black"}`}>
                             <h1 class="text-3xl font-bold">{title}</h1>
                             <h1 class="text-sm font-semibold capitalize">PRICE:  ${price}</h1>
                             <h1 class="text-sm font-semibold capitalize">DURATION:   {duration}</h1>
@@ -30,7 +30,7 @@ const ServiceDetails = () => {
                             <div className='flex'>
                                 <Link to={`/engineers`} >
                                     <button
-                                        className='px-8 py-3 border-2 border-teal-900 bg-teal-900 hover:bg-white hover:text-teal-900  duration-200 text-white rounded uppercase inline-block mt-4 sm:mt-8 font-semibold mr-2'>
+                                        className='lg:px-8 px-4 py-3 border-2 border-teal-900 bg-teal-900 hover:bg-white hover:text-teal-900  duration-200 text-white rounded uppercase inline-block mt-4 sm:mt-8 font-semibold mr-2'>
                                         hire a engineer
                                     </button>
                                 </Link>

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { DarkModeContext } from '../../App';
 import useEngineers from '../../hooks/useEngineers';
 import EngineerRow from './EngineerRow';
 
 const EngineersTable = () => {
     const [engineers] = useEngineers([]);
+    const [darkMode, setDarkMode] = useContext(DarkModeContext);
     return (
         <div className='my-32'>
-            <h2 className="text-2xl py-4 text-center dark:text-white">All Engineers: {engineers.length}</h2>
+            <h2 className={`${darkMode && "text-white"} text-2xl py-4 text-center`}>All Engineers: {engineers.length}</h2>
             <div className="overflow-x-auto px-24">
                 <table className="table w-full">
                     <thead>
