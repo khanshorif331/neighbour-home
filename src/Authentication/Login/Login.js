@@ -112,8 +112,11 @@ const Login = () => {
                                 <div>or</div>
                                 <div className="w-[40%] flex m-auto border-b-2 border-b-gray-500" />
                             </div>
-                            <div className='flex mx-auto space-x-6 pt-2'>
-                                <img onClick={() => signInWithGoogle()} className='w-14 border bg-gray-200 p-2 rounded cursor-pointer' src={google} alt="" />
+                            <div className='flex flex-col pt-2'>
+                                <div onClick={() => signInWithGoogle()} className="flex justify-center items-center cursor-pointer space-x-3 border py-2">
+                                    <img onClick={() => signInWithGoogle()} className='w-7' src={google} alt="" />
+                                    <p className='text-xl font-medium text-black'>Continue With Google</p>
+                                </div>
                                 <BsFacebook className='border bg-gray-200 p-2 rounded cursor-pointer' size={55} color={'blue'} />
                             </div>
                             <div className="text-center py-5">
