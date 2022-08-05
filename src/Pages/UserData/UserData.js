@@ -202,7 +202,8 @@ const UserData = () => {
                                     <option disabled value='DEFAULT'>Pick your role</option>
                                     <option value={'Engineer'}>Engineer</option>
                                     <option value={'Worker'}>Worker</option>
-                                    <option value={'Buyer'}>Buyer</option>
+                                    <option value={'Seller'}>Seller</option>
+                                    <option value={'Guest'}>Guest</option>
                                 </select>
                             </div>
                         </div>
