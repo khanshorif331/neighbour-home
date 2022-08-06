@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import { BsFacebook, BsTwitter, BsLinkedin, BsGithub } from "react-icons/bs";
-import { Autoplay, FreeMode, Pagination } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import {
-  FaCode,
-  FaDesktop,
-  FaMobileAlt,
-  FaCamera,
-  FaFile,
-} from 'react-icons/fa'
+  BsFacebook,
+  BsTwitter,
+  BsLinkedin,
+  BsGithub,
+  BsBehance,
+} from "react-icons/bs";
+import { Autoplay, FreeMode, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "./Engineer.css";
 
 // Import Swiper styles
 import "swiper/css";
@@ -19,19 +19,18 @@ import useEngineers from "../../../hooks/useEngineers";
 
 const Engineer = () => {
   const [engineers] = useEngineers([]);
-	const [darkMode] = useContext(DarkModeContext)
+  const [darkMode] = useContext(DarkModeContext);
   // console.log(engineers);
   return (
-    <div className='h-[400px] p-6 md:px-16'>
+    <div className="h-[400px] p-6 md:px-16">
       <Swiper
         slidesPerView={1}
         spaceBetween={30}
         freeMode={true}
         autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
+          // delay: 2500,
+          disableOnInteraction: true,
         }}
-        
         breakpoints={{
           640: {
             slidesPerView: 2,
@@ -47,15 +46,64 @@ const Engineer = () => {
           },
         }}
         modules={[Autoplay, FreeMode, Pagination]}
-        className='mySwiper '
+        className="mySwiper "
       >
+        {engineers.map((engineer) => {
+          const { picture, name, surname, _id } = engineer;
+          return (
+            <SwiperSlide key={_id}>
+              <div class="my-10">
+                <div class={`${darkMode && "text-white"} card shadow-xl`}>
+                  <img src={picture} alt="Person" class="card__image" />
+                  <p class="card__name">{name}</p>
+                  <div class="">
+                    {/* <div class="grid-child-posts">902 Post</div>
 
-        {
-          engineers.map(engineer => {
-            const { picture, name, surname, bio, _id } = engineer;
-            return (
-              <SwiperSlide key={_id}>
-                <div>
+                    <div class="grid-child-followers">1300 Likes</div> */}
+                    <p>{surname}</p>
+                  </div>
+                  <ul class="social-icons">
+                    <li>
+                      <a href="/">
+                        <BsFacebook />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/">
+                        <BsLinkedin />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/">
+                        <BsTwitter />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/">
+                        <BsBehance />
+                      </a>
+                    </li>
+                  </ul>
+                  <div className="flex">
+                    <button
+                      class={`${
+                        darkMode ? "bg-transparent" : "bg-white"
+                      } btn draw-border`}
+                    >
+                      Follow
+                    </button>
+                    <button
+                      class={`${
+                        darkMode ? "bg-transparent" : "bg-white"
+                      } btn draw-border`}
+                    >
+                      Follow
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* <div>
                   <div className={`${darkMode && "text-white"} m-auto  max-w-sm items-center justify-center overflow-hidden  shadow-lg`}>
                     <div className="h-24 bg-[#0D9488]"></div>
                     <div className="-mt-20 flex justify-center">
@@ -89,14 +137,13 @@ const Engineer = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            )
-          })
-        }
+                </div> */}
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
-  )
+  );
 };
 
 export default Engineer;
