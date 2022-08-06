@@ -7,9 +7,11 @@ import Loading from '../../Shared/Loading/Loading';
 import useToken from '../../hooks/useToken';
 import google from '../../Assest/google.svg';
 import facebook from '../../Assest/facebook.svg'
+import { MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md'
 
 const Login = () => {
 
+    const [showPassword, setShowPassword] = React.useState(false);
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth)
     const [
         signInWithEmailAndPassword,
@@ -58,7 +60,7 @@ const Login = () => {
 
                 <div className="w-full flex flex-wrap flex-row-reverse">
 
-                    <div className="w-full md:w-1/2 flex flex-col border-l-2 border-l-gray-400">
+                    <div className="w-full md:w-1/2 flex flex-col border-l-2 border-l-gray-500">
 
                         <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
                             <p className="text-center text-3xl">Login Here!</p>
@@ -81,28 +83,56 @@ const Login = () => {
                                     </label>
                                 </div>
 
-                                <div className="flex flex-col pt-4">
-                                    <label htmlFor="password" className="text-lg">Password</label>
-                                    <input {...register('password', {
-                                        required: {
-                                            value: true,
-                                            message: 'Password is Required'
-                                        },
-                                        minLength: {
-                                            value: 6,
-                                            message: 'Must be 6 character or longer'
-                                        },
-                                        pattern: {
-                                            value: /(?=.*?[A-Z])/,
-                                            message: 'At least One Uppercase'
-                                        },
-                                    })} type="password" id="password" placeholder="Password" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
-                                    <label>
-                                        {errors.password?.type === 'required' && <p className='text-red-600 text-sm font-semibold'>{errors.password.message}</p>}
-                                        {errors.password?.type === 'pattern' && <p className='text-red-600 text-sm font-semibold'>{errors.password.message}</p>}
-                                        {errors.password?.type === 'minLength' && <p className='text-red-600 text-sm font-semibold'>{errors.password.message}</p>}
-                                    </label>
-                                </div>
+                                {
+                                    showPassword ?
+                                        <div className="flex flex-col pt-4 relative">
+                                            <label htmlFor="password" className="text-lg">Password</label>
+                                            <input {...register('password', {
+                                                required: {
+                                                    value: true,
+                                                    message: 'Password is Required'
+                                                },
+                                                minLength: {
+                                                    value: 6,
+                                                    message: 'Must be 6 character or longer'
+                                                },
+                                                pattern: {
+                                                    value: /(?=.*?[A-Z])/,
+                                                    message: 'At least One Uppercase'
+                                                },
+                                            })} type="text" id="password" placeholder="Password" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+                                            <MdOutlineVisibilityOff onClick={() => setShowPassword(!showPassword)} className="absolute right-0 top-[54px] mr-4 cursor-pointer" size={28} placeholder="show password" />
+                                            <label>
+                                                {errors.password?.type === 'required' && <p className='text-red-600 text-sm font-semibold'>{errors.password.message}</p>}
+                                                {errors.password?.type === 'pattern' && <p className='text-red-600 text-sm font-semibold'>{errors.password.message}</p>}
+                                                {errors.password?.type === 'minLength' && <p className='text-red-600 text-sm font-semibold'>{errors.password.message}</p>}
+                                            </label>
+                                        </div>
+                                        :
+                                        <div className="flex flex-col pt-4 relative">
+                                            <label htmlFor="password" className="text-lg">Password</label>
+                                            <input {...register('password', {
+                                                required: {
+                                                    value: true,
+                                                    message: 'Password is Required'
+                                                },
+                                                minLength: {
+                                                    value: 6,
+                                                    message: 'Must be 6 character or longer'
+                                                },
+                                                pattern: {
+                                                    value: /(?=.*?[A-Z])/,
+                                                    message: 'At least One Uppercase'
+                                                },
+                                            })} type="password" id="password" placeholder="Password" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+                                            <MdOutlineVisibility onClick={() => setShowPassword(!showPassword)} className="absolute right-0 top-[54px] mr-4 cursor-pointer" size={28} placeholder="show password" />
+                                            <label>
+                                                {errors.password?.type === 'required' && <p className='text-red-600 text-sm font-semibold'>{errors.password.message}</p>}
+                                                {errors.password?.type === 'pattern' && <p className='text-red-600 text-sm font-semibold'>{errors.password.message}</p>}
+                                                {errors.password?.type === 'minLength' && <p className='text-red-600 text-sm font-semibold'>{errors.password.message}</p>}
+                                            </label>
+                                        </div>
+                                }
 
                                 <input type="submit" value="Login" className="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8 cursor-pointer" />
                             </form>
