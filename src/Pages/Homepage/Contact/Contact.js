@@ -1,15 +1,19 @@
 import React, { useContext } from 'react';
 import { DarkModeContext } from '../../../App';
+import contact from '../../../Assest/Contact.gif';
 
 const Contact = () => {
     const [darkMode] = useContext(DarkModeContext)
 
     return (
-        <section>
+        <section className='flex justify-center items-center'>
+            <div className='w-[60%] px-3 hidden md:block'>
+                <img className='w-full' src={contact} alt="" />
+            </div>
             <form>
-                <section className="text-white body-font relative">
-                    <div className="container px-5 py-6 mx-auto">
-                        <div className="lg:w-2/3 md:w-2/3 mx-auto border px-5 py-12 md:px-16 shadow-md  rounded">
+                <section className="text-white body-font relative md:px-5">
+                    <div className="">
+                        <div className="w-full mx-auto border px-5 py-12 md:px-16 shadow-md  rounded">
                             {/* <h2 className='text-center text-4xl font-bold underline underline-offset-8 decoration-black text-black mb-5'>Contact Us</h2> */}
                             <h2 className={`${darkMode ? "text-white": "text-black"}  uppercase text-3xl font-bold text-center`}>
                                 Contact Us
