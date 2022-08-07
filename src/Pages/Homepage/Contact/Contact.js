@@ -1,14 +1,33 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { DarkModeContext } from '../../../App';
 import contact from '../../../Assest/Contact.gif';
+import emailjs from '@emailjs/browser';
+import toast from 'react-hot-toast';
 
 const Contact = () => {
     const [darkMode] = useContext(DarkModeContext)
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const form = useRef()
 
     const sendEmail = (data) => {
-        console.log(data)
+        // console.log(data)
+        // let emailData = {
+        //     email: data.email,
+        //     message: data.message,
+        //     name: data.name
+        // }
+        // console.log(emailData);
+        emailjs.sendForm('endgame_project', 'endgame_project', form.current, 'izhjd_XATNZhThYrx')
+            .then((res) => {
+                console.log(res)
+                if(res.status === 200) {
+                    toast.success("Message sent successfully", {id: 'success'})
+                    reset()
+                }
+            }, (err) => {
+                toast.error("Message not sent", {id: 'error'})
+            })
     }
 
     return (
@@ -16,7 +35,7 @@ const Contact = () => {
             <div className='w-[60%] px-3 hidden md:block'>
                 <img className='w-full' src={contact} alt="" />
             </div>
-            <form onSubmit={handleSubmit(sendEmail)}>
+            <form ref={form} onSubmit={handleSubmit(sendEmail)}>
                 <section className="text-white body-font relative md:px-5">
                     <div className="">
                         <div className="w-full mx-auto border px-5 py-12 md:px-16 shadow-md  rounded">
