@@ -81,7 +81,7 @@ const AddReview = () => {
             className={`${
               darkMode ? "bg-gray-800" : " bg-white"
             } mb-3 text-2xl text-black font-bold text-center outline-none w-32`}
-            placeholder="Your Name Here"
+            placeholder="Name"
             readOnly
             {...register("name")}
             defaultValue={user?.displayName}

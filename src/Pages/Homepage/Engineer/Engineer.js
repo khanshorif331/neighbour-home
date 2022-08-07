@@ -52,17 +52,17 @@ const Engineer = () => {
           const { picture, name, surname, _id } = engineer;
           return (
             <SwiperSlide key={_id}>
-              <div class="my-10">
+              <div className="my-10">
                 <div class={`${darkMode && "text-white"} card shadow-xl`}>
-                  <img src={picture} alt="Person" class="card__image" />
-                  <p class="card__name">{name}</p>
-                  <div class="">
-                    {/* <div class="grid-child-posts">902 Post</div>
+                  <img src={picture} alt="Person" className="card__image" />
+                  <p className="card__name">{name}</p>
+                  <div className="">
+                    {/* <div className="grid-child-posts">902 Post</div>
 
-                    <div class="grid-child-followers">1300 Likes</div> */}
+                    <div className="grid-child-followers">1300 Likes</div> */}
                     <p>{surname}</p>
                   </div>
-                  <ul class="social-icons">
+                  <ul className="social-icons">
                     <li>
                       <a href="/">
                         <BsFacebook />
