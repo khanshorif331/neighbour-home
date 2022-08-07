@@ -9,27 +9,36 @@ import constructionSvg from "../../../Assest/construction-dashbord.svg";
 import { MdDashboardCustomize } from "react-icons/md";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
+import Loading from "../../../Shared/Loading/Loading";
 
 const Dashboard = () => {
   const [darkMode] = useContext(DarkModeContext);
   let [user, loading] = useAuthState(auth);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div
       style={{ fontFamily: "'Rajdhani', sans-serif" }}
       className="sm:mt-[129px] mt-[80px]"
     >
-      <div class="drawer drawer-mobile mt-[64px]">
-        <input id="dashboard-drower" type="checkbox" class="drawer-toggle" />
-        <div class="drawer-content">
+      <div className="drawer drawer-mobile mt-[64px]">
+        <input
+          id="dashboard-drower"
+          type="checkbox"
+          className="drawer-toggle"
+        />
+        <div className="drawer-content">
           <h3 className="text-2xl text-left md:text-center sm:px-10 pb-3 pt-5 text-purple-500 font-bold">
             Dashboard
           </h3>
           {/* <!-- Page content here --> */}
           <Outlet />
         </div>
-        <div class="drawer-side">
-          <label for="dashboard-drower" class="drawer-overlay"></label>
+        <div className="drawer-side">
+          <label htmlFor="dashboard-drower" className="drawer-overlay"></label>
 
           <ul
             className={`${
@@ -41,16 +50,23 @@ const Dashboard = () => {
             {/* <!-- Sidebar content here --> */}
 
             {/* user few details with navigation */}
-            <div class="mt-8 text-center">
+            <div className="mt-8 text-center">
               <img
-                src={user?.photoURL}
+                src={
+                  user ? user.photoURL : "https://i.ibb.co/K035fHn/149071.png"
+                }
                 alt=""
-                class="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28"
+                className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28"
               />
-              <h5 class="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">
+              <h5 className="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">
                 {user?.displayName}
               </h5>
-              <span class="hidden text-gray-400 lg:block">Admin</span>
+              <span className="hidden text-gray-400 lg:block">Admin</span>
+              <div>
+                <button className="btn btn-xs btn-outline btn-info border">
+                  Edit Profile
+                </button>
+              </div>
             </div>
 
             <li>
@@ -60,7 +76,7 @@ const Dashboard = () => {
                     ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
                     : " text-gray-500"
                 }`}
-                to={"/dashboard/dashboard1"}
+                to={"/dashboard"}
               >
                 <MdDashboardCustomize /> Dashboard
               </Link>
@@ -72,7 +88,7 @@ const Dashboard = () => {
                     ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
                     : " text-gray-500"
                 }`}
-                to={"/dashboard"}
+                to={"/dashboard/users"}
               >
                 <img className="w-4" src={userSvg} alt="book svg" /> Users
               </Link>

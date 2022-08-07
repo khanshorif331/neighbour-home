@@ -20,7 +20,7 @@ const ManageEngineers = () => {
   } = useForm();
 
   return (
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table
         className={`${
           darkMode ? "text-gray-400" : "text-gray-500"
@@ -102,9 +102,9 @@ const ManageEngineers = () => {
               <tr>
                 <th className="ml-2">{index + 1}</th>
                 <td>
-                  <div class="flex items-center space-x-3 my-2">
-                    <div class="avatar">
-                      <div class="mask mask-squircle w-12 h-12">
+                  <div className="flex items-center space-x-3 my-2">
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-12 h-12">
                         <img
                           src={picture}
                           alt="Avatar Tailwind CSS Component"
@@ -112,8 +112,8 @@ const ManageEngineers = () => {
                       </div>
                     </div>
                     <div>
-                      <div class="font-bold">{name}</div>
-                      {/* <div class="text-sm opacity-50">United States</div> */}
+                      <div className="font-bold">{name}</div>
+                      {/* <div className="text-sm opacity-50">United States</div> */}
                     </div>
                   </div>
                 </td>
@@ -123,18 +123,18 @@ const ManageEngineers = () => {
                   {/*------------- button to update the engineer ---------------*/}
                   <label
                     for={_id}
-                    class=" btn modal-button btn-outline btn-xs btn-success h-5 sm:h-6  sm:px-3 uppercase  rounded-full text-white duration-1000 mx-1"
+                    className=" btn modal-button btn-outline btn-xs btn-success h-5 sm:h-6  sm:px-3 uppercase  rounded-full text-white duration-1000 mx-1"
                   >
                     edit
                   </label>
 
                   {/* -------------modal open from here------------------------- */}
-                  <input type="checkbox" id={_id} class="modal-toggle" />
-                  <div class="modal">
-                    <div class="modal-box block mt-40 mb-10 h-[400px] border rounded-lg">
+                  <input type="checkbox" id={_id} className="modal-toggle" />
+                  <div className="modal">
+                    <div className="modal-box block mt-40 mb-10 h-[400px] border rounded-lg">
                       <label
                         for={_id}
-                        class="btn btn-sm btn-circle absolute right-2 top-2"
+                        className="btn btn-sm btn-circle absolute right-2 top-2"
                       >
                         ✕
                       </label>
@@ -237,7 +237,7 @@ const ManageEngineers = () => {
                   {/* button to delete the engineer */}
                   <button
                     onClick={() => handleDeleteEng(_id)}
-                    class="btn modal-button btn-outline btn-xs btn-error h-5 sm:h-6  sm:px-3 uppercase  rounded-full text-white duration-1000 border mx-1"
+                    className="btn modal-button btn-outline btn-xs btn-error h-5 sm:h-6  sm:px-3 uppercase  rounded-full text-white duration-1000 border mx-1"
                   >
                     Delete
                   </button>

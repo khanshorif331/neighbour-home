@@ -25,7 +25,6 @@ import EngineersTable from "./Pages/ServiceDetails/EngineersTable";
 import EngineerDetails from "./Pages/EngineerDetails/EngineerDetails";
 import { BarLoader } from "react-spinners";
 import Dashboard1 from "./Pages/Dashboardpage/Dashboard1/Dashboard1";
-import Test from "./Pages/Homepage/Test";
 
 export const DarkModeContext = createContext("");
 const queryClient = new QueryClient();
@@ -70,7 +69,8 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/dashboard" element={<Dashboard />}>
-                  <Route index element={<Users />}></Route>
+                  <Route index element={<Dashboard1 />}></Route>
+                  <Route path="users" element={<Users />}></Route>
                   <Route path="addReview" element={<AddReview />}></Route>
                   <Route path="manageBooks" element={<ManageBooks />}></Route>
                   <Route
@@ -83,7 +83,7 @@ function App() {
                     path="manageEngineers"
                     element={<ManageEngineers />}
                   ></Route>
-                  <Route path="dashboard1" element={<Dashboard1 />}></Route>
+                  {/* <Route path="dashboard1" element={<Dashboard1 />}></Route> */}
                 </Route>
                 <Route path="/user/:id" element={<UserDetails />} />
                 <Route path="/login" element={<Login />} />
@@ -104,7 +104,6 @@ function App() {
                 <Route path="/user_data" element={<UserData />} />
                 <Route path="/addReview" element={<AddReview />} />
                 <Route path="/bookDetail/:_id" element={<BookReview />} />
-                <Route path="/test" element={<Test />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
               <Footer />

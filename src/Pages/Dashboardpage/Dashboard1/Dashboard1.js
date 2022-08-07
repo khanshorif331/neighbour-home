@@ -3,16 +3,16 @@ import React from "react";
 const Dashboard1 = () => {
   return (
     <div>
-      <div class="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
-        <div class="sticky z-10 top-0 h-16 border-b bg-white lg:py-2.5">
-          <div class="px-6 flex items-center justify-between space-x-4 2xl:container">
-            <h5 hidden class="text-2xl text-gray-600 font-medium lg:block">
+      <div className="ml-auto mb-6 lg:w-full">
+        <div className="sticky z-10 top-0 h-16 border-b bg-white lg:py-2.5">
+          <div className="px-6 flex items-center justify-between space-x-4 2xl:container">
+            <h5 className="text-2xl text-gray-600 font-medium block">
               Dashboard
             </h5>
-            <button class="w-12 h-16 -mr-2 border-r lg:hidden">
+            {/* <button className="w-12 h-16 -mr-2 border-r lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 my-auto"
+                className="h-6 w-6 my-auto"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -24,15 +24,15 @@ const Dashboard1 = () => {
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
-            </button>
-            <div class="flex space-x-4">
+            </button> */}
+            <div className="flex space-x-4">
               {/* <!--search bar --> */}
-              <div hidden class="md:block">
-                <div class="relative flex items-center text-gray-400 focus-within:text-cyan-400">
-                  <span class="absolute left-4 h-6 flex items-center pr-3 border-r border-gray-300">
+              <div hidden className="md:block">
+                <div className="relative flex items-center text-gray-400 focus-within:text-cyan-400">
+                  <span className="absolute left-4 h-6 flex items-center pr-3 border-r border-gray-300">
                     <svg
                       xmlns="http://ww50w3.org/2000/svg"
-                      class="w-4 fill-current"
+                      className="w-4 fill-current"
                       viewBox="0 0 35.997 36.004"
                     >
                       <path
@@ -47,18 +47,18 @@ const Dashboard1 = () => {
                     name="leadingIcon"
                     id="leadingIcon"
                     placeholder="Search here"
-                    class="w-full pl-14 pr-4 py-2.5 rounded-xl text-sm text-gray-600 outline-none border border-gray-300 focus:border-cyan-300 transition"
+                    className="w-full pl-14 pr-4 py-2.5 rounded-xl text-sm text-gray-600 outline-none border border-gray-300 focus:border-cyan-300 transition"
                   />
                 </div>
               </div>
               {/* <!--/search bar --> */}
               <button
                 aria-label="search"
-                class="w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200 md:hidden"
+                className="w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200 md:hidden"
               >
                 <svg
                   xmlns="http://ww50w3.org/2000/svg"
-                  class="w-4 mx-auto fill-current text-gray-600"
+                  className="w-4 mx-auto fill-current text-gray-600"
                   viewBox="0 0 35.997 36.004"
                 >
                   <path
@@ -70,11 +70,11 @@ const Dashboard1 = () => {
               </button>
               <button
                 aria-label="chat"
-                class="w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200"
+                className="w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 m-auto text-gray-600"
+                  className="h-5 w-5 m-auto text-gray-600"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -89,11 +89,11 @@ const Dashboard1 = () => {
               </button>
               <button
                 aria-label="notification"
-                class="w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200"
+                className="w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 m-auto text-gray-600"
+                  className="h-5 w-5 m-auto text-gray-600"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -104,12 +104,12 @@ const Dashboard1 = () => {
           </div>
         </div>
 
-        <div class="px-6 pt-6 2xl:container">
-          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <div class="md:col-span-2 lg:col-span-1">
-              <div class="h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white">
+        <div className="px-6 pt-6 2xl:container">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="md:col-span-2 lg:col-span-1">
+              <div className="h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white">
                 <svg
-                  class="w-40 m-auto opacity-75"
+                  className="w-40 m-auto opacity-75"
                   viewBox="0 0 146 146"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -207,14 +207,16 @@ const Dashboard1 = () => {
                   </defs>
                 </svg>
                 <div>
-                  <h5 class="text-xl text-gray-600 text-center">
+                  <h5 className="text-xl text-gray-600 text-center">
                     Global Activities
                   </h5>
-                  <div class="mt-2 flex justify-center gap-4">
-                    <h3 class="text-3xl font-bold text-gray-700">$23,988</h3>
-                    <div class="flex items-end gap-1 text-green-500">
+                  <div className="mt-2 flex justify-center gap-4">
+                    <h3 className="text-3xl font-bold text-gray-700">
+                      $23,988
+                    </h3>
+                    <div className="flex items-end gap-1 text-green-500">
                       <svg
-                        class="w-3"
+                        className="w-3"
                         viewBox="0 0 12 15"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -227,18 +229,18 @@ const Dashboard1 = () => {
                       <span>2%</span>
                     </div>
                   </div>
-                  <span class="block text-center text-gray-500">
+                  <span className="block text-center text-gray-500">
                     Compared to last week $13,988
                   </span>
                 </div>
-                <table class="w-full text-gray-600">
+                <table className="w-full text-gray-600">
                   <tbody>
                     <tr>
-                      <td class="py-2">Tailored ui</td>
-                      <td class="text-gray-500">896</td>
+                      <td className="py-2">Tailored ui</td>
+                      <td className="text-gray-500">896</td>
                       <td>
                         <svg
-                          class="w-16 ml-auto"
+                          className="w-16 ml-auto"
                           viewBox="0 0 68 21"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -297,11 +299,11 @@ const Dashboard1 = () => {
                       </td>
                     </tr>
                     <tr>
-                      <td class="py-2">Customize</td>
-                      <td class="text-gray-500">1200</td>
+                      <td className="py-2">Customize</td>
+                      <td className="text-gray-500">1200</td>
                       <td>
                         <svg
-                          class="w-16 ml-auto"
+                          className="w-16 ml-auto"
                           viewBox="0 0 68 21"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -360,11 +362,11 @@ const Dashboard1 = () => {
                       </td>
                     </tr>
                     <tr>
-                      <td class="py-2">Other</td>
-                      <td class="text-gray-500">12</td>
+                      <td className="py-2">Other</td>
+                      <td className="text-gray-500">12</td>
                       <td>
                         <svg
-                          class="w-16 ml-auto"
+                          className="w-16 ml-auto"
                           viewBox="0 0 68 21"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -427,16 +429,16 @@ const Dashboard1 = () => {
               </div>
             </div>
             <div>
-              <div class="h-full py-6 px-6 rounded-xl border border-gray-200 bg-white">
-                <h5 class="text-xl text-gray-700">Downloads</h5>
-                <div class="my-8">
-                  <h1 class="text-5xl font-bold text-gray-800">64,5%</h1>
-                  <span class="text-gray-500">
+              <div className="h-full py-6 px-6 rounded-xl border border-gray-200 bg-white">
+                <h5 className="text-xl text-gray-700">Downloads</h5>
+                <div className="my-8">
+                  <h1 className="text-5xl font-bold text-gray-800">64,5%</h1>
+                  <span className="text-gray-500">
                     Compared to last week $13,988
                   </span>
                 </div>
                 <svg
-                  class="w-full"
+                  className="w-full"
                   viewBox="0 0 218 69"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -478,14 +480,14 @@ const Dashboard1 = () => {
                     </linearGradient>
                   </defs>
                 </svg>
-                <table class="mt-6 -mb-2 w-full text-gray-600">
+                <table className="mt-6 -mb-2 w-full text-gray-600">
                   <tbody>
                     <tr>
-                      <td class="py-2">From new users</td>
-                      <td class="text-gray-500">896</td>
+                      <td className="py-2">From new users</td>
+                      <td className="text-gray-500">896</td>
                       <td>
                         <svg
-                          class="w-16 ml-auto"
+                          className="w-16 ml-auto"
                           viewBox="0 0 68 21"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -544,11 +546,11 @@ const Dashboard1 = () => {
                       </td>
                     </tr>
                     <tr>
-                      <td class="py-2">From old users</td>
-                      <td class="text-gray-500">1200</td>
+                      <td className="py-2">From old users</td>
+                      <td className="text-gray-500">1200</td>
                       <td>
                         <svg
-                          class="w-16 ml-auto"
+                          className="w-16 ml-auto"
                           viewBox="0 0 68 21"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -611,9 +613,9 @@ const Dashboard1 = () => {
               </div>
             </div>
             <div>
-              <div class="lg:h-full py-8 px-6 text-gray-600 rounded-xl border border-gray-200 bg-white">
+              <div className="lg:h-full py-8 px-6 text-gray-600 rounded-xl border border-gray-200 bg-white">
                 <svg
-                  class="w-40 m-auto"
+                  className="w-40 m-auto"
                   viewBox="0 0 56 56"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -655,15 +657,15 @@ const Dashboard1 = () => {
                     </linearGradient>
                   </defs>
                 </svg>
-                <div class="mt-6">
-                  <h5 class="text-xl text-gray-700 text-center">
+                <div className="mt-6">
+                  <h5 className="text-xl text-gray-700 text-center">
                     Ask to customize
                   </h5>
-                  <div class="mt-2 flex justify-center gap-4">
-                    <h3 class="text-3xl font-bold text-gray-700">28</h3>
-                    <div class="flex items-end gap-1 text-green-500">
+                  <div className="mt-2 flex justify-center gap-4">
+                    <h3 className="text-3xl font-bold text-gray-700">28</h3>
+                    <div className="flex items-end gap-1 text-green-500">
                       <svg
-                        class="w-3"
+                        className="w-3"
                         viewBox="0 0 12 15"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -676,18 +678,18 @@ const Dashboard1 = () => {
                       <span>2%</span>
                     </div>
                   </div>
-                  <span class="block text-center text-gray-500">
+                  <span className="block text-center text-gray-500">
                     Compared to last week 13
                   </span>
                 </div>
-                <table class="mt-6 -mb-2 w-full text-gray-600">
+                <table className="mt-6 -mb-2 w-full text-gray-600">
                   <tbody>
                     <tr>
-                      <td class="py-2">Tailored ui</td>
-                      <td class="text-gray-500">896</td>
+                      <td className="py-2">Tailored ui</td>
+                      <td className="text-gray-500">896</td>
                       <td>
                         <svg
-                          class="w-16 ml-auto"
+                          className="w-16 ml-auto"
                           viewBox="0 0 68 21"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -746,11 +748,11 @@ const Dashboard1 = () => {
                       </td>
                     </tr>
                     <tr>
-                      <td class="py-2">Customize</td>
-                      <td class="text-gray-500">1200</td>
+                      <td className="py-2">Customize</td>
+                      <td className="text-gray-500">1200</td>
                       <td>
                         <svg
-                          class="w-16 ml-auto"
+                          className="w-16 ml-auto"
                           viewBox="0 0 68 21"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -809,11 +811,11 @@ const Dashboard1 = () => {
                       </td>
                     </tr>
                     <tr>
-                      <td class="py-2">Other</td>
-                      <td class="text-gray-500">12</td>
+                      <td className="py-2">Other</td>
+                      <td className="text-gray-500">12</td>
                       <td>
                         <svg
-                          class="w-16 ml-auto"
+                          className="w-16 ml-auto"
                           viewBox="0 0 68 21"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
