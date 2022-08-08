@@ -87,7 +87,7 @@
   transition-delay: 0s, 0.25s, 0s;
 }
 
-.btn {
+.engBtn {
   /* background: white; */
   border: none;
   cursor: pointer;
@@ -96,11 +96,11 @@
   margin: 1em;
   width: 7rem;
 }
-.btn:hover {
+.engBtn:hover {
   background: transparent;
 }
 
-.btn:focus {
+.engBtn:focus {
   outline: 2px dotted #55d7dc;
 }
 
@@ -125,9 +125,6 @@
   transition: all 265ms ease-out;
 }
 
-.social-icons a {
-  /* position: relative; */
-}
 .social-icons a svg {
   position: absolute;
   top: 14px;
