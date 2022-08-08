@@ -250,14 +250,14 @@ const UserDetails = () => {
                 {user?.role === "admin" ? (
                   <button
                     onClick={deleteUserAdmin}
-                    class="btn btn-xs btn-warning leading-5"
+                    className={`${darkMode && "hover:text-white hover:btn-ghost" } btn btn-xs  btn-warning leading-5`}
                   >
                     Delete Admin
                   </button>
                 ) : (
                   <button
                     onClick={makeUser5Admin}
-                    class="btn btn-xs btn-success leading-5"
+                    className={`${darkMode && "hover:text-white hover:btn-ghost" } btn btn-xs  btn-success leading-5`}
                   >
                     Make Admin
                   </button>
