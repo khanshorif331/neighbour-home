@@ -44,12 +44,13 @@ const UserData = () => {
                     nid: data.nid,
                     role: selectOption
                 }
-                console.log(userData);
+                // console.log(userData);
                 fetch(`https://neighbour-home--server.herokuapp.com/user?email=${user.email}`, {
                     method: "PUT",
                     headers: {
                         'content-type': 'application/json'
-                    }
+                    },
+                    body: JSON.stringify(userData)
                 })
                 .then(res => res.json())
                 .then(updatedData => {
@@ -73,7 +74,7 @@ const UserData = () => {
     }
 
     return (
-        <section className='sm:mt-[129px] mt-[80px] mt-[80px]'>
+        <section className='sm:mt-[129px] mt-[80px]'>
             <h1 className={`text-4xl text-center my-3 ${darkMode && "text-white"}`}>Welcome To Neighbour Home!</h1>
             <div className='border p-7 rounded-lg cs-card-shadow w-full md:w-2/3 mx-auto my-3'>
                 <h1 className={`text-3xl font-medium text-center mb-12 ${darkMode && 'text-white'}`}>Fill Up This Form For Next Step</h1>

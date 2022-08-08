@@ -128,7 +128,7 @@ const Users = () => {
                                     <td class='py-2 text-[13px] sm:py-4 text-center'>
                                         {user?.role === 'admin' ?
 
-                                            <button onClick={deleteAdmin} class='btn btn-xs btn-warning'>
+                                            <button onClick={deleteAdmin} class='btn btn-xs btn-warning '>
                                                 Delete Admin
                                             </button>
                                             :

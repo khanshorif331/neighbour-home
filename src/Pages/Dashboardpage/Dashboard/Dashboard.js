@@ -56,7 +56,7 @@ const Dashboard = () => {
                   user ? user.photoURL : "https://i.ibb.co/K035fHn/149071.png"
                 }
                 alt=""
-                className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28"
+                className="w-10 h-10 m-auto rounded-full object-cover lg:w-20 lg:h-20"
               />
               <h5 className="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">
                 {user?.displayName}
