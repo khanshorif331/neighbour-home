@@ -245,19 +245,19 @@ const UserDetails = () => {
               <dd
                 class={`${
                   darkMode ? "text-white" : "text-gray-900"
-                }  mt-1 text-sm  sm:mt-0 sm:col-span-2`}
+                }   text-sm  sm:mt-0 sm:col-span-2`}
               >
                 {user?.role === "admin" ? (
                   <button
                     onClick={deleteUserAdmin}
-                    class="btn btn-xs btn-warning"
+                    class="btn btn-xs btn-warning leading-5"
                   >
                     Delete Admin
                   </button>
                 ) : (
                   <button
                     onClick={makeUser5Admin}
-                    class="btn btn-xs btn-success"
+                    class="btn btn-xs btn-success leading-5"
                   >
                     Make Admin
                   </button>
