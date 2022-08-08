@@ -25,6 +25,7 @@ import EngineersTable from "./Pages/ServiceDetails/EngineersTable";
 import EngineerDetails from "./Pages/EngineerDetails/EngineerDetails";
 import { BarLoader } from "react-spinners";
 import Dashboard1 from "./Pages/Dashboardpage/Dashboard1/Dashboard1";
+import MyProfile from "./Pages/Profile/MyProfile/MyProfile";
 
 export const DarkModeContext = createContext("");
 const queryClient = new QueryClient();
@@ -37,7 +38,7 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, [5000]);
+    }, [3000]);
   }, []);
 
   return (
@@ -104,6 +105,10 @@ function App() {
                 <Route path="/user_data" element={<UserData />} />
                 <Route path="/addReview" element={<AddReview />} />
                 <Route path="/bookDetail/:_id" element={<BookReview />} />
+                
+              {/* Profile Routes */}
+                <Route path="/profile" element={<MyProfile />} />
+
                 <Route path="*" element={<NotFound />} />
               </Routes>
               <Footer />

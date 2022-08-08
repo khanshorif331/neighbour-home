@@ -372,11 +372,11 @@ const Navbar = () => {
                   </li>
                 )}
 
-                <div class="avatar mx-2">
+                <Link to={'/profile'} class="avatar mx-2">
                   <div class="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                     <img src="https://placeimg.com/192/192/people" alt="Profile" />
                   </div>
-                </div>
+                </Link>
 
                 {user ? (
                   <li className="md:ml-6 mt-3 md:mt-0">
