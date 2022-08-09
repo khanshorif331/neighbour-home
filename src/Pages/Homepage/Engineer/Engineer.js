@@ -88,14 +88,14 @@ const Engineer = () => {
                     <button
                       class={`${
                         darkMode ? "bg-transparent" : "bg-white"
-                      } btn draw-border`}
+                      } engBtn draw-border`}
                     >
                       Follow
                     </button>
                     <button
                       class={`${
                         darkMode ? "bg-transparent" : "bg-white"
-                      } btn draw-border`}
+                      } engBtn draw-border`}
                     >
                       Follow
                     </button>

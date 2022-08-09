@@ -46,15 +46,13 @@ const Navbar = () => {
     <div className="">
       {/* start header  */}
       <header
-        className={`fixed duration-300 top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-28 2xl:px-64 ${
-          colorChange && (darkMode ? "bg-teal-600" : "bg-teal-900")
-        } ${location !== "/" && (darkMode ? "bg-teal-600" : "bg-teal-900")} `}
+        className={`fixed duration-300 top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-28 2xl:px-64 ${colorChange && (darkMode ? "bg-teal-600" : "bg-teal-900")
+          } ${location !== "/" && (darkMode ? "bg-teal-600" : "bg-teal-900")} `}
       >
         <div
-          className={`${
-            colorChange ? "md:hidden opacity-0" : "md:flex opacity-100"
-          } hidden justify-between duration-500 items-center py-2 border-b text-sm`}
-          // style="border-color: rgba(255,255,255,.25)"
+          className={`${colorChange ? "md:hidden opacity-0" : "md:flex opacity-100"
+            } hidden justify-between duration-500 items-center py-2 border-b text-sm`}
+        // style="border-color: rgba(255,255,255,.25)"
         >
           <div>
             <ul className="flex text-white">
@@ -176,9 +174,8 @@ const Navbar = () => {
           <label
             for="dashboard-drower"
             tabIndex="1"
-            class={`${
-              location.includes("dashboard") ? "block" : "hidden"
-            } md:hidden text-white cursor-pointer`}
+            class={`${location.includes("dashboard") ? "block" : "hidden"
+              } md:hidden text-white cursor-pointer`}
           >
             <MdDashboardCustomize className="h-5 w-5"></MdDashboardCustomize>
           </label>
@@ -217,9 +214,8 @@ const Navbar = () => {
 
           <ul
             onClick={navBtnHndle}
-            className={`mobile-manu flex md:hidden flex-col text-center z-10   left-0 w-full bg-teal-100  absolute  py-4 duration-500 ${
-              toggle ? " opacity-100  top-20" : " top-[-350px] opacity-0"
-            }`}
+            className={`mobile-manu flex md:hidden flex-col text-center z-10   left-0 w-full bg-teal-100  absolute  py-4 duration-500 ${toggle ? " opacity-100  top-20" : " top-[-350px] opacity-0"
+              }`}
           >
             <NavLink
               className={({ isActive }) =>
@@ -284,6 +280,11 @@ const Navbar = () => {
                 </button>
               </li>
             )}
+            <div class="avatar mx-auto my-2">
+              <div class="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src="https://placeimg.com/192/192/people" alt="Profile" />
+              </div>
+            </div>
             <Link
               className="inline-block w-44 mx-auto font-semibold px-4 py-2 hover:bg-white hover:text-teal-900  bg-teal-800 text-white  border-white rounded"
               to={"/"}
@@ -371,15 +372,20 @@ const Navbar = () => {
                   </li>
                 )}
 
+                <Link to={'/profile'} class="avatar mx-2">
+                  <div class="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    <img src="https://placeimg.com/192/192/people" alt="Profile" />
+                  </div>
+                </Link>
+
                 {user ? (
                   <li className="md:ml-6 mt-3 md:mt-0">
                     <a
                       onClick={() => signOut(auth)}
-                      className={`inline-block font-semibold px-4 py-2 ${
-                        colorChange
-                          ? "hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white"
-                          : "hover:bg-white hover:text-teal-900 text-white bg-teal-900"
-                      }   border-white rounded cursor-pointer`}
+                      className={`inline-block font-semibold px-4 py-2 ${colorChange
+                        ? "hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white"
+                        : "hover:bg-white hover:text-teal-900 text-white bg-teal-900"
+                        }   border-white rounded cursor-pointer`}
                     >
                       Sign Out
                     </a>
@@ -387,11 +393,10 @@ const Navbar = () => {
                 ) : (
                   <li className="md:ml-6 mt-3 md:mt-0">
                     <Link
-                      className={`inline-block font-semibold px-4 py-2 ${
-                        colorChange
-                          ? "hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white"
-                          : "hover:bg-white hover:text-teal-900 text-white bg-teal-900"
-                      }   border-white rounded`}
+                      className={`inline-block font-semibold px-4 py-2 ${colorChange
+                        ? "hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white"
+                        : "hover:bg-white hover:text-teal-900 text-white bg-teal-900"
+                        }   border-white rounded`}
                       to="/login"
                     >
                       Login
