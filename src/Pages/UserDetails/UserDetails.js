@@ -233,10 +233,10 @@ const UserDetails = () => {
             <div
               class={`${
                 darkMode ? "bg-gray-500" : "bg-gray-50"
-              }  px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}
+              }  px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}
             >
               <dt
-                class={`text-sm font-medium ${
+                class={`text-sm font-medium my-3 ${
                   darkMode ? "text-gray-200" : "text-gray-500"
                 } `}
               >
@@ -249,13 +249,15 @@ const UserDetails = () => {
               >
                 {user?.role === "admin" ? (
                   <button
+                    style={{marginLeft:"0"}}
                     onClick={deleteUserAdmin}
                     className={`${darkMode && "hover:text-white hover:btn-ghost" } btn btn-xs  btn-warning leading-5`}
                   >
                     Delete Admin
                   </button>
                 ) : (
-                  <button
+                  <button 
+                    style={{marginLeft:"0"}}
                     onClick={makeUser5Admin}
                     className={`${darkMode && "hover:text-white hover:btn-ghost" } btn btn-xs  btn-success leading-5`}
                   >

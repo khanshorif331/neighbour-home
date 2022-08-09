@@ -229,9 +229,9 @@ const Navbar = () => {
               className={({ isActive }) =>
                 isActive ? "activeLink" : "navLink"
               }
-              to={"/"}
+              to={"/properties"}
             >
-              Appartments
+              Properties
             </NavLink>
             <NavLink
               className={({ isActive }) =>
@@ -314,11 +314,11 @@ const Navbar = () => {
                 </li>
                 <li className="md:ml-2.5">
                   <Link
-                    to={"/"}
+                    to={"/properties"}
                     className="py-2 inline-block md:text-white md:px-2 font-semibold"
                     href="#"
                   >
-                    Aparments
+                    Properties
                   </Link>
                 </li>
                 <li className="md:ml-2.5">
