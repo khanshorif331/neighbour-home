@@ -26,6 +26,8 @@ import EngineerDetails from "./Pages/EngineerDetails/EngineerDetails";
 import { BarLoader } from "react-spinners";
 import Dashboard1 from "./Pages/Dashboardpage/Dashboard1/Dashboard1";
 import Profile from "./Pages/Profile/MyProfile";
+import PropertiesPage from "./Pages/Properties/PropertiesPage";
+import MyProfile from "./Pages/Profile/MyProfile/MyProfile";
 
 export const DarkModeContext = createContext("");
 const queryClient = new QueryClient();
