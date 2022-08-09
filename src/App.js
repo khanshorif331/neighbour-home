@@ -25,7 +25,6 @@ import EngineersTable from "./Pages/ServiceDetails/EngineersTable";
 import EngineerDetails from "./Pages/EngineerDetails/EngineerDetails";
 import { BarLoader } from "react-spinners";
 import Dashboard1 from "./Pages/Dashboardpage/Dashboard1/Dashboard1";
-import PropertiesPage from "./Pages/Properties/PropertiesPage";
 import Profile from "./Pages/Profile/MyProfile";
 
 export const DarkModeContext = createContext("");
@@ -109,7 +108,9 @@ function App() {
                 <Route path="/properties" element={<PropertiesPage />} />
                 
               {/* Profile Routes */}
-                <Route path="/profile" element={<Profile />} />
+                <Route path="/profile" element={<Profile />}>
+                  <Route index element={<MyProfile />}></Route>
+                </Route>
 
                 <Route path="*" element={<NotFound />} />
               </Routes>
