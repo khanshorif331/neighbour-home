@@ -27,36 +27,45 @@ const MyProfile = () => {
 
 
                 </div>
-                <div className='space-y-4'>
-                    <div className='space-y-2'>
-                        <h2 className='text-sm font-bold'>Full Name</h2>
-                        <p>Sadik</p>
-                    </div>
-                    <div className='space-y-2'>
-                        <h2 className='text-sm font-bold'>Email</h2>
-                        <p>sadikhossain433@gmail.com</p>
-                    </div>
-                    <div className='space-y-2'>
-                        <h2 className='text-sm font-bold'>Phone</h2>
-                        <p>+8801xxxxxxxxx</p>
-                    </div>
-                </div>
-                <form>
-                    <div className='space-y-2'>
-                        <div className='space-y-1'>
-                            <label className='text-sm font-bold'>Enter Your Full Name</label>
-                            <input type="text" placeholder="John Doe" class="input input-bordered w-full max-w-xs" />
+                {
+                    toogleProfileEdit ?
+                        <form>
+                            <div className='space-y-2'>
+                                <div className='space-y-1'>
+                                    <label className='text-sm font-bold'>Enter Your Full Name</label>
+                                    <input type="text" placeholder="John Doe" class="input input-bordered w-full max-w-xs" />
+                                </div>
+                                <div className='space-y-1'>
+                                    <label className='text-sm font-bold'>Enter Your Email</label>
+                                    <input type="text" placeholder="example@mail.com" class="input input-bordered w-full max-w-xs" />
+                                </div>
+                                <div className='space-y-1'>
+                                    <label className='text-sm font-bold'>Enter Your Phone</label>
+                                    <input type="text" placeholder="+8801xxxxxxxxx" class="input input-bordered w-full max-w-xs" />
+                                </div>
+                                <div className='text-center'>
+                                    <input className='bg-green-600 py-2 px-7 rounded-full text-white font-bold cursor-pointer' type="submit" value="Submit" />
+                                </div>
+                            </div>
+                        </form>
+                        :
+                        <div className='space-y-4'>
+                            <div className='space-y-2'>
+                                <h2 className='text-sm font-bold'>Full Name</h2>
+                                <p>Sadik</p>
+                            </div>
+                            <div className='space-y-2'>
+                                <h2 className='text-sm font-bold'>Email</h2>
+                                <p>sadikhossain433@gmail.com</p>
+                            </div>
+                            <div className='space-y-2'>
+                                <h2 className='text-sm font-bold'>Phone</h2>
+                                <p>+8801xxxxxxxxx</p>
+                            </div>
                         </div>
-                        <div className='space-y-1'>
-                            <label className='text-sm font-bold'>Enter Your Email</label>
-                            <input type="text" placeholder="example@mail.com" class="input input-bordered w-full max-w-xs" />
-                        </div>
-                        <div className='space-y-1'>
-                            <label className='text-sm font-bold'>Enter Your Phone</label>
-                            <input type="text" placeholder="+8801xxxxxxxxx" class="input input-bordered w-full max-w-xs" />
-                        </div>
-                    </div>
-                </form>
+                }
+
+
             </div>
         </section>
     );
