@@ -1,6 +1,9 @@
 import React from 'react';
 
 const MyProfile = () => {
+
+    const [toogleProfileEdit, setToogleProfileEdit] = React.useState(false);
+
     return (
         <section className=''>
             <h1 className='text-center text-3xl py-3 font-bold border-b-2 border-b-gray-300'>My Profile</h1>
@@ -11,9 +14,18 @@ const MyProfile = () => {
                             <img src="https://placeimg.com/192/192/people" alt='Profile' />
                         </div>
                     </div>
-                    <div className='my-3 bg-blue-600 text-center py-2 rounded-full text-white font-medium'>
-                        <button className='text-sm'> Edit Profile</button>
-                    </div>
+                    {
+                        toogleProfileEdit ?
+                            <div onClick={() => setToogleProfileEdit(!toogleProfileEdit)} className='my-3 bg-red-600 text-center py-2 rounded-full text-white font-medium cursor-pointer'>
+                                <button className='text-sm'> Cancel Edit</button>
+                            </div>
+                            :
+                            <div onClick={() => setToogleProfileEdit(!toogleProfileEdit)} className='my-3 bg-blue-600 text-center py-2 rounded-full text-white font-medium cursor-pointer'>
+                                <button className='text-sm'> Edit Profile</button>
+                            </div>
+                    }
+
+
                 </div>
                 <div className='space-y-4'>
                     <div className='space-y-2'>
@@ -29,6 +41,22 @@ const MyProfile = () => {
                         <p>+8801xxxxxxxxx</p>
                     </div>
                 </div>
+                <form>
+                    <div className='space-y-2'>
+                        <div className='space-y-1'>
+                            <label className='text-sm font-bold'>Enter Your Full Name</label>
+                            <input type="text" placeholder="John Doe" class="input input-bordered w-full max-w-xs" />
+                        </div>
+                        <div className='space-y-1'>
+                            <label className='text-sm font-bold'>Enter Your Email</label>
+                            <input type="text" placeholder="example@mail.com" class="input input-bordered w-full max-w-xs" />
+                        </div>
+                        <div className='space-y-1'>
+                            <label className='text-sm font-bold'>Enter Your Phone</label>
+                            <input type="text" placeholder="+8801xxxxxxxxx" class="input input-bordered w-full max-w-xs" />
+                        </div>
+                    </div>
+                </form>
             </div>
         </section>
     );
