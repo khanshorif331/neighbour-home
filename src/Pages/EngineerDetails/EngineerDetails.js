@@ -18,35 +18,29 @@ const EngineerDetails = () => {
             data: data,
             engineer: engineer
         }
-        // console.log(result);
         if (result) {
+            const url = `https://neighbour-home--server.herokuapp.com/booking`;
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(result)
+            })
+                .then(res => res.json())
+                .then(result => {
+                    if (result.message) {
                         alert('your order is successfully done we will contact you later');
                         reset();
-                        navigate('/engineers');
+                        navigate('/dashboard/myOrders');
                     }
-        // const url = `http://localhost:1010/order`;
-        // fetch(url, {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(result)
-        // })
-        //     .then(res => res.json())
-        //     .then(result => {
-        //         console.log(result);
+                    else {
+                        alert('try another');
+                        reset();
+                    }
+                })
+        }
 
-
-        //         if (result.success) {
-        //             alert('your order is successfully done plz pay for deliver');
-        //             reset();
-        //             // navigate('/dashboard/orders');
-        //         }
-        //         else {
-        //             alert('try another');
-        //             reset();
-        //         }
-        //     })
     }
     return (
         <div className='mt-32'>
@@ -64,8 +58,8 @@ const EngineerDetails = () => {
                         <p className="w-6/12 my-1">Email: {1 < 0 ? '*******@**.com' : 'xyz****@**.com'}</p>
                         <p className="w-6/12 my-1">Location: 'Dhaka mohakali'</p>
                         <p className="w-6/12 my-1">per hours: ${Math.floor(Math.random() * 10) + 20}</p>
-                        <input type="text" name='uName' disabled value={user?.displayName || ''} className="input input-bordered w-full max-w-xs"  {...register("customerEmail")} />
-                        <input type="email" disabled value={user.email || ''} className="input my-2 input-bordered w-full max-w-xs" {...register("customerEmail")} />
+                        <input type="text"   value={user?.displayName} className="input input-bordered w-full max-w-xs"  {...register("customerName")} />
+                        <input type="email"  value={user?.email} className="input my-2 input-bordered w-full max-w-xs" {...register("customerEmail")} />
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-control w-full max-w-xs">
                                 <input

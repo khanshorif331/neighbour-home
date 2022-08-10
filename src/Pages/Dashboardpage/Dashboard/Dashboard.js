@@ -146,6 +146,32 @@ const Dashboard = () => {
                 Manage Constructors
               </Link>
             </li>
+            <li>
+              <Link
+                className={` shadow-lg my-1 font-bold ${
+                  darkMode
+                    ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
+                    : " text-gray-500"
+                }`}
+                to={"/dashboard/myOrders"}
+              >
+                <img className="w-4" src={constructionSvg} alt="book svg" />{" "}
+                My Orders
+              </Link>
+            </li>
+            <li>
+              <Link
+                className={` shadow-lg my-1 font-bold ${
+                  darkMode
+                    ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
+                    : " text-gray-500"
+                }`}
+                to={"/dashboard/orders"}
+              >
+                <img className="w-4" src={constructionSvg} alt="book svg" />{" "}
+                Orders
+              </Link>
+            </li>
 
             {/* {
                           admin ?
