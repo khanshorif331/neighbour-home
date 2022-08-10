@@ -27,6 +27,10 @@ import { BarLoader } from "react-spinners";
 import Dashboard1 from "./Pages/Dashboardpage/Dashboard1/Dashboard1";
 import Orders from "./Pages/Dashboardpage/orders/Orders";
 import MyOrders from "./Pages/Dashboardpage/myOrders/MyOrders";
+import PropertiesPage from "./Pages/Properties/PropertiesPage";
+import Profile from "./Pages/Profile/Profile";
+import MyProfile from "./Pages/Profile/MyProfile/MyProfile";
+import Address from "./Pages/Profile/Address/Address";
 
 export const DarkModeContext = createContext("");
 const queryClient = new QueryClient();
@@ -108,6 +112,13 @@ function App() {
                 <Route path="/user_data" element={<UserData />} />
                 <Route path="/addReview" element={<AddReview />} />
                 <Route path="/bookDetail/:_id" element={<BookReview />} />
+                <Route path="/properties" element={<PropertiesPage />} />
+                
+              {/* Profile Routes */}
+                <Route path="/profile" element={<Profile />}>
+                  <Route index element={<MyProfile />}></Route>
+                  <Route path="address" element={<Address />}></Route>
+                </Route>
                 <Route path="*" element={<NotFound />} />
               </Routes>
               <Footer />
