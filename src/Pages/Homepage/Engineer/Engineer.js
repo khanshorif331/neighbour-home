@@ -48,7 +48,7 @@ const Engineer = () => {
         modules={[FreeMode, Pagination]}
         className="mySwiper "
       >
-        {engineers.map((engineer) => {
+        {engineers?.map((engineer) => {
           const { picture, name, surname, _id } = engineer;
           return (
             <SwiperSlide key={_id}>

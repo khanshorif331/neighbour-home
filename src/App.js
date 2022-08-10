@@ -25,6 +25,8 @@ import EngineersTable from "./Pages/ServiceDetails/EngineersTable";
 import EngineerDetails from "./Pages/EngineerDetails/EngineerDetails";
 import { BarLoader } from "react-spinners";
 import Dashboard1 from "./Pages/Dashboardpage/Dashboard1/Dashboard1";
+import Orders from "./Pages/Dashboardpage/orders/Orders";
+import MyOrders from "./Pages/Dashboardpage/myOrders/MyOrders";
 
 export const DarkModeContext = createContext("");
 const queryClient = new QueryClient();
@@ -79,6 +81,8 @@ function App() {
                   ></Route>
                   <Route path="constructors" element={<Constructors />}></Route>
                   <Route path="manageBooks" element={<ManageBooks />}></Route>
+                  <Route path="orders" element={<Orders />}></Route>
+                  <Route path="myOrders" element={<MyOrders />}></Route>
                   <Route
                     path="manageEngineers"
                     element={<ManageEngineers />}
