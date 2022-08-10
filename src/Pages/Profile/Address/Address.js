@@ -40,6 +40,9 @@ const Address = () => {
                     </div>
                 </div>
             </div>
+                <div className='text-center'>
+                    <button className='bg-blue-600 font-semibold py-2 px-5 text-white rounded-full'>Edit Address</button>
+                </div>
         </section>
     );
 };
