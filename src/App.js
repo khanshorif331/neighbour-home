@@ -115,7 +115,6 @@ function App() {
                   <Route index element={<MyProfile />}></Route>
                   <Route path="address" element={<Address />}></Route>
                 </Route>
-
                 <Route path="*" element={<NotFound />} />
               </Routes>
               <Footer />
