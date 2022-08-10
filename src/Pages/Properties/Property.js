@@ -4,9 +4,9 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Rating from 'react-rating';
 
-const Propertie = ({ propertie }) => {
-     // console.log(propertie);
-     const { images, length, location, propertyName, propertyPrice, propertyType, rating, selingarea, sellerName, totalarea, width } = propertie;
+const Property = ({ property }) => {
+     // console.log(Property);
+     const { images, length, location, propertyName, propertyPrice, propertyType, rating, selingarea, sellerName, totalarea, width } = property;
      return (
           <div className='h-[400px] w-[250px] m-5 bg-teal-400 rounded-xl relative'>
                {/* <img src={images} alt="" /> */}
@@ -39,4 +39,4 @@ const Propertie = ({ propertie }) => {
      );
 };
 
-export default Propertie;
+export default Property;

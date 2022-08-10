@@ -46,7 +46,7 @@ const Navbar = () => {
     <div className="">
       {/* start header  */}
       <header
-        className={`fixed duration-300 top-0 left-0 w-full z-50 px-4 sm:px-8 lg:px-16 xl:px-28 2xl:px-64 ${colorChange && (darkMode ? "bg-teal-600" : "bg-teal-900")
+        className={`fixed duration-300 top-0 left-0 w-full z-10 px-4 sm:px-8 lg:px-16 xl:px-28 2xl:px-64 ${colorChange && (darkMode ? "bg-teal-600" : "bg-teal-900")
           } ${location !== "/" && (darkMode ? "bg-teal-600" : "bg-teal-900")} `}
       >
         <div
