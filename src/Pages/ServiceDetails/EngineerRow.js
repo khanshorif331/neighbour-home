@@ -17,7 +17,7 @@ const EngineerRow = ({ index, engineer }) => {
       <td>{surname}</td>
       <td>
         <Link to={`engineer/${_id}`}>
-          <button className="btn btn-xs">View Profile</button>
+          <button className="btn btn-xs hover:bg-slate-800">View Profile</button>
         </Link>
       </td>
     </tr>

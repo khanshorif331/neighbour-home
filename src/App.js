@@ -25,10 +25,8 @@ import EngineersTable from "./Pages/ServiceDetails/EngineersTable";
 import EngineerDetails from "./Pages/EngineerDetails/EngineerDetails";
 import { BarLoader } from "react-spinners";
 import Dashboard1 from "./Pages/Dashboardpage/Dashboard1/Dashboard1";
-import Profile from "./Pages/Profile/Profile";
-import PropertiesPage from "./Pages/Properties/PropertiesPage";
-import MyProfile from "./Pages/Profile/MyProfile/MyProfile";
-import Address from "./Pages/Profile/Address/Address";
+import Orders from "./Pages/Dashboardpage/orders/Orders";
+import MyOrders from "./Pages/Dashboardpage/myOrders/MyOrders";
 
 export const DarkModeContext = createContext("");
 const queryClient = new QueryClient();
@@ -41,7 +39,7 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, [3000]);
+    }, [5000]);
   }, []);
 
   return (
@@ -83,6 +81,8 @@ function App() {
                   ></Route>
                   <Route path="constructors" element={<Constructors />}></Route>
                   <Route path="manageBooks" element={<ManageBooks />}></Route>
+                  <Route path="orders" element={<Orders />}></Route>
+                  <Route path="myOrders" element={<MyOrders />}></Route>
                   <Route
                     path="manageEngineers"
                     element={<ManageEngineers />}
@@ -108,14 +108,6 @@ function App() {
                 <Route path="/user_data" element={<UserData />} />
                 <Route path="/addReview" element={<AddReview />} />
                 <Route path="/bookDetail/:_id" element={<BookReview />} />
-                <Route path="/properties" element={<PropertiesPage />} />
-                
-              {/* Profile Routes */}
-                <Route path="/profile" element={<Profile />}>
-                  <Route index element={<MyProfile />}></Route>
-                  <Route path="address" element={<Address />}></Route>
-                </Route>
-
                 <Route path="*" element={<NotFound />} />
               </Routes>
               <Footer />

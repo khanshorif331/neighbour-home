@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Fade } from "react-reveal";
 import { Link, useParams } from "react-router-dom";
 import { DarkModeContext } from "../../App";
@@ -10,6 +10,8 @@ const ServiceDetails = () => {
   const [service] = useServiceDetails(serviceId);
   const { title, picture, _id, price, duration, discount, description } =
     service;
+
+        
   return (
     <section className={`${darkMode && "dark-theme"} duration-300`}>
       <div
