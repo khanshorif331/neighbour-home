@@ -10,10 +10,7 @@ const Profile = () => {
                         <li className='w-full font-semibold'><Link to='/profile'>My Profile</Link></li>
                         <li className='w-full font-semibold'><Link to='/profile/address'>Address</Link></li>
                         <li className='w-full font-semibold'><Link to='/profile/education'>Education</Link></li>
-                        <li className='w-full font-semibold'><Link to='/profile/got_hired'>Got Hired</Link></li>
                         <li className='w-full font-semibold'><Link to='/profile/important_links'>Important Links</Link></li>
-                        <li className='w-full font-semibold'><Link to='/profile/job_experience'>Job Experience</Link></li>
-                        <li className='w-full font-semibold'><Link to='/dashboard/certification'>Certification</Link></li>
                     </ul>
                 </div>
                 <div className="md:w-2/3 w-full md:m-3 shadow-lg">

@@ -9,7 +9,7 @@ const Properties = () => {
             res => res.json()
         )
     )
-    console.log(properties);
+    // console.log(properties);
     if (isLoading) <Loading />
     return (
         <div className="flex flex-wrap justify-evenly py-8 px-16">
