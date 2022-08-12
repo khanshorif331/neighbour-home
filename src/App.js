@@ -31,6 +31,7 @@ import PropertiesPage from "./Pages/Properties/PropertiesPage";
 import Profile from "./Pages/Profile/Profile";
 import MyProfile from "./Pages/Profile/MyProfile/MyProfile";
 import Address from "./Pages/Profile/Address/Address";
+import Body from "./Pages/ResumeBuilder/Body/Body";
 
 export const DarkModeContext = createContext("");
 const queryClient = new QueryClient();
@@ -113,6 +114,8 @@ function App() {
                 <Route path="/addReview" element={<AddReview />} />
                 <Route path="/bookDetail/:_id" element={<BookReview />} />
                 <Route path="/properties" element={<PropertiesPage />} />
+                <Route path="/resumeBuild" element={<Body />} />
+
                 
               {/* Profile Routes */}
                 <Route path="/profile" element={<Profile />}>
