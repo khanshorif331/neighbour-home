@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SellPostModal from './SellPostModal';
 
-const PropertySearchBar = () => {
+const PropertySearchBar = ({ refetch }) => {
      const [manageSellPostModal, setManageSellPostModal] = useState(false)
      return (
           <div>
@@ -12,7 +12,7 @@ const PropertySearchBar = () => {
                          </h5>
                          <div className='flex items-center'>
                               <label
-                                   //   onClick={() => setManageAddModal(true)}
+                                   onClick={() => setManageSellPostModal(true)}
                                    for="sellPost"
                                    className=" text-lg font-medium border rounded-xl border-teal-400 py-1 cursor-pointer hover:bg-teal-400 hover:text-white px-5 mr-3 text-teal-600 duration-500"
                               >
@@ -20,7 +20,11 @@ const PropertySearchBar = () => {
                               </label>
 
                               {
-                                   <SellPostModal />
+                                   manageSellPostModal &&
+                                   <SellPostModal
+                                        refetch={refetch}
+                                        setManageSellPostModal={setManageSellPostModal}
+                                   />
                               }
 
                               <div className="flex space-x-4">

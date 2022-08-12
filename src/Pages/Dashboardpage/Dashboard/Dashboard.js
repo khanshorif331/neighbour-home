@@ -37,7 +37,7 @@ const Dashboard = () => {
           {/* <!-- Page content here --> */}
           <Outlet />
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side z-0">
           <label htmlFor="dashboard-drower" className="drawer-overlay"></label>
 
           <ul

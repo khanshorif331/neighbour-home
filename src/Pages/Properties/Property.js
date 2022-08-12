@@ -3,13 +3,14 @@ import { MdLocationPin } from 'react-icons/md';
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Rating from 'react-rating';
+import { useNavigate } from 'react-router-dom';
 
 const Property = ({ property }) => {
-     // console.log(Property);
-     const { images, length, location, propertyName, propertyPrice, propertyType, rating, selingarea, sellerName, totalarea, width } = property;
+     const navigate = useNavigate()
+     const { _id, images, length, location, propertyName, propertyPrice, propertyType, rating, selingarea, sellerName, totalarea, width } = property;
      return (
-          <div className='h-[400px] w-[250px] m-5 bg-teal-400 rounded-xl relative'>
-               {/* <img src={images} alt="" /> */}
+          <div className='h-[400px] w-[250px] m-5 bg-teal-400 rounded-xl relative overflow-hidden'>
+               <img className='w-full h-[155px] ' src={images} alt={images} />
 
                <div className='absolute bottom-0 bg-teal-100 rounded-xl opacity-90 px-4 py-3 w-full'>
                     <h5 className='flex items-center'>
@@ -30,7 +31,10 @@ const Property = ({ property }) => {
                          ></Rating>
                     </div>
                     <div className='flex items-center justify-between'>
-                         <button>Book Now</button>
+                         <button 
+                         className='font-semibold'
+                         onClick={()=> navigate(`/payment/${_id}`)} 
+                         >Book Now</button>
                          <h2 className="text-2xl font-semibold">{propertyPrice}</h2>
                     </div>
                </div>

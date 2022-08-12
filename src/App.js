@@ -31,6 +31,7 @@ import PropertiesPage from "./Pages/Properties/PropertiesPage";
 import Profile from "./Pages/Profile/Profile";
 import MyProfile from "./Pages/Profile/MyProfile/MyProfile";
 import Address from "./Pages/Profile/Address/Address";
+import Payment from "./Pages/Payment/Payment";
 import Education from "./Pages/Profile/Education/Education";
 
 export const DarkModeContext = createContext("");
@@ -114,8 +115,8 @@ function App() {
                 <Route path="/addReview" element={<AddReview />} />
                 <Route path="/bookDetail/:_id" element={<BookReview />} />
                 <Route path="/properties" element={<PropertiesPage />} />
-                
-              {/* Profile Routes */}
+                <Route path="/payment/:id" element={<Payment />} />
+                {/* Profile Routes */}
                 <Route path="/profile" element={<Profile />}>
                   <Route index element={<MyProfile />}></Route>
                   <Route path="address" element={<Address />}></Route>
