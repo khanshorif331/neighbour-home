@@ -31,6 +31,7 @@ import PropertiesPage from "./Pages/Properties/PropertiesPage";
 import Profile from "./Pages/Profile/Profile";
 import MyProfile from "./Pages/Profile/MyProfile/MyProfile";
 import Address from "./Pages/Profile/Address/Address";
+import Education from "./Pages/Profile/Education/Education";
 
 export const DarkModeContext = createContext("");
 const queryClient = new QueryClient();
@@ -118,6 +119,7 @@ function App() {
                 <Route path="/profile" element={<Profile />}>
                   <Route index element={<MyProfile />}></Route>
                   <Route path="address" element={<Address />}></Route>
+                  <Route path="education" element={<Education/>}></Route>
                 </Route>
                 <Route path="*" element={<NotFound />} />
               </Routes>
