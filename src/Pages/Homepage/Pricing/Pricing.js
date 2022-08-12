@@ -1,8 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { DarkModeContext } from "../../../App";
+import PricingCard from "../PricingCard/PricingCard";
 
 const Pricing = () => {
   const [darkMode] = useContext(DarkModeContext);
+  const [pricing, setPricing] = useState([]);
+  useEffect(() => {
+    fetch("pricing.json")
+      .then((res) => res.json())
+      .then((data) => setPricing(data));
+  }, []);
   return (
     <div>
       <section className="py-20 ">
@@ -17,7 +24,10 @@ const Pricing = () => {
             </h2>
           </div>
           <div className="flex flex-wrap items-stretch -mx-4">
-            <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0 transform hover:scale-105 transition duration-500">
+            {pricing.map((pricings) => (
+              <PricingCard pricings={pricings} key={pricings._id}></PricingCard>
+            ))}
+            {/* <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0 transform hover:scale-105 transition duration-500">
               <div
                 className={`${
                   darkMode && "dark:bg-gray-900 text-gray-50"
@@ -102,8 +112,8 @@ const Pricing = () => {
                   Get Started
                 </button>
               </div>
-            </div>
-            <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0 transform hover:scale-105 transition duration-500">
+            </div> */}
+            {/* <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0 transform hover:scale-105 transition duration-500">
               <div
                 className={` ${
                   darkMode && "bg-sky-400 text-gray-900"
@@ -196,9 +206,9 @@ const Pricing = () => {
                   Get Started
                 </a>
               </div>
-            </div>
+            </div> */}
 
-            <div className="w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0 transform hover:scale-105 transition duration-500">
+            {/* <div className="w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0 transform hover:scale-105 transition duration-500">
               <div
                 className={`${
                   darkMode && "dark:bg-gray-900 text-gray-50"
@@ -302,7 +312,7 @@ const Pricing = () => {
                   Get Started
                 </a>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
