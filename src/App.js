@@ -33,6 +33,7 @@ import MyProfile from "./Pages/Profile/MyProfile/MyProfile";
 import Address from "./Pages/Profile/Address/Address";
 import Payment from "./Pages/Payment/Payment";
 import Education from "./Pages/Profile/Education/Education";
+import PricingPay from "./Pages/Homepage/Pricing/PricingPay";
 
 export const DarkModeContext = createContext("");
 const queryClient = new QueryClient();
@@ -116,11 +117,12 @@ function App() {
                 <Route path="/bookDetail/:_id" element={<BookReview />} />
                 <Route path="/properties" element={<PropertiesPage />} />
                 <Route path="/payment/:id" element={<Payment />} />
+                <Route path="/pricingPay/:id" element={<PricingPay />} />
                 {/* Profile Routes */}
                 <Route path="/profile" element={<Profile />}>
                   <Route index element={<MyProfile />}></Route>
                   <Route path="address" element={<Address />}></Route>
-                  <Route path="education" element={<Education/>}></Route>
+                  <Route path="education" element={<Education />}></Route>
                 </Route>
                 <Route path="*" element={<NotFound />} />
               </Routes>

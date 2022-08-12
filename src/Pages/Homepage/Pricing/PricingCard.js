@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../../App";
 
 const PricingCard = ({ pricings }) => {
-  const { tag, price, period, description, benefit } = pricings;
+  const { tag, price, period, description, benefit, _id } = pricings;
   const [darkMode] = useContext(DarkModeContext);
   return (
     <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0 transform hover:scale-105 transition duration-500">
@@ -38,14 +39,15 @@ const PricingCard = ({ pricings }) => {
             </li>
           ))}
         </ul>
-        <button
+        <Link
           type="button"
           className={`${
             darkMode && "dark:bg-sky-400 dark:text-gray-900"
           } inline-block px-5 py-3 font-semibold tracking-wider text-center rounded bg-sky-600 text-gray-50`}
+          to={`/pricingPay/${_id}`}
         >
-          Get Started
-        </button>
+          <button>Get Started</button>
+        </Link>
       </div>
     </div>
   );
