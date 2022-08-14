@@ -4,10 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Rating from 'react-rating';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import auth from '../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import Loading from '../../Shared/Loading/Loading';
 
-const SellPostModal = ({setManageSellPostModal, refetch}) => {
+const SellPostModal = ({ setManageSellPostModal, refetch }) => {
      const [rating, setRating] = useState(0);
      const [ratingError, setRatingError] = useState("");
+     const [user, loading] = useAuthState(auth);
      const imgStorage_key = `7a0f43e157252e0ca3031dea1d8dcccd`;
 
 
@@ -16,7 +20,6 @@ const SellPostModal = ({setManageSellPostModal, refetch}) => {
           const picture = e.target.productImg.files[0];
           if (rating === 0) return setRatingError("Please Select Rating")
           setRatingError("")
-
           const formData = new FormData();
           formData.append("image", picture);
           const url = `https://api.imgbb.com/1/upload?key=${imgStorage_key}`;
@@ -31,6 +34,7 @@ const SellPostModal = ({setManageSellPostModal, refetch}) => {
 
 
                          const postInfo = {
+                              sellerEmail: user?.email,
                               images: imgUrl,
                               length: e.target.length.value,
                               location: e.target.location.value,
@@ -68,10 +72,11 @@ const SellPostModal = ({setManageSellPostModal, refetch}) => {
                });
 
      }
-
      const handleRate = (value) => {
           setRating(value)
      }
+     if (loading) return <Loading></Loading>
+
      return (
           <>
                <input type="checkbox" id="sellPost" className="modal-toggle" />
