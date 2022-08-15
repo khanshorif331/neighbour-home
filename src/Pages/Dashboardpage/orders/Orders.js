@@ -18,7 +18,7 @@ const Orders = () => {
     if (error) return 'An error has occurred: ' + error.message
     return (
         <div className=''>
-            <h2 className={`${darkMode && "text-white"} text-2xl py-4 text-center`}>All Orders: {data?.length}</h2>
+            <h2 className={`${darkMode && "text-white"} text-2xl py-4 text-center`}>All Hiring List: {data?.length}</h2>
             <div className="overflow-x-auto px-2">
                 <table className={`${
 						darkMode ? 'text-gray-400' : 'text-gray-500 table table-zebra'
@@ -46,7 +46,7 @@ const Orders = () => {
                                 index={index}
                                 key={d._id}
                                 d={d}
-                                // refetch={refetch}
+                                refetch={refetch}
                                 ></OrderRow>)
                         }
                     </tbody>

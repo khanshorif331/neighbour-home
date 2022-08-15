@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import useEngineer from '../../hooks/useEngineer';
 import { useForm } from 'react-hook-form';
+import { DarkModeContext } from '../../App';
+import toast from 'react-hot-toast';
 const n = '01764 546296'
 const num = n.toString().split(' ');
 const EngineerDetails = () => {
+
+    const [darkMode, setDarkMode] = useContext(DarkModeContext);
     const { engineerId } = useParams();
     const [engineer] = useEngineer(engineerId);
     const { picture, name, _id, surname } = engineer;
@@ -18,6 +22,7 @@ const EngineerDetails = () => {
             data: data,
             engineer: engineer
         }
+        console.log(result);
         if (result) {
             const url = `https://neighbour-home--server.herokuapp.com/booking`;
             fetch(url, {
@@ -29,13 +34,15 @@ const EngineerDetails = () => {
             })
                 .then(res => res.json())
                 .then(result => {
+                    console.log(result);
                     if (result.message) {
-                        alert('your order is successfully done we will contact you later');
+                        toast.success('your hiring request is successfully done when admin accept can you see on your dashboard "ready to hire" status')
+                        alert();
                         reset();
                         navigate('/dashboard/myOrders');
                     }
                     else {
-                        alert('try another');
+                        alert('something wrong please try again');
                         reset();
                     }
                 })
@@ -43,8 +50,8 @@ const EngineerDetails = () => {
 
     }
     return (
-        <div className='mt-32'>
-            <div className="hero min-h-screen bg-base-200 py-12">
+        <div className={`${darkMode && "dark-theme"} duration-300 mt-32`}>
+            <div className={`hero min-h-screen ${darkMode && "dark-theme"}bg-base-200 py-12`}>
                 <div className="card lg:card-side bg-base-100 shadow-xl">
                     <div className="card-body">
                         <img className='w-72 h-72 hidden  lg:block rounded-xl' src={picture} alt={picture} />
@@ -58,8 +65,8 @@ const EngineerDetails = () => {
                         <p className="w-6/12 my-1">Email: {1 < 0 ? '*******@**.com' : 'xyz****@**.com'}</p>
                         <p className="w-6/12 my-1">Location: 'Dhaka mohakali'</p>
                         <p className="w-6/12 my-1">per hours: ${Math.floor(Math.random() * 10) + 20}</p>
-                        <input type="text"   value={user?.displayName} className="input input-bordered w-full max-w-xs"  {...register("customerName")} />
-                        <input type="email"  value={user?.email} className="input my-2 input-bordered w-full max-w-xs" {...register("customerEmail")} />
+                        <input type="text" value={user?.displayName} className="input input-bordered w-full max-w-xs"  {...register("customerName")} />
+                        <input type="email" value={user?.email} className="input my-2 input-bordered w-full max-w-xs" {...register("customerEmail")} />
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-control w-full max-w-xs">
                                 <input

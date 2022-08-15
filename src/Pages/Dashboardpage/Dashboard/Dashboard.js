@@ -6,6 +6,7 @@ import userSvg from "../../../Assest/user-dashbord.svg";
 import engineerSvg from "../../../Assest/engineer-dashbord.svg";
 import reviewSvg from "../../../Assest/review-dashbord.svg";
 import constructionSvg from "../../../Assest/construction-dashbord.svg";
+import hiringSvg from "../../../Assest/images/orders-icon.svg";
 import { MdDashboardCustomize } from "react-icons/md";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
@@ -37,7 +38,7 @@ const Dashboard = () => {
           {/* <!-- Page content here --> */}
           <Outlet />
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side z-0">
           <label htmlFor="dashboard-drower" className="drawer-overlay"></label>
 
           <ul
@@ -155,7 +156,7 @@ const Dashboard = () => {
                 }`}
                 to={"/dashboard/myOrders"}
               >
-                <img className="w-4" src={constructionSvg} alt="book svg" />{" "}
+                <img className="w-4" src={hiringSvg} alt="book svg" />{" "}
                 My Orders
               </Link>
             </li>
@@ -168,7 +169,7 @@ const Dashboard = () => {
                 }`}
                 to={"/dashboard/orders"}
               >
-                <img className="w-4" src={constructionSvg} alt="book svg" />{" "}
+                <img className="w-4" src={hiringSvg} alt="book svg" />{" "}
                 Orders
               </Link>
             </li>

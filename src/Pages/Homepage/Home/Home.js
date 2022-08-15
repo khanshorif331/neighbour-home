@@ -10,7 +10,6 @@ import NewsLetter from "../NewsLetter/NewsLetter";
 import Reviews from "../Reviews/Reviews";
 import AboutUs from "../AboutUs/AboutUs";
 import Statistics from "../Statistics/Statistics";
-import MessengerCustomerChat from "react-messenger-customer-chat";
 import Pricing from "../Pricing/Pricing";
 
 const Home = () => {
@@ -28,7 +27,6 @@ const Home = () => {
       <AboutUs></AboutUs>
       <Contact />
       <NewsLetter />
-      <MessengerCustomerChat pageId="106349278843956" appId="795027431626775" />
     </div>
   );
 };

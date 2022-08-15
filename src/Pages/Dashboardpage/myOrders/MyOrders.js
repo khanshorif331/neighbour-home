@@ -22,7 +22,7 @@ const MyOrders = () => {
     
     return (
             <div className=''>
-            <h2 className={`${darkMode && "text-white"} text-2xl py-4 text-center`}>All Orders: {data?.length}</h2>
+            <h2 className={`${darkMode && "text-white"} text-2xl py-4 text-center`}>My All Hiring List: {data?.length}</h2>
             <div className="overflow-x-auto">
                 <table className={`${
                         darkMode ? 'text-gray-400' : 'text-gray-500 table table-zebra'
@@ -36,10 +36,10 @@ const MyOrders = () => {
                             <th></th>
                             <th className=' py-2'>customer</th>
                             <th>Email</th>
-                            <th>Phone</th>
                             <th>engineer</th>
                             <th>email</th>
                             <th>Phone</th>
+                            <th>Status</th>
             
                             <th>Action</th>
                         </tr>
@@ -50,7 +50,7 @@ const MyOrders = () => {
                                 index={index}
                                 key={d._id}
                                 d={d}
-                                // refetch={refetch}
+                                refetch={refetch}
                                 ></MyOrderRow>)
                         }
                     </tbody>
