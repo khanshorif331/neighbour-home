@@ -81,7 +81,7 @@ const SellPostModal = ({ setManageSellPostModal, refetch }) => {
           <>
                <input type="checkbox" id="sellPost" className="modal-toggle" />
                <div className="modal text-center ">
-                    <div className="modal-box mx-auto z-50 max-h-[100vh] flex justify-center">
+                    <div className="modal-box mx-auto z-50  max-h-[100vh] flex justify-center">
                          {/* updated form */}
                          <form
                               onSubmit={hanldeSellPost}
