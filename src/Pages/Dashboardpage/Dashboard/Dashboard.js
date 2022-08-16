@@ -157,7 +157,7 @@ const Dashboard = () => {
                 to={"/dashboard/myOrders"}
               >
                 <img className="w-4" src={hiringSvg} alt="book svg" />{" "}
-                My Orders
+                My Bookings
               </Link>
             </li>
             <li>
@@ -170,7 +170,7 @@ const Dashboard = () => {
                 to={"/dashboard/orders"}
               >
                 <img className="w-4" src={hiringSvg} alt="book svg" />{" "}
-                Orders
+                Bookings
               </Link>
             </li>
 
