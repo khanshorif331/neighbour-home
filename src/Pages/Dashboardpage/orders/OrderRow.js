@@ -35,13 +35,31 @@ const OrderRow = ({ index, d, refetch }) => {
 
 
   const handleStatus = (id) => {
-    status = 'processing';
-    console.log(status);
-    const result = {
-      ...d,
-      status
+    const updatedStatus = {
+      status: 'processing'
     }
-    console.log(result);
+    axios.put(`https://neighbour-home--server.herokuapp.com/user?email=${email}`, updatedStatus)
+    .then(data => {
+        console.log(data.data);
+
+        toast.success(`${email} has been Successfully Made Admin!`)
+        refetch()
+    }).catch(error => {
+        console.log(error.response.data);
+        if (error.response.status === 403) {
+            toast.error("You are Not Admin")
+        }
+    })
+
+
+
+
+    // console.log(status);
+    // const result = {
+    //   ...d,
+    //   status
+    // }
+    // console.log(result);
     // const URL = `https://neighbour-home--server.herokuapp.com/booking/${id}`;
     // axios.put(URL, result)
     //   .then(data => {
