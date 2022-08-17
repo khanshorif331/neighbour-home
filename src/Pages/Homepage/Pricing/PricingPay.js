@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const PricingPay = () => {
   const { _id } = useParams();
+  const [pricing, setPricing] = useState([]);
+  console.log(pricing);
+  useEffect(() => {
+    fetch(`http://localhost:5000/pricing/${_id}`)
+      .then((res) => res.json())
+      .then((data) => setPricing(data));
+  }, []);
   return (
     <div className="mt-32">
       <h2 className="text-2xl text-center font-bold">Purchase Pricing</h2>

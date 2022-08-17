@@ -41,10 +41,10 @@ const PricingCard = ({ pricings }) => {
         </ul>
         <Link
           type="button"
+          to={`/pricingPay/${_id}`}
           className={`${
             darkMode && "dark:bg-sky-400 dark:text-gray-900"
           } inline-block px-5 py-3 font-semibold tracking-wider text-center rounded bg-sky-600 text-gray-50`}
-          to={`/pricingPay/${_id}`}
         >
           <button>Get Started</button>
         </Link>

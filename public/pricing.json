@@ -1,9 +1,8 @@
 [
   {
-    "_id": "623853bf61ad5aba311fdd1",
-    "tag": "Beginner",
-    "price": "Free",
-    "period": "lifetime",
+    "tag": "Weekly Plan",
+    "price": "$99",
+    "period": "Week",
     "description": "This package is for small business. If you want to growth your company quickly please upgrade your package.",
     "benefit": {
       "one": "contact with engineers",
@@ -13,23 +12,21 @@
     }
   },
   {
-    "_id": "623853bh614ad5aba11fdd1",
-    "tag": "Pro",
-    "price": "$199",
-    "period": "Yearly",
+    "tag": "Monthly Plan",
+    "price": "$189",
+    "period": "Month",
     "description": "This package is use for mid-level business company. For large scale company you can go our 'Business' package.",
     "benefit": {
       "one": "Kulas Light",
       "two": "Apt. 556",
       "three": "Gwenborough",
-      "four": "92998-3874"
+      "four": "Monthly updated feature"
     }
   },
   {
-    "_id": "623853b214ad5abb311fdd1",
-    "tag": "Business",
+    "tag": "Yearly Plan",
     "price": "$372",
-    "period": "Yearly",
+    "period": "Year",
     "description": "This package is for Large scale company who can only get our fully premium package.",
     "benefit": {
       "one": "Kulas Light",

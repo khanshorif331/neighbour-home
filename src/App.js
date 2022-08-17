@@ -117,7 +117,7 @@ function App() {
                 <Route path="/bookDetail/:_id" element={<BookReview />} />
                 <Route path="/properties" element={<PropertiesPage />} />
                 <Route path="/payment/:id" element={<Payment />} />
-                <Route path="/pricingPay/:id" element={<PricingPay />} />
+                <Route path="/pricingPay/:_id" element={<PricingPay />} />
                 {/* Profile Routes */}
                 <Route path="/profile" element={<Profile />}>
                   <Route index element={<MyProfile />}></Route>
