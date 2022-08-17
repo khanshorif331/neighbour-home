@@ -24,7 +24,7 @@ const CheckoutForm = ({ property }) => {
 
     useEffect(() => {
 
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("neighbour-home--server.herokuapp.com/create-payment-intent", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -112,22 +112,23 @@ const CheckoutForm = ({ property }) => {
                     // toast.error("Message not sent", { id: 'error' })
                 })
 
-            // const orderInfo = {
-            //     propertyId: property?._id,
-            //     transectionId: paymentIntent.id,
-            //     buyerEmail : user.email,
-            //     buyerName : user.displayName|| "User",
-            //     sellerEmail : property.sellerEmail || "exple@mail.com",
-            //     sellInfo : property  
-            // }
-            // console.log(orderInfo);
-            // axios.post(`https://neighbour-home--server.herokuapp.com/order`, orderInfo)
-            //     .then(data => {
-            //         console.log(data.data);
-            //         event.target.value.reset()
-            //         toast.success(`${property.propertyName} Succesfully Placed Order!`)
 
-            //     })
+            const orderInfo = {
+                propertyId: property?._id,
+                transectionId: paymentIntent.id,
+                buyerEmail : user.email,
+                buyerName : user.displayName|| "User",
+                sellerEmail : property.sellerEmail || "exple@mail.com",
+                sellInfo : property  
+            }
+            // console.log(orderInfo);
+            axios.post(`neighbour-home--server.herokuapp.com/order`, orderInfo)
+                .then(data => {
+                    console.log(data.data);
+                    // event.target.value.reset()
+                    toast.success(`${property.propertyName} Succesfully Placed Order!`)
+
+                })
 
 
         }
