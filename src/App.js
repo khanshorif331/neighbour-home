@@ -34,6 +34,7 @@ import Address from "./Pages/Profile/Address/Address";
 import Payment from "./Pages/Payment/Payment";
 import Education from "./Pages/Profile/Education/Education";
 import PricingPay from "./Pages/Homepage/Pricing/PricingPay";
+import MessengerCustomerChat from "react-messenger-customer-chat";
 import Searches from "./Pages/SearchRoute/Searches";
 
 export const DarkModeContext = createContext("");
@@ -128,6 +129,7 @@ function App() {
                 </Route>
                 <Route path="*" element={<NotFound />} />
               </Routes>
+              <MessengerCustomerChat pageId="106349278843956" appId="795027431626775" />
               <Footer />
             </section>
           </DarkModeContext.Provider>
