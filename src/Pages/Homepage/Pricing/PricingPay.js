@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 const PricingPay = () => {
   const { _id } = useParams();
   const [pricing, setPricing] = useState([]);
-  console.log(pricing);
+  console.log(pricing.benefit);
+  // const { tag, price, period, description, benefit } = pricing;
   useEffect(() => {
     fetch(`http://localhost:5000/pricing/${_id}`)
       .then((res) => res.json())
@@ -12,36 +13,44 @@ const PricingPay = () => {
   }, []);
   return (
     <div className="mt-32">
-      <h2 className="text-2xl text-center font-bold">Purchase Pricing</h2>
       <div class="hero min-h-screen bg-base-200">
         <div class="hero-content flex-col lg:flex-row-reverse">
-          <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <div class="card-body">
-              <div class="form-control">
-                <label class="label">
-                  <span class="label-text">Email</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="email"
-                  class="input input-bordered"
-                />
+          <div className="flex w-full mb-8 sm:px-4 md:w-1/2  lg:mb-0 ">
+            <div className={`flex flex-col p-6 space-y-6 sm:p-8 text-gray-900`}>
+              <div className="space-y-2">
+                <h4 className={` text-2xl font-bold`}>{pricing?.tag}</h4>
+                <span className={`text-6xl font-bold`}>
+                  {pricing?.price}
+                  <span className="text-sm tracking-wide">
+                    /{pricing?.period}
+                  </span>
+                </span>
               </div>
-              <div class="form-control">
-                <label class="label">
-                  <span class="label-text">Password</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="password"
-                  class="input input-bordered"
-                />
-              </div>
-              <div class="form-control mt-6">
-                <button class="btn btn-primary">Purchase</button>
-              </div>
+              <p className="mt-3 leading-relaxed text-gray-600">
+                {pricing?.description}
+              </p>
+              <ul className="flex-1 mb-6 text-gray-600">
+                {/* {Object?.values(pricing?.benefit).map((value) => (
+                  <li className="flex mb-2 space-x-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      className="flex-shrink-0 w-6 h-6 text-sky-600"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                    <span>{value}</span>
+                  </li>
+                ))} */}
+              </ul>
             </div>
           </div>
+
           <div class="text-center lg:text-left">
             <h1 class="text-5xl font-bold">Get Premium Access</h1>
             <p class="py-6">
@@ -49,6 +58,9 @@ const PricingPay = () => {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
+            <button className="p-3 bg-slate-600 text-white">
+              Continue to {pricing?.price}
+            </button>
           </div>
         </div>
       </div>

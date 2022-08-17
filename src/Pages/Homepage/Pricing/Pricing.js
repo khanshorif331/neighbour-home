@@ -24,7 +24,7 @@ const Pricing = () => {
             </h2>
           </div>
           <div className="flex flex-wrap items-stretch -mx-4">
-            {pricing.map((pricings) => (
+            {pricing?.map((pricings) => (
               <PricingCard pricings={pricings} key={pricings._id}></PricingCard>
             ))}
 
