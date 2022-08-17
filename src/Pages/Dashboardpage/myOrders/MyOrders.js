@@ -5,13 +5,14 @@ import { DarkModeContext } from '../../../App';
 import auth from '../../../firebase.init';
 import Loading from '../../../Shared/Loading/Loading';
 import MyOrderRow from './MyOrderRow';
+import { Filter } from 'react-feather';
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
     const { displayName, email } = user;
     const [darkMode, setDarkMode] = useContext(DarkModeContext);
-    const handleDelete = id => {
-    }
+    // const [searchTerm, setSearchTerm] = useState('');
+    
     const { isLoading, error, data, refetch } = useQuery(['myOrders'], () =>
         fetch(`https://neighbour-home--server.herokuapp.com/bookingByEmail?email=${email}`).then(
             res => res.json()
@@ -19,14 +20,31 @@ const MyOrders = () => {
     );
 
     if (isLoading) return <Loading></Loading>
-
-    console.log(data);
+    const handleDelete = email => {
+        fetch(
+          `http://localhost:5000/deleteAllBooking?email=${email}`,
+          {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+          .then(res => res.json())
+          .then(data => {
+            console.log(data)
+            if (data.message) {
+              alert('deleted')
+              refetch()
+            }
+          })
+      }
 
     return (
         <div className=''>
             <div className='flex justify-between items-center align-middle'>
             <div>
-                <button className='btn btn-sm  btn-warning' onClick={handleDelete}>delete all</button>
+                <button className='btn btn-sm  btn-warning' onClick={()=> handleDelete(email)}>delete all</button>
             </div>
             <h2 className={`${darkMode && "text-white"} text-2xl py-4 text-center`}>My All Hiring List: {data?.length}</h2>
             <div className="flex space-x-4">
@@ -51,6 +69,9 @@ const MyOrders = () => {
                             name="leadingIcon"
                             id="leadingIcon"
                             placeholder="Search here"
+                            // onChange={event => {
+                            //     setSearchTerm(event.target.value);
+                            // }}
                             className="w-full pl-14 pr-4 py-2.5 rounded-xl text-sm text-gray-600 outline-none border border-gray-300 focus:border-cyan-300 transition"
                         />
                     </div>
@@ -95,7 +116,18 @@ const MyOrders = () => {
                     </thead>
                     <tbody className={`${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                         {
-                            data?.map((d, index) => <MyOrderRow
+                            data
+                            // .filter((d) => {
+                            //     if(searchTerm === ""){
+                            //         console.log(d);
+                            //         return d
+                            //     }
+                            //     else if(d.data?.customerName.toLowarCase().includes(searchTerm.toLowerCase())){
+                            //         console.log(d);
+                            //         return d
+                            //     }
+                            // })
+                            ?.map((d, index) => <MyOrderRow
                                 index={index}
                                 key={d._id}
                                 d={d}

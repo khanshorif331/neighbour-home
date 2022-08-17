@@ -9,9 +9,9 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 
 const OrderRow = ({ index, d, refetch }) => {
-  console.log(d);
-  const { customerEmail, customerPhone, customerName, customerAddress } = d?.data;
-  const { name, email, _id, picture, phone } = d.engineer;
+  console.log(d?.data?.customerEmail);
+  const { customerEmail, customerPhone, customerName } = d?.data;
+  const { name, email, _id, phone } = d?.engineer;
   let { status } = d;
   const [darkMode] = useContext(DarkModeContext);
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -38,11 +38,11 @@ const OrderRow = ({ index, d, refetch }) => {
     const updatedStatus = {
       status: 'processing'
     }
-    axios.put(`https://neighbour-home--server.herokuapp.com/user?email=${email}`, updatedStatus)
+    axios.put(`http://localhost:5000/booking/${id}`, updatedStatus)
     .then(data => {
         console.log(data.data);
 
-        toast.success(`${email} has been Successfully Made Admin!`)
+        toast.success(`this hiring request has been Successfully accept`)
         refetch()
     }).catch(error => {
         console.log(error.response.data);
