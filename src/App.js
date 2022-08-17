@@ -35,7 +35,11 @@ import Payment from "./Pages/Payment/Payment";
 import Education from "./Pages/Profile/Education/Education";
 import PricingPay from "./Pages/Homepage/Pricing/PricingPay";
 import MessengerCustomerChat from "react-messenger-customer-chat";
+
+import BookingDetails from "./Pages/Dashboardpage/myOrders/BookingDetails";
+
 import Searches from "./Pages/SearchRoute/Searches";
+
 
 export const DarkModeContext = createContext("");
 const queryClient = new QueryClient();
@@ -92,6 +96,7 @@ function App() {
                   <Route path="manageBooks" element={<ManageBooks />}></Route>
                   <Route path="orders" element={<Orders />}></Route>
                   <Route path="myOrders" element={<MyOrders />}></Route>
+                  <Route path="bookingDetails/:id" element={<BookingDetails />}></Route>
                   <Route
                     path="manageEngineers"
                     element={<ManageEngineers />}
