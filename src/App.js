@@ -35,6 +35,7 @@ import Payment from "./Pages/Payment/Payment";
 import Education from "./Pages/Profile/Education/Education";
 import PricingPay from "./Pages/Homepage/Pricing/PricingPay";
 import MessengerCustomerChat from "react-messenger-customer-chat";
+import Searches from "./Pages/SearchRoute/Searches";
 
 export const DarkModeContext = createContext("");
 const queryClient = new QueryClient();
@@ -119,6 +120,7 @@ function App() {
                 <Route path="/properties" element={<PropertiesPage />} />
                 <Route path="/payment/:id" element={<Payment />} />
                 <Route path="/pricingPay/:id" element={<PricingPay />} />
+                <Route path="search" element={<Searches />} />
                 {/* Profile Routes */}
                 <Route path="/profile" element={<Profile />}>
                   <Route index element={<MyProfile />}></Route>
