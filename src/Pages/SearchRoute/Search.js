@@ -3,6 +3,7 @@ import React from 'react';
 const Search = ({search}) => {
 
     console.log(search)
+    const {body, email, name} = search
 
     return (
         <>
@@ -11,9 +12,7 @@ const Search = ({search}) => {
                     <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
                         <blockquote>
                             <p class="text-lg font-medium">
-                                “Tailwind CSS is the only framework that I've seen scale
-                                on large teams. It’s easy to customize, adapts to any design,
-                                and the build size is tiny.”
+                                {body}
                             </p>
                         </blockquote>
                         <figcaption class="font-medium">
