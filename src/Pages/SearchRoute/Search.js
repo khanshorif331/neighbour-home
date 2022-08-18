@@ -1,6 +1,9 @@
 import React from 'react';
 
-const Search = () => {
+const Search = ({search}) => {
+
+    console.log(search)
+
     return (
         <>
             <figure class="md:flex bg-slate-100 rounded-xl p-8 md:p-0 dark:bg-slate-800">
