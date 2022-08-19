@@ -81,7 +81,7 @@ const SellPostModal = ({ setManageSellPostModal, refetch }) => {
           <>
                <input type="checkbox" id="sellPost" className="modal-toggle" />
                <div className="modal text-center ">
-                    <div className="modal-box mx-auto z-50 max-h-[100vh] flex justify-center">
+                    <div className="modal-box mx-auto z-50  max-h-[100vh] flex justify-center">
                          {/* updated form */}
                          <form
                               onSubmit={hanldeSellPost}
@@ -129,13 +129,13 @@ const SellPostModal = ({ setManageSellPostModal, refetch }) => {
 
                               <div class="grid xl:grid-cols-2 xl:gap-x-6">
                                    <div class="relative z-0 w-full mb-3 group">
-                                        <input type="number" name="selingarea" id="selingarea" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required />
+                                        <input type="number" name="selingarea" id="selingarea" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" required min="0" step="0.01"  pattern="^\d+(?:\.\d{1,2})?$"/>
                                         <label for="selingarea" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Selling Area</label>
                                    </div>
                                    <div class="relative z-0 w-full mb-3 group">
                                         <input
                                              //    onChange={handleQuantity}
-                                             type="number" name="totalarea" id="totalarea" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required />
+                                             type="number" name="totalarea" id="totalarea" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer"  min="0" step="0.01"  pattern="^\d+(?:\.\d{1,2})?$" required />
                                         <label className="label">
                                              {/* {quanityError && <span className="label-text-alt text-red-500">{quanityError}</span>} */}
                                         </label>
@@ -146,13 +146,13 @@ const SellPostModal = ({ setManageSellPostModal, refetch }) => {
 
                               <div class="grid xl:grid-cols-2 xl:gap-x-6">
                                    <div class="relative z-0 w-full mb-3 group">
-                                        <input type="number" name="width" id="width" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required />
+                                        <input type="number" name="width" id="width" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer"  min="0" step="0.01"  pattern="^\d+(?:\.\d{1,2})?$" required />
                                         <label for="width" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Width</label>
                                    </div>
                                    <div class="relative z-0 w-full mb-3 group">
                                         <input
                                              //    onChange={handleQuantity}
-                                             type="number" name="length" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required />
+                                             type="number" name="length" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer"  min="0" step="0.01"  pattern="^\d+(?:\.\d{1,2})?$" required />
                                         <label className="label">
                                              {/* {quanityError && <span className="label-text-alt text-red-500">{quanityError}</span>} */}
                                         </label>
@@ -170,8 +170,6 @@ const SellPostModal = ({ setManageSellPostModal, refetch }) => {
                                         ></Rating>
                                         {ratingError && <span className="label-text-alt text-red-500">{ratingError}</span>}
                                    </div>
-
-
 
                                    <input class="
                                              form-control 
@@ -193,60 +191,6 @@ const SellPostModal = ({ setManageSellPostModal, refetch }) => {
                               </div>
                          </form>
 
-                         {/* <form className="w-10/12 mx-auto" >
-                              <h3 className="text-lg font-bold text-teal-900">
-                                   Add a new book !
-                              </h3>
-
-                              <label
-                                   className=" block text-start lg:pl-2 text-md text-gray-400 font-bold mt-2"
-                                   htmlFor="bookName"
-                              >
-                                   Book Name
-                              </label>
-
-                              <input
-                                   className="w-full lg:w-[98%] font-serif font-bold px-4 py-2 border-2 border-teal-700 outline-teal-900 rounded-lg focus:bg-slate-200"
-                                   type="text"
-                                   name="bookName"
-                                   id="bookName"
-                              />
-
-                              <label
-                                   className=" block text-start lg:pl-2 text-md text-gray-400 font-bold my-0"
-                                   htmlFor="pdfLink"
-                              >
-                                   PDF Link{" "}
-                              </label>
-                              <input
-                                   className="w-full lg:w-[98%] font-serif font-bold px-4 py-2 border-2 border-teal-700 outline-teal-900 rounded-lg focus:bg-slate-200"
-                                   type="text"
-                                   name="pdfLink"
-                                   id="pdfLink"
-                              />
-                              <textarea
-                                   name="description"
-                                   id="description"
-                                   className="w-full lg:w-[98%] font-serif font-bold text-justify px-4 py-2 mt-2 border-2 border-teal-700 outline-teal-900 rounded-lg overflow-scroll focus:bg-slate-200"
-                                   rows="5"
-                              ></textarea>
-
-                              <div className="flex justify-between mt-3 ">
-                                   <input
-                                        className="w-2/4 font-serif font-bold pl-2"
-                                        type="file"
-                                        name="bookPic"
-                                        id="bookPic"
-                                   />
-
-                                   <button
-                                        type="submit"
-                                        className="btn btn-xs bg-teal-800  h-5 sm:h-7 ml-2 mr-2 sm:px-3 uppercase rounded-lg text-white font-bold duration-1000"
-                                   >
-                                        Add New Books
-                                   </button>
-                              </div>
-                         </form> */}
                     </div>
                </div>
           </>

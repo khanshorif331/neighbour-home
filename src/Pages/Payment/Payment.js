@@ -27,6 +27,7 @@ const Payment = () => {
                setPropertyLoading(false)
           })
      }, [id])
+
     
      const { _id, images, length, location, propertyName, propertyPrice, propertyType, rating, selingarea, sellerName, totalarea, width } = property;
      if (propertyLoading) {
