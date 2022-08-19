@@ -6,34 +6,73 @@ import { faTrash, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { DarkModeContext } from '../../../App';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import axios from 'axios';
 
 const OrderRow = ({ index, d, refetch }) => {
-  console.log(d);
-  const { customerEmail, customerPhone, customerName, customerAddress } = d?.data;
-  const { name, email, _id, picture, phone } = d.engineer;
+  console.log(d?.data?.customerEmail);
+  const { customerEmail, customerPhone, customerName } = d?.data;
+  const { name, email, _id, phone } = d?.engineer;
+  let { status } = d;
   const [darkMode] = useContext(DarkModeContext);
+  const { register, formState: { errors }, handleSubmit, reset } = useForm();
+  const form = useRef()
 
-  // const { register, formState: { errors }, handleSubmit, reset } = useForm();
-  //   const form = useRef()
 
-  //   const sendEmail = (data) => {
-  //     emailjs.sendForm('nh-service_121', 'template_dblhx73', form.current, 'Xgm-zyN1nm90Z0_bX')
-  //           .then((res) => {
-  //               console.log(res)
-  //               if(res.status === 200) {
-  //                   toast.success("Message sent successfully", {id: 'success'})
-  //                   reset()
-  //               }
-  //           }, (err) => {
-  //               toast.error("Message not sent", {id: 'error'})
-  //           })
-  //   }
+  const sendEmail = (data) => {
+    emailjs.sendForm('neighbourHome', 'template_2jdv676', form.current, 'fjfswEx9fDSDkZnui')
+      .then((res) => {
+        console.log(res)
+        if (res.status === 200) {
+          toast.success("Message sent successfully", { id: 'success' })
+          reset()
+        }
+      }, (err) => {
+        toast.error("Message not sent", { id: 'error' })
+      })
+  }
 
-  let [status, setStatus] = useState('accept');
-  const handleStatus = () => {
-    status = 'processing';
-    setStatus(status);
-    console.log(status);
+
+
+
+  const handleStatus = (id) => {
+    const updatedStatus = {
+      status: 'processing'
+    }
+    axios.put(`https://neighbour-home--server.herokuapp.com/booking/${id}`, updatedStatus)
+    .then(data => {
+        console.log(data.data);
+
+        toast.success(`this hiring request has been Successfully accept`)
+        refetch()
+    }).catch(error => {
+        console.log(error.response.data);
+        if (error.response.status === 403) {
+            toast.error("You are Not Admin")
+        }
+    })
+
+
+
+
+    // console.log(status);
+    // const result = {
+    //   ...d,
+    //   status
+    // }
+    // console.log(result);
+    // const URL = `https://neighbour-home--server.herokuapp.com/booking/${id}`;
+    // axios.put(URL, result)
+    //   .then(data => {
+    //     console.log(data.data);
+
+    //     toast.success(`this hiring request has been Successfully accept`)
+    //     refetch()
+    //   }).catch(error => {
+    //     console.log(error.response.data);
+    //     if (error.response.status === 403) {
+    //       toast.error("You are Not Admin")
+    //     }
+    //   })
   }
 
 
@@ -74,14 +113,14 @@ const OrderRow = ({ index, d, refetch }) => {
           </Link>
           <FontAwesomeIcon onClick={() => handleDelete(d._id)} className='text-red-500 ml-2 mt-1 inline-block align-middle' icon={faTrashCan} />
         </div>
-        {/* <div> */}
-          {/* <form ref={form} onSubmit={handleSubmit(sendEmail)}>
-           <input type="text" value={customerName} className="input input-bordered w-full max-w-xs"  {...register("customerName")} />
-          <input type="email" value={customerEmail} className="input my-2 input-bordered w-full max-w-xs" {...register("customerEmail")} />
-<button type='submit' className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Send</button>
-        </form> */}
-          <button type='submit' className="btn btn-xs btn-success " onClick={() => handleStatus()}>{status}</button>
-        {/* </div> */}
+        <div >
+          <form ref={form} onSubmit={handleSubmit(sendEmail)}>
+            <input type="text" value={customerName} className="input input-bordered w-full max-w-xs hidden"  {...register("customerName")} />
+            <input type="email" value={customerEmail} className="input my-2 input-bordered w-full max-w-xs hidden" {...register("customerEmail")} />
+            <input type="text" value={name} className="input my-2 input-bordered w-full max-w-xs hidden" {...register("name")} />
+            <button type='submit' className="btn btn-xs btn-success " onClick={() => handleStatus(d._id)}>{status ? status : 'accept'}</button>
+          </form>
+        </div>
 
       </td>
     </tr>

@@ -20,9 +20,10 @@ const EngineerDetails = () => {
     const onSubmit = data => {
         const result = {
             data: data,
-            engineer: engineer
+            engineer: engineer,
+            status: "accept"
         }
-        console.log(result);
+        // console.log(result);
         if (result) {
             const url = `https://neighbour-home--server.herokuapp.com/booking`;
             fetch(url, {
