@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { DarkModeContext } from '../../../App';
 import auth from '../../../firebase.init';
@@ -22,7 +22,7 @@ const MyOrders = () => {
     if (isLoading) return <Loading></Loading>
     const handleDelete = email => {
         fetch(
-          `http://localhost:5000/deleteAllBooking?email=${email}`,
+          `https://neighbour-home--server.herokuapp.com/deleteAllBooking?email=${email}`,
           {
             method: 'DELETE',
             headers: {
@@ -122,7 +122,7 @@ const MyOrders = () => {
                             //         console.log(d);
                             //         return d
                             //     }
-                            //     else if(d.data?.customerName.toLowarCase().includes(searchTerm.toLowerCase())){
+                            //     else if(d.data?.customerName.toLowerCase().includes(searchTerm.toLowerCase())){
                             //         console.log(d);
                             //         return d
                             //     }

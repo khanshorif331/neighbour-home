@@ -11,10 +11,12 @@ import { MdDashboardCustomize } from "react-icons/md";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import Loading from "../../../Shared/Loading/Loading";
+import useAuthEngineer from "../../../hooks/useAuthEngineer";
 
 const Dashboard = () => {
   const [darkMode] = useContext(DarkModeContext);
   let [user, loading] = useAuthState(auth);
+  const [authEngineer] = useAuthEngineer(user);
 
   if (loading) {
     return <Loading />;
@@ -173,6 +175,22 @@ const Dashboard = () => {
                 Bookings
               </Link>
             </li>
+            {
+              authEngineer && 
+              <li>
+              <Link
+                className={` shadow-lg my-1 font-bold ${
+                  darkMode
+                    ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
+                    : " text-gray-500"
+                }`}
+                to={"/dashboard/bookingsThatsCarryOnMe"}
+              >
+                <img className="w-4" src={hiringSvg} alt="book svg" />{" "}
+                Bookings
+              </Link>
+            </li>
+            }
 
             {/* {
                           admin ?
