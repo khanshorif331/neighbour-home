@@ -24,7 +24,7 @@ const CheckoutForm = ({ property }) => {
 
     useEffect(() => {
 
-        fetch("neighbour-home--server.herokuapp.com/create-payment-intent", {
+        fetch("https://neighbour-home--server.herokuapp.com/create-payment-intent", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -103,26 +103,29 @@ const CheckoutForm = ({ property }) => {
             emailjs.sendForm('service_8my0duk', 'template_t3iinbl', form.current, 'm1lQ_oBWTWmW45qJA')
                 .then((res) => {
                     console.log("Mail Sent")
-                    // if (res.status === 200) {
-                    //     toast.success("Message sent successfully", { id: 'success' })
-                    //     // reset()
-                    // }
                 }, (err) => {
                     console.log("Mail Not Sent")
                     // toast.error("Message not sent", { id: 'error' })
                 })
+            // emailjs.sendForm('service_ch1n23v', 'template_t3iinbl', form.current, 'm1lQ_oBWTWmW45qJA')
+            //     .then((res) => {
+            //         console.log("Mail Sent")
+            //     }, (err) => {
+            //         console.log("Mail Not Sent")
+            //         // toast.error("Message not sent", { id: 'error' })
+            //     })
 
 
             const orderInfo = {
                 propertyId: property?._id,
                 transectionId: paymentIntent.id,
-                buyerEmail : user.email,
-                buyerName : user.displayName|| "User",
-                sellerEmail : property.sellerEmail || "exple@mail.com",
-                sellInfo : property  
+                buyerEmail: user.email,
+                buyerName: user.displayName || "User",
+                sellerEmail: property.sellerEmail || "exple@mail.com",
+                sellInfo: property
             }
             // console.log(orderInfo);
-            axios.post(`neighbour-home--server.herokuapp.com/order`, orderInfo)
+            axios.post(`https://neighbour-home--server.herokuapp.com/order`, orderInfo)
                 .then(data => {
                     console.log(data.data);
                     // event.target.value.reset()
@@ -155,8 +158,13 @@ const CheckoutForm = ({ property }) => {
                         },
                     }}
                 />
-                <input className='hidden' name='message' type="text" value={`We have just received your payment for '${property.propertyName}' order. Thank you`} />
-                <input className='hidden' name='user_name' type="text" value={user.displayName || "User"} />
+
+                {/* confirmation mail sent inputs */}
+                <input className='hidden' name='buyer_message' type="text" value={`We have just received your payment for '${property.propertyName}' order. Thank you`} />
+                <input className='hidden' name='buyer_name' type="text" value={user.displayName || "User"} />
+                {/* <input className='hidden' name='seller_message' type="text" value={`We have just received your payment for '${property.propertyName}' order. Thank you`} />
+                <input className='hidden' name='seller_name' type="text" value={property.sellerName || "User"} /> */}
+
                 {
                     // proccesing ? <MiniLoader></MiniLoader>
                     //     :
