@@ -11,6 +11,7 @@ import Reviews from "../Reviews/Reviews";
 import AboutUs from "../AboutUs/AboutUs";
 import Statistics from "../Statistics/Statistics";
 import Pricing from "../Pricing/Pricing";
+import Projects from "../projects/Projects";
 
 const Home = () => {
   return (
@@ -21,6 +22,7 @@ const Home = () => {
       <Statistics />
       <Engineers />
       <Pricing />
+      <Projects />
       <Notice />
       <Testimonials />
       <Reviews />

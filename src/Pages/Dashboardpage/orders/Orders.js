@@ -14,7 +14,6 @@ const Orders = () => {
     
     if (isLoading) return <Loading></Loading>
     
-    console.log(data);
     if (error) return 'An error has occurred: ' + error.message
     return (
         <div className=''>
@@ -44,7 +43,7 @@ const Orders = () => {
                         {
                             data?.map((d, index)=><OrderRow
                                 index={index}
-                                key={d._id}
+                                key={d?._id}
                                 d={d}
                                 refetch={refetch}
                                 ></OrderRow>)
