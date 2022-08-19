@@ -237,9 +237,9 @@ const Navbar = () => {
               className={({ isActive }) =>
                 isActive ? "activeLink" : "navLink"
               }
-              to={"/"}
+              to={"/blogs"}
             >
-              Testimonials
+              Blogs
             </NavLink>
             <NavLink
               className={({ isActive }) =>
@@ -249,14 +249,14 @@ const Navbar = () => {
             >
               Dashboard
             </NavLink>
-            <NavLink
+            {/* <NavLink
               className={({ isActive }) =>
                 isActive ? "activeLink" : "navLink"
               }
               to={"/"}
             >
               Blogs
-            </NavLink>
+            </NavLink> */}
             {darkMode ? (
               <li className="md:ml-2.5">
                 <button
@@ -332,7 +332,7 @@ const Navbar = () => {
                 </li>
                 <li className="md:ml-2.5 md:hidden lg:block">
                   <Link
-                    to={"/"}
+                    to={"/blogs"}
                     className="py-2 inline-block md:text-white md:px-2 font-semibold"
                     href="#"
                   >

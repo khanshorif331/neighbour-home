@@ -39,6 +39,7 @@ import MessengerCustomerChat from "react-messenger-customer-chat";
 import BookingDetails from "./Pages/Dashboardpage/myOrders/BookingDetails";
 
 import Searches from "./Pages/SearchRoute/Searches";
+import Blog from "./Pages/Blog/Blog";
 
 
 export const DarkModeContext = createContext("");
@@ -83,6 +84,7 @@ function App() {
               <Toaster></Toaster>
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/blogs" element={<Blog />} />
                 <Route path="/dashboard" element={<Dashboard />}>
                   <Route index element={<Dashboard1 />}></Route>
                   <Route path="users" element={<Users />}></Route>
