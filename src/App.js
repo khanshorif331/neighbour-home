@@ -42,7 +42,6 @@ import Searches from "./Pages/SearchRoute/Searches";
 import Body from "./Pages/ResumeBuilder/Body/Body";
 import Blog from "./Pages/Blog/Blog";
 
-
 export const DarkModeContext = createContext("");
 const queryClient = new QueryClient();
 
@@ -99,7 +98,10 @@ function App() {
                   <Route path="manageBooks" element={<ManageBooks />}></Route>
                   <Route path="orders" element={<Orders />}></Route>
                   <Route path="myOrders" element={<MyOrders />}></Route>
-                  <Route path="bookingDetails/:id" element={<BookingDetails />}></Route>
+                  <Route
+                    path="bookingDetails/:id"
+                    element={<BookingDetails />}
+                  ></Route>
                   <Route
                     path="manageEngineers"
                     element={<ManageEngineers />}
@@ -129,7 +131,6 @@ function App() {
                 <Route path="/resumeBuilder" element={<Body />} />
                 <Route path="/payment/:id" element={<Payment />} />
                 <Route path="/pricingPay/:id" element={<PricingPay />} />
-                <Route path="search" element={<Searches />} />
                 {/* Profile Routes */}
                 <Route path="/profile" element={<Profile />}>
                   <Route index element={<MyProfile />}></Route>
@@ -138,7 +139,10 @@ function App() {
                 </Route>
                 <Route path="*" element={<NotFound />} />
               </Routes>
-              <MessengerCustomerChat pageId="106349278843956" appId="795027431626775" />
+              <MessengerCustomerChat
+                pageId="106349278843956"
+                appId="795027431626775"
+              />
               <Footer />
             </section>
           </DarkModeContext.Provider>
