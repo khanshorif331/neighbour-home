@@ -16,12 +16,18 @@ const Pricing = () => {
         <div className="container px-4 mx-auto">
           <div className="max-w-2xl mx-auto mb-16 text-center">
             <h2
+              style={{ fontFamily: "'Rajdhani', sans-serif" }}
               className={`${
-                darkMode && "text-red-600"
-              } text-4xl font-bold lg:text-5xl text-black`}
+                darkMode && "text-white"
+              } uppercase  font-bold text-3xl py-3 text-center`}
             >
               Choose your best plan
             </h2>
+            <div className="flex justify-center">
+              <div className=" rounded-md w-32 h-1 bg-[#0D9488]"></div>
+              <div className=" rounded-md w-4 h-1 mx-2 bg-[#0D9488]"></div>
+              <div className=" rounded-md w-2 h-1 bg-[#0D9488]"></div>
+            </div>
           </div>
           <div className="flex flex-wrap items-stretch -mx-4">
             {pricing?.map((pricings) => (
