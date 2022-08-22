@@ -21,13 +21,13 @@ const PricingCard = ({ pricings }) => {
         </div>
         <p className="mt-3 leading-relaxed text-gray-600">{description}</p>
         <ul className="flex-1 mb-6 text-gray-600">
-          {Object.values(benefit).map((value) => (
-            <li className="flex mb-2 space-x-2">
+          {Object.values(benefit).map((value, key) => (
+            <li key={key} className="flex mb-2 space-x-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                className="flex-shrink-0 w-6 h-6 text-sky-600"
+                className="flex-shrink-0 w-6 h-6 text-teal-600"
               >
                 <path
                   fillRule="evenodd"
@@ -41,10 +41,10 @@ const PricingCard = ({ pricings }) => {
         </ul>
         <Link
           type="button"
+          to={`/pricingPay/${_id}`}
           className={`${
             darkMode && "dark:bg-sky-400 dark:text-gray-900"
-          } inline-block px-5 py-3 font-semibold tracking-wider text-center rounded bg-sky-600 text-gray-50`}
-          to={`/pricingPay/${_id}`}
+          } inline-block px-5 py-3 font-semibold tracking-wider text-center rounded bg-teal-600 text-gray-50`}
         >
           <button>Get Started</button>
         </Link>
