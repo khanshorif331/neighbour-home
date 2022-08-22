@@ -6,7 +6,7 @@ const NotificationModal = () => {
                <input type="checkbox" id="notificattonModal" className="modal-toggle" />
                <div className="modal text-center items-start">
                     <div className="modal-box mx-auto z-50  max-h-[100vh] ">
-                         {/* updated form */}
+                         
                          <div
                               // onSubmit={hanldeSellPost}
                               className='sm:w-10/12 w-11/12 py-3 mx-auto sm:mx-0 text-left'>

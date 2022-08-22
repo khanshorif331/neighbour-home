@@ -32,7 +32,6 @@ const SellPostModal = ({ setManageSellPostModal, refetch }) => {
                     if (result.success) {
                          const imgUrl = result.data.url;
 
-
                          const postInfo = {
                               sellerEmail: user?.email,
                               images: imgUrl,
@@ -82,7 +81,6 @@ const SellPostModal = ({ setManageSellPostModal, refetch }) => {
                <input type="checkbox" id="sellPost" className="modal-toggle" />
                <div className="modal text-center ">
                     <div className="modal-box mx-auto z-50  max-h-[100vh] flex justify-center">
-                         {/* updated form */}
                          <form
                               onSubmit={hanldeSellPost}
                               className='sm:w-10/12 w-11/12 py-3 mx-auto sm:mx-0 text-left'>
@@ -103,14 +101,13 @@ const SellPostModal = ({ setManageSellPostModal, refetch }) => {
                               </div>
 
 
-
-                              <div class="relative z-0 w-full mb-6 group">
+                              <div class="relative z-0 w-full mb-4 group">
                                    <input type="text" name="location" id="floating_repeat_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required />
                                    <label for="floating_repeat_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Location</label>
                               </div>
                               <div class="grid xl:grid-cols-2 xl:gap-x-6">
 
-                                   <div class="relative z-0 w-full mb-3 group">
+                                   <div class="relative z-0 w-full  group">
                                         <input
                                              //    onChange={handleQuantity}
                                              type="text" name="propertyType" id="propertyType" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required />
@@ -118,7 +115,6 @@ const SellPostModal = ({ setManageSellPostModal, refetch }) => {
                                              {/* {quanityError && <span className="label-text-alt text-red-500">{quanityError}</span>} */}
                                         </label>
                                         <label for="propertyType" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Property Type</label>
-
                                    </div>
                                    <div class="relative z-0 w-full mb-3 group">
                                         <input type="number" name="propertyPrice" id="propertyPrice" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required />
@@ -129,34 +125,29 @@ const SellPostModal = ({ setManageSellPostModal, refetch }) => {
 
                               <div class="grid xl:grid-cols-2 xl:gap-x-6">
                                    <div class="relative z-0 w-full mb-3 group">
-                                        <input type="number" name="selingarea" id="selingarea" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" required min="0" step="0.01"  pattern="^\d+(?:\.\d{1,2})?$"/>
+                                        <input type="number" name="selingarea" id="selingarea" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required />
                                         <label for="selingarea" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Selling Area</label>
                                    </div>
-                                   <div class="relative z-0 w-full mb-3 group">
-                                        <input
-                                             //    onChange={handleQuantity}
-                                             type="number" name="totalarea" id="totalarea" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer"  min="0" step="0.01"  pattern="^\d+(?:\.\d{1,2})?$" required />
-                                        <label className="label">
-                                             {/* {quanityError && <span className="label-text-alt text-red-500">{quanityError}</span>} */}
-                                        </label>
-                                        <label for="totalarea" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Total Area</label>
 
+
+                                   <div class="relative z-0 w-full mb-3 group">
+                                        <input type="number" name="totalarea" id="totalarea" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required />
+                                        <label for="totalarea" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Total Area</label>
                                    </div>
+
                               </div>
 
                               <div class="grid xl:grid-cols-2 xl:gap-x-6">
-                                   <div class="relative z-0 w-full mb-3 group">
-                                        <input type="number" name="width" id="width" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer"  min="0" step="0.01"  pattern="^\d+(?:\.\d{1,2})?$" required />
+
+                                   <div class="relative z-0 w-full mb-5 group">
+                                        <input type="number" name="width" id="width" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required />
                                         <label for="width" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Width</label>
                                    </div>
+
+
                                    <div class="relative z-0 w-full mb-3 group">
-                                        <input
-                                             //    onChange={handleQuantity}
-                                             type="number" name="length" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer"  min="0" step="0.01"  pattern="^\d+(?:\.\d{1,2})?$" required />
-                                        <label className="label">
-                                             {/* {quanityError && <span className="label-text-alt text-red-500">{quanityError}</span>} */}
-                                        </label>
-                                        <label for="floating_company" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Length</label>
+                                        <input type="number" name="length" id="length" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " required />
+                                        <label for="length" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Length</label>
                                    </div>
                               </div>
                               <div class="grid xl:grid-cols-2 xl:gap-x-6 mb-5 items-center">
@@ -173,7 +164,6 @@ const SellPostModal = ({ setManageSellPostModal, refetch }) => {
 
                                    <input class="
                                              form-control 
-                                             
                                              py-1.5
                                              text-base
                                              font-normal
