@@ -3,14 +3,14 @@ import { useParams } from "react-router-dom";
 
 const PricingPay = () => {
   const { _id } = useParams();
-  const [pricing, setPricing] = useState([]);
-  console.log(pricing.benefit);
-  // const { tag, price, period, description, benefit } = pricing;
+  const [pricing, setPricing] = useState({});
+  const { tag, price, period, description } = pricing;
+  // console.log(pricing?.benefit);
   useEffect(() => {
     fetch(`http://localhost:5000/pricing/${_id}`)
-      .then((res) => res.json())
+      .then((res) => res?.json())
       .then((data) => setPricing(data));
-  }, []);
+  }, [_id]);
   return (
     <div className="mt-32">
       <div class="hero min-h-screen bg-base-200">
@@ -18,16 +18,14 @@ const PricingPay = () => {
           <div className="flex w-full mb-8 sm:px-4 md:w-1/2  lg:mb-0 ">
             <div className={`flex flex-col p-6 space-y-6 sm:p-8 text-gray-900`}>
               <div className="space-y-2">
-                <h4 className={` text-2xl font-bold`}>{pricing?.tag}</h4>
+                <h4 className={` text-2xl font-bold`}>{tag}</h4>
                 <span className={`text-6xl font-bold`}>
-                  {pricing?.price}
-                  <span className="text-sm tracking-wide">
-                    /{pricing?.period}
-                  </span>
+                  {price}
+                  <span className="text-sm tracking-wide">/{period}</span>
                 </span>
               </div>
               <p className="mt-3 leading-relaxed text-gray-600">
-                {pricing?.description}
+                {description}
               </p>
               <ul className="flex-1 mb-6 text-gray-600">
                 {/* {Object?.values(pricing?.benefit).map((value) => (
@@ -59,7 +57,7 @@ const PricingPay = () => {
               et a id nisi.
             </p>
             <button className="p-3 bg-slate-600 text-white">
-              Continue to {pricing?.price}
+              Continue to {price}
             </button>
           </div>
         </div>

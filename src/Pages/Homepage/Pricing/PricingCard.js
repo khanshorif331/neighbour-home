@@ -21,8 +21,8 @@ const PricingCard = ({ pricings }) => {
         </div>
         <p className="mt-3 leading-relaxed text-gray-600">{description}</p>
         <ul className="flex-1 mb-6 text-gray-600">
-          {Object.values(benefit).map((value) => (
-            <li className="flex mb-2 space-x-2">
+          {Object.values(benefit).map((value, key) => (
+            <li key={key} className="flex mb-2 space-x-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
