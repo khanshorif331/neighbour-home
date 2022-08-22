@@ -17,20 +17,22 @@ import CheckoutForm from './CheckoutForm';
 const stripePromise = loadStripe('pk_test_51L1nmKGPq7AV2lfodr5gcy3EzSOHKwBEH2emqXejNfRM0LSaua89mPiSH0YGJW9hBL86KKbfRlFQyItk4guugH3t00uj3H1Hs8');
 const Payment = () => {
      const [property, setProperty]= useState({})
+     const [propertyLoading, setPropertyLoading]= useState(true)
      const { id } = useParams()
      useEffect(()=>{
           const url = `https://neighbour-home--server.herokuapp.com/sellPost/${id}`;
           axios.get(url)
           .then(data=>{
                setProperty(data.data)
+               setPropertyLoading(false)
           })
      }, [id])
+
     
-     console.log(property);
      const { _id, images, length, location, propertyName, propertyPrice, propertyType, rating, selingarea, sellerName, totalarea, width } = property;
-     // if (isLoading) {
-     //      return <Loading />
-     // }
+     if (propertyLoading) {
+          return <Loading />
+     }
      return (
           <div
           style={{ fontFamily: "'Rajdhani', sans-serif" }} className='mt-[129px]'>

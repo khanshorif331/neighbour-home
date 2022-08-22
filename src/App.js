@@ -34,6 +34,13 @@ import Address from "./Pages/Profile/Address/Address";
 import Payment from "./Pages/Payment/Payment";
 import Education from "./Pages/Profile/Education/Education";
 import PricingPay from "./Pages/Homepage/Pricing/PricingPay";
+import MessengerCustomerChat from "react-messenger-customer-chat";
+
+import BookingDetails from "./Pages/Dashboardpage/myOrders/BookingDetails";
+
+import Searches from "./Pages/SearchRoute/Searches";
+import Body from "./Pages/ResumeBuilder/Body/Body";
+import Blog from "./Pages/Blog/Blog";
 
 export const DarkModeContext = createContext("");
 const queryClient = new QueryClient();
@@ -77,6 +84,7 @@ function App() {
               <Toaster></Toaster>
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/blogs" element={<Blog />} />
                 <Route path="/dashboard" element={<Dashboard />}>
                   <Route index element={<Dashboard1 />}></Route>
                   <Route path="users" element={<Users />}></Route>
@@ -90,6 +98,10 @@ function App() {
                   <Route path="manageBooks" element={<ManageBooks />}></Route>
                   <Route path="orders" element={<Orders />}></Route>
                   <Route path="myOrders" element={<MyOrders />}></Route>
+                  <Route
+                    path="bookingDetails/:id"
+                    element={<BookingDetails />}
+                  ></Route>
                   <Route
                     path="manageEngineers"
                     element={<ManageEngineers />}
@@ -116,8 +128,9 @@ function App() {
                 <Route path="/addReview" element={<AddReview />} />
                 <Route path="/bookDetail/:_id" element={<BookReview />} />
                 <Route path="/properties" element={<PropertiesPage />} />
+                <Route path="/resumeBuilder" element={<Body />} />
                 <Route path="/payment/:id" element={<Payment />} />
-                <Route path="/pricingPay/:_id" element={<PricingPay />} />
+                <Route path="/pricingPay/:id" element={<PricingPay />} />
                 {/* Profile Routes */}
                 <Route path="/profile" element={<Profile />}>
                   <Route index element={<MyProfile />}></Route>
@@ -126,6 +139,10 @@ function App() {
                 </Route>
                 <Route path="*" element={<NotFound />} />
               </Routes>
+              <MessengerCustomerChat
+                pageId="106349278843956"
+                appId="795027431626775"
+              />
               <Footer />
             </section>
           </DarkModeContext.Provider>

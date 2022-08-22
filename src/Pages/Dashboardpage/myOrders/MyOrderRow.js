@@ -68,10 +68,10 @@ const MyOrderRow = ({ index, d, refetch }) => {
       <td className="">{name}</td>
       <td>{email}</td>
       <td>{phone}</td>
-      <td className="text-success font-semibold">pending</td>
+      <td className="text-success font-semibold">{d.status === 'accept' ? 'pending' : 'ready to hire'}</td>
       <td className='flex flex-col'>
-        <Link to={`engineer/${_id}`}>
-          <button disabled className="btn btn-xs mb-1 hover:bg-slate-800">details</button>
+        <Link to={`/dashboard/bookingDetails/${d._id}`} className={`${d.status === 'accept' ? 'hidden' : 'block'}`}>
+          <button className={` btn btn-xs mb-1 hover:bg-slate-800`}>details</button>
         </Link>
         <button className="btn btn-xs btn-success hover:bg-slate-800" onClick={()=> handleDelete(d._id)}>delete</button>
         {/* <button className="btn btn-xs btn-warning hover:bg-slate-800">delete</button> */}

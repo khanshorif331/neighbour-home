@@ -1,23 +1,26 @@
 import React, { useContext, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import {
-  MdModeNight,
+  MdOutlineDarkMode,
   MdDashboardCustomize,
   MdNightsStay,
   MdLightMode,
   MdOutlineClose,
 } from "react-icons/md";
 import { GoThreeBars } from "react-icons/go";
+import { IoMdNotificationsOutline } from "react-icons/io";
 import "./Navbar.css";
 import { DarkModeContext } from "../../App";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 import { signOut } from "firebase/auth";
+import NotificationModal from "./NotificationModal";
 
 const Navbar = () => {
   const [colorChange, setColorchange] = useState(false);
   let [toggle, setToggle] = useState(false);
+  let [notificationModal, setNotificationModal] = useState(false);
   const [user, loading] = useAuthState(auth);
   // let navigat = useNavigate();
   let location = useLocation().pathname;
@@ -46,8 +49,8 @@ const Navbar = () => {
     <div className="">
       {/* start header  */}
       <header
-        className={`fixed duration-300 top-0 left-0 w-full z-10 px-4 sm:px-8 lg:px-16 xl:px-28 2xl:px-64 ${colorChange && (darkMode ? "bg-teal-600" : "bg-teal-900")
-          } ${location !== "/" && (darkMode ? "bg-teal-600" : "bg-teal-900")} `}
+        className={`fixed duration-300 top-0 left-0 w-full  px-4 sm:px-8 lg:px-16 xl:px-28 2xl:px-64 ${colorChange && (darkMode ? "bg-teal-600" : "bg-teal-900")
+          } ${location !== "/" && (darkMode ? "bg-teal-600" : "bg-teal-900")} ${location === "/properties" ? "z-10" : "z-50"}`}
       >
         <div
           className={`${colorChange ? "md:hidden opacity-0" : "md:flex opacity-100"
@@ -237,9 +240,11 @@ const Navbar = () => {
               className={({ isActive }) =>
                 isActive ? "activeLink" : "navLink"
               }
-              to={"/"}
+              to={"/resumeBuilder"}
             >
-              Testimonials
+              Resume Builder
+              to={"/blogs"}
+
             </NavLink>
             <NavLink
               className={({ isActive }) =>
@@ -249,14 +254,14 @@ const Navbar = () => {
             >
               Dashboard
             </NavLink>
-            <NavLink
+            {/* <NavLink
               className={({ isActive }) =>
                 isActive ? "activeLink" : "navLink"
               }
               to={"/"}
             >
               Blogs
-            </NavLink>
+            </NavLink> */}
             {darkMode ? (
               <li className="md:ml-2.5">
                 <button
@@ -323,16 +328,15 @@ const Navbar = () => {
                 </li>
                 <li className="md:ml-2.5">
                   <Link
-                    to={"/"}
+                    to={"/resumeBuilder"}
                     className="py-2 inline-block md:text-white md:px-2 font-semibold"
-                    href="#"
                   >
-                    Testimonials
+                    Resume Builder
                   </Link>
                 </li>
                 <li className="md:ml-2.5 md:hidden lg:block">
                   <Link
-                    to={"/"}
+                    to={"/blogs"}
                     className="py-2 inline-block md:text-white md:px-2 font-semibold"
                     href="#"
                   >
@@ -367,10 +371,40 @@ const Navbar = () => {
                       className="py-2 inline-block md:text-white md:px-2 font-semibold"
                       href="#"
                     >
-                      <MdNightsStay className="text-2xl"></MdNightsStay>
+                      <MdOutlineDarkMode className="text-2xl"></MdOutlineDarkMode>
                     </button>
                   </li>
                 )}
+
+                <li className="md:ml-2.5 md:mr-2.5 flex items-center relative">
+
+                  <label
+                    onClick={() => setNotificationModal(true)}
+                    for="notificattonModal"
+                    className="inline-block md:text-white md:px-2 font-semibold cursor-pointer"
+                  >
+                    <IoMdNotificationsOutline className="text-2xl"></IoMdNotificationsOutline>
+                    {/* 
+                    <button
+                      // onClick={() => setDarkMode()}
+                      className=""
+                    >
+                    </button> */}
+                  </label>
+
+                  <div className="absolute top-3">
+                    {
+                      notificationModal &&
+                      <NotificationModal
+                      // refetch={refetch}
+                      // setManageSellPostModal={setManageSellPostModal}
+
+                      />
+                    }
+                  </div>
+                </li>
+
+
 
                 <Link to={'/profile'} class="avatar mx-2">
                   <div class="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

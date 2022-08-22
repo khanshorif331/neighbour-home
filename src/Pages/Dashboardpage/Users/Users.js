@@ -71,7 +71,6 @@ const Users = () => {
                             const deleteAdmin = () => {
                                 const userData = {
                                     role: ""
-
                                 }
 
                                 Swal.fire({
