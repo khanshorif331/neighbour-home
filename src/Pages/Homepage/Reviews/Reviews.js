@@ -63,7 +63,7 @@ const Reviews = () => {
                 <div
                   className={`${
                     darkMode ? "text-white" : "text-gray-900"
-                  } sm:container flex flex-col max-w-lg p-6 mx-auto divide-y rounded-md shadow-xl border `}
+                  } sm:container flex flex-col max-w-lg h-56 p-6 mx-auto divide-y rounded-md shadow-xl border w- `}
                 >
                   <div className="flex justify-between p-4">
                     <div className="flex items-center space-x-4">
@@ -90,7 +90,7 @@ const Reviews = () => {
                     </div>
                   </div>
                   <div className="p-4 space-y-2 text-sm dark:text-gray-400">
-                    {reviewTxt}
+                    {reviewTxt.slice(0, 90)}...{" "}
                   </div>
                 </div>
               </SwiperSlide>

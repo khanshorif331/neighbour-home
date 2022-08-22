@@ -1,60 +1,64 @@
-import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
-import { Routes, Route } from "react-router-dom";
-import Home from "./Pages/Homepage/Home/Home";
-import Footer from "./components/Footer/Footer";
-import Login from "./Authentication/Login/Login";
-import Register from "./Authentication/Register/Register";
-import { createContext, useEffect, useState } from "react";
-import Guides from "./Pages/Homepage/Guides/Guides";
-import AddReview from "./Pages/Homepage/AddReview/AddReview";
-import NotFound from "./components/NotFound/NotFound";
-import UserData from "./Pages/UserData/UserData";
-import BookReview from "./Pages/Homepage/BookReview/BookReview";
-import Dashboard from "./Pages/Dashboardpage/Dashboard/Dashboard";
-import Users from "./Pages/Dashboardpage/Users/Users";
-import Constructors from "./Pages/Dashboardpage/Constructors/Constructors";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import ManageBooks from "./Pages/Dashboardpage/ManageBooks/ManageBooks";
-import ServiceDetails from "./Pages/ServiceDetails/ServiceDetails";
-import ManageEngineers from "./Pages/Dashboardpage/ManageEngineers/ManageEngineers";
-import Engineers from "./Pages/Homepage/Engineers/Engineers";
-import { Toaster } from "react-hot-toast";
-import UserDetails from "./Pages/UserDetails/UserDetails";
-import EngineersTable from "./Pages/ServiceDetails/EngineersTable";
-import EngineerDetails from "./Pages/EngineerDetails/EngineerDetails";
-import { BarLoader } from "react-spinners";
-import Dashboard1 from "./Pages/Dashboardpage/Dashboard1/Dashboard1";
-import Orders from "./Pages/Dashboardpage/orders/Orders";
-import MyOrders from "./Pages/Dashboardpage/myOrders/MyOrders";
-import PropertiesPage from "./Pages/Properties/PropertiesPage";
-import Profile from "./Pages/Profile/Profile";
-import MyProfile from "./Pages/Profile/MyProfile/MyProfile";
-import Address from "./Pages/Profile/Address/Address";
-import Payment from "./Pages/Payment/Payment";
-import Education from "./Pages/Profile/Education/Education";
-import PricingPay from "./Pages/Homepage/Pricing/PricingPay";
-import MessengerCustomerChat from "react-messenger-customer-chat";
+import './App.css'
+import Navbar from './components/Navbar/Navbar'
+import { Routes, Route } from 'react-router-dom'
+import Home from './Pages/Homepage/Home/Home'
+import Footer from './components/Footer/Footer'
+import Login from './Authentication/Login/Login'
+import Register from './Authentication/Register/Register'
+import { createContext, useEffect, useState } from 'react'
+import Guides from './Pages/Homepage/Guides/Guides'
+import AddReview from './Pages/Homepage/AddReview/AddReview'
+import NotFound from './components/NotFound/NotFound'
+import UserData from './Pages/UserData/UserData'
+import BookReview from './Pages/Homepage/BookReview/BookReview'
+import Dashboard from './Pages/Dashboardpage/Dashboard/Dashboard'
+import Users from './Pages/Dashboardpage/Users/Users'
+import Constructors from './Pages/Dashboardpage/Constructors/Constructors'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import ManageBooks from './Pages/Dashboardpage/ManageBooks/ManageBooks'
+import ServiceDetails from './Pages/ServiceDetails/ServiceDetails'
+import ManageEngineers from './Pages/Dashboardpage/ManageEngineers/ManageEngineers'
+import Engineers from './Pages/Homepage/Engineers/Engineers'
+import { Toaster } from 'react-hot-toast'
+import UserDetails from './Pages/UserDetails/UserDetails'
+import EngineersTable from './Pages/ServiceDetails/EngineersTable'
+import EngineerDetails from './Pages/EngineerDetails/EngineerDetails'
+import { BarLoader } from 'react-spinners'
+import Dashboard1 from './Pages/Dashboardpage/Dashboard1/Dashboard1'
+import Orders from './Pages/Dashboardpage/orders/Orders'
+import MyOrders from './Pages/Dashboardpage/myOrders/MyOrders'
+import PropertiesPage from './Pages/Properties/PropertiesPage'
+import Profile from './Pages/Profile/Profile'
+import MyProfile from './Pages/Profile/MyProfile/MyProfile'
+import Address from './Pages/Profile/Address/Address'
+import Payment from './Pages/Payment/Payment'
+import Education from './Pages/Profile/Education/Education'
+import PricingPay from './Pages/Homepage/Pricing/PricingPay'
+import MessengerCustomerChat from 'react-messenger-customer-chat'
 
-import BookingDetails from "./Pages/Dashboardpage/myOrders/BookingDetails";
+import BookingDetails from './Pages/Dashboardpage/myOrders/BookingDetails'
+
 
 import Searches from "./Pages/SearchRoute/Searches";
 import MyHirings from "./Pages/Dashboardpage/myOrders/forEngineer/MyHirings";
 
+import Body from './Pages/ResumeBuilder/Body/Body'
+import Blog from './Pages/Blog/Blog'
 
-export const DarkModeContext = createContext("");
-const queryClient = new QueryClient();
+
+export const DarkModeContext = createContext('')
+const queryClient = new QueryClient()
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [loading, setLoading] = useState(false);
+	const [darkMode, setDarkMode] = useState(false)
+	const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, [5000]);
-  }, []);
+	useEffect(() => {
+		setLoading(true)
+		setTimeout(() => {
+			setLoading(false)
+		}, [5000])
+	}, [])
 
   return (
     <>
@@ -84,6 +88,7 @@ function App() {
               <Toaster></Toaster>
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/blogs" element={<Blog />} />
                 <Route path="/dashboard" element={<Dashboard />}>
                   <Route index element={<Dashboard1 />}></Route>
                   <Route path="users" element={<Users />}></Route>
@@ -125,6 +130,7 @@ function App() {
                 <Route path="/addReview" element={<AddReview />} />
                 <Route path="/bookDetail/:_id" element={<BookReview />} />
                 <Route path="/properties" element={<PropertiesPage />} />
+                <Route path="/resumeBuilder" element={<Body />} />
                 <Route path="/payment/:id" element={<Payment />} />
                 <Route path="/pricingPay/:id" element={<PricingPay />} />
                 <Route path="search" element={<Searches />} />
@@ -136,7 +142,10 @@ function App() {
                 </Route>
                 <Route path="*" element={<NotFound />} />
               </Routes>
-              <MessengerCustomerChat pageId="106349278843956" appId="795027431626775" />
+              <MessengerCustomerChat
+								pageId="106349278843956"
+								appId="795027431626775"
+							/>
               <Footer />
             </section>
           </DarkModeContext.Provider>
@@ -146,4 +155,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

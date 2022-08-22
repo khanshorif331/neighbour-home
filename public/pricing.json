@@ -9,7 +9,8 @@
       "one": "contact with engineers",
       "two": "Buy properties",
       "three": "Manage your works",
-      "four": "And more updated features"
+      "four": "Get 5% discount all orders",
+      "five": "And more updated features"
     }
   },
   {
@@ -19,10 +20,11 @@
     "period": "Yearly",
     "description": "This package is use for mid-level business company. For large scale company you can go our 'Business' package.",
     "benefit": {
-      "one": "Kulas Light",
-      "two": "Apt. 556",
-      "three": "Gwenborough",
-      "four": "92998-3874"
+      "one": "Contact with engineers",
+      "two": "Buy and sell properties",
+      "three": "Manage your works",
+      "four": "Get 10% discount all orders",
+      "five": "And more updated features"
     }
   },
   {
@@ -32,11 +34,12 @@
     "period": "Yearly",
     "description": "This package is for Large scale company who can only get our fully premium package.",
     "benefit": {
-      "one": "Kulas Light",
-      "two": "Apt. 556",
-      "three": "Gwenborough",
-      "four": "92998-3874",
-      "five": "Premium feature"
+      "one": "Contact with engineers",
+      "two": "Buy and sell properties",
+      "three": "Manage your works",
+      "four": "Get 10% discount all orders",
+      "five": "And more updated features",
+      "six": "New premium features"
     }
   }
 ]

@@ -24,6 +24,7 @@ const PropertySearchBar = ({ refetch }) => {
                                    <SellPostModal
                                         refetch={refetch}
                                         setManageSellPostModal={setManageSellPostModal}
+                                        
                                    />
                               }
 
