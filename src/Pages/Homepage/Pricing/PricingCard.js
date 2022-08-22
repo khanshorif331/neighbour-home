@@ -27,7 +27,7 @@ const PricingCard = ({ pricings }) => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
-                className="flex-shrink-0 w-6 h-6 text-sky-600"
+                className="flex-shrink-0 w-6 h-6 text-teal-600"
               >
                 <path
                   fillRule="evenodd"
@@ -44,7 +44,7 @@ const PricingCard = ({ pricings }) => {
           to={`/pricingPay/${_id}`}
           className={`${
             darkMode && "dark:bg-sky-400 dark:text-gray-900"
-          } inline-block px-5 py-3 font-semibold tracking-wider text-center rounded bg-sky-600 text-gray-50`}
+          } inline-block px-5 py-3 font-semibold tracking-wider text-center rounded bg-teal-600 text-gray-50`}
         >
           <button>Get Started</button>
         </Link>
