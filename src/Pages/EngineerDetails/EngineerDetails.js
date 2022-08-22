@@ -38,12 +38,11 @@ const EngineerDetails = () => {
                     console.log(result);
                     if (result.message) {
                         toast.success('your hiring request is successfully done when admin accept can you see on your dashboard "ready to hire" status')
-                        alert();
                         reset();
                         navigate('/dashboard/myOrders');
                     }
                     else {
-                        alert('something wrong please try again');
+                        toast.error('something wrong please try again');
                         reset();
                     }
                 })

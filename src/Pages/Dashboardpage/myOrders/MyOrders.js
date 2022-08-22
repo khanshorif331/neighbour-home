@@ -1,11 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { DarkModeContext } from "../../../App";
-import auth from "../../../firebase.init";
-import Loading from "../../../Shared/Loading/Loading";
-import MyOrderRow from "./MyOrderRow";
-// import { Filter } from 'react-feather';
+
+import React, { useContext, useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { DarkModeContext } from '../../../App';
+import auth from '../../../firebase.init';
+import Loading from '../../../Shared/Loading/Loading';
+import MyOrderRow from './MyOrderRow';
+import swal from "sweetalert";
+import toast from 'react-hot-toast';
 
 const MyOrders = () => {
   const [user] = useAuthState(auth);
@@ -13,6 +15,36 @@ const MyOrders = () => {
   const [darkMode, setDarkMode] = useContext(DarkModeContext);
   // const [searchTerm, setSearchTerm] = useState('');
 
+const handleDelete = email => {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          }).then((willDelete) => {
+            if (willDelete) {
+        fetch(
+          `https://neighbour-home--server.herokuapp.com/deleteAllBooking?email=${email}`,
+          {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+          .then(res => res.json())
+          .then(data => {
+            console.log(data)
+            if (data.message) {
+                swal("Your file has been deleted!", {
+                    icon: "success",
+                  });
+              refetch()
+            }
+          })
+        
+      }})}
   const { isLoading, error, data, refetch } = useQuery(["myOrders"], () =>
     fetch(
       `https://neighbour-home--server.herokuapp.com/bookingByEmail?email=${email}`
@@ -20,25 +52,7 @@ const MyOrders = () => {
   );
 
   if (isLoading) return <Loading></Loading>;
-  const handleDelete = (email) => {
-    fetch(
-      `https://neighbour-home--server.herokuapp.com/deleteAllBooking?email=${email}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.message) {
-          alert("deleted");
-          refetch();
-        }
-      });
-  };
+
 
   return (
     <div className="">
