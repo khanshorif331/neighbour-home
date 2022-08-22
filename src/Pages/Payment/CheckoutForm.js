@@ -96,7 +96,7 @@ const CheckoutForm = ({ property }) => {
             setError("")
 
             // const emailInfo={
-            //     userName : user.displayName || "User",
+            //     userName : user?.displayName || "User",
             //     message: `We have just received your payment for ${property.propertyName} order. Thank you`
             // }
             // console.log(form.current);
@@ -119,8 +119,8 @@ const CheckoutForm = ({ property }) => {
             const orderInfo = {
                 propertyId: property?._id,
                 transectionId: paymentIntent.id,
-                buyerEmail: user.email,
-                buyerName: user.displayName || "User",
+                buyerEmail: user?.email,
+                buyerName: user?.displayName || "User",
                 sellerEmail: property.sellerEmail || "exple@mail.com",
                 sellInfo: property
             }
@@ -161,7 +161,7 @@ const CheckoutForm = ({ property }) => {
 
                 {/* confirmation mail sent inputs */}
                 <input className='hidden' name='buyer_message' type="text" value={`We have just received your payment for '${property.propertyName}' order. Thank you`} />
-                <input className='hidden' name='buyer_name' type="text" value={user.displayName || "User"} />
+                <input className='hidden' name='buyer_name' type="text" value={user?.displayName || "User"} />
                 {/* <input className='hidden' name='seller_message' type="text" value={`We have just received your payment for '${property.propertyName}' order. Thank you`} />
                 <input className='hidden' name='seller_name' type="text" value={property.sellerName || "User"} /> */}
 
