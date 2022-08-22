@@ -34,13 +34,13 @@ const Dashboard = () => {
           className="drawer-toggle"
         />
         <div className="drawer-content">
-          <h3 className="text-2xl text-left md:text-center sm:px-10 pb-3 pt-5 text-purple-500 font-bold">
+          <h3 className="text-2xl text-center sm:px-10 pb-3 pt-5 text-purple-500 font-bold">
             Dashboard
           </h3>
           {/* <!-- Page content here --> */}
           <Outlet />
         </div>
-        <div className="drawer-side z-0">
+        <div className="drawer-side sm:z-0">
           <label htmlFor="dashboard-drower" className="drawer-overlay"></label>
 
           <ul

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 const BookReview = () => {
   const { _id } = useParams();
-  console.log(_id);
+
   const [book, setBook] = useState([]);
   const { picture, description, name, pdf } = book;
   useEffect(() => {
@@ -102,7 +102,12 @@ const BookReview = () => {
                 <span className="title-font font-medium text-2xl text-gray-900">
                   Free
                 </span>
-                <a href={pdf} target="_blank" className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" rel="noreferrer">
+                <a
+                  href={pdf}
+                  target="_blank"
+                  className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                  rel="noreferrer"
+                >
                   Download
                 </a>
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">

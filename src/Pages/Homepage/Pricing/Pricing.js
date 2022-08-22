@@ -6,7 +6,7 @@ const Pricing = () => {
   const [darkMode] = useContext(DarkModeContext);
   const [pricing, setPricing] = useState([]);
   useEffect(() => {
-    fetch("pricing.json")
+    fetch("http://localhost:5000/pricing")
       .then((res) => res.json())
       .then((data) => setPricing(data));
   }, []);
@@ -24,7 +24,7 @@ const Pricing = () => {
             </h2>
           </div>
           <div className="flex flex-wrap items-stretch -mx-4">
-            {pricing.map((pricings) => (
+            {pricing?.map((pricings) => (
               <PricingCard pricings={pricings} key={pricings._id}></PricingCard>
             ))}
 
