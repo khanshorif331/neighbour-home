@@ -1,14 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { DarkModeContext } from '../../../App';
-import auth from '../../../firebase.init';
-import Loading from '../../../Shared/Loading/Loading';
-import MyOrderRow from './MyOrderRow';
+import React, { useContext } from 'react';
+import MyHiringRow from './MyHiringRow';
 import swal from "sweetalert";
-import toast from 'react-hot-toast';
-
-const MyOrders = () => {
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../../firebase.init';
+import { DarkModeContext } from '../../../../App';
+import { useQuery } from '@tanstack/react-query';
+// import { useQuery } from 'react-query/build/cjs/packages/react-query/src';
+import Loading from '../../../../Shared/Loading/Loading';
+const MyHirings = () => {
     const [user] = useAuthState(auth);
     const { displayName, email } = user;
     const [darkMode, setDarkMode] = useContext(DarkModeContext);
@@ -51,14 +50,13 @@ const MyOrders = () => {
           })
         
       }})}
-
     return (
         <div className=''>
             <div className='flex justify-between items-center align-middle'>
             <div>
                 <button className='btn btn-sm  btn-warning' onClick={()=> handleDelete(email)}>delete all</button>
             </div>
-            <h2 className={`${darkMode && "text-white"} text-2xl py-4 text-center`}>My All Hiring List: {data?.length}</h2>
+            <h2 className={`${darkMode && "text-white"} text-2xl py-4 text-center`}>requests of hiring Me: {data?.length}</h2>
             <div className="flex space-x-4">
                 {/* <!--search bar --> */}
                 <div hidden className="md:block">
@@ -139,19 +137,18 @@ const MyOrders = () => {
                             //         return d
                             //     }
                             // })
-                            ?.map((d, index) => <MyOrderRow
+                            ?.map((d, index) => <MyHiringRow
                                 index={index}
                                 key={d._id}
                                 d={d}
                                 refetch={refetch}
-                            ></MyOrderRow>)
+                            ></MyHiringRow>)
                         }
                     </tbody>
                 </table>
             </div>
         </div>
-
     );
 };
 
-export default MyOrders;
+export default MyHirings;

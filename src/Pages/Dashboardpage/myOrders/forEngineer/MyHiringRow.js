@@ -1,16 +1,13 @@
-import React, { useContext, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import emailjs from '@emailjs/browser';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faTrashCan } from '@fortawesome/free-solid-svg-icons'
-import { DarkModeContext } from '../../../App';
+import React, { useContext, useRef } from 'react';
+import { DarkModeContext } from '../../../../App';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import axios from 'axios';
+import emailjs from '@emailjs/browser';
 import swal from "sweetalert";
+import axios from 'axios';
 
-const OrderRow = ({ index, d, refetch }) => {
-  // console.log(d?.data?.customerEmail);
+const MyHiringRow = ({ index, d, refetch }) => {
+    // console.log(d?.data?.customerEmail);
   const { customerEmail, customerPhone, customerName } = d?.data;
   const { name, email, _id, phone } = d?.engineer;
   let { status } = d;
@@ -31,8 +28,6 @@ const OrderRow = ({ index, d, refetch }) => {
         toast.error("Message not sent", { id: 'error' })
       })
   }
-
-
 
 
   const handleStatus = (id) => {
@@ -86,36 +81,11 @@ const OrderRow = ({ index, d, refetch }) => {
   }
 });
   }
-  return (
-    <tr className={`${darkMode ? 'text-gray-400 py-2' : 'text-gray-500'} `}>
-      <th>{index + 1}</th>
-
-      <td className="">{customerName}</td>
-      <td className="">{customerEmail}</td>
-      <td className="">{customerPhone}</td>
-
-      <td className="">{name}</td>
-      <td>{email}</td>
-      <td>{phone}</td>
-      <td className='flex flex-col'>
-        <div className='flex align-middle'>
-          <Link className='' to={`engineer/${_id}`}>
-            <button className="btn btn-xs mb-1 hover:bg-slate-800">details</button>
-          </Link>
-          <FontAwesomeIcon onClick={() => handleDelete(d._id)} className='text-red-500 ml-2 mt-1 inline-block align-middle' icon={faTrashCan} />
+    return (
+        <div>
+            
         </div>
-        <div >
-          <form ref={form} onSubmit={handleSubmit(sendEmail)}>
-            <input type="text" value={customerName} className="input input-bordered w-full max-w-xs hidden"  {...register("customerName")} />
-            <input type="email" value={customerEmail} className="input my-2 input-bordered w-full max-w-xs hidden" {...register("customerEmail")} />
-            <input type="text" value={name} className="input my-2 input-bordered w-full max-w-xs hidden" {...register("name")} />
-            <button type='submit' className="btn btn-xs btn-success " onClick={() => handleStatus(d._id)}>{status ? status : 'accept'}</button>
-          </form>
-        </div>
-
-      </td>
-    </tr>
-  );
+    );
 };
 
-export default OrderRow;
+export default MyHiringRow;

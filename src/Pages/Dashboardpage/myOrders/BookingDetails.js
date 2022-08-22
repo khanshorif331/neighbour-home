@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../../../Shared/Loading/Loading';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -11,14 +11,17 @@ const BookingDetails = () => {
     const {id} = useParams();
     console.log(id);
     const { isLoading, error, data, refetch } = useQuery(['booking'], () =>
+    
     fetch(`https://neighbour-home--server.herokuapp.com/booking/${id}`).then(
         res => res.json() 
     )
 );
-const { customerEmail, customerPhone, customerName, customerAddress } =data.data;
-  const { name, email, _id, picture, phone } = data.engineer;
+
 
 if (isLoading) return <Loading></Loading>
+if (error) return 'An error has occurred: ' + error.message
+const { customerEmail, customerPhone, customerName, customerAddress } =data?.data;
+  const { name, email, _id, picture, phone } = data?.engineer;
     return (
         <div className='lg:px-2 px-8 py-6 pb-32 h-full'>
 
@@ -95,7 +98,7 @@ if (isLoading) return <Loading></Loading>
                 <div className="card-body">
                     <div className="text-2xl text-accent font-bold">ADDITIONAL INFO</div>
                     <div className="text-xl  text-neutral"><i><span className='font-semibold'>.............</span></i></div>
-                    <button className='btn btn-md text-end btn-error mt-auto'>update your info</button>
+                    <Link to={`/user_data`}><button className='btn btn-md text-end btn-error mt-auto'>update your info</button></Link>
                 </div>
                 </div>
             </div>

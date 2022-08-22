@@ -149,7 +149,7 @@ const Dashboard = () => {
                 Manage Constructors
               </Link>
             </li>
-            <li>
+            {!authEngineer && <li>
               <Link
                 className={` shadow-lg my-1 font-bold ${
                   darkMode
@@ -161,7 +161,7 @@ const Dashboard = () => {
                 <img className="w-4" src={hiringSvg} alt="book svg" />{" "}
                 My Bookings
               </Link>
-            </li>
+            </li>}
             <li>
               <Link
                 className={` shadow-lg my-1 font-bold ${
@@ -187,7 +187,7 @@ const Dashboard = () => {
                 to={"/dashboard/bookingsThatsCarryOnMe"}
               >
                 <img className="w-4" src={hiringSvg} alt="book svg" />{" "}
-                Bookings
+                Hire Requests
               </Link>
             </li>
             }
