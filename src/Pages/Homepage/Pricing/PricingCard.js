@@ -15,7 +15,7 @@ const PricingCard = ({ pricings }) => {
         <div className="space-y-2">
           <h4 className={` text-2xl font-bold`}>{tag}</h4>
           <span className={`text-6xl font-bold`}>
-            {price}
+            ${price}
             <span className="text-sm tracking-wide">/{period}</span>
           </span>
         </div>
