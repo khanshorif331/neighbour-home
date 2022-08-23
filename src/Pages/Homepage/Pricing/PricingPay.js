@@ -1,16 +1,37 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Loading from "../../../Shared/Loading/Loading";
 
 const PricingPay = () => {
   const { _id } = useParams();
   const [pricing, setPricing] = useState({});
-  const { tag, price, period, description } = pricing;
-  // console.log(pricing?.benefit);
+  const [loading, setLoading] = useState(false);
+  const { tag, price, period, description, benefit } = pricing;
+
   useEffect(() => {
-    fetch(`http://localhost:5000/pricing/${_id}`)
+    fetch(`https://neighbour-home--server.herokuapp.com/pricing/${_id}`)
       .then((res) => res?.json())
-      .then((data) => setPricing(data));
+      .then((data) => {
+        if (!data && data.benefit === undefined) {
+          setLoading(true);
+        } else {
+          setPricing(data);
+          setLoading(false);
+        }
+      });
   }, [_id]);
+
+  // if (pricing.benefit === undefined) {
+  //   return <Loading />;
+  // } else {
+  //   console.log(pricing.benefit);
+  // }
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <div className="mt-32">
       <div class="hero min-h-screen bg-base-200">
@@ -20,7 +41,7 @@ const PricingPay = () => {
               <div className="space-y-2">
                 <h4 className={` text-2xl font-bold`}>{tag}</h4>
                 <span className={`text-6xl font-bold`}>
-                  {price}
+                  ${price}
                   <span className="text-sm tracking-wide">/{period}</span>
                 </span>
               </div>
@@ -28,7 +49,9 @@ const PricingPay = () => {
                 {description}
               </p>
               <ul className="flex-1 mb-6 text-gray-600">
-                {/* {Object?.values(pricing?.benefit).map((value) => (
+                {/* {Object?.values(
+                  pricing.benefit === undefined ? setLoading(true) : pricing.benefit
+                ).map((value) => (
                   <li className="flex mb-2 space-x-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -45,6 +68,26 @@ const PricingPay = () => {
                     <span>{value}</span>
                   </li>
                 ))} */}
+
+                {pricing.benefit === undefined
+                  ? setLoading(true)
+                  : Object.values(pricing.benefit).map((value, key) => (
+                      <li key={key} className="flex mb-2 space-x-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          className="flex-shrink-0 w-6 h-6 text-sky-600"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg>
+                        <span>{value}</span>
+                      </li>
+                    ))}
               </ul>
             </div>
           </div>
@@ -57,7 +100,7 @@ const PricingPay = () => {
               et a id nisi.
             </p>
             <button className="p-3 bg-slate-600 text-white">
-              Continue to {price}
+              Continue to ${price}
             </button>
           </div>
         </div>

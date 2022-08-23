@@ -6,7 +6,7 @@ const Pricing = () => {
   const [darkMode] = useContext(DarkModeContext);
   const [pricing, setPricing] = useState([]);
   useEffect(() => {
-    fetch("pricing.json")
+    fetch("https://neighbour-home--server.herokuapp.com/pricing")
       .then((res) => res.json())
       .then((data) => setPricing(data));
   }, []);
