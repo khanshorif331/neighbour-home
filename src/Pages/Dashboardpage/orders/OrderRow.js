@@ -99,7 +99,7 @@ const OrderRow = ({ index, d, refetch }) => {
       <td>{phone}</td>
       <td className='flex flex-col'>
         <div className='flex align-middle'>
-          <Link className='' to={`engineer/${_id}`}>
+          <Link className='' to={`/dashboard/bookingDetails/${d._id}`}>
             <button className="btn btn-xs mb-1 hover:bg-slate-800">details</button>
           </Link>
           <FontAwesomeIcon onClick={() => handleDelete(d._id)} className='text-red-500 ml-2 mt-1 inline-block align-middle' icon={faTrashCan} />
