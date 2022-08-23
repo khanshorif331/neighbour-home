@@ -17,6 +17,8 @@ import auth from '../../firebase.init'
 import Loading from '../../Shared/Loading/Loading'
 import { signOut } from 'firebase/auth'
 import NotificationModal from './NotificationModal'
+import useAdmin from '../../hooks/useRole'
+import useRole from '../../hooks/useRole'
 
 const Navbar = () => {
 	const [colorChange, setColorchange] = useState(false)
@@ -26,8 +28,11 @@ const Navbar = () => {
 	// let navigat = useNavigate();
 	let location = useLocation().pathname
 	const [darkMode, setDarkMode] = useContext(DarkModeContext)
+    let [role, roleLoading] = useRole(user)
+//     console.log(role);
 
-	if (loading) {
+
+	if (loading || roleLoading) {
 		return <Loading />
 	}
 

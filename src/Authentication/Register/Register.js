@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useToken from '../../hooks/useToken';
 import Loading from '../../Shared/Loading/Loading';
 import google from '../../Assest/google.svg';
 import facebook from '../../Assest/facebook.svg'
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from 'react-icons/md';
+import toast from 'react-hot-toast';
 
 const Register = () => {
 
@@ -23,6 +24,9 @@ const Register = () => {
 
     const [token] = useToken(googleUser || emailUser)
     const navigate = useNavigate()
+    let location = useLocation();
+	let from = location.state?.from?.pathname || "/";
+	
 
     useEffect(() => {
         if (token.report === 'inserted') {
@@ -32,9 +36,10 @@ const Register = () => {
             navigate('/user_data')
         }
         else if (token.report === 'dataExist') {
-            navigate('/')
+            navigate(from, { replace: true });
+			toast.success('Login Successfully!', { id: "social_login" })
         }
-    }, [token.report, navigate])
+    }, [token.report, navigate, from])
 
     if (googleLoading || emailLoading) {
         return <Loading />
