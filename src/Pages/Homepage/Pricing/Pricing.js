@@ -6,7 +6,7 @@ const Pricing = () => {
   const [darkMode] = useContext(DarkModeContext);
   const [pricing, setPricing] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/pricing")
+    fetch("pricing.json")
       .then((res) => res.json())
       .then((data) => setPricing(data));
   }, []);
