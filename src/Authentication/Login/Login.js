@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import {
 	useSignInWithEmailAndPassword,
 	useSignInWithGoogle,
@@ -11,6 +11,7 @@ import useToken from '../../hooks/useToken'
 import google from '../../Assest/google.svg'
 import facebook from '../../Assest/facebook.svg'
 import { MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md'
+import toast from 'react-hot-toast'
 
 const Login = () => {
 	const [showPassword, setShowPassword] = React.useState(false)
@@ -26,13 +27,20 @@ const Login = () => {
 	} = useForm()
 	const [token] = useToken(googleUser || emailUser)
 	const navigate = useNavigate()
+     let location = useLocation();
+	let from = location.state?.from?.pathname || "/";
+//     let [admin, adminLoading] = useAdmin(user)
+
+
 	useEffect(() => {
 		if (token.report === 'inserted' || token.report === 'exist') {
 			navigate('/user_data')
+			toast.success('Plz Fillup This Form!', { id: "social_login" })
 		} else if (token.report === 'dataExist') {
-			navigate('/')
+			navigate(from, { replace: true });
+			toast.success('Login Successfully!', { id: "social_login" })
 		}
-	}, [token.report, navigate])
+	}, [token.report, navigate, from])
 
 	if (googleLoading || emailLoading) {
 		return <Loading />
@@ -41,7 +49,7 @@ const Login = () => {
 	// if (googleUser || emailUser) {
 	//     console.log(googleUser || emailUser);
 	// }
-	console.log(token)
+	// console.log(token)
 
 	if (googleError || emailError) {
 		console.error(googleError || emailError)

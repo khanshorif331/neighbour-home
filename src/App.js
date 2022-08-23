@@ -43,6 +43,8 @@ import MyHirings from './Pages/Dashboardpage/myOrders/forEngineer/MyHirings'
 
 import Body from './Pages/ResumeBuilder/Body/Body'
 import Blog from './Pages/Blog/Blog'
+import RequireAdmin from './Auth/RequireAdmin'
+import RequireAuth from './Auth/RequireAuth'
 
 export const DarkModeContext = createContext('')
 const queryClient = new QueryClient()
@@ -93,7 +95,7 @@ function App() {
 								<Route path="/blogs" element={<Blog />} />
 								<Route path="/dashboard" element={<Dashboard />}>
 									<Route index element={<Dashboard1 />}></Route>
-									<Route path="users" element={<Users />}></Route>
+									<Route path="users" element={<RequireAdmin><Users /></RequireAdmin>}></Route>
 									<Route
 										path="addReview"
 										element={<AddReview />}
@@ -157,7 +159,7 @@ function App() {
 								/>
 								<Route
 									path="/properties"
-									element={<PropertiesPage />}
+									element={<RequireAuth> <PropertiesPage /> </RequireAuth>}
 								/>
 								<Route path="/resumeBuilder" element={<Body />} />
 								<Route path="/payment/:id" element={<Payment />} />
