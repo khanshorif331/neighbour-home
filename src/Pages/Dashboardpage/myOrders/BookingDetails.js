@@ -5,10 +5,14 @@ import Loading from '../../../Shared/Loading/Loading';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { BsBehance, BsFacebook, BsLinkedin, BsTwitter } from 'react-icons/bs';
+import useRole from '../../../hooks/useRole';
+import useAuthEngineer from '../../../hooks/useAuthEngineer';
 
 const BookingDetails = () => {
     const [user] = useAuthState(auth);
+    const [authEngineer] = useAuthEngineer();
     const {id} = useParams();
+    const [role] = useRole();
     console.log(id);
     const { isLoading, error, data, refetch } = useQuery(['booking'], () =>
     
@@ -21,7 +25,7 @@ const BookingDetails = () => {
 if (isLoading) return <Loading></Loading>
 if (error) return 'An error has occurred: ' + error.message
 const { customerEmail, customerPhone, customerName, customerAddress } =data?.data;
-  const { name, email, _id, picture, phone } = data?.engineer;
+  const { name, email, _id, photo, phone } = data?.engineer;
     return (
         <div className='lg:px-2 px-8 py-6 pb-32 h-full'>
 
@@ -55,7 +59,7 @@ const { customerEmail, customerPhone, customerName, customerAddress } =data?.dat
                     </li>
                   </ul>
                 </div>
-                <figure><img className='w-40 h-40 text-left inline-block  p-4' src={picture} alt="Nayeem Hasan" /></figure>
+                <figure><img className='w-40 h-40 text-left inline-block  p-4' src={photo} alt={name} /></figure>
                 </div>
             </div>
                 <div className='card lg:card-side'>
@@ -98,7 +102,9 @@ const { customerEmail, customerPhone, customerName, customerAddress } =data?.dat
                 <div className="card-body">
                     <div className="text-2xl text-accent font-bold">ADDITIONAL INFO</div>
                     <div className="text-xl  text-neutral"><i><span className='font-semibold'>.............</span></i></div>
-                    <Link to={`/user_data`}><button className='btn btn-md text-end btn-error mt-auto'>update your info</button></Link>
+                    
+                    <Link to={`/user_data`}>{(!authEngineer && role !== 'admin' && role !== 'Worker') && <button className='btn btn-md text-end btn-error mt-auto'>update your info</button>}</Link>
+                    
                 </div>
                 </div>
             </div>

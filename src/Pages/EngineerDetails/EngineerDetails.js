@@ -6,17 +6,18 @@ import useEngineer from '../../hooks/useEngineer';
 import { useForm } from 'react-hook-form';
 import { DarkModeContext } from '../../App';
 import toast from 'react-hot-toast';
-const n = '01764 546296'
-const num = n.toString().split(' ');
+
+
 const EngineerDetails = () => {
 
     const [darkMode, setDarkMode] = useContext(DarkModeContext);
     const { engineerId } = useParams();
     const [engineer] = useEngineer(engineerId);
-    const { picture, name, _id, surname } = engineer;
+    const { name, photo, _id, email, address, country, nid, phone, role, username, zip } = engineer;
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
+    const lastEmail = email.split('@');
     const onSubmit = data => {
         const result = {
             data: data,
@@ -54,16 +55,16 @@ const EngineerDetails = () => {
             <div className={`hero min-h-screen ${darkMode && "dark-theme"}bg-base-200 py-12`}>
                 <div className="card lg:card-side bg-base-100 shadow-xl">
                     <div className="card-body">
-                        <img className='w-72 h-72 hidden  lg:block rounded-xl' src={picture} alt={picture} />
+                        <img className='w-72 h-72 hidden  lg:block rounded-xl' src={photo} alt={photo} />
                         <input type="text" name='eName' disabled value={name || ''} className="input input-bordered w-full max-w-xs" />
-                        <input type="text" disabled value={surname || ''} className="input input-bordered w-full max-w-xs" />
-                        <img className='lg:hidden w-80 h-48 rounded-xl' src={picture} alt={picture} />
+                        <input type="text" disabled value={role || ''} className="input input-bordered w-full max-w-xs" />
+                        <img className='lg:hidden w-80 h-48 rounded-xl' src={photo} alt={photo} />
                     </div>
                     <div className="mt-8 pr-4">
                         <h1 className="text-sm font-bold">Engineer ID: {_id}</h1>
-                        <p className="w-6/12 my-1">Phone: {1 < 0 ? '**********' : ['*****', num[1]]}</p>
-                        <p className="w-6/12 my-1">Email: {1 < 0 ? '*******@**.com' : 'xyz****@**.com'}</p>
-                        <p className="w-6/12 my-1">Location: 'Dhaka mohakali'</p>
+                        <p className="w-6/12 my-1">Phone: {String(phone).slice(0, 2)}*****{String(phone).slice(8, 10)}</p>
+                        <p className="w-6/12 my-1">Email: {email.slice(0, 1)}****@{lastEmail[1]}</p>
+                        <p className="w-6/12 my-1">Location: {address}</p>
                         <p className="w-6/12 my-1">per hours: ${Math.floor(Math.random() * 10) + 20}</p>
                         <input type="text" value={user?.displayName} className="input input-bordered w-full max-w-xs"  {...register("customerName")} />
                         <input type="email" value={user?.email} className="input my-2 input-bordered w-full max-w-xs" {...register("customerEmail")} />
