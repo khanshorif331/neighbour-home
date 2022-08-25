@@ -224,7 +224,14 @@ function App() {
 								/>
 								<Route path="search" element={<Searches />} />
 								{/* Profile Routes */}
-								<Route path="/profile" element={<Profile />}>
+								<Route
+									path="/profile"
+									element={
+										<RequireAuth>
+											<Profile />
+										</RequireAuth>
+									}
+								>
 									<Route index element={<MyProfile />}></Route>
 									<Route path="address" element={<Address />}></Route>
 									<Route
