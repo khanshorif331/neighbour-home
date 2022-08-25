@@ -22,7 +22,7 @@ const NotificationModal = ({setNotificationModal}) => {
 						<label
 						onClick={()=>setNotificationModal(false)}
 							for="notificattonModal"
-							className="cursor-pointer text-2xl absolute right-5 top-5"
+							className="cursor-pointer text-2xl absolute right-6 top-3"
 						>
 							<AiOutlineCloseCircle />
 						</label>
