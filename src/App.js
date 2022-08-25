@@ -167,7 +167,11 @@ function App() {
 									></Route>
 									<Route
 										path="manageEngineers"
-										element={<ManageEngineers />}
+										element={
+											<RequireAdmin>
+												<ManageEngineers />
+											</RequireAdmin>
+										}
 									></Route>
 									{/* <Route path="dashboard1" element={<Dashboard1 />}></Route> */}
 								</Route>
