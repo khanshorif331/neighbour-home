@@ -114,11 +114,19 @@ function App() {
 									></Route>
 									<Route
 										path="manageBooks"
-										element={<ManageBooks />}
+										element={
+											<RequireAdmin>
+												<ManageBooks />
+											</RequireAdmin>
+										}
 									></Route>
 									<Route
 										path="manageEngineers"
-										element={<ManageEngineers />}
+										element={
+											<RequireAdmin>
+												<ManageEngineers />
+											</RequireAdmin>
+										}
 									></Route>
 									<Route
 										path="constructors"
@@ -130,7 +138,11 @@ function App() {
 									></Route>
 									<Route
 										path="manageBooks"
-										element={<ManageBooks />}
+										element={
+											<RequireAdmin>
+												<ManageBooks />
+											</RequireAdmin>
+										}
 									></Route>
 									<Route path="orders" element={<Orders />}></Route>
 									<Route
