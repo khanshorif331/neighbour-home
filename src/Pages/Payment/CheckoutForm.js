@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import emailjs from '@emailjs/browser';
+import moment from 'moment';
 
 
 const CheckoutForm = ({ property }) => {
@@ -116,6 +117,7 @@ const CheckoutForm = ({ property }) => {
             //     })
 
 
+            // order post api 
             const orderInfo = {
                 propertyId: property?._id,
                 transectionId: paymentIntent.id,
@@ -132,6 +134,21 @@ const CheckoutForm = ({ property }) => {
                     toast.success(`${property.propertyName} Succesfully Placed Order!`)
 
                 })
+
+
+            // notification post api 
+            const notification = {
+               heading : `For "${property.propertyName}" Successfully Payment Complete!`,
+               date : moment().format()
+            }
+            axios.post(`https://neighbour-home--server.herokuapp.com/notification`, notification)
+                .then(data => {
+                    // console.log(data.data);
+                    // toast.success(`${property.propertyName} Succesfully Placed Order!`)
+
+                })
+
+
 
 
         }
