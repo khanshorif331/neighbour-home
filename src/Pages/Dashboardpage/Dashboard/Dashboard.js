@@ -149,7 +149,7 @@ const Dashboard = () => {
                 Manage Constructors
               </Link>
             </li>
-            {!authEngineer && <li>
+            {(!authEngineer && role !== 'admin' && role !== 'Worker')&&  <li>
               <Link
                 className={` shadow-lg my-1 font-bold ${darkMode
                     ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
@@ -161,7 +161,8 @@ const Dashboard = () => {
                 My Bookings
               </Link>
             </li>}
-            <li>
+            {role === 'admin' &&
+              <li>
               <Link
                 className={` shadow-lg my-1 font-bold ${darkMode
                     ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
@@ -172,7 +173,7 @@ const Dashboard = () => {
                 <img className="w-4" src={hiringSvg} alt="book svg" />{" "}
                 Bookings
               </Link>
-            </li>
+            </li>}
             {
               authEngineer &&
               <li>

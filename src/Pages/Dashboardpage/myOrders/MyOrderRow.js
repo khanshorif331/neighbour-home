@@ -10,6 +10,7 @@ const MyOrderRow = ({ index, d, refetch }) => {
     d?.data;
   const { name, email, _id, picture, phone } = d.engineer;
   const [darkMode] = useContext(DarkModeContext);
+  const lastEmail = d?.engineer?.email.split('@');
   const handleDelete = (id) => {
     swal({
       title: "Are you sure?",
@@ -47,8 +48,8 @@ const MyOrderRow = ({ index, d, refetch }) => {
       <td className="">{customerEmail}</td>
 
       <td className="">{name}</td>
-      <td>{email}</td>
-      <td>{phone}</td>
+      <td>{email.slice(0, 1)}****@{lastEmail[1]}</td>
+      <td>{String(phone).slice(0, 2)}*****{String(phone).slice(8, 10)}</td>
       <td className="text-success font-semibold">
         {d.status === "accept" ? "pending" : "ready to hire"}
       </td>

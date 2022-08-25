@@ -5,6 +5,9 @@ import toast from 'react-hot-toast';
 import emailjs from '@emailjs/browser';
 import swal from "sweetalert";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 const MyHiringRow = ({ index, d, refetch }) => {
     // console.log(d?.data?.customerEmail);
@@ -14,6 +17,7 @@ const MyHiringRow = ({ index, d, refetch }) => {
   const [darkMode] = useContext(DarkModeContext);
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
   const form = useRef()
+  const lastEmail = d?.engineer?.email.split('@');
 
 
   const sendEmail = (data) => {
@@ -82,9 +86,40 @@ const MyHiringRow = ({ index, d, refetch }) => {
 });
   }
     return (
-        <div>
-            
+      <tr className={`${darkMode ? "text-gray-400 py-2" : "text-gray-500"} `}>
+      <th>{index + 1}</th>
+
+      <td className="">{customerName}</td>
+      <td className="">{customerEmail}</td>
+
+      <td className="">{name}</td>
+      <td>{email.slice(0, 1)}****@{lastEmail[1]}</td>
+      <td>{String(phone).slice(0, 2)}*****{String(phone).slice(8, 10)}</td>
+      <td className="text-success font-semibold">
+        {d.status === "processing" ? "pending" : "processing"}
+      </td>
+      <td className="flex flex-col">
+        <div className='flex align-middle'>
+        <Link
+          to={`/dashboard/bookingDetails/${d._id}`}
+          className={`${d.status === "accept" ? "hidden" : "block"}`}
+        >
+          <button className={` btn btn-xs mb-1 hover:bg-slate-800`}>
+            details
+          </button>
+        </Link>
+          <FontAwesomeIcon onClick={() => handleDelete(d._id)} className='text-red-500 ml-2 mt-1 inline-block align-middle' icon={faTrashCan} />
         </div>
+        <div >
+          <form ref={form} onSubmit={handleSubmit(sendEmail)}>
+            <input type="text" value={customerName} className="input input-bordered w-full max-w-xs hidden"  {...register("customerName")} />
+            <input type="email" value={customerEmail} className="input my-2 input-bordered w-full max-w-xs hidden" {...register("customerEmail")} />
+            <input type="text" value={name} className="input my-2 input-bordered w-full max-w-xs hidden" {...register("name")} />
+            <button type='submit' className="btn btn-xs btn-success " onClick={() => handleStatus(d._id)}>{status ? status : 'accept'}</button>
+          </form>
+        </div>
+      </td>
+    </tr>
     );
 };
 
