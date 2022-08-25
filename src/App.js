@@ -41,6 +41,7 @@ import BookingDetails from "./Pages/Dashboardpage/myOrders/BookingDetails";
 import Searches from "./Pages/SearchRoute/Searches";
 import Body from "./Pages/ResumeBuilder/Body/Body";
 import Blog from "./Pages/Blog/Blog";
+import Captcha from "./Pages/Captcha/Captcha";
 
 
 export const DarkModeContext = createContext("");
@@ -127,6 +128,7 @@ function App() {
                 <Route path="/bookDetail/:_id" element={<BookReview />} />
                 <Route path="/properties" element={<PropertiesPage />} />
                 <Route path="/resumeBuilder" element={<Body />} />
+                <Route path="/captcha" element={<Captcha />} />
                 <Route path="/payment/:id" element={<Payment />} />
                 <Route path="/pricingPay/:id" element={<PricingPay />} />
                 <Route path="search" element={<Searches />} />
