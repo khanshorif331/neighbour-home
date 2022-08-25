@@ -155,7 +155,11 @@ function App() {
 									></Route>
 									<Route
 										path="bookingsThatsCarryOnMe"
-										element={<MyHirings />}
+										element={
+											<RequireAuth>
+												<MyHirings />
+											</RequireAuth>
+										}
 									></Route>
 									<Route
 										path="bookingDetails/:id"
