@@ -77,10 +77,10 @@ const SellPostModal = ({ setManageSellPostModal, refetch }) => {
      if (loading) return <Loading></Loading>
 
      return (
-          <>
+          <div className=''>
                <input type="checkbox" id="sellPost" className="modal-toggle" />
                <div className="modal text-center ">
-                    <div className="modal-box mx-auto z-50  max-h-[100vh] flex justify-center">
+                    <div className="modal-box mx-auto z-20  max-h-[100vh] flex justify-center">
                          <form
                               onSubmit={hanldeSellPost}
                               className='sm:w-10/12 w-11/12 py-3 mx-auto sm:mx-0 text-left'>
@@ -183,7 +183,7 @@ const SellPostModal = ({ setManageSellPostModal, refetch }) => {
 
                     </div>
                </div>
-          </>
+          </div>
      );
 };
 

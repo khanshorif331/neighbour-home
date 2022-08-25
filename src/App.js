@@ -43,10 +43,14 @@ import MyHirings from './Pages/Dashboardpage/myOrders/forEngineer/MyHirings'
 
 import Body from './Pages/ResumeBuilder/Body/Body'
 import Blog from './Pages/Blog/Blog'
-import RequireAdmin from './Auth/RequireAdmin'
+// authentication import
 import RequireAuth from './Auth/RequireAuth'
+import RequireAdmin from './Auth/RequireAdmin'
 import WorkersTable from './Pages/ServiceDetails/WorkersTable'
 import WorkerDetails from './Pages/EngineerDetails/WorkerDetails'
+
+
+
 
 export const DarkModeContext = createContext('')
 const queryClient = new QueryClient()
@@ -95,45 +99,95 @@ function App() {
 							<Routes>
 								<Route path="/" element={<Home />} />
 								<Route path="/blogs" element={<Blog />} />
-								<Route path="/dashboard" element={<Dashboard />}>
+								<Route
+									path="/dashboard"
+									element={
+										<RequireAuth>
+											<Dashboard />
+										</RequireAuth>
+									}
+								>
 									<Route index element={<Dashboard1 />}></Route>
-									<Route path="users" element={<RequireAdmin><Users /></RequireAdmin>}></Route>
+									<Route path="users" element={<Users />}></Route>
 									<Route
 										path="addReview"
-										element={<AddReview />}
+										element={
+											<RequireAuth>
+												<AddReview />
+											</RequireAuth>
+										}
 									></Route>
 									<Route
 										path="manageBooks"
-										element={<ManageBooks />}
+										element={
+											<RequireAdmin>
+												<ManageBooks />
+											</RequireAdmin>
+										}
 									></Route>
 									<Route
 										path="manageEngineers"
-										element={<ManageEngineers />}
+										element={
+											<RequireAdmin>
+												<ManageEngineers />
+											</RequireAdmin>
+										}
 									></Route>
 									<Route
 										path="constructors"
-										element={<Constructors />}
+										element={
+											<RequireAdmin>
+												<Constructors />
+											</RequireAdmin>
+										}
 									></Route>
 									<Route
 										path="manageBooks"
-										element={<ManageBooks />}
+										element={
+											<RequireAdmin>
+												<ManageBooks />
+											</RequireAdmin>
+										}
 									></Route>
-									<Route path="orders" element={<Orders />}></Route>
+									<Route
+										path="orders"
+										element={
+											<RequireAdmin>
+												<Orders />
+											</RequireAdmin>
+										}
+									></Route>
 									<Route
 										path="myOrders"
-										element={<MyOrders />}
+										element={
+											<RequireAuth>
+												<MyOrders />
+											</RequireAuth>
+										}
 									></Route>
 									<Route
 										path="bookingsThatsCarryOnMe"
-										element={<MyHirings />}
+										element={
+											<RequireAuth>
+												<MyHirings />
+											</RequireAuth>
+										}
 									></Route>
 									<Route
 										path="bookingDetails/:id"
-										element={<BookingDetails />}
+										element={
+											<RequireAdmin>
+												<BookingDetails />
+											</RequireAdmin>
+										}
 									></Route>
 									<Route
 										path="manageEngineers"
-										element={<ManageEngineers />}
+										element={
+											<RequireAdmin>
+												<ManageEngineers />
+											</RequireAdmin>
+										}
 									></Route>
 									{/* <Route path="dashboard1" element={<Dashboard1 />}></Route> */}
 								</Route>
@@ -169,17 +223,28 @@ function App() {
 								/>
 								<Route
 									path="/properties"
-									element={<RequireAuth> <PropertiesPage /> </RequireAuth>}
+									element={<PropertiesPage />}
 								/>
 								<Route path="/resumeBuilder" element={<Body />} />
 								<Route path="/payment/:id" element={<Payment />} />
 								<Route
-									path="/pricingPay/:id"
-									element={<PricingPay />}
+									path="/pricingPay/:_id"
+									element={
+										<RequireAuth>
+											<PricingPay />
+										</RequireAuth>
+									}
 								/>
 								<Route path="search" element={<Searches />} />
 								{/* Profile Routes */}
-								<Route path="/profile" element={<Profile />}>
+								<Route
+									path="/profile"
+									element={
+										<RequireAuth>
+											<Profile />
+										</RequireAuth>
+									}
+								>
 									<Route index element={<MyProfile />}></Route>
 									<Route path="address" element={<Address />}></Route>
 									<Route

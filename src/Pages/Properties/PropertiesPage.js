@@ -5,14 +5,13 @@ import PropertySearchBar from './PropertySearchBar';
 
 const PropertiesPage = () => {
      const { isLoading, error, data: properties, refetch } = useQuery(['properties'], () =>
-        fetch('https://neighbour-home--server.herokuapp.com/sellPost').then(
-            res => res.json()
-        )
-    )
+          fetch('https://neighbour-home--server.herokuapp.com/sellPost').then(
+               res => res.json()
+          )
+     )
      return (
           <div style={{ fontFamily: "'Rajdhani', sans-serif" }} className='mt-[129px]'>
-               <PropertySearchBar refetch={refetch}></PropertySearchBar>
-               <Properties properties={properties} isLoading={isLoading}></Properties>
+               <Properties refetch={refetch} properties={properties} isLoading={isLoading}></Properties>
           </div>
      );
 };
