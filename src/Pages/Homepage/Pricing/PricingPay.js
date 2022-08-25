@@ -41,26 +41,6 @@ const PricingPay = () => {
                 {description}
               </p>
               <ul className="flex-1 mb-6 text-gray-600">
-                {/* {Object?.values(
-                  pricing.benefit === undefined ? setLoading(true) : pricing.benefit
-                ).map((value) => (
-                  <li className="flex mb-2 space-x-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className="flex-shrink-0 w-6 h-6 text-sky-600"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span>{value}</span>
-                  </li>
-                ))} */}
-
                 {pricing.benefit === undefined
                   ? setLoading(true)
                   : Object.values(pricing.benefit).map((value, key) => (
@@ -87,13 +67,30 @@ const PricingPay = () => {
           <div class="text-center lg:text-left">
             <h1 class="text-5xl font-bold">Get Premium Access</h1>
             <p class="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+              One Subscription Unlimited Access Get Premium access to all our
+              properties apps with one subscription.
             </p>
-            <button className="p-3 bg-slate-600 text-white">
+            <label for="_id" className="btn p-3 bg-slate-600 text-white">
               Continue to ${price}
-            </button>
+            </label>
+            {/* this is modal */}
+            <input type="checkbox" id="_id" class="modal-toggle" />
+            <div class="modal">
+              <div class="modal-box w-11/12 max-w-5xl">
+                <h3 class="font-bold text-lg">
+                  Congratulations random Internet user!
+                </h3>
+                <p class="py-4">
+                  You've been selected for a chance to get one year of
+                  subscription to use Wikipedia for free!
+                </p>
+                <div class="modal-action">
+                  <label for="_id" class="btn">
+                    Continue
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
