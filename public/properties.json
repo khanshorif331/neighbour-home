@@ -1,0 +1,67 @@
+[
+    {
+        "propertyName": "RS Home Center",
+        "propertyType": "Residential",
+        "sellerName": "RS Home Center",
+        "images": " IMG Link",
+        "propertyPrice": 100000,
+        "rating": 4.5,
+        "width": "2.5",
+        "length": "2.5",
+        "location": "Kathmandu",
+        "totalarea": "2.5",
+        "selingarea": "2.5"
+    },
+    {
+        "propertyName": "Basundhara",
+        "propertyType": "Residential",
+        "sellerName": "RS Home Center",
+        "images": " IMG Link",
+        "propertyPrice": 100000,
+        "rating": 5,
+        "width": "2.5",
+        "length": "2.5",
+        "location": "Kathmandu",
+        "totalarea": "2.5",
+        "selingarea": "2.5"
+    },
+    {
+        "propertyName": " land hour",
+        "propertyType": "Residential",
+        "sellerName": "RS Home Center",
+        "images": " IMG Link",
+        "propertyPrice": 100000,
+        "rating": 4,
+        "width": "2.5",
+        "length": "2.5",
+        "location": "Kathmandu",
+        "totalarea": "2.5",
+        "selingarea": "2.5"
+    },
+    {
+        "propertyName": "vive land",
+        "propertyType": "Residential",
+        "sellerName": "RS Home Center",
+        "images": " IMG Link",
+        "propertyPrice": 100000,
+        "rating": 3,
+        "width": "2.5",
+        "length": "2.5",
+        "location": "Kathmandu",
+        "totalarea": "2.5",
+        "selingarea": "2.5"
+    },
+    {
+        "propertyName": " BTS Home",
+        "propertyType": "Residential",
+        "sellerName": "RS Home Center",
+        "images": " IMG Link",
+        "propertyPrice": 100000,
+        "rating": 4.5,
+        "width": "2.5",
+        "length": "2.5",
+        "location": "Kathmandu",
+        "totalarea": "2.5",
+        "selingarea": "2.5"
+    }
+]

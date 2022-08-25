@@ -3,6 +3,8 @@ import { DarkModeContext } from '../../App';
 import { useForm } from 'react-hook-form'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import {useNavigate} from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const UserData = () => {
 
@@ -11,6 +13,7 @@ const UserData = () => {
     const [selectOption, setSelectOption] = useState('')
     const imageStorageKey = '7da2b2086b902054d13e6c94a30f0b6a'
     const [user] = useAuthState(auth)
+    const navigate = useNavigate();
 
     const handleChange = e => {
         setSelectOption(e.target.value);
@@ -41,21 +44,26 @@ const UserData = () => {
                     nid: data.nid,
                     role: selectOption
                 }
-                console.log(userData);
+                // console.log(userData);
                 fetch(`https://neighbour-home--server.herokuapp.com/user?email=${user.email}`, {
                     method: "PUT",
                     headers: {
                         'content-type': 'application/json'
-                    }
+                    },
+                    body: JSON.stringify(userData)
                 })
                 .then(res => res.json())
                 .then(updatedData => {
                     console.log(updatedData);
                     if(updatedData.message === 'User data was updated successfully') {
-                        console.log("Thanks For Your Information");
+                        // console.log("Thanks For Your Information");
+                        toast.success("Thanks For Your Information");
+                        navigate("/");
+
                     }
                     else {
                         console.error("Failed To Submit");
+
                     }
                 })
             }
@@ -66,7 +74,7 @@ const UserData = () => {
     }
 
     return (
-        <section className='sm:mt-[129px] mt-[80px] mt-[80px]'>
+        <section className='sm:mt-[129px] mt-[80px]'>
             <h1 className={`text-4xl text-center my-3 ${darkMode && "text-white"}`}>Welcome To Neighbour Home!</h1>
             <div className='border p-7 rounded-lg cs-card-shadow w-full md:w-2/3 mx-auto my-3'>
                 <h1 className={`text-3xl font-medium text-center mb-12 ${darkMode && 'text-white'}`}>Fill Up This Form For Next Step</h1>
@@ -195,7 +203,8 @@ const UserData = () => {
                                     <option disabled value='DEFAULT'>Pick your role</option>
                                     <option value={'Engineer'}>Engineer</option>
                                     <option value={'Worker'}>Worker</option>
-                                    <option value={'Buyer'}>Buyer</option>
+                                    <option value={'Seller'}>Seller</option>
+                                    <option value={'Guest'}>Guest</option>
                                 </select>
                             </div>
                         </div>

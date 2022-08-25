@@ -1,0 +1,45 @@
+[
+  {
+    "_id": "623853bf61ad5aba311fdd1",
+    "tag": "Beginner",
+    "price": "Free",
+    "period": "lifetime",
+    "description": "This package is for small business. If you want to growth your company quickly please upgrade your package.",
+    "benefit": {
+      "one": "contact with engineers",
+      "two": "Buy properties",
+      "three": "Manage your works",
+      "four": "Get 5% discount all orders",
+      "five": "And more updated features"
+    }
+  },
+  {
+    "_id": "623853bh614ad5aba11fdd1",
+    "tag": "Pro",
+    "price": "199",
+    "period": "Yearly",
+    "description": "This package is use for mid-level business company. For large scale company you can go our 'Business' package.",
+    "benefit": {
+      "one": "Contact with engineers",
+      "two": "Buy and sell properties",
+      "three": "Manage your works",
+      "four": "Get 10% discount all orders",
+      "five": "And more updated features"
+    }
+  },
+  {
+    "_id": "623853b214ad5abb311fdd1",
+    "tag": "Business",
+    "price": "372",
+    "period": "Yearly",
+    "description": "This package is for Large scale company who can only get our fully premium package.",
+    "benefit": {
+      "one": "Contact with engineers",
+      "two": "Buy and sell properties",
+      "three": "Manage your works",
+      "four": "Get 20% discount all orders",
+      "five": "And more updated features",
+      "six": "New premium features"
+    }
+  }
+]

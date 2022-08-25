@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Swal from 'sweetalert2'
+import { DarkModeContext } from '../../../App'
 // import './UpdateModal'
 import UpdateModal from './UpdateModal'
 
 const Constructor = ({ constructor, index, refetch }) => {
 	const { title, type, price, picture, duration, discount, assignment, _id } =
 		constructor
+	const [darkMode] = useContext(DarkModeContext)
 
 	const handleDelete = id => {
 		swalWithBootstrapButtons
@@ -63,7 +65,7 @@ const Constructor = ({ constructor, index, refetch }) => {
 		buttonsStyling: true,
 	})
 	return (
-		<tr>
+		<tr className={`${darkMode ? 'text-gray-400 py-2' : 'text-gray-500'} `}>
 			<th>{index + 1}</th>
 			<td>{title}</td>
 			<td>{type}</td>

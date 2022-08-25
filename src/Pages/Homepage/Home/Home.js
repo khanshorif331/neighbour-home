@@ -10,20 +10,22 @@ import NewsLetter from "../NewsLetter/NewsLetter";
 import Reviews from "../Reviews/Reviews";
 import AboutUs from "../AboutUs/AboutUs";
 import Statistics from "../Statistics/Statistics";
-import { DarkModeContext } from "../../../App";
+import Pricing from "../Pricing/Pricing";
+import Projects from "../projects/Projects";
 
 const Home = () => {
-
   return (
     <div>
       <Banner />
       <Guide />
       <Cards />
-      <Statistics/>
+      <Statistics />
       <Engineers />
+      <Pricing />
+      <Projects />
       <Notice />
       <Testimonials />
-      <Reviews/>
+      <Reviews />
       <AboutUs></AboutUs>
       <Contact />
       <NewsLetter />
