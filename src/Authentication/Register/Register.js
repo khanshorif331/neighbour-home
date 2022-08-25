@@ -49,8 +49,11 @@ const Register = () => {
     //     console.log(googleUser || emailUser);
     // }
 
-    if (googleError || emailError) {
-        console.error(googleError || emailError);
+    if (emailError) {
+        toast.error('Failed To Sign Up', {id: 'failed to sign up'})        
+    }
+    if(googleError) {
+        toast.error('Failed To Login', {id: 'failed to login'})
     }
 
     const handleRegister = (data) => {
