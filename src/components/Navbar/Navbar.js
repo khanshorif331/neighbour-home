@@ -16,9 +16,9 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init'
 import Loading from '../../Shared/Loading/Loading'
 import { signOut } from 'firebase/auth'
-import NotificationModal from './NotificationModal'
-import useAdmin from '../../hooks/useRole'
+// import NotificationModal from '
 import useRole from '../../hooks/useRole'
+import NotificationModal from './Notification/NotificationModal'
 
 const Navbar = () => {
 	const [colorChange, setColorchange] = useState(false)
@@ -28,8 +28,8 @@ const Navbar = () => {
 	// let navigat = useNavigate();
 	let location = useLocation().pathname
 	const [darkMode, setDarkMode] = useContext(DarkModeContext)
-    let [role, roleLoading] = useRole(user)
-//     console.log(role);
+	let [role, roleLoading] = useRole(user)
+	//     console.log(role);
 
 
 	if (loading || roleLoading) {
@@ -43,7 +43,7 @@ const Navbar = () => {
 		setToggle(!toggle)
 	}
 	const changeNavbarColor = () => {
-		if (window.scrollY >= 80) {
+		if (window.scrollY >= 50) {
 			setColorchange(true)
 		} else {
 			setColorchange(false)
@@ -55,17 +55,14 @@ const Navbar = () => {
 		<div className=''>
 			{/* start header  */}
 			<header
-				className={`fixed duration-300 top-0 left-0 w-full  px-4 sm:px-8 lg:px-16 xl:px-28 2xl:px-64 ${
-					colorChange && (darkMode ? 'bg-teal-600' : 'bg-teal-900')
-				} ${
-					location !== '/' && (darkMode ? 'bg-teal-600' : 'bg-teal-900')
-				} ${location === '/properties' ? 'z-10' : 'z-50'}`}
+				className={`fixed  top-0 left-0 w-full  px-4 sm:px-8 lg:px-16 xl:px-28 2xl:px-64 ${colorChange && (darkMode ? 'bg-teal-600' : 'bg-teal-900')
+					} ${location !== '/' && (darkMode ? 'bg-teal-600' : 'bg-teal-900')
+					} ${location === '/properties' ? (colorChange ? 'z-50 duration-100' : 'z-10') : 'z-50'}`}
 			>
 				<div
-					className={`${
-						colorChange ? 'md:hidden opacity-0' : 'md:flex opacity-100'
-					} hidden justify-between duration-500 items-center py-2 border-b text-sm`}
-					// style="border-color: rgba(255,255,255,.25)"
+					className={`${colorChange ? 'md:hidden opacity-0' : 'md:flex opacity-100'
+						} hidden justify-between duration-500 items-center py-2 border-b text-sm`}
+				// style="border-color: rgba(255,255,255,.25)"
 				>
 					<div>
 						<ul className='flex text-white'>
@@ -191,9 +188,8 @@ const Navbar = () => {
 					<label
 						for='dashboard-drower'
 						tabIndex='1'
-						class={`${
-							location.includes('dashboard') ? 'block' : 'hidden'
-						} md:hidden text-white cursor-pointer`}
+						class={`${location.includes('dashboard') ? 'block' : 'hidden'
+							} md:hidden text-white cursor-pointer`}
 					>
 						<MdDashboardCustomize className='h-5 w-5'></MdDashboardCustomize>
 					</label>
@@ -232,9 +228,8 @@ const Navbar = () => {
 
 					<ul
 						onClick={navBtnHndle}
-						className={`mobile-manu flex md:hidden flex-col text-center z-10   left-0 w-full bg-teal-100  absolute  py-4 duration-500 ${
-							toggle ? ' opacity-100  top-20' : ' top-[-350px] opacity-0'
-						}`}
+						className={`mobile-manu flex md:hidden flex-col text-center z-10   left-0 w-full bg-teal-100  absolute  py-4 duration-500 ${toggle ? ' opacity-100  top-20' : ' top-[-350px] opacity-0'
+							}`}
 					>
 						<NavLink
 							className={({ isActive }) =>
@@ -395,24 +390,17 @@ const Navbar = () => {
 
 								<li className='md:ml-2.5 md:mr-2.5 flex items-center relative'>
 									<label
-										onClick={() => setNotificationModal(true)}
+										onClick={() => setNotificationModal(!notificationModal)}
 										for='notificattonModal'
 										className='inline-block md:text-white md:px-2 font-semibold cursor-pointer'
 									>
 										<IoMdNotificationsOutline className='text-2xl'></IoMdNotificationsOutline>
-										{/* 
-                    <button
-                      // onClick={() => setDarkMode()}
-                      className=""
-                    >
-                    </button> */}
 									</label>
 
-									<div className='absolute top-3'>
+									<div className='absolute top-10 -left-10'>
 										{notificationModal && (
 											<NotificationModal
-											// refetch={refetch}
-											// setManageSellPostModal={setManageSellPostModal}
+												setNotificationModal={setNotificationModal}
 											/>
 										)}
 									</div>
@@ -431,11 +419,10 @@ const Navbar = () => {
 									<li className='md:ml-6 mt-3 md:mt-0'>
 										<a
 											onClick={() => signOut(auth)}
-											className={`inline-block font-semibold px-4 py-2 ${
-												colorChange
-													? 'hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white'
-													: 'hover:bg-white hover:text-teal-900 text-white bg-teal-900'
-											}   border-white rounded cursor-pointer`}
+											className={`inline-block font-semibold px-4 py-2 ${colorChange
+												? 'hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white'
+												: 'hover:bg-white hover:text-teal-900 text-white bg-teal-900'
+												}   border-white rounded cursor-pointer`}
 										>
 											Sign Out
 										</a>
@@ -443,11 +430,10 @@ const Navbar = () => {
 								) : (
 									<li className='md:ml-6 mt-3 md:mt-0'>
 										<Link
-											className={`inline-block font-semibold px-4 py-2 ${
-												colorChange
-													? 'hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white'
-													: 'hover:bg-white hover:text-teal-900 text-white bg-teal-900'
-											}   border-white rounded`}
+											className={`inline-block font-semibold px-4 py-2 ${colorChange
+												? 'hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white'
+												: 'hover:bg-white hover:text-teal-900 text-white bg-teal-900'
+												}   border-white rounded`}
 											to='/login'
 										>
 											Login

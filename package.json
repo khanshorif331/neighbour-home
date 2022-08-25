@@ -17,6 +17,7 @@
     "daisyui": "^2.20.0",
     "firebase": "^9.9.0",
     "imgbb-uploader": "^1.5.0",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-countup": "^6.3.0",
     "react-dom": "^18.2.0",
