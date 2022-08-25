@@ -46,6 +46,7 @@ import Blog from './Pages/Blog/Blog'
 import RequireAdmin from './Auth/RequireAdmin'
 import RequireAuth from './Auth/RequireAuth'
 import WorkersTable from './Pages/ServiceDetails/WorkersTable'
+import WorkerDetails from './Pages/EngineerDetails/WorkerDetails'
 
 export const DarkModeContext = createContext('')
 const queryClient = new QueryClient()
@@ -154,6 +155,10 @@ function App() {
 								<Route
 									path="/engineers/engineer/:engineerId"
 									element={<EngineerDetails />}
+								></Route>
+								<Route
+									path="/workers/worker/:workerId"
+									element={<WorkerDetails />}
 								></Route>
 								<Route path="/guides" element={<Guides />} />
 								<Route path="/user_data" element={<UserData />} />

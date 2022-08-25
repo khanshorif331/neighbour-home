@@ -13,7 +13,6 @@ const BookingDetails = () => {
     const [authEngineer] = useAuthEngineer();
     const {id} = useParams();
     const [role] = useRole();
-    console.log(id);
     const { isLoading, error, data, refetch } = useQuery(['booking'], () =>
     
     fetch(`https://neighbour-home--server.herokuapp.com/booking/${id}`).then(
@@ -25,7 +24,7 @@ const BookingDetails = () => {
 if (isLoading) return <Loading></Loading>
 if (error) return 'An error has occurred: ' + error.message
 const { customerEmail, customerPhone, customerName, customerAddress } =data?.data;
-  const { name, email, _id, photo, phone } = data?.engineer;
+  const { name, email, _id, photo, phone, address } = data?.engineer;
     return (
         <div className='lg:px-2 px-8 py-6 pb-32 h-full'>
 
@@ -67,9 +66,9 @@ const { customerEmail, customerPhone, customerName, customerAddress } =data?.dat
                     <div className="text-xl  text-neutral">Name: <span className='font-semibold'>{name}</span></div>
                     <div className="text-xl  text-neutral">Date of birth: <span className='font-semibold'>16 Sep 2001</span></div>
                     <div className="text-xl  text-neutral">Nationality: <span className='font-semibold'>Bangladeshsi</span></div>
-                    <div className="text-xl  text-neutral block">Location: <span className='font-semibold'>Osmaninagar, Sylhet, BD</span></div>
-                    <div className="text-xl  text-neutral block"><small>Email: <span className='font-semibold'>{name.toLowerCase().split(' ')}@gmail.com</span></small></div>
-                    <div className="text-xl  text-neutral"><small>Phone: <span className='font-semibold'>+880176454629</span></small></div>
+                    <div className="text-xl  text-neutral block">Location: <span className='font-semibold'>{address}</span></div>
+                    <div className="text-xl  text-neutral block"><small>Email: <span className='font-semibold'>{email}</span></small></div>
+                    <div className="text-xl  text-neutral"><small>Phone: <span className='font-semibold'>{phone}</span></small></div>
                     <div className="text-xl  text-neutral"><small>Linkedin: <span className='font-semibold'>/{name.toLowerCase().split(' ')}</span></small></div>
                     <div className="text-xl  text-neutral"><small>Github: <span className='font-semibold'>/{name.toLowerCase().split(' ')}</span></small></div>
                 </div>
