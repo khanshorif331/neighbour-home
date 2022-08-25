@@ -94,7 +94,14 @@ function App() {
 							<Routes>
 								<Route path="/" element={<Home />} />
 								<Route path="/blogs" element={<Blog />} />
-								<Route path="/dashboard" element={<Dashboard />}>
+								<Route
+									path="/dashboard"
+									element={
+										<RequireAuth>
+											<Dashboard />
+										</RequireAuth>
+									}
+								>
 									<Route index element={<Dashboard1 />}></Route>
 									<Route path="users" element={<Users />}></Route>
 									<Route
