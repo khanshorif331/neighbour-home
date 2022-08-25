@@ -216,7 +216,11 @@ function App() {
 								<Route path="/payment/:id" element={<Payment />} />
 								<Route
 									path="/pricingPay/:_id"
-									element={<PricingPay />}
+									element={
+										<RequireAuth>
+											<PricingPay />
+										</RequireAuth>
+									}
 								/>
 								<Route path="search" element={<Searches />} />
 								{/* Profile Routes */}
