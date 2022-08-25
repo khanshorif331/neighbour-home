@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../../../Shared/Loading/Loading";
@@ -7,7 +6,7 @@ const PricingPay = () => {
   const { _id } = useParams();
   const [pricing, setPricing] = useState({});
   const [loading, setLoading] = useState(false);
-  const { tag, price, period, description, benefit } = pricing;
+  const { tag, price, period, description } = pricing;
 
   useEffect(() => {
     fetch(`https://neighbour-home--server.herokuapp.com/pricing/${_id}`)
@@ -21,13 +20,6 @@ const PricingPay = () => {
         }
       });
   }, [_id]);
-
-  // if (pricing.benefit === undefined) {
-  //   return <Loading />;
-  // } else {
-  //   console.log(pricing.benefit);
-  // }
-
   if (loading) {
     return <Loading />;
   }
