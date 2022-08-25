@@ -144,7 +144,14 @@ function App() {
 											</RequireAdmin>
 										}
 									></Route>
-									<Route path="orders" element={<Orders />}></Route>
+									<Route
+										path="orders"
+										element={
+											<RequireAdmin>
+												<Orders />
+											</RequireAdmin>
+										}
+									></Route>
 									<Route
 										path="myOrders"
 										element={
@@ -163,7 +170,11 @@ function App() {
 									></Route>
 									<Route
 										path="bookingDetails/:id"
-										element={<BookingDetails />}
+										element={
+											<RequireAdmin>
+												<BookingDetails />
+											</RequireAdmin>
+										}
 									></Route>
 									<Route
 										path="manageEngineers"
