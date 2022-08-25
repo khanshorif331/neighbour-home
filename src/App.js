@@ -147,7 +147,11 @@ function App() {
 									<Route path="orders" element={<Orders />}></Route>
 									<Route
 										path="myOrders"
-										element={<MyOrders />}
+										element={
+											<RequireAuth>
+												<MyOrders />
+											</RequireAuth>
+										}
 									></Route>
 									<Route
 										path="bookingsThatsCarryOnMe"
