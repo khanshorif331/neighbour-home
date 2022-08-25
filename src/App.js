@@ -45,6 +45,7 @@ import Body from './Pages/ResumeBuilder/Body/Body'
 import Blog from './Pages/Blog/Blog'
 // authentication import
 import RequireAuth from './Auth/RequireAuth'
+import RequireAdmin from './Auth/RequireAdmin'
 
 export const DarkModeContext = createContext('')
 const queryClient = new QueryClient()
@@ -114,7 +115,11 @@ function App() {
 									></Route>
 									<Route
 										path="constructors"
-										element={<Constructors />}
+										element={
+											<RequireAdmin>
+												<Constructors />
+											</RequireAdmin>
+										}
 									></Route>
 									<Route
 										path="manageBooks"
