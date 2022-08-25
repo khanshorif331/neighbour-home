@@ -136,7 +136,7 @@ function App() {
                 <Route path="/properties" element={<PropertiesPage />} />
                 <Route path="/resumeBuilder" element={<Body />} />
                 <Route path="/payment/:id" element={<Payment />} />
-                <Route path="/pricingPay/:id" element={<PricingPay />} />
+                <Route path="/pricingPay/:_id" element={<PricingPay />} />
                 <Route path="search" element={<Searches />} />
                 {/* Profile Routes */}
                 <Route path="/profile" element={<Profile />}>
