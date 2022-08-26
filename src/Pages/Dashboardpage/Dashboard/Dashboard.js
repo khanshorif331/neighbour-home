@@ -21,7 +21,7 @@ const Dashboard = () => {
   let [role, roleLoading] = useRole(user)
 
 
-  if (loading) {
+  if (loading || roleLoading) {
     return <Loading />;
   }
 
