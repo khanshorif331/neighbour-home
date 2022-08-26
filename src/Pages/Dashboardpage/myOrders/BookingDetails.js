@@ -12,7 +12,7 @@ const BookingDetails = () => {
     const [user] = useAuthState(auth);
     const [authEngineer] = useAuthEngineer();
     const {id} = useParams();
-    const [role] = useRole();
+    const [role, roleLoading] = useRole();
     const { isLoading, error, data, refetch } = useQuery(['booking'], () =>
     
     fetch(`https://neighbour-home--server.herokuapp.com/booking/${id}`).then(
@@ -21,7 +21,7 @@ const BookingDetails = () => {
 );
 
 
-if (isLoading) return <Loading></Loading>
+if (isLoading || roleLoading) return <Loading></Loading>
 if (error) return 'An error has occurred: ' + error.message
 const { customerEmail, customerPhone, customerName, customerAddress } =data?.data;
   const { name, email, _id, photo, phone, address } = data?.engineer;
