@@ -1,9 +1,12 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import auth from '../../../firebase.init';
 
 const Address = () => {
 
     const [toogleAddressEdit, setToogleAddressEdit] = React.useState(false);
+    const [user] = useAuthState(auth)
     const {
         register,
         formState: { errors },
@@ -13,6 +16,24 @@ const Address = () => {
 
     const handleUpdateAddress = data => {
         console.log(data);
+        fetch(`https://neighbour-home--server.herokuapp.com/user?email=${user?.email}`, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: {
+                currentCountry: data.currentCountry,
+                currentAddress: data.currentAddress,
+                currentZip: data.currentZip,
+                country: data.country,
+                zip: data.zip,
+                address: data.address
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
         reset()
     }
 

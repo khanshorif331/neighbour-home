@@ -16,6 +16,24 @@ const MyProfile = () => {
 
     const handeProfileUpdate = data => {
         console.log(data);
+        // const profileData = {
+        //     name: data.name,
+        //     phone: data.phone
+        // }
+        fetch(`https://neighbour-home--server.herokuapp.com/user?email=${user?.email}`, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: {
+                name: data.name,
+                phone: data.phone
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
         reset()
     }
 
