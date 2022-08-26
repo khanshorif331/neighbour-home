@@ -76,10 +76,10 @@ const PricingPay = () => {
               One Subscription Unlimited Access Get Premium access to all our
               properties apps with one subscription.
             </p>
+            <Elements stripe={stripePromise}>
+              <PremiumPay />
+            </Elements>
           </div>
-          <Elements stripe={stripePromise}>
-            <PremiumPay />
-          </Elements>
         </div>
       </div>
     </div>
