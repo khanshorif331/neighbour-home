@@ -46,6 +46,8 @@ import Blog from "./Pages/Blog/Blog";
 // authentication import
 import RequireAuth from "./Auth/RequireAuth";
 import RequireAdmin from "./Auth/RequireAdmin";
+import WorkersTable from "./Pages/ServiceDetails/WorkersTable";
+import WorkerDetails from "./Pages/EngineerDetails/WorkerDetails";
 
 export const DarkModeContext = createContext("");
 const queryClient = new QueryClient();
@@ -187,15 +189,27 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route
                   path="/details/:serviceId"
-                  element={<ServiceDetails />}
+                  element={
+                    <RequireAuth>
+                      <ServiceDetails />
+                    </RequireAuth>
+                  }
                 />
                 <Route
                   path="/engineers"
                   element={<EngineersTable></EngineersTable>}
                 ></Route>
                 <Route
+                  path="/workers"
+                  element={<WorkersTable></WorkersTable>}
+                ></Route>
+                <Route
                   path="/engineers/engineer/:engineerId"
                   element={<EngineerDetails />}
+                ></Route>
+                <Route
+                  path="/workers/worker/:workerId"
+                  element={<WorkerDetails />}
                 ></Route>
                 <Route path="/guides" element={<Guides />} />
                 <Route path="/user_data" element={<UserData />} />
