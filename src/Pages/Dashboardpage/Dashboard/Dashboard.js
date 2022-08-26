@@ -101,7 +101,8 @@ const Dashboard = () => {
               </li>
             }
 
-            <li>
+            {role === 'admin' &&
+              <li>
               <Link
                 className={` shadow-lg my-1 font-bold ${darkMode
                     ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
@@ -112,7 +113,7 @@ const Dashboard = () => {
                 <img className="w-4" src={bookSvg} alt="book svg" /> Manage
                 Books
               </Link>
-            </li>
+            </li>}
             <li>
               <Link
                 className={` shadow-lg my-1 font-bold ${darkMode
@@ -125,7 +126,8 @@ const Dashboard = () => {
                 Review
               </Link>
             </li>
-            <li>
+            {role === 'admin' &&
+              <li>
               <Link
                 className={` shadow-lg my-1 font-bold ${darkMode
                     ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
@@ -136,8 +138,9 @@ const Dashboard = () => {
                 <img className="w-4" src={engineerSvg} alt="book svg" /> Manage
                 Engineers
               </Link>
-            </li>
-            <li>
+            </li>}
+            {role === 'admin' &&
+              <li>
               <Link
                 className={` shadow-lg my-1 font-bold ${darkMode
                     ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
@@ -148,7 +151,7 @@ const Dashboard = () => {
                 <img className="w-4" src={constructionSvg} alt="book svg" />{" "}
                 Manage Constructors
               </Link>
-            </li>
+            </li>}
             {(!authEngineer && role !== 'admin' && role !== 'Worker')&&  <li>
               <Link
                 className={` shadow-lg my-1 font-bold ${darkMode
@@ -175,7 +178,7 @@ const Dashboard = () => {
               </Link>
             </li>}
             {
-              authEngineer &&
+              (authEngineer || role === 'Worker') &&
               <li>
                 <Link
                   className={` shadow-lg my-1 font-bold ${darkMode

@@ -109,10 +109,10 @@ const MyHiringRow = ({ index, d, refetch }) => {
 
       <td className="">{name}</td>
       <td>
-        {email.slice(0, 1)}****@{lastEmail[1]}
+        {email}
       </td>
       <td>
-        {String(phone).slice(0, 2)}*****{String(phone).slice(8, 10)}
+        {phone}
       </td>
       <td className="text-success font-semibold">
         {d.status === "processing" ? "pending" : "processing"}
@@ -121,7 +121,7 @@ const MyHiringRow = ({ index, d, refetch }) => {
         <div className="flex align-middle">
           <Link
             to={`/dashboard/bookingDetails/${d._id}`}
-            className={`${d.status === "accept" ? "hidden" : "block"}`}
+            className={` `}
           >
             <button className={` btn btn-xs mb-1 hover:bg-slate-800`}>
               details
