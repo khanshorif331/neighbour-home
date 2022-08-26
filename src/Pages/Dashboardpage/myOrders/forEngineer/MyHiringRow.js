@@ -49,29 +49,6 @@ const MyHiringRow = ({ index, d, refetch }) => {
       );
   };
 
-  const handleStatus = (id) => {
-    const updatedStatus = {
-      status: "processing",
-    };
-    axios
-      .put(
-        `https://neighbour-home--server.herokuapp.com/booking/${id}`,
-        updatedStatus
-      )
-      .then((data) => {
-        console.log(data.data);
-
-        toast.success(`this hiring request has been Successfully accept`);
-        refetch();
-      })
-      .catch((error) => {
-        console.log(error.response.data);
-        if (error.response.status === 403) {
-          toast.error("You are Not Admin");
-        }
-      });
-  };
-
   const handleDelete = (id) => {
     swal({
       title: "Are you sure?",
@@ -137,10 +114,10 @@ const MyHiringRow = ({ index, d, refetch }) => {
           <div className="card-actions">
             <label
               htmlFor="booking-modal"
-              // onClick={() => setTreatment(service)}
+              onClick={() => setBookingModal(true)}
               className="btn btn-xs btn-success"
             >
-              accept
+              {status === 'processing' ? 'accept' : 'pending'}
             </label>
           </div>
           {bookingModal && <AcceptModal

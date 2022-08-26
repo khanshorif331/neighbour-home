@@ -32,7 +32,7 @@ const Orders = () => {
                             <th className=' py-2'>customer</th>
                             <th>Email</th>
                             <th>Phone</th>
-                            <th>engineer</th>
+                            <th>Profession</th>
                             <th>email</th>
                             <th>Phone</th>
 

@@ -54,7 +54,7 @@ const MyHirings = () => {
         <div className=''>
             <div className='flex justify-between items-center align-middle'>
             <div>
-                <button className='btn btn-sm  btn-warning' onClick={()=> handleDelete(email)}>delete all</button>
+                <button className='btn btn-sm hidden  btn-warning' onClick={()=> handleDelete(email)}>delete all</button>
             </div>
             <h2 className={`${darkMode && "text-white"} text-2xl py-4 text-center`}>requests of hiring Me: {data?.length}</h2>
             <div className="flex space-x-4">
