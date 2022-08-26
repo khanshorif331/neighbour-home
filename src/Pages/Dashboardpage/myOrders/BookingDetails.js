@@ -93,7 +93,7 @@ const { customerEmail, customerPhone, customerName, customerAddress } =data?.dat
                     <div className="text-xl  text-neutral">Nationality: <span className='font-semibold'>Bangladeshsi</span></div>
                     <div className="text-xl  text-neutral block">Location: <span className='font-semibold'>{customerAddress}</span></div>
                     <div className="text-xl  text-neutral block"><small>Email: <span className='font-semibold'>{customerEmail}</span></small></div>
-                    <div className="text-xl  text-neutral"><small>Phone: <span className='font-semibold'>+8801764546296</span></small></div>
+                    <div className="text-xl  text-neutral"><small>Phone: <span className='font-semibold'>{customerPhone}</span></small></div>
                     <div className="text-xl  text-neutral"><small>Linkedin: <span className='font-semibold'>/{customerName.toLowerCase().split(' ')}</span></small></div>
                     <div className="text-xl  text-neutral"><small>Github: <span className='font-semibold'>/{customerName.toLowerCase().split(' ')}</span></small></div>
                 </div>
@@ -102,7 +102,7 @@ const { customerEmail, customerPhone, customerName, customerAddress } =data?.dat
                     <div className="text-2xl text-accent font-bold">ADDITIONAL INFO</div>
                     <div className="text-xl  text-neutral"><i><span className='font-semibold'>.............</span></i></div>
                     
-                    <Link to={`/user_data`}>{(!authEngineer && role !== 'admin' && role !== 'Worker') && <button className='btn btn-md text-end btn-error mt-auto'>update your info</button>}</Link>
+                    <Link to={`/user_data`}><button className={`{${(!authEngineer && role !== 'admin' && role !== 'Worker')&& 'block' } hidden btn btn-md text-end btn-error mt-auto`}>update your info</button></Link>
                     
                 </div>
                 </div>

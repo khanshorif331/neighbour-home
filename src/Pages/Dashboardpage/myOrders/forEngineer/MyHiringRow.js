@@ -49,29 +49,6 @@ const MyHiringRow = ({ index, d, refetch }) => {
       );
   };
 
-  const handleStatus = (id) => {
-    const updatedStatus = {
-      status: "processing",
-    };
-    axios
-      .put(
-        `https://neighbour-home--server.herokuapp.com/booking/${id}`,
-        updatedStatus
-      )
-      .then((data) => {
-        console.log(data.data);
-
-        toast.success(`this hiring request has been Successfully accept`);
-        refetch();
-      })
-      .catch((error) => {
-        console.log(error.response.data);
-        if (error.response.status === 403) {
-          toast.error("You are Not Admin");
-        }
-      });
-  };
-
   const handleDelete = (id) => {
     swal({
       title: "Are you sure?",
@@ -109,10 +86,10 @@ const MyHiringRow = ({ index, d, refetch }) => {
 
       <td className="">{name}</td>
       <td>
-        {email.slice(0, 1)}****@{lastEmail[1]}
+        {email}
       </td>
       <td>
-        {String(phone).slice(0, 2)}*****{String(phone).slice(8, 10)}
+        {phone}
       </td>
       <td className="text-success font-semibold">
         {d.status === "processing" ? "pending" : "processing"}
@@ -121,7 +98,7 @@ const MyHiringRow = ({ index, d, refetch }) => {
         <div className="flex align-middle">
           <Link
             to={`/dashboard/bookingDetails/${d._id}`}
-            className={`${d.status === "accept" ? "hidden" : "block"}`}
+            className={` `}
           >
             <button className={` btn btn-xs mb-1 hover:bg-slate-800`}>
               details
@@ -137,10 +114,10 @@ const MyHiringRow = ({ index, d, refetch }) => {
           <div className="card-actions">
             <label
               htmlFor="booking-modal"
-              // onClick={() => setTreatment(service)}
+              onClick={() => setBookingModal(true)}
               className="btn btn-xs btn-success"
             >
-              accept
+              {status === 'processing' ? 'accept' : 'pending'}
             </label>
           </div>
           {bookingModal && <AcceptModal
