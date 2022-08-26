@@ -149,17 +149,13 @@ const CheckoutForm = ({ property }) => {
                     // toast.success(`${property.propertyName} Succesfully Placed Order!`)
 
                 })
-
-
-
-
         }
     };
     if (loading) {
         return <Loading></Loading>
     }
     return (
-        <div className='flex items-center border rounded w-8/12'>
+        <div className='flex items-center border rounded w-10/12 sm:w-8/12 px-10 py-7 mx-auto sm:mx-0'>
             <form ref={form} onSubmit={handleSubmit} className='sm:pl-16 sm:w-[400px] w-11/12 mx-auto sm:mx-0 text-left' >
                 <CardElement
                     options={{

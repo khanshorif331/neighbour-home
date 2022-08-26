@@ -9,10 +9,10 @@ import auth from '../../../firebase.init';
 const NotificationModal = ({setNotificationModal, notifications}) => {
 	
 	return (
-			<div  style={{ fontFamily: "'Rajdhani', sans-serif" }} className="w-[350px] h-[380px] overflow-y-scroll z-50 rounded-lg px-5 bg-white text-center items-start">
+			<div  style={{ fontFamily: "'Rajdhani', sans-serif" }} className="w-[350px] h-[380px] overflow-y-scroll z-50 rounded-lg px-3 sm:px-5 bg-white text-center items-start">
 					<div
 						// onSubmit={hanldeSellPost}
-						className={`w-11/12 py-3  text-left  mx-auto`}
+						className={`w-full sm:w-11/12 py-3  text-left  mx-auto`}
 					>
 						<label
 						onClick={()=>setNotificationModal(false)}
