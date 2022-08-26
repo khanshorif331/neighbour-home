@@ -49,9 +49,6 @@ import RequireAdmin from './Auth/RequireAdmin'
 import WorkersTable from './Pages/ServiceDetails/WorkersTable'
 import WorkerDetails from './Pages/EngineerDetails/WorkerDetails'
 
-
-
-
 export const DarkModeContext = createContext('')
 const queryClient = new QueryClient()
 
@@ -120,41 +117,46 @@ function App() {
 									<Route
 										path="manageBooks"
 										element={
-											<RequireAdmin>
-												<ManageBooks />
-											</RequireAdmin>
+											<ManageBooks />
+											// <RequireAdmin>
+
+											// </RequireAdmin>
 										}
 									></Route>
 									<Route
 										path="manageEngineers"
 										element={
-											<RequireAdmin>
-												<ManageEngineers />
-											</RequireAdmin>
+											<ManageEngineers />
+											// <RequireAdmin>
+
+											// </RequireAdmin>
 										}
 									></Route>
 									<Route
 										path="constructors"
 										element={
-											<RequireAdmin>
-												<Constructors />
-											</RequireAdmin>
+											<Constructors />
+											// <RequireAdmin>
+
+											// </RequireAdmin>
 										}
 									></Route>
 									<Route
 										path="manageBooks"
 										element={
-											<RequireAdmin>
-												<ManageBooks />
-											</RequireAdmin>
+											<ManageBooks />
+											// <RequireAdmin>
+
+											// </RequireAdmin>
 										}
 									></Route>
 									<Route
 										path="orders"
 										element={
-											<RequireAdmin>
-												<Orders />
-											</RequireAdmin>
+											<Orders />
+											// <RequireAdmin>
+
+											// </RequireAdmin>
 										}
 									></Route>
 									<Route
@@ -176,17 +178,19 @@ function App() {
 									<Route
 										path="bookingDetails/:id"
 										element={
-											<RequireAdmin>
-												<BookingDetails />
-											</RequireAdmin>
+											<BookingDetails />
+											// <RequireAdmin>
+
+											// </RequireAdmin>
 										}
 									></Route>
 									<Route
 										path="manageEngineers"
 										element={
-											<RequireAdmin>
-												<ManageEngineers />
-											</RequireAdmin>
+											<ManageEngineers />
+											// <RequireAdmin>
+
+											// </RequireAdmin>
 										}
 									></Route>
 									{/* <Route path="dashboard1" element={<Dashboard1 />}></Route> */}
@@ -196,7 +200,11 @@ function App() {
 								<Route path="/register" element={<Register />} />
 								<Route
 									path="/details/:serviceId"
-									element={<RequireAuth><ServiceDetails /></RequireAuth>}
+									element={
+										<RequireAuth>
+											<ServiceDetails />
+										</RequireAuth>
+									}
 								/>
 								<Route
 									path="/engineers"
