@@ -1,12 +1,35 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { AiFillWarning } from "react-icons/ai";
 
-const PremiumPay = () => {
+const PremiumPay = ({ price }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
+  // const [clientSecret, setClientSecret] = useState("");
+
+  // useEffect(() => {
+  //   fetch(
+  //     "https://neighbour-home--server.herokuapp.com/create-payment-intent",
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         "content-type": "application/json",
+  //         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //       },
+  //       body: JSON.stringify({ price }),
+  //     }
+  //   )
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       if (data?.clientSecret) {
+  //         setClientSecret(data.clientSecret);
+  //       }
+  //     });
+  // }, [price]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,11 +77,11 @@ const PremiumPay = () => {
         />
         <button
           type="submit"
-          disabled={!stripe}
+          /* disabled={!stripe || !clientSecret} */
           style={{ fontFamily: "Open Sans, sans-serif", letterSpacing: "2px" }}
-          class={`hover:bg-white  bg-primary mr-2 transition hover:text-primary rounded-full text-white border-2 border-primary px-6 text-sm sm:text-base sm:px-8 mt-5 py-1.5`}
+          class={`hover:bg-white  bg-primary mr-2 transition hover:text-primary rounded-full text-white border-2 border-primary px-6 text-sm sm:text-base sm:px-8 mt-5 py-1.5 cursor-pointer`}
         >
-          Pay
+          Pay ${price}
         </button>
       </form>
       {cardError && (
