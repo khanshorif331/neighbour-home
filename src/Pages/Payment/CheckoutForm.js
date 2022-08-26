@@ -138,8 +138,10 @@ const CheckoutForm = ({ property }) => {
 
             // notification post api 
             const notification = {
-               heading : `For "${property.propertyName}" Successfully Payment Complete!`,
-               date : moment().format()
+                heading: `For "${property.propertyName}" Successfully Payment Complete!`,
+                date: moment().format(),
+                user_email: user?.email,
+                status: "unseen"
             }
             axios.post(`https://neighbour-home--server.herokuapp.com/notification`, notification)
                 .then(data => {

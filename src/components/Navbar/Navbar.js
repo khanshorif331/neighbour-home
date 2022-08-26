@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import {
 	MdModeNight,
@@ -16,20 +16,32 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init'
 import Loading from '../../Shared/Loading/Loading'
 import { signOut } from 'firebase/auth'
-// import NotificationModal from '
 import useRole from '../../hooks/useRole'
 import NotificationModal from './Notification/NotificationModal'
+import axios from 'axios'
 
 const Navbar = () => {
 	const [colorChange, setColorchange] = useState(false)
-	let [toggle, setToggle] = useState(false)
-	let [notificationModal, setNotificationModal] = useState(false)
+	const [toggle, setToggle] = useState(false)
+	const [notificationModal, setNotificationModal] = useState(false)
+	const [notifications, setNotifications] = useState([])
+	const [NewNotificationsCount, setNewNotificationsCount] = useState(0)
 	const [user, loading] = useAuthState(auth)
-	// let navigat = useNavigate();
-	let location = useLocation().pathname
+	// const navigat = useNavigate();
+	const location = useLocation().pathname
 	const [darkMode, setDarkMode] = useContext(DarkModeContext)
-	let [role, roleLoading] = useRole(user)
+	const [role, roleLoading] = useRole(user)
 	//     console.log(role);
+
+	useEffect(() => {
+		axios.get(`https://neighbour-home--server.herokuapp.com/notification/${user?.email}`)
+			.then(data => {
+				// console.log(data.data);
+				setNotifications(data.data)
+				const NewNotifications = data.data.filter(notification => notification.status === "unseen")
+				setNewNotificationsCount(NewNotifications.length)
+			})
+	}, [user?.email])
 
 
 	if (loading || roleLoading) {
@@ -394,12 +406,16 @@ const Navbar = () => {
 										for='notificattonModal'
 										className='inline-block md:text-white md:px-2 font-semibold cursor-pointer'
 									>
-										<IoMdNotificationsOutline className='text-2xl'></IoMdNotificationsOutline>
+										<IoMdNotificationsOutline className='text-2xl'>
+										</IoMdNotificationsOutline>
+
+										<span class="py-0 text-xs absolute -top-1 right-1.5 px-1 bg-pink-600 rounded-full">{NewNotificationsCount}</span>
 									</label>
 
 									<div className='absolute top-10 -left-10'>
 										{notificationModal && (
 											<NotificationModal
+												notifications={notifications}
 												setNotificationModal={setNotificationModal}
 											/>
 										)}
