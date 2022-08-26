@@ -2,13 +2,16 @@ import { useEffect, useState } from "react"
 
 const useEngineers = () => {
     const [engineers, setEngineers] = useState([]);
-
+    const [engLoading, setEngLoading] = useState(true)
     useEffect(() => {
-        fetch('https://neighbour-home--server.herokuapp.com/engineer')
+        fetch('https://neighbour-home--server.herokuapp.com/getUserByRole/Engineer')
             .then(res => res.json())
-            .then(data => setEngineers(data));
+            .then(data => {
+                setEngineers(data)
+                setEngLoading(false)
+            });
 
-    }, [engineers, setEngineers]);
+    }, [engineers, engLoading, setEngineers]);
     return [engineers, setEngineers];
 }
 export default useEngineers;

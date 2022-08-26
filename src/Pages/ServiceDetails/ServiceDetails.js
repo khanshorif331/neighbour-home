@@ -46,7 +46,7 @@ const ServiceDetails = () => {
                     hire a engineer
                   </button>
                 </Link>
-                <Link to={`/engineers`}>
+                <Link to={`/workers`}>
                   <button className="px-8 py-3 border-2 border-teal-900 bg-teal-900 hover:bg-white hover:text-teal-900  duration-200 text-white rounded uppercase inline-block mt-4 sm:mt-8 font-semibold">
                     hire workers
                   </button>

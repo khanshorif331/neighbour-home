@@ -13,8 +13,8 @@ const MyHirings = () => {
     const [darkMode, setDarkMode] = useContext(DarkModeContext);
     // const [searchTerm, setSearchTerm] = useState('');
     
-    const { isLoading, error, data, refetch } = useQuery(['myOrders'], () =>
-        fetch(`https://neighbour-home--server.herokuapp.com/bookingByEmail?email=${email}`).then(
+    const { isLoading, error, data, refetch } = useQuery(['myLists'], () =>
+        fetch(`https://neighbour-home--server.herokuapp.com/bookingByEngineerEmail?email=${email}`).then(
             res => res.json()
         )
     );
