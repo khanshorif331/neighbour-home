@@ -10,7 +10,7 @@ const PropertiesPage = () => {
           )
      )
      return (
-          <div style={{ fontFamily: "'Rajdhani', sans-serif" }} className='mt-[129px]'>
+          <div style={{ fontFamily: "'Rajdhani', sans-serif" }} className='mt-[80px] sm:mt-[129px]'>
                <Properties refetch={refetch} properties={properties} isLoading={isLoading}></Properties>
           </div>
      );
