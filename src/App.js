@@ -46,7 +46,6 @@ import Blog from "./Pages/Blog/Blog";
 // authentication import
 import RequireAuth from "./Auth/RequireAuth";
 import RequireAdmin from "./Auth/RequireAdmin";
-import Pricing from "./Pages/Homepage/Pricing/Pricing";
 
 export const DarkModeContext = createContext("");
 const queryClient = new QueryClient();
@@ -205,7 +204,6 @@ function App() {
                 <Route path="/properties" element={<PropertiesPage />} />
                 <Route path="/resumeBuilder" element={<Body />} />
                 <Route path="/payment/:id" element={<Payment />} />
-                <Route path="/pricing" element={<Pricing />} />
                 <Route
                   path="/pricingPay/:_id"
                   element={

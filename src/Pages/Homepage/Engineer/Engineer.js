@@ -49,12 +49,12 @@ const Engineer = () => {
         className="mySwiper "
       >
         {engineers?.map((engineer) => {
-          const { picture, name, surname, _id } = engineer;
+          const { photo, name, surname, _id } = engineer;
           return (
             <SwiperSlide key={_id}>
               <div className="my-10">
                 <div class={`${darkMode && "text-white"} engCard shadow-xl`}>
-                  <img src={picture} alt="Person" className="card__image" />
+                  <img src={photo} alt="Person" className="card__image" />
                   <p className="card__name">{name}</p>
                   <div className="">
                     {/* <div className="grid-child-posts">902 Post</div>

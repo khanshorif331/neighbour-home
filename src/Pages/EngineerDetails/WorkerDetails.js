@@ -2,32 +2,26 @@ import React, { useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import useEngineer from '../../hooks/useEngineer';
+import useWorker from '../../hooks/useEngineer';
 import { useForm } from 'react-hook-form';
 import { DarkModeContext } from '../../App';
 import toast from 'react-hot-toast';
-import Loading from '../../Shared/Loading/Loading';
 
 
-const EngineerDetails = () => {
+const WorkerDetails = () => {
 
     const [darkMode, setDarkMode] = useContext(DarkModeContext);
-    const { engineerId } = useParams();
-
-    const [engineer] = useEngineer(engineerId);
-    if(!engineer?.email){
-        <Loading></Loading>
-    }
-    const { name, photo, _id, email, address, country, nid, phone, role, username, zip } = engineer;
+    const { workerId } = useParams();
+    const [worker] = useWorker(workerId);
+    const { name, photo, _id, email, address, country, nid, phone, role, username, zip } = worker;
     
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
-    const lastEmail = email;
     const onSubmit = data => {
         const result = {
             data: data,
-            engineer: engineer,
+            engineer: worker,
             status: "accept"
         }
         // console.log(result);
@@ -67,8 +61,8 @@ const EngineerDetails = () => {
                     </div>
                     <div className="mt-8 pr-4">
                         <h1 className="text-sm font-bold">Engineer ID: {_id}</h1>
-                        <p className="w-6/12 my-1">Phone: {String(phone).slice(0, 2)}*****{String(phone).slice(8, 10)}</p>
-                        <p className="w-6/12 my-1">Email: {engineer?.email?.slice(0, 1)}****@{engineer && engineer?.email?.split('@')[1]}</p>
+                        <p className="w-6/12 my-1">Phone: {String(phone)?.slice(0, 2)}*****{String(phone)?.slice(8, 10)}</p>
+                        <p className="w-6/12 my-1">Email: {worker?.email?.slice(0, 1)}****@{email?.split('@')[1]}</p>
                         <p className="w-6/12 my-1">Location: {address}</p>
                         <p className="w-6/12 my-1">per hours: ${Math.floor(Math.random() * 10) + 20}</p>
                         <input type="text" value={user?.displayName} className="input input-bordered w-full max-w-xs"  {...register("customerName")} />
@@ -116,4 +110,4 @@ const EngineerDetails = () => {
     );
 };
 
-export default EngineerDetails;
+export default WorkerDetails;

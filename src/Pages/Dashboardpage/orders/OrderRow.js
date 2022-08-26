@@ -38,7 +38,9 @@ const OrderRow = ({ index, d, refetch }) => {
   const handleStatus = (id) => {
 
     const updatedStatus = {
-      status: 'processing'
+      status: 'processing',
+      price: ' ',
+      description: ' '
     }
     axios.put(`https://neighbour-home--server.herokuapp.com/booking/${id}`, updatedStatus)
     .then(data => {

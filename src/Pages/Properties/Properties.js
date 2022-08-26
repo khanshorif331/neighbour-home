@@ -8,7 +8,7 @@ const Properties = ({ refetch, isLoading, properties }) => {
     if (isLoading) return <Loading />
     return (
         <div>
-            <div className='flex items-center justify-end border py-2'>
+            <div className='flex items-center justify-end border py-2 pr-3'>
                 <label
                     onClick={() => setManageSellPostModal(true)}
                     for="sellPost"

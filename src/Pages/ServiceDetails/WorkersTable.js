@@ -1,21 +1,22 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { DarkModeContext } from '../../App';
-import useEngineers from '../../hooks/useEngineers';
+import useWorkers from '../../hooks/useWorkers';
 import Loading from '../../Shared/Loading/Loading';
-import EngineerRow from './EngineerRow';
+import WorkerRow from './WorkerRow';
 
-const EngineersTable = () => {
-    const [engineers, setEngineers] = useEngineers([]);
-    if(!engineers.length){
+
+const WorkersTable = () => {
+    const [workers, setWorkers] = useWorkers([]);
+    if(!workers.length){
         <Loading></Loading>
     }
     const [darkMode, setDarkMode] = useContext(DarkModeContext);
     return (
         <div className='my-32'>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center">
             <Link to={`#`}><button onClick={()=> window.history.back()} className='lg:ml-24 btn btn-sm'>back</button></Link>
-            <h2 className={`${darkMode && "text-white"} text-2xl py-4 lg:mr-24`}>All Engineers: {engineers?.length}</h2>
+            <h2 className={`${darkMode && "text-white"} text-2xl py-4 mx-auto`}>All Workers: {workers?.length}</h2>
             </div>
             <div className="overflow-x-auto lg:mx-24 relative shadow-md sm:rounded-lg">
                 <table className={`${darkMode ? "text-gray-400" : "text-gray-500"} w-full text-sm text-left  `}>
@@ -30,12 +31,12 @@ const EngineersTable = () => {
                     </thead>
                     <tbody>
                         {
-                            engineers?.map((engineer, index)=><EngineerRow
+                            workers?.map((worker, index)=><WorkerRow
                                 index={index}
-                                key={engineer._id}
-                                engineer={engineer}
+                                key={worker._id}
+                                worker={worker}
                                 // refetch={refetch}
-                                ></EngineerRow>)
+                                ></WorkerRow>)
                         }
                     </tbody>
                 </table>
@@ -44,4 +45,4 @@ const EngineersTable = () => {
     );
 };
 
-export default EngineersTable;
+export default WorkersTable;

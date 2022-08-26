@@ -53,6 +53,7 @@ const Login = () => {
 
 	if (googleError || emailError) {
 		console.error(googleError || emailError)
+		toast.error("Failed To Login", {id: 'failed to login'})
 	}
 
 	const handleLogin = data => {

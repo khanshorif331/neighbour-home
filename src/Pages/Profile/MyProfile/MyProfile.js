@@ -1,8 +1,41 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
+import auth from '../../../firebase.init';
 
 const MyProfile = () => {
 
     const [toogleProfileEdit, setToogleProfileEdit] = React.useState(false);
+    const [user] = useAuthState(auth)
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+        reset,
+    } = useForm()
+
+    const handeProfileUpdate = data => {
+        console.log(data);
+        // const profileData = {
+        //     name: data.name,
+        //     phone: data.phone
+        // }
+        fetch(`https://neighbour-home--server.herokuapp.com/user?email=${user?.email}`, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: {
+                name: data.name,
+                phone: data.phone
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+        reset()
+    }
 
     return (
         <section className=''>
@@ -29,19 +62,61 @@ const MyProfile = () => {
                 </div>
                 {
                     toogleProfileEdit ?
-                        <form>
+                        <form onSubmit={handleSubmit(handeProfileUpdate)}>
                             <div className='space-y-2'>
                                 <div className='space-y-1'>
                                     <label className='text-sm font-bold'>Enter Your Full Name</label>
-                                    <input type="text" placeholder="John Doe" class="input input-bordered w-full max-w-xs" />
+                                    <input
+                                        {...register('name', {
+                                            required: {
+                                                value: true,
+                                                message: 'Name is Required',
+                                            },
+                                            minLength: {
+                                                value: 3,
+                                                message: "Minimum 3 Character"
+                                            }
+                                        })}
+                                        type="text" placeholder="John Doe" class="input input-bordered w-full max-w-xs" />
+                                    {errors.name?.type === 'required' && (
+                                        <p className='text-red-600 text-sm font-semibold'>
+                                            {errors.name.message}
+                                        </p>
+                                    )}
+                                    {errors.name?.type === 'minLength' && (
+                                        <p className='text-red-600 text-sm font-semibold'>
+                                            {errors.name.message}
+                                        </p>
+                                    )}
                                 </div>
                                 <div className='space-y-1'>
                                     <label className='text-sm font-bold'>Enter Your Email</label>
-                                    <input type="text" placeholder="example@mail.com" class="input input-bordered w-full max-w-xs" />
+                                    <input value={user?.email} type="text" placeholder="example@mail.com" class="input input-bordered w-full max-w-xs" />
                                 </div>
                                 <div className='space-y-1'>
                                     <label className='text-sm font-bold'>Enter Your Phone</label>
-                                    <input type="text" placeholder="+8801xxxxxxxxx" class="input input-bordered w-full max-w-xs" />
+                                    <input
+                                        {...register('phone', {
+                                            required: {
+                                                value: true,
+                                                message: 'Phone is Required',
+                                            },
+                                            minLength: {
+                                                value: 5,
+                                                message: 'Minimum 5 character need'
+                                            }
+                                        })}
+                                        type="text" placeholder="+8801xxxxxxxxx" class="input input-bordered w-full max-w-xs" />
+                                    {errors.phone?.type === 'required' && (
+                                        <p className='text-red-600 text-sm font-semibold'>
+                                            {errors.phone.message}
+                                        </p>
+                                    )}
+                                    {errors.phone?.type === 'minLength' && (
+                                        <p className='text-red-600 text-sm font-semibold'>
+                                            {errors.phone.message}
+                                        </p>
+                                    )}
                                 </div>
                                 <div className='text-center'>
                                     <input className='bg-green-600 py-2 px-7 rounded-full text-white font-bold cursor-pointer' type="submit" value="Submit" />
