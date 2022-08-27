@@ -9,7 +9,7 @@ label {
   font-size: 1rem;
 }
 
-input {
+.inputControlCss {
   border: 1px solid #cccccc;
   outline: none;
   padding: 10px 12px;
@@ -17,10 +17,10 @@ input {
   border-radius: 5px;
 }
 
-input:hover {
+.inputControlCss:hover {
   border: 1px solid #adadad;
 }
 
-input:focus {
+.inputControlCss:focus {
   border: 1px solid #239ce2;
 }

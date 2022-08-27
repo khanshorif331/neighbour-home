@@ -246,7 +246,7 @@ const Navbar = () => {
                     </svg></label>
 
                     <input className="hidden" type="checkbox" id="menu-toggle" /> */}
-					<div className="relative ">
+					<div className="relative sm:hidden">
 						<label
 							onClick={() => setNotificationZero()}
 							for="notificattonModal"
