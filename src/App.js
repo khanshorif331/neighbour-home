@@ -101,7 +101,11 @@ function App() {
                   }
                 >
                   <Route index element={<Dashboard1 />}></Route>
-                  <Route path="users" element={<Users />}></Route>
+                  <Route path="users" element={
+                    <RequireAdmin>
+                      <Users />
+                    </RequireAdmin>
+                  }></Route>
                   <Route
                     path="addReview"
                     element={
@@ -215,7 +219,11 @@ function App() {
                 <Route path="/user_data" element={<UserData />} />
                 <Route path="/addReview" element={<AddReview />} />
                 <Route path="/bookDetail/:_id" element={<BookReview />} />
-                <Route path="/properties" element={<PropertiesPage />} />
+                <Route path="/properties" element={
+                  <RequireAuth>
+                    <PropertiesPage />
+                  </RequireAuth>}
+                />
                 <Route path="/resumeBuilder" element={<Body />} />
                 <Route path="/payment/:id" element={<Payment />} />
                 <Route
