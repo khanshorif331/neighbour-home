@@ -1,13 +1,12 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
-const useRole = user => {
-	const [role, setrole] = useState()
-	const [roleLoading, setRoleLoading] = useState(false)
+const useRole = (user) => {
+	const [role, setrole] = useState("")
+	const [roleLoading, setRoleLoading] = useState(true)
 	// console.log(role);
 	useEffect(() => {
 		if (user) {
-			setRoleLoading(true)
 			axios
 				.get(
 					`https://neighbour-home--server.herokuapp.com/singleUserByEmail/${user?.email}`
@@ -18,8 +17,12 @@ const useRole = user => {
 					setRoleLoading(false)
 				})
 		}
+		else{
+			setRoleLoading(true)
+		}
+
 	}, [user])
 
 	return [role, roleLoading]
 }
-export default useRole
+export default useRole;

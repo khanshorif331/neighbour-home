@@ -30,7 +30,6 @@ const Navbar = () => {
 	// const navigat = useNavigate();
 	const location = useLocation().pathname
 	const [darkMode, setDarkMode] = useContext(DarkModeContext)
-	const [role, roleLoading] = useRole(user)
 	//     console.log(role);
 	const setNotificationZero = () => {
 		setNotificationModal(!notificationModal)
@@ -59,7 +58,7 @@ const Navbar = () => {
 			})
 	}, [user?.email, notifications])
 
-	if (loading || roleLoading) {
+	if (loading ) {
 		return <Loading />
 	}
 
@@ -220,7 +219,7 @@ const Navbar = () => {
 					<label
 						for="dashboard-drower"
 						tabIndex="1"
-						class={`${location.includes('dashboard') ? 'block' : 'hidden'
+						className={`${location.includes('dashboard') ? 'block' : 'hidden'
 							} md:hidden text-white cursor-pointer`}
 					>
 						<MdDashboardCustomize className="h-5 w-5"></MdDashboardCustomize>
@@ -246,28 +245,30 @@ const Navbar = () => {
                     </svg></label>
 
                     <input className="hidden" type="checkbox" id="menu-toggle" /> */}
-					<div className="relative sm:hidden">
-						<label
-							onClick={() => setNotificationZero()}
-							for="notificattonModal"
-							className="inline-block text-white md:px-2 font-semibold cursor-pointer"
-						>
-							<IoMdNotificationsOutline className="text-2xl"></IoMdNotificationsOutline>
+					{user &&
+						<div className="relative md:hidden">
+							<label
+								onClick={() => setNotificationZero()}
+								for="notificattonModal"
+								className="inline-block text-white md:px-2 font-semibold cursor-pointer"
+							>
+								<IoMdNotificationsOutline className="text-2xl"></IoMdNotificationsOutline>
 
-							<span class="py-0 text-xs absolute -top-1 text-white px-1 bg-pink-600 rounded-full">
-								{NewNotificationsCount}
-							</span>
-						</label>
+								<span className="py-0 text-xs absolute -top-1 text-white px-1 bg-pink-600 rounded-full">
+									{NewNotificationsCount}
+								</span>
+							</label>
 
-						<div className="absolute top-10 -right-12">
-							{notificationModal && (
-								<NotificationModal
-									notifications={notifications}
-									setNotificationModal={setNotificationModal}
-								/>
-							)}
+							<div className="absolute top-10 -right-14">
+								{notificationModal && (
+									<NotificationModal
+										notifications={notifications}
+										setNotificationModal={setNotificationModal}
+									/>
+								)}
+							</div>
 						</div>
-					</div>
+					}
 
 					<span
 						onClick={navBtnHndle}
@@ -349,8 +350,8 @@ const Navbar = () => {
 							</li>
 						)}
 
-						<div class="avatar mx-auto my-2">
-							<div class="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+						<div className="avatar mx-auto my-2">
+							<div className="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
 								<img
 									src="https://placeimg.com/192/192/people"
 									alt="Profile"
@@ -442,33 +443,36 @@ const Navbar = () => {
 										</button>
 									</li>
 								)}
+								{
+									user &&
 
-								<li className="md:ml-2.5 md:mr-2.5 flex items-center relative">
-									<label
-										onClick={() => setNotificationZero()}
-										for="notificattonModal"
-										className="inline-block md:text-white md:px-2 font-semibold cursor-pointer"
-									>
-										<IoMdNotificationsOutline className="text-2xl"></IoMdNotificationsOutline>
+									<li className="md:ml-2.5 md:mr-2.5 flex items-center relative">
+										<label
+											onClick={() => setNotificationZero()}
+											for="notificattonModal"
+											className="inline-block md:text-white md:px-2 font-semibold cursor-pointer"
+										>
+											<IoMdNotificationsOutline className="text-2xl"></IoMdNotificationsOutline>
 
-										<span class="py-0 text-xs absolute -top-1 right-1.5 px-1 bg-pink-600 rounded-full">
-											{NewNotificationsCount}
-										</span>
-									</label>
+											<span className="py-0 text-xs absolute -top-1 right-1.5 px-1 bg-pink-600 rounded-full">
+												{NewNotificationsCount}
+											</span>
+										</label>
 
-									<div className="absolute top-10 -left-10">
-										{notificationModal && (
-											<NotificationModal
-												notifications={notifications}
-												setNotificationModal={setNotificationModal}
-											/>
-										)}
-									</div>
-								</li>
+										<div className="absolute top-10 -left-10">
+											{notificationModal && (
+												<NotificationModal
+													notifications={notifications}
+													setNotificationModal={setNotificationModal}
+												/>
+											)}
+										</div>
+									</li>
+								}
 
 
-								<Link to={'/profile'} class="avatar mx-2">
-									<div class="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+								<Link to={'/profile'} className="avatar mx-2">
+									<div className="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
 										<img
 											src="https://placeimg.com/192/192/people"
 											alt="Profile"
@@ -481,8 +485,8 @@ const Navbar = () => {
 										<a
 											onClick={() => signOut(auth)}
 											className={`inline-block font-semibold px-4 py-2 ${colorChange
-													? 'hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white'
-													: 'hover:bg-white hover:text-teal-900 text-white bg-teal-900'
+												? 'hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white'
+												: 'hover:bg-white hover:text-teal-900 text-white bg-teal-900'
 												}   border-white rounded cursor-pointer`}
 										>
 											Sign Out
@@ -492,8 +496,8 @@ const Navbar = () => {
 									<li className="md:ml-6 mt-3 md:mt-0">
 										<Link
 											className={`inline-block font-semibold px-4 py-2 ${colorChange
-													? 'hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white'
-													: 'hover:bg-white hover:text-teal-900 text-white bg-teal-900'
+												? 'hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white'
+												: 'hover:bg-white hover:text-teal-900 text-white bg-teal-900'
 												}   border-white rounded`}
 											to="/login"
 										>

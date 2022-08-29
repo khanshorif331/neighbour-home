@@ -11,14 +11,14 @@ const ServiceDetails = () => {
   const { title, picture, _id, price, duration, discount, description } =
     service;
 
-        
+
   return (
     <section className={`${darkMode && "dark-theme"} bg-gray-200  duration-300 lg:px-16`}>
       <div
-        class={`hero min-h-screen ${darkMode && "dark-theme"}`}
+        className={`hero min-h-screen ${darkMode && "dark-theme"}`}
       >
         <div className={`hero-content ${darkMode ? 'bg-teal-600' : 'bg-white'} shadow-2xl py-12 lg:px-12 flex-col lg:flex-row mt-20`}>
-          <Fade right duration="1500">
+          <Fade right duration={1500}>
             <div className="">
               <img
                 src={picture}
@@ -27,7 +27,7 @@ const ServiceDetails = () => {
               />
             </div>
           </Fade>
-          <Fade left duration="1500">
+          <Fade left duration={1500}>
             <div className={`lg:ml-8 ${darkMode ? "text-white" : "black"} pr-12 `}>
               <h1 className="text-3xl font-bold mb-4 pt-4">{title}</h1>
               <h1 className="text-sm font-semibold capitalize  my-1">
