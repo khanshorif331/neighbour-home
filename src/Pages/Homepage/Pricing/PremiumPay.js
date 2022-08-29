@@ -79,7 +79,7 @@ const PremiumPay = ({ price }) => {
           type="submit"
           /* disabled={!stripe || !clientSecret} */
           style={{ fontFamily: "Open Sans, sans-serif", letterSpacing: "2px" }}
-          class={`hover:bg-white  bg-primary mr-2 transition hover:text-primary rounded-full text-white border-2 border-primary px-6 text-sm sm:text-base sm:px-8 mt-5 py-1.5 cursor-pointer`}
+          className={`hover:bg-white  bg-primary mr-2 transition hover:text-primary rounded-full text-white border-2 border-primary px-6 text-sm sm:text-base sm:px-8 mt-5 py-1.5 cursor-pointer`}
         >
           Pay ${price}
         </button>

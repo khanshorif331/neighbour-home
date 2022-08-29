@@ -56,7 +56,7 @@ const Education = () => {
                                             message: "Minimum 5 Character Needed"
                                         }
                                     })}
-                                        type="text" placeholder="MSC" class="input input-bordered w-full max-w-xs" />
+                                        type="text" placeholder="MSC" className="input input-bordered w-full max-w-xs" />
                                     {errors.educationLVL?.type === 'required' && (
                                         <p className='text-red-600 text-sm font-semibold'>
                                             {errors.educationLVL.message}
@@ -81,7 +81,7 @@ const Education = () => {
                                                 message: "Minimum 3 Character Needed"
                                             }
                                         })}
-                                        type="text" placeholder="PHD" class="input input-bordered w-full max-w-xs" />
+                                        type="text" placeholder="PHD" className="input input-bordered w-full max-w-xs" />
                                     {errors.degree?.type === 'required' && (
                                         <p className='text-red-600 text-sm font-semibold'>
                                             {errors.degree.message}
@@ -106,7 +106,7 @@ const Education = () => {
                                                 message: "Minimum 3 character Needed"
                                             }
                                         })}
-                                        type="text" placeholder="Dhaka College" class="input input-bordered w-full max-w-xs" />
+                                        type="text" placeholder="Dhaka College" className="input input-bordered w-full max-w-xs" />
                                     {errors.institution?.type === 'required' && (
                                         <p className='text-red-600 text-sm font-semibold'>
                                             {errors.institution.message}
@@ -131,7 +131,7 @@ const Education = () => {
                                                 message: "Minimum 4 Character Needed"
                                             }
                                         })}
-                                        type="text" placeholder="XXXX" class="input input-bordered w-full max-w-xs" />
+                                        type="text" placeholder="XXXX" className="input input-bordered w-full max-w-xs" />
                                     {errors.passingYear?.type === 'required' && (
                                         <p className='text-red-600 text-sm font-semibold'>
                                             {errors.passingYear.message}

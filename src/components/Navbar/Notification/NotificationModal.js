@@ -1,15 +1,11 @@
-import axios from 'axios';
 import {IoMdNotificationsOff} from 'react-icons/io';
 import {AiOutlineCloseCircle} from 'react-icons/ai';
-import React, { useEffect, useState } from 'react'
-import toast from 'react-hot-toast';
+import React from 'react'
 import Notificaton from './Notificaton';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../../firebase.init';
 const NotificationModal = ({setNotificationModal, notifications}) => {
 	
 	return (
-			<div  style={{ fontFamily: "'Rajdhani', sans-serif" }} className="w-[350px] h-[380px] overflow-y-scroll z-50 rounded-lg px-3 sm:px-5 bg-white text-center items-start">
+			<div  style={{ fontFamily: "'Rajdhani', sans-serif" }} className="w-[300px] sm:w-[350px] h-[380px] overflow-y-scroll z-50 rounded-lg px-3 sm:px-3 bg-white text-center items-start">
 					<div
 						// onSubmit={hanldeSellPost}
 						className={`w-full sm:w-11/12 py-3  text-left  mx-auto`}
@@ -21,7 +17,7 @@ const NotificationModal = ({setNotificationModal, notifications}) => {
 						>
 							<AiOutlineCloseCircle />
 						</label>
-						<div className='py-3 w-full'>
+						<div className='py-3.5 w-full'>
 							{
 								notifications.length === 0?
 								<div>

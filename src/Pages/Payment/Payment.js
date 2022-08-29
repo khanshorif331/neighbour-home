@@ -10,7 +10,6 @@ import {
 // import CheckoutForm from './CheckoutForm';
 import axios from 'axios';
 import Loading from '../../Shared/Loading/Loading';
-import { useQuery } from '@tanstack/react-query';
 import CheckoutForm from './CheckoutForm';
 
 
@@ -41,7 +40,7 @@ const Payment = () => {
                     <div className="flex flex-col p-2 sm:p-10 sm:text-left text-center sm:mt-0 mt-3 md:flex-row md:w-8/12  rounded-lg bg-white shadow-lg">
                          <div className='w-11/12 mx-auto sm:mx-0 mb-10 sm:mb-0 sm:w-4/12 text-center'>
                               <h2 className='text-xl'>{propertyName}</h2>
-                              <img className="w-56  sm:mx-0 mx-auto sm:w-full h-32 sm:h-96 md:h-48 object-cover md:w-56 rounded-t-lg md:rounded-none md:rounded-l-lg" src={images} alt="" />
+                              <img className="w-56   mx-auto sm:w-full h-32 sm:h-96 md:h-48 object-cover md:w-56 rounded-t-lg md:rounded-none md:rounded-l-lg" src={images} alt="" />
                               <h2 className=''>Order Length : {length}</h2>
                               <h2 className=''>Price : {propertyPrice}</h2>
                          </div>

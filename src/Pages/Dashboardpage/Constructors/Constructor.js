@@ -74,13 +74,13 @@ const Constructor = ({ constructor, index, refetch }) => {
 			<td>{discount}%</td>
 			<td>{assignment} projects</td>
 			<td className='flex flex-col'>
-				{/* <button class='btn btn-xs mb-1'>Edit</button> */}
-				<label for={_id} class='btn modal-button btn-xs mb-1'>
+				{/* <button className='btn btn-xs mb-1'>Edit</button> */}
+				<label for={_id} className='btn modal-button btn-xs mb-1'>
 					Edit
 				</label>
 				<button
 					onClick={() => handleDelete(_id)}
-					class='btn btn-xs btn-warning'
+					className='btn btn-xs btn-warning'
 				>
 					Delete
 				</button>
