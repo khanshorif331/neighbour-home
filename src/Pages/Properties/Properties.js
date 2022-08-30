@@ -1,29 +1,37 @@
 import React, { useState } from 'react';
+import { User } from 'react-feather';
+import useRole from '../../hooks/useRole';
 import Loading from '../../Shared/Loading/Loading';
 import Property from './Property';
 import SellPostModal from './SellPostModal';
 
 const Properties = ({ refetch, isLoading, properties }) => {
     const [manageSellPostModal, setManageSellPostModal] = useState(false)
+    const [role, roleLoading] = useRole(User)
     if (isLoading) return <Loading />
     return (
         <div>
             <div className='flex items-center justify-end border py-2 pr-3'>
-                <label
-                    onClick={() => setManageSellPostModal(true)}
-                    for="sellPost"
-                    className=" text-lg font-medium border rounded-xl border-teal-400 py-1 cursor-pointer hover:bg-teal-400 hover:text-white px-5 mr-3 text-teal-600 duration-500"
-                >
-                    Post Sell
-                </label>
-
                 {
-                    manageSellPostModal &&
-                    <SellPostModal
-                        refetch={refetch}
-                        setManageSellPostModal={setManageSellPostModal}
+                    role === "Seller" &&
+                    <>
+                        <label
+                            onClick={() => setManageSellPostModal(true)}
+                            for="sellPost"
+                            className=" text-lg font-medium border rounded-xl border-teal-400 py-1 cursor-pointer hover:bg-teal-400 hover:text-white px-5 mr-3 text-teal-600 duration-500"
+                        >
+                            Post Sell
+                        </label>
 
-                    />
+                        {
+                            manageSellPostModal &&
+                            <SellPostModal
+                                refetch={refetch}
+                                setManageSellPostModal={setManageSellPostModal}
+
+                            />
+                        }
+                    </>
                 }
 
                 <div className="flex space-x-4">

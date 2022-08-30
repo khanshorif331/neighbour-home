@@ -1,50 +1,60 @@
 import axios from "axios";
 import React, { useRef } from "react";
-import { useForm } from 'react-hook-form';
-import emailjs from '@emailjs/browser';
+import { useForm } from "react-hook-form";
+import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
 
-const AcceptModal = ({booking, setBookingModal}) => {
-  console.log(booking?.data);
-  const { register, formState: { errors }, handleSubmit, reset } = useForm();
-  const form = useRef()
+const AcceptModal = ({ booking, setBookingModal }) => {
+    console.log(booking?._id);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
+  const form = useRef();
 
   const sendEmail = (data) => {
-    emailjs.sendForm('neighbourHome', 'template_2jdv676', form.current, 'fjfswEx9fDSDkZnui')
-      .then((res) => {
-        console.log(res)
-        if (res.status === 200) {
-          toast.success("Message sent successfully", { id: 'success' })
-          reset()
-        }
-      }, (err) => {
-        toast.error("Message not sent", { id: 'error' })
-      })
-  }
-  const onSubmit = async data => {
     console.log(data);
-    // console.log('update done');
-    
-}
-  const handleStatus = (id) => {
+    setBookingModal(false);
+    // emailjs.sendForm('neighbourHome', 'template_2jdv676', form.current, 'fjfswEx9fDSDkZnui')
+    //   .then((res) => {
+    //     console.log(res)
+    //     if (res.status === 200) {
+    //       toast.success("Message sent successfully", { id: 'success' })
+    //       reset()
+    //     }
+    //   }, (err) => {
+    //     toast.error("Message not sent", { id: 'error' })
+    //   })
+  };
+  const onSubmit = async (data) => {
     const updatedStatus = {
-      status: 'processing',
-      price: '10',
-      description: 'test'
-    }
-    axios.put(`https://neighbour-home--server.herokuapp.com/booking/${id}`, updatedStatus)
-    .then(data => {
+      ...data,
+      status: "complete",
+    };
+    console.log(updatedStatus);
+    axios
+      .put(
+        `https://neighbour-home--server.herokuapp.com/booking/${booking._id}`,
+        updatedStatus
+      )
+      .then((data) => {
         console.log(data.data);
 
-        toast.success(`this hiring request has been Successfully accept`)
+        toast.success(`this hiring request has been Successfully accept`);
         // refetch()
-    }).catch(error => {
+      })
+      .catch((error) => {
         console.log(error.response.data);
         if (error.response.status === 403) {
-            toast.error("You are Not Admin")
+          toast.error("You are Not Admin");
         }
-    })
-  }
+      });
+    setBookingModal(false);
+    reset();
+    // console.log('update done');
+  };
   return (
     <div className="">
       <input type="checkbox" id="booking-modal" className="modal-toggle" />
@@ -58,7 +68,7 @@ const AcceptModal = ({booking, setBookingModal}) => {
           </label>
           {/* <h3 className="font-bold text-lg text-secondary">Booking for: {name}</h3> */}
           <form
-            onSubmit={handleSubmit(sendEmail, onSubmit)}
+            onSubmit={handleSubmit(onSubmit)}
             className="grid grid-cols-1 gap-3 justify-items-center mt-5"
           >
             <h3 className="text-xl text-success">
@@ -72,10 +82,10 @@ const AcceptModal = ({booking, setBookingModal}) => {
               id="price"
               {...register("price", {
                 required: {
-                    value: true,
-                    message: 'Price is Required'
-                }
-            })} 
+                  value: true,
+                  message: "Price is Required",
+                },
+              })}
             />
             <textarea
               name="description"
@@ -85,16 +95,17 @@ const AcceptModal = ({booking, setBookingModal}) => {
               rows="5"
               {...register("description", {
                 required: {
-                    value: true,
-                    message: 'Description is Required'
-                }
-            })} 
+                  value: true,
+                  message: "Description is Required",
+                },
+              })}
             ></textarea>
             <button
               type="submit"
               className="btn btn-sm bg-teal-800 mt-1  h-5 sm:h-7  ml-2 mr-2 sm:px-3 uppercase rounded-lg text-white font-bold duration-1000"
-              onClick={() => handleStatus(booking._id)}
-            > confirm
+            >
+              
+              confirm
             </button>
           </form>
         </div>

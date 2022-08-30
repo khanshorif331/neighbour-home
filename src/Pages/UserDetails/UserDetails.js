@@ -88,22 +88,19 @@ const UserDetails = () => {
       className="pb-10 sm:py-0 sm:mt-[129px] h-[80vh] flex items-center mt-[80px] mb-10 w-10/12 mx-auto"
     >
       <div
-        class={`${
-          darkMode ? "bg-gray-700" : "bg-white"
-        }   w-11/12 mx-auto shadow overflow-hidden sm:rounded-lg`}
+        className={`${darkMode ? "bg-gray-700" : "bg-white"
+          }   w-11/12 mx-auto shadow overflow-hidden sm:rounded-lg`}
       >
         <div className="px-4 py-4 sm:px-6">
           <h3
-            class={`${
-              darkMode ? "text-teal-400" : "text-primary"
-            }  text-2xl leading-6 font-medium `}
+            className={`${darkMode ? "text-teal-400" : "text-primary"
+              }  text-2xl leading-6 font-medium `}
           >
             User Information
           </h3>
           <p
-            class={`${
-              darkMode ? "text-gray-100" : "text-gray-600"
-            }  mt-1 text-sm `}
+            className={`${darkMode ? "text-gray-100" : "text-gray-600"
+              }  mt-1 text-sm `}
           >
             Use a permanent address where you can receive mail.
           </p>
@@ -111,155 +108,134 @@ const UserDetails = () => {
         <div className="border-t text-left border-gray-200">
           <dl>
             <div
-              class={`${
-                darkMode ? "bg-gray-500" : "bg-gray-50"
-              }  px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}
+              className={`${darkMode ? "bg-gray-500" : "bg-gray-50"
+                }  px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}
             >
               <dt
-                class={`text-sm font-medium ${
-                  darkMode ? "text-gray-200" : "text-gray-500"
-                } `}
+                className={`text-sm font-medium ${darkMode ? "text-gray-200" : "text-gray-500"
+                  } `}
               >
                 Full name
               </dt>
               <dd
-                class={`${
-                  darkMode ? "text-white" : "text-gray-900"
-                }  mt-1 text-sm  sm:mt-0 sm:col-span-2`}
+                className={`${darkMode ? "text-white" : "text-gray-900"
+                  }  mt-1 text-sm  sm:mt-0 sm:col-span-2`}
               >
                 {user.name}
               </dd>
             </div>
             <div
-              class={`${
-                darkMode ? "bg-gray-600" : "bg-white"
-              }   px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}
+              className={`${darkMode ? "bg-gray-600" : "bg-white"
+                }   px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}
             >
               <dt
-                class={`text-sm font-medium ${
-                  darkMode ? "text-gray-200" : "text-gray-500"
-                } `}
+                className={`text-sm font-medium ${darkMode ? "text-gray-200" : "text-gray-500"
+                  } `}
               >
                 Email address
               </dt>
               <dd
-                class={`${
-                  darkMode ? "text-white" : "text-gray-900"
-                }  mt-1 text-sm  sm:mt-0 sm:col-span-2`}
+                className={`${darkMode ? "text-white" : "text-gray-900"
+                  }  mt-1 text-sm  sm:mt-0 sm:col-span-2`}
               >
                 {user.email}
               </dd>
             </div>
             <div
-              class={`${
-                darkMode ? "bg-gray-500" : "bg-gray-50"
-              }  px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}
+              className={`${darkMode ? "bg-gray-500" : "bg-gray-50"
+                }  px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}
             >
               <dt
-                class={`text-sm font-medium ${
-                  darkMode ? "text-gray-200" : "text-gray-500"
-                } `}
+                className={`text-sm font-medium ${darkMode ? "text-gray-200" : "text-gray-500"
+                  } `}
               >
                 Number
               </dt>
               <dd
-                class={`${
-                  darkMode ? "text-white" : "text-gray-900"
-                }  mt-1 text-sm  sm:mt-0 sm:col-span-2`}
+                className={`${darkMode ? "text-white" : "text-gray-900"
+                  }  mt-1 text-sm  sm:mt-0 sm:col-span-2`}
               >
                 {user.phone}
               </dd>
             </div>
             <div
-              class={`${
-                darkMode ? "bg-gray-600" : "bg-white"
-              }   px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}
+              className={`${darkMode ? "bg-gray-600" : "bg-white"
+                }   px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}
             >
               <dt
-                class={`text-sm font-medium ${
-                  darkMode ? "text-gray-200" : "text-gray-500"
-                } `}
+                className={`text-sm font-medium ${darkMode ? "text-gray-200" : "text-gray-500"
+                  } `}
               >
                 Address
               </dt>
               <dd
-                class={`${
-                  darkMode ? "text-white" : "text-gray-900"
-                }  mt-1 text-sm  sm:mt-0 sm:col-span-2`}
+                className={`${darkMode ? "text-white" : "text-gray-900"
+                  }  mt-1 text-sm  sm:mt-0 sm:col-span-2`}
               >
                 {user.address}, {user.country}
               </dd>
             </div>
             <div
-              class={`${
-                darkMode ? "bg-gray-500" : "bg-gray-50"
-              }  px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}
+              className={`${darkMode ? "bg-gray-500" : "bg-gray-50"
+                }  px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}
             >
               <dt
-                class={`text-sm font-medium ${
-                  darkMode ? "text-gray-200" : "text-gray-500"
-                } `}
+                className={`text-sm font-medium ${darkMode ? "text-gray-200" : "text-gray-500"
+                  } `}
               >
                 Zip
               </dt>
               <dd
-                class={`${
-                  darkMode ? "text-white" : "text-gray-900"
-                }  mt-1 text-sm  sm:mt-0 sm:col-span-2`}
+                className={`${darkMode ? "text-white" : "text-gray-900"
+                  }  mt-1 text-sm  sm:mt-0 sm:col-span-2`}
               >
                 {user.zip}
               </dd>
             </div>
             <div
-              class={`${
-                darkMode ? "bg-gray-600" : "bg-white"
-              }   px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}
+              className={`${darkMode ? "bg-gray-600" : "bg-white"
+                }   px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}
             >
               <dt
-                class={`text-sm font-medium ${
-                  darkMode ? "text-gray-200" : "text-gray-500"
-                } `}
+                className={`text-sm font-medium ${darkMode ? "text-gray-200" : "text-gray-500"
+                  } `}
               >
                 Role
               </dt>
               <dd
-                class={`${
-                  darkMode ? "text-white" : "text-gray-900"
-                }  mt-1 text-sm  sm:mt-0 sm:col-span-2`}
+                className={`${darkMode ? "text-white" : "text-gray-900"
+                  }  mt-1 text-sm  sm:mt-0 sm:col-span-2`}
               >
                 {user.role}
               </dd>
             </div>
             <div
-              class={`${
-                darkMode ? "bg-gray-500" : "bg-gray-50"
-              }  px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}
+              className={`${darkMode ? "bg-gray-500" : "bg-gray-50"
+                }  px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}
             >
               <dt
-                class={`text-sm font-medium my-3 ${
-                  darkMode ? "text-gray-200" : "text-gray-500"
-                } `}
+                className={`text-sm font-medium my-3 ${darkMode ? "text-gray-200" : "text-gray-500"
+                  } `}
               >
                 Action
               </dt>
               <dd
-                class={`${
-                  darkMode ? "text-white" : "text-gray-900"
-                }   text-sm  sm:mt-0 sm:col-span-2`}
+                className={`${darkMode ? "text-white" : "text-gray-900"
+                  }   text-sm  sm:mt-0 sm:col-span-2`}
               >
                 {user?.role === "admin" ? (
                   <button
-                    style={{marginLeft:"0"}}
+                    style={{ marginLeft: "0" }}
                     onClick={deleteUserAdmin}
-                    className={`${darkMode && "hover:text-white hover:btn-ghost" } btn btn-xs  btn-warning leading-5`}
+                    className={`${darkMode && "hover:text-white hover:btn-ghost"} btn btn-xs  btn-warning leading-5`}
                   >
                     Delete Admin
                   </button>
                 ) : (
-                  <button 
-                    style={{marginLeft:"0"}}
+                  <button
+                    style={{ marginLeft: "0" }}
                     onClick={makeUser5Admin}
-                    className={`${darkMode && "hover:text-white hover:btn-ghost" } btn btn-xs  btn-success leading-5`}
+                    className={`${darkMode && "hover:text-white hover:btn-ghost"} btn btn-xs  btn-success leading-5`}
                   >
                     Make Admin
                   </button>

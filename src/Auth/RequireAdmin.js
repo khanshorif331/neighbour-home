@@ -9,12 +9,11 @@ import useRole from '../hooks/useRole'
 import Loading from '../Shared/Loading/Loading'
 
 const RequireAuth = ({ children }) => {
-	let location = useLocation()
 	let [user, loading, error] = useAuthState(auth)
 	let [role, roleLoading] = useRole(user)
-	// console.log(admin);
+
 	if (loading || roleLoading) {
-		return <Loading></Loading>
+		return <Loading />;
 	}
 	if (!user || role !== 'admin') {
 		// Redirect them to the /login page, but save the current location they were

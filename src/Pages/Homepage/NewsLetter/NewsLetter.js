@@ -19,7 +19,7 @@ const NewsLetter = () => {
         className="h-[300px]  sm:h-[400px] text-center bg-center bg-cover  w-full px-2 rounded-md sm:rounded-none sm:px-0  flex justify-center items-center text-white Container"
       >
         <div>
-          <Fade top duration="2000">
+          <Fade top duration={2000}>
             <h3 className="text-xl sm:text-2xl uppercase text-white tracking-wider">
               SPECIAL <span className="text-primary">OFFER</span> FOR
               SUBSCRIPTION
@@ -38,7 +38,7 @@ const NewsLetter = () => {
               product, promotion and offers{" "}
             </p>
           </Fade>
-          <Fade bottom duration="2000">
+          <Fade bottom duration={2000}>
             <form
               onSubmit={handleSubmit}
               style={{ fontFamily: "Open Sans,sans-serif" }}

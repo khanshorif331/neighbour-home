@@ -30,7 +30,6 @@ const Navbar = () => {
 	// const navigat = useNavigate();
 	const location = useLocation().pathname
 	const [darkMode, setDarkMode] = useContext(DarkModeContext)
-	const [role, roleLoading] = useRole(user)
 	//     console.log(role);
 	const setNotificationZero = () => {
 		setNotificationModal(!notificationModal)
@@ -59,7 +58,7 @@ const Navbar = () => {
 			})
 	}, [user?.email, notifications])
 
-	if (loading || roleLoading) {
+	if (loading ) {
 		return <Loading />
 	}
 
@@ -82,23 +81,19 @@ const Navbar = () => {
 		<div className="">
 			{/* start header  */}
 			<header
-				className={`fixed  top-0 left-0 w-full  px-4 sm:px-8 lg:px-16 xl:px-28 2xl:px-64 ${
-					colorChange && (darkMode ? 'bg-teal-600' : 'bg-teal-900')
-				} ${
-					location !== '/' && (darkMode ? 'bg-teal-600' : 'bg-teal-900')
-				} ${
-					location === '/properties'
+				className={`fixed  top-0 left-0 w-full  px-4 sm:px-8 lg:px-16 xl:px-28 2xl:px-64 ${colorChange && (darkMode ? 'bg-teal-600' : 'bg-teal-900')
+					} ${location !== '/' && (darkMode ? 'bg-teal-600' : 'bg-teal-900')
+					} ${location === '/properties'
 						? colorChange
 							? 'z-50 duration-100'
 							: 'z-10'
 						: 'z-50'
-				}`}
+					}`}
 			>
 				<div
-					className={`${
-						colorChange ? 'md:hidden opacity-0' : 'md:flex opacity-100'
-					} hidden justify-between duration-500 items-center py-2 border-b text-sm`}
-					// style="border-color: rgba(255,255,255,.25)"
+					className={`${colorChange ? 'md:hidden opacity-0' : 'md:flex opacity-100'
+						} hidden justify-between duration-500 items-center py-2 border-b text-sm`}
+				// style="border-color: rgba(255,255,255,.25)"
 				>
 					<div>
 						<ul className="flex text-white">
@@ -224,9 +219,8 @@ const Navbar = () => {
 					<label
 						for="dashboard-drower"
 						tabIndex="1"
-						class={`${
-							location.includes('dashboard') ? 'block' : 'hidden'
-						} md:hidden text-white cursor-pointer`}
+						className={`${location.includes('dashboard') ? 'block' : 'hidden'
+							} md:hidden text-white cursor-pointer`}
 					>
 						<MdDashboardCustomize className="h-5 w-5"></MdDashboardCustomize>
 					</label>
@@ -251,6 +245,30 @@ const Navbar = () => {
                     </svg></label>
 
                     <input className="hidden" type="checkbox" id="menu-toggle" /> */}
+					{user &&
+						<div className="relative md:hidden">
+							<label
+								onClick={() => setNotificationZero()}
+								for="notificattonModal"
+								className="inline-block text-white md:px-2 font-semibold cursor-pointer"
+							>
+								<IoMdNotificationsOutline className="text-2xl"></IoMdNotificationsOutline>
+
+								<span className="py-0 text-xs absolute -top-1 text-white px-1 bg-pink-600 rounded-full">
+									{NewNotificationsCount}
+								</span>
+							</label>
+
+							<div className="absolute top-10 -right-14">
+								{notificationModal && (
+									<NotificationModal
+										notifications={notifications}
+										setNotificationModal={setNotificationModal}
+									/>
+								)}
+							</div>
+						</div>
+					}
 
 					<span
 						onClick={navBtnHndle}
@@ -265,9 +283,8 @@ const Navbar = () => {
 
 					<ul
 						onClick={navBtnHndle}
-						className={`mobile-manu flex md:hidden flex-col text-center z-10   left-0 w-full bg-teal-100  absolute  py-4 duration-500 ${
-							toggle ? ' opacity-100  top-20' : ' top-[-350px] opacity-0'
-						}`}
+						className={`mobile-manu flex md:hidden flex-col text-center z-10   left-0 w-full bg-teal-100  absolute  py-4 duration-500 ${toggle ? ' opacity-100  top-20' : ' top-[-350px] opacity-0'
+							}`}
 					>
 						<NavLink
 							className={({ isActive }) =>
@@ -291,7 +308,7 @@ const Navbar = () => {
 							}
 							to={'/resumeBuilder'}
 						>
-							Resume Builder to={'/blogs'}
+							Resume Builder
 						</NavLink>
 						<NavLink
 							className={({ isActive }) =>
@@ -310,7 +327,7 @@ const Navbar = () => {
               Blogs
             </NavLink> */}
 						{darkMode ? (
-							<li className="md:ml-2.5">
+							<li className="">
 								<button
 									onClick={() => setDarkMode(false)}
 									className="py-2 mx-auto md:text-white md:px-2  flex items-center"
@@ -321,7 +338,7 @@ const Navbar = () => {
 								</button>
 							</li>
 						) : (
-							<li className="md:ml-2.5">
+							<li className="">
 								<button
 									onClick={() => setDarkMode(true)}
 									className="py-2 mx-auto  md:text-white md:px-2 flex items-center "
@@ -332,8 +349,9 @@ const Navbar = () => {
 								</button>
 							</li>
 						)}
-						<div class="avatar mx-auto my-2">
-							<div class="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+
+						<div className="avatar mx-auto my-2">
+							<div className="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
 								<img
 									src="https://placeimg.com/192/192/people"
 									alt="Profile"
@@ -425,32 +443,36 @@ const Navbar = () => {
 										</button>
 									</li>
 								)}
+								{
+									user &&
 
-								<li className="md:ml-2.5 md:mr-2.5 flex items-center relative">
-									<label
-										onClick={() => setNotificationZero()}
-										for="notificattonModal"
-										className="inline-block md:text-white md:px-2 font-semibold cursor-pointer"
-									>
-										<IoMdNotificationsOutline className="text-2xl"></IoMdNotificationsOutline>
+									<li className="md:ml-2.5 md:mr-2.5 flex items-center relative">
+										<label
+											onClick={() => setNotificationZero()}
+											for="notificattonModal"
+											className="inline-block md:text-white md:px-2 font-semibold cursor-pointer"
+										>
+											<IoMdNotificationsOutline className="text-2xl"></IoMdNotificationsOutline>
 
-										<span class="py-0 text-xs absolute -top-1 right-1.5 px-1 bg-pink-600 rounded-full">
-											{NewNotificationsCount}
-										</span>
-									</label>
+											<span className="py-0 text-xs absolute -top-1 right-1.5 px-1 bg-pink-600 rounded-full">
+												{NewNotificationsCount}
+											</span>
+										</label>
 
-									<div className="absolute top-10 -left-10">
-										{notificationModal && (
-											<NotificationModal
-												notifications={notifications}
-												setNotificationModal={setNotificationModal}
-											/>
-										)}
-									</div>
-								</li>
+										<div className="absolute top-10 -left-10">
+											{notificationModal && (
+												<NotificationModal
+													notifications={notifications}
+													setNotificationModal={setNotificationModal}
+												/>
+											)}
+										</div>
+									</li>
+								}
 
-								<Link to={'/profile'} class="avatar mx-2">
-									<div class="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+
+								<Link to={'/profile'} className="avatar mx-2">
+									<div className="w-9 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
 										<img
 											src="https://placeimg.com/192/192/people"
 											alt="Profile"
@@ -462,11 +484,10 @@ const Navbar = () => {
 									<li className="md:ml-6 mt-3 md:mt-0">
 										<a
 											onClick={() => signOut(auth)}
-											className={`inline-block font-semibold px-4 py-2 ${
-												colorChange
-													? 'hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white'
-													: 'hover:bg-white hover:text-teal-900 text-white bg-teal-900'
-											}   border-white rounded cursor-pointer`}
+											className={`inline-block font-semibold px-4 py-2 ${colorChange
+												? 'hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white'
+												: 'hover:bg-white hover:text-teal-900 text-white bg-teal-900'
+												}   border-white rounded cursor-pointer`}
 										>
 											Sign Out
 										</a>
@@ -474,11 +495,10 @@ const Navbar = () => {
 								) : (
 									<li className="md:ml-6 mt-3 md:mt-0">
 										<Link
-											className={`inline-block font-semibold px-4 py-2 ${
-												colorChange
-													? 'hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white'
-													: 'hover:bg-white hover:text-teal-900 text-white bg-teal-900'
-											}   border-white rounded`}
+											className={`inline-block font-semibold px-4 py-2 ${colorChange
+												? 'hover:bg-teal-900 hover:text-white text-tealbg-teal-900 bg-white'
+												: 'hover:bg-white hover:text-teal-900 text-white bg-teal-900'
+												}   border-white rounded`}
 											to="/login"
 										>
 											Login

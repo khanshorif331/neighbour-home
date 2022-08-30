@@ -28,12 +28,12 @@ const Guides = () => {
         const { picture, name, description, _id } = book;
         return (
           <div className="flex items-center flex-col sm:flex-row sm:px-28 py-10">
-            <Fade right duration="1500">
+            <Fade right duration={1500}>
               <div className="w-full sm:w-5/12">
                 <img className="w-6/12 mx-auto" src={picture} alt="" />
               </div>
             </Fade>
-            <Fade left duration="1500">
+            <Fade left duration={1500}>
               <div className="w-10/12 sm:w-7/12 text-center sm:text-left">
                 <p
                   style={{ color: `${darkMode ? "#297bbe" : "#0e416c"}` }}
@@ -55,11 +55,10 @@ const Guides = () => {
                 </button> */}
                 <Link to={`/bookDetail/${_id}`}>
                   <button
-                    className={`${
-                      darkMode
+                    className={`${darkMode
                         ? "hover:bg-white bg-teal-900 text-white border border-teal-900 hover:text-teal-900"
                         : "bg-teal-800 border border-teal-900 text-white hover:bg-white hover:text-teal-900 "
-                    } sm:px-7 px-5 transition py-1.5 sm:py-2.5 rounded-[3px] mt-5 uppercase `}
+                      } sm:px-7 px-5 transition py-1.5 sm:py-2.5 rounded-[3px] mt-5 uppercase `}
                   >
                     Details
                   </button>
