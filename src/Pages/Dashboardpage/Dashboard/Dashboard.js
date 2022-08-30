@@ -18,8 +18,7 @@ const Dashboard = () => {
   const [darkMode] = useContext(DarkModeContext);
   let [user, loading] = useAuthState(auth);
   const [authEngineer] = useAuthEngineer(user);
-  let [role, roleLoading] = useRole(user)
-
+  let [role, roleLoading] = useRole(user);
 
   if (loading || roleLoading) {
     return <Loading />;
@@ -47,10 +46,11 @@ const Dashboard = () => {
           <label htmlFor="dashboard-drower" className="drawer-overlay"></label>
 
           <ul
-            className={`${darkMode
+            className={`${
+              darkMode
                 ? "bg-[#171e36] text-gray-300"
                 : "bg-white text-base-content"
-              } menu p-4 overflow-y-auto w-80 `}
+            } menu p-4 overflow-y-auto w-80 `}
           >
             {/* <!-- Sidebar content here --> */}
 
@@ -58,7 +58,9 @@ const Dashboard = () => {
             <div className="mt-8 text-center">
               <img
                 src={
-                  user ? user.photoURL : "https://i.ibb.co/K035fHn/149071.png"
+                  user
+                    ? user.photoURL || "https://i.ibb.co/K035fHn/149071.png"
+                    : "https://i.ibb.co/K035fHn/149071.png"
                 }
                 alt=""
                 className="w-10 h-10 m-auto rounded-full object-cover lg:w-20 lg:h-20"
@@ -68,130 +70,140 @@ const Dashboard = () => {
               </h5>
               <span className="hidden text-gray-400 lg:block">Admin</span>
               <div>
-                <button className="btn btn-xs btn-outline btn-info border">
+                <Link
+                  to={"/profile"}
+                  className="btn btn-xs btn-outline btn-info border mb-1"
+                >
                   Edit Profile
-                </button>
+                </Link>
               </div>
             </div>
 
             <li>
               <Link
-                className={` shadow-lg my-1 font-bold ${darkMode
+                className={` shadow-lg my-1 font-bold ${
+                  darkMode
                     ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
                     : " text-gray-500"
-                  }`}
+                }`}
                 to={"/dashboard"}
               >
                 <MdDashboardCustomize /> Dashboard
               </Link>
             </li>
 
-            {
-              role === "admin" &&
+            {role === "admin" && (
               <li>
                 <Link
-                  className={` shadow-lg my-1 font-bold ${darkMode
+                  className={` shadow-lg my-1 font-bold ${
+                    darkMode
                       ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
                       : " text-gray-500"
-                    }`}
+                  }`}
                   to={"/dashboard/users"}
                 >
                   <img className="w-4" src={userSvg} alt="book svg" /> Users
                 </Link>
               </li>
-            }
+            )}
 
-            {role === 'admin' &&
-              <li>
+            <li>
               <Link
-                className={` shadow-lg my-1 font-bold ${darkMode
+                className={` shadow-lg my-1 font-bold ${
+                  darkMode
                     ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
                     : " text-gray-500"
-                  }`}
+                }`}
                 to={"/dashboard/manageBooks"}
               >
                 <img className="w-4" src={bookSvg} alt="book svg" /> Manage
                 Books
               </Link>
-            </li>}
+            </li>
             <li>
               <Link
-                className={` shadow-lg my-1 font-bold ${darkMode
+                className={` shadow-lg my-1 font-bold ${
+                  darkMode
                     ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
                     : " text-gray-500"
-                  }`}
+                }`}
                 to={"/dashboard/addReview"}
               >
                 <img className="w-4" src={reviewSvg} alt="book svg" /> Add a
                 Review
               </Link>
             </li>
-            {role === 'admin' &&
-              <li>
+            <li>
               <Link
-                className={` shadow-lg my-1 font-bold ${darkMode
+                className={` shadow-lg my-1 font-bold ${
+                  darkMode
                     ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
                     : " text-gray-500"
-                  }`}
+                }`}
                 to={"/dashboard/manageEngineers"}
               >
                 <img className="w-4" src={engineerSvg} alt="book svg" /> Manage
                 Engineers
               </Link>
-            </li>}
-            {role === 'admin' &&
-              <li>
+            </li>
+            <li>
               <Link
-                className={` shadow-lg my-1 font-bold ${darkMode
+                className={` shadow-lg my-1 font-bold ${
+                  darkMode
                     ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
                     : " text-gray-500"
-                  }`}
+                }`}
                 to={"/dashboard/constructors"}
               >
                 <img className="w-4" src={constructionSvg} alt="book svg" />{" "}
                 Manage Constructors
               </Link>
-            </li>}
-            {(!authEngineer && role !== 'admin' && role !== 'Worker')&&  <li>
-              <Link
-                className={` shadow-lg my-1 font-bold ${darkMode
-                    ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
-                    : " text-gray-500"
-                  }`}
-                to={"/dashboard/myOrders"}
-              >
-                <img className="w-4" src={hiringSvg} alt="book svg" />{" "}
-                My Bookings
-              </Link>
-            </li>}
-            {role === 'admin' &&
-              <li>
-              <Link
-                className={` shadow-lg my-1 font-bold ${darkMode
-                    ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
-                    : " text-gray-500"
-                  }`}
-                to={"/dashboard/orders"}
-              >
-                <img className="w-4" src={hiringSvg} alt="book svg" />{" "}
-                Bookings
-              </Link>
-            </li>}
-            {
-              (authEngineer || role === 'Worker') &&
+            </li>
+            {!authEngineer && role !== "admin" && role !== "Worker" && (
               <li>
                 <Link
-                  className={` shadow-lg my-1 font-bold ${darkMode
+                  className={` shadow-lg my-1 font-bold ${
+                    darkMode
                       ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
                       : " text-gray-500"
-                    }`}
-                  to={"/dashboard/bookingsThatsCarryOnMe"}
+                  }`}
+                  to={"/dashboard/myOrders"}
                 >
-                  <img className="w-4" src={hiringSvg} alt="book svg" />{" "}
-                  Hire Requests
+                  <img className="w-4" src={hiringSvg} alt="book svg" /> My
+                  Bookings
                 </Link>
               </li>
-            }
+            )}
+            {role === "admin" && (
+              <li>
+                <Link
+                  className={` shadow-lg my-1 font-bold ${
+                    darkMode
+                      ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
+                      : " text-gray-500"
+                  }`}
+                  to={"/dashboard/orders"}
+                >
+                  <img className="w-4" src={hiringSvg} alt="book svg" />{" "}
+                  Bookings
+                </Link>
+              </li>
+            )}
+            {authEngineer && (
+              <li>
+                <Link
+                  className={` shadow-lg my-1 font-bold ${
+                    darkMode
+                      ? "bg-teal-400 hover:bg-teal-600 hover:text-gray-300 text-gray-600 "
+                      : " text-gray-500"
+                  }`}
+                  to={"/dashboard/bookingsThatsCarryOnMe"}
+                >
+                  <img className="w-4" src={hiringSvg} alt="book svg" /> Hire
+                  Requests
+                </Link>
+              </li>
+            )}
 
             {/* {
                           admin ?
