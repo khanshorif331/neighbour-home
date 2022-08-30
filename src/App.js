@@ -48,6 +48,7 @@ import RequireAuth from "./Auth/RequireAuth";
 import RequireAdmin from "./Auth/RequireAdmin";
 import WorkersTable from "./Pages/ServiceDetails/WorkersTable";
 import WorkerDetails from "./Pages/EngineerDetails/WorkerDetails";
+import Pricing from "./Pages/Homepage/Pricing/Pricing";
 
 export const DarkModeContext = createContext("");
 const queryClient = new QueryClient();
@@ -223,6 +224,14 @@ function App() {
                   element={
                     <RequireAuth>
                       <PricingPay />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="/pricing"
+                  element={
+                    <RequireAuth>
+                      <Pricing />
                     </RequireAuth>
                   }
                 />
