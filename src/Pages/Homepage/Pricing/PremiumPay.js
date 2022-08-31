@@ -57,6 +57,7 @@ const PremiumPay = ({ price }) => {
   };
   return (
     <div className="shadow-xl p-7 w-5/6 rounded-xl text-center m-auto">
+      <h2>Pay With Visa, Mastercard, DebitCard etc.</h2>
       <form onSubmit={handleSubmit}>
         <CardElement
           className="py-5 my-2 "

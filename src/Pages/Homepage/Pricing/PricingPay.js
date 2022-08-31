@@ -50,22 +50,22 @@ const PricingPay = () => {
                 {pricing.benefit === undefined
                   ? setLoading(true)
                   : Object.values(pricing.benefit).map((value, key) => (
-                    <li key={key} className="flex mb-2 space-x-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        className="flex-shrink-0 w-6 h-6 text-sky-600"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clipRule="evenodd"
-                        ></path>
-                      </svg>
-                      <span>{value}</span>
-                    </li>
-                  ))}
+                      <li key={key} className="flex mb-2 space-x-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          className="flex-shrink-0 w-6 h-6 text-sky-600"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg>
+                        <span>{value}</span>
+                      </li>
+                    ))}
               </ul>
             </div>
           </div>
@@ -76,9 +76,9 @@ const PricingPay = () => {
               One Subscription Unlimited Access Get Premium access to all our
               properties apps with one subscription.
             </p>
-            {/* <Elements stripe={stripePromise}>
+            <Elements stripe={stripePromise}>
               <PremiumPay price={price} />
-            </Elements> */}
+            </Elements>
           </div>
         </div>
       </div>
