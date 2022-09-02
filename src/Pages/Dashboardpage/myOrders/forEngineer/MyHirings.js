@@ -13,8 +13,8 @@ const MyHirings = () => {
     const [darkMode, setDarkMode] = useContext(DarkModeContext);
     // const [searchTerm, setSearchTerm] = useState('');
     
-    const { isLoading, error, data, refetch } = useQuery(['myOrders'], () =>
-        fetch(`https://neighbour-home--server.herokuapp.com/bookingByEmail?email=${email}`).then(
+    const { isLoading, error, data, refetch } = useQuery(['myLists'], () =>
+        fetch(`https://neighbour-home--server.herokuapp.com/bookingByEngineerEmail?email=${email}`).then(
             res => res.json()
         )
     );
@@ -54,7 +54,7 @@ const MyHirings = () => {
         <div className=''>
             <div className='flex justify-between items-center align-middle'>
             <div>
-                <button className='btn btn-sm  btn-warning' onClick={()=> handleDelete(email)}>delete all</button>
+                <button className='btn btn-sm hidden  btn-warning' onClick={()=> handleDelete(email)}>delete all</button>
             </div>
             <h2 className={`${darkMode && "text-white"} text-2xl py-4 text-center`}>requests of hiring Me: {data?.length}</h2>
             <div className="flex space-x-4">
@@ -116,7 +116,7 @@ const MyHirings = () => {
                             <th></th>
                             <th className=' py-2'>customer</th>
                             <th>Email</th>
-                            <th>engineer</th>
+                            <th>Profession</th>
                             <th>email</th>
                             <th>Phone</th>
                             <th>Status</th>

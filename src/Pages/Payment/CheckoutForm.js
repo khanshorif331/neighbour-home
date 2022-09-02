@@ -6,6 +6,8 @@ import toast from 'react-hot-toast';
 import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import emailjs from '@emailjs/browser';
+import moment from 'moment';
+import SmallLoading from '../../Shared/Loading/SmallLoading';
 
 
 const CheckoutForm = ({ property }) => {
@@ -45,6 +47,8 @@ const CheckoutForm = ({ property }) => {
     const handleSubmit = async (event) => {
         // Block native form submission.
         event.preventDefault();
+        setProccesing(true)
+
 
         if (!stripe || !elements) {
             return;
@@ -69,7 +73,7 @@ const CheckoutForm = ({ property }) => {
             // console.log('[PaymentMethod]', paymentMethod);
         }
         setSuccess("")
-        setProccesing(true)
+        // setProccesing(true)
         const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
             clientSecret,
             {
@@ -82,7 +86,6 @@ const CheckoutForm = ({ property }) => {
                 },
             },
         );
-        setProccesing(false)
         if (intentError) {
 
             // console.log(intentError);
@@ -94,19 +97,21 @@ const CheckoutForm = ({ property }) => {
             // console.log(paymentIntent);
             setSuccess(paymentIntent.id)
             setError("")
+            setProccesing(false)
+            event.target.reset()
 
             // const emailInfo={
             //     userName : user?.displayName || "User",
             //     message: `We have just received your payment for ${property.propertyName} order. Thank you`
             // }
             // console.log(form.current);
-            emailjs.sendForm('service_8my0duk', 'template_t3iinbl', form.current, 'm1lQ_oBWTWmW45qJA')
-                .then((res) => {
-                    console.log("Mail Sent")
-                }, (err) => {
-                    console.log("Mail Not Sent")
-                    // toast.error("Message not sent", { id: 'error' })
-                })
+            // emailjs.sendForm('service_8my0duk', 'template_t3iinbl', form.current, 'm1lQ_oBWTWmW45qJA')
+            //     .then((res) => {
+            //         console.log("Mail Sent")
+            //     }, (err) => {
+            //         console.log("Mail Not Sent")
+            //         // toast.error("Message not sent", { id: 'error' })
+            //     })
             // emailjs.sendForm('service_ch1n23v', 'template_t3iinbl', form.current, 'm1lQ_oBWTWmW45qJA')
             //     .then((res) => {
             //         console.log("Mail Sent")
@@ -116,6 +121,7 @@ const CheckoutForm = ({ property }) => {
             //     })
 
 
+            // order post api 
             const orderInfo = {
                 propertyId: property?._id,
                 transectionId: paymentIntent.id,
@@ -134,13 +140,26 @@ const CheckoutForm = ({ property }) => {
                 })
 
 
+            // notification post api 
+            const notification = {
+                heading: `For "${property.propertyName}" Successfully Payment Complete!`,
+                date: moment().format(),
+                user_email: user?.email,
+                status: "unseen"
+            }
+            axios.post(`https://neighbour-home--server.herokuapp.com/notification`, notification)
+                .then(data => {
+                    // console.log(data.data);
+                    // toast.success(`${property.propertyName} Succesfully Placed Order!`)
+
+                })
         }
     };
     if (loading) {
         return <Loading></Loading>
     }
     return (
-        <div className='flex items-center border rounded w-8/12'>
+        <div className='flex items-center border rounded w-10/12 sm:w-8/12 px-10 py-7 mx-auto sm:mx-0'>
             <form ref={form} onSubmit={handleSubmit} className='sm:pl-16 sm:w-[400px] w-11/12 mx-auto sm:mx-0 text-left' >
                 <CardElement
                     options={{
@@ -166,11 +185,11 @@ const CheckoutForm = ({ property }) => {
                 <input className='hidden' name='seller_name' type="text" value={property.sellerName || "User"} /> */}
 
                 {
-                    // proccesing ? <MiniLoader></MiniLoader>
-                    //     :
-                    <button type="submit" disabled={!stripe || !clientSecret} style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} class={`hover:bg-white  bg-primary mr-2 transition hover:text-primary rounded-full text-white border-2 border-primary px-6 text-sm sm:text-base sm:px-8 mt-5 py-1.5`}>
-                        Pay
-                    </button>
+                    proccesing ? <SmallLoading></SmallLoading>
+                        :
+                        <button type="submit" disabled={!stripe || !clientSecret} style={{ fontFamily: 'Open Sans, sans-serif', letterSpacing: '2px' }} className={`hover:bg-white  bg-primary mr-2 transition hover:text-primary rounded-full text-white border-2 border-primary px-6 text-sm sm:text-base sm:px-8 mt-5 py-1.5`}>
+                            Pay
+                        </button>
                 }
                 {
                     error && <p className="label-text-alt ml-2 mt-1 text-red-500">{error}</p>

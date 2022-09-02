@@ -1,8 +1,41 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
+import auth from '../../../firebase.init';
 
 const Address = () => {
 
     const [toogleAddressEdit, setToogleAddressEdit] = React.useState(false);
+    const [user] = useAuthState(auth)
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+        reset,
+    } = useForm()
+
+    const handleUpdateAddress = data => {
+        console.log(data);
+        fetch(`https://neighbour-home--server.herokuapp.com/user?email=${user?.email}`, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: {
+                currentCountry: data.currentCountry,
+                currentAddress: data.currentAddress,
+                currentZip: data.currentZip,
+                country: data.country,
+                zip: data.zip,
+                address: data.address
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+        reset()
+    }
 
     return (
         <section>
@@ -10,31 +43,157 @@ const Address = () => {
 
             {
                 toogleAddressEdit ?
-                    <form>
+                    <form onSubmit={handleSubmit(handleUpdateAddress)}>
                         <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 p-4'>
                             <div>
                                 <label className='font-medium'>Your Current Country</label>
-                                <input type="text" placeholder="Bangladesh" class="input input-bordered w-full max-w-xs" />
+                                <input
+                                    {...register('currentCountry', {
+                                        required: {
+                                            value: true,
+                                            message: "Current Country is Required"
+                                        },
+                                        minLength: {
+                                            value: 3,
+                                            message: "Minimum 3 Character Needed"
+                                        }
+                                    })}
+                                    type="text" placeholder="Bangladesh" className="input input-bordered w-full max-w-xs" />
+                                {errors.currentCountry?.type === 'required' && (
+                                    <p className='text-red-600 text-sm font-semibold'>
+                                        {errors.currentCountry.message}
+                                    </p>
+                                )}
+                                {errors.currentCountry?.type === 'minLength' && (
+                                    <p className='text-red-600 text-sm font-semibold'>
+                                        {errors.currentCountry.message}
+                                    </p>
+                                )}
                             </div>
                             <div>
                                 <label className='font-medium'>Your Current Town</label>
-                                <input type="text" placeholder="Dhaka" class="input input-bordered w-full max-w-xs" />
+                                <input
+                                    {...register('currentAddress', {
+                                        required: {
+                                            value: true,
+                                            message: "Current Address is Required"
+                                        },
+                                        minLength: {
+                                            value: 5,
+                                            message: "Minimum 5 Character Needed"
+                                        }
+                                    })}
+                                    type="text" placeholder="Dhaka" className="input input-bordered w-full max-w-xs" />
+                                {errors.currentAddress?.type === 'required' && (
+                                    <p className='text-red-600 text-sm font-semibold'>
+                                        {errors.currentAddress.message}
+                                    </p>
+                                )}
+                                {errors.currentAddress?.type === 'minLength' && (
+                                    <p className='text-red-600 text-sm font-semibold'>
+                                        {errors.currentAddress.message}
+                                    </p>
+                                )}
                             </div>
                             <div>
                                 <label className='font-medium'>Your Current Zip Code</label>
-                                <input type="text" placeholder="64611" class="input input-bordered w-full max-w-xs" />
+                                <input
+                                    {...register('currentZip', {
+                                        required: {
+                                            value: true,
+                                            message: "Current Zip is Required"
+                                        },
+                                        minLength: {
+                                            value: 3,
+                                            message: "Minimum 3 Character Needed"
+                                        }
+                                    })}
+                                    type="number" placeholder="64611" className="input input-bordered w-full max-w-xs" />
+                                {errors.currentZip?.type === 'required' && (
+                                    <p className='text-red-600 text-sm font-semibold'>
+                                        {errors.currentZip.message}
+                                    </p>
+                                )}
+                                {errors.currentZip?.type === 'minLength' && (
+                                    <p className='text-red-600 text-sm font-semibold'>
+                                        {errors.currentZip.message}
+                                    </p>
+                                )}
                             </div>
                             <div>
                                 <label className='font-medium'>Your Permanent Country</label>
-                                <input type="text" placeholder="USA" class="input input-bordered w-full max-w-xs" />
+                                <input
+                                    {...register('country', {
+                                        required: {
+                                            value: true,
+                                            message: "Country is Required"
+                                        },
+                                        minLength: {
+                                            value: 3,
+                                            message: "Minimum 3 Character Needed"
+                                        }
+                                    })}
+                                    type="text" placeholder="USA" className="input input-bordered w-full max-w-xs" />
+                                {errors.country?.type === 'required' && (
+                                    <p className='text-red-600 text-sm font-semibold'>
+                                        {errors.country.message}
+                                    </p>
+                                )}
+                                {errors.country?.type === 'minLength' && (
+                                    <p className='text-red-600 text-sm font-semibold'>
+                                        {errors.country.message}
+                                    </p>
+                                )}
                             </div>
                             <div>
                                 <label className='font-medium'>Your Permanent Town</label>
-                                <input type="text" placeholder="New York" class="input input-bordered w-full max-w-xs" />
+                                <input
+                                    {...register('address', {
+                                        required: {
+                                            value: true,
+                                            message: "Town is Required"
+                                        },
+                                        minLength: {
+                                            value: 4,
+                                            message: "Minimum 4 Character Needed"
+                                        }
+                                    })}
+                                    type="text" placeholder="New York" className="input input-bordered w-full max-w-xs" />
+                                {errors.address?.type === 'required' && (
+                                    <p className='text-red-600 text-sm font-semibold'>
+                                        {errors.address.message}
+                                    </p>
+                                )}
+                                {errors.address?.type === 'minLength' && (
+                                    <p className='text-red-600 text-sm font-semibold'>
+                                        {errors.address.message}
+                                    </p>
+                                )}
                             </div>
                             <div>
                                 <label className='font-medium'>Your Permanent Zip</label>
-                                <input type="text" placeholder="75482" class="input input-bordered w-full max-w-xs" />
+                                <input
+                                    {...register('zip', {
+                                        required: {
+                                            value: true,
+                                            message: "Zip is Required"
+                                        },
+                                        minLength: {
+                                            value: 3,
+                                            message: "Minimum 3 Character Needed"
+                                        }
+                                    })}
+                                    type="number" placeholder="75482" className="input input-bordered w-full max-w-xs" />
+                                {errors.zip?.type === 'required' && (
+                                    <p className='text-red-600 text-sm font-semibold'>
+                                        {errors.zip.message}
+                                    </p>
+                                )}
+                                {errors.zip?.type === 'minLength' && (
+                                    <p className='text-red-600 text-sm font-semibold'>
+                                        {errors.zip.message}
+                                    </p>
+                                )}
                             </div>
                         </div>
                         <div className='text-center mb-1'>

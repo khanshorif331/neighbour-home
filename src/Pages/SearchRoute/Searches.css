@@ -1,5 +1,5 @@
 /* From uiverse.io by @alexruix */
-.group {
+.group-1 {
     display: flex;
     line-height: 28px;
     align-items: center;
@@ -8,7 +8,7 @@
     margin: 0 auto;
 }
 
-.input {
+.input-1 {
     width: 100%;
     height: 40px;
     line-height: 28px;
@@ -22,19 +22,19 @@
     transition: .3s ease;
 }
 
-.input::placeholder {
+.input-1::placeholder {
     color: #9e9ea7;
 }
 
-.input:focus,
-input:hover {
+.input-1:focus,
+.input-1:hover {
     outline: none;
     border-color: rgba(234, 76, 137, 0.4);
     background-color: #fff;
     box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
 }
 
-.icon {
+.icon-1 {
     position: absolute;
     left: 1rem;
     fill: #9e9ea7;

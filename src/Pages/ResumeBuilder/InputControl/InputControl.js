@@ -6,7 +6,7 @@ function InputControl({ label, ...props }) {
   return (
     <div className={styles.container}>
       {label && <label>{label}</label>}
-      <input type="text" {...props} />
+      <input className="inputControlCss" type="text" {...props} />
     </div>
   );
 }
