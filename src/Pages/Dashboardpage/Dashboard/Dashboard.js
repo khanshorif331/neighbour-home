@@ -68,7 +68,7 @@ const Dashboard = () => {
               <h5 className="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">
                 {user?.displayName}
               </h5>
-              <span className="hidden text-gray-400 lg:block">Admin</span>
+              <span className="hidden text-gray-400 lg:block">{role}</span>
               <div>
                 <Link
                   to={"/profile"}
@@ -107,7 +107,8 @@ const Dashboard = () => {
               </li>
             )}
 
-            <li>
+            {role === "admin" && 
+              <li>
               <Link
                 className={` shadow-lg my-1 font-bold ${
                   darkMode
@@ -120,7 +121,9 @@ const Dashboard = () => {
                 Books
               </Link>
             </li>
-            <li>
+            }
+            {role !== "admin" &&
+              <li>
               <Link
                 className={` shadow-lg my-1 font-bold ${
                   darkMode
@@ -133,7 +136,9 @@ const Dashboard = () => {
                 Review
               </Link>
             </li>
-            <li>
+            }
+            {role === "admin" &&
+              <li>
               <Link
                 className={` shadow-lg my-1 font-bold ${
                   darkMode
@@ -146,7 +151,9 @@ const Dashboard = () => {
                 Engineers
               </Link>
             </li>
-            <li>
+            }
+            {role === "admin" &&
+              <li>
               <Link
                 className={` shadow-lg my-1 font-bold ${
                   darkMode
@@ -159,6 +166,7 @@ const Dashboard = () => {
                 Manage Constructors
               </Link>
             </li>
+            }
             {!authEngineer && role !== "admin" && role !== "Worker" && (
               <li>
                 <Link
@@ -189,7 +197,7 @@ const Dashboard = () => {
                 </Link>
               </li>
             )}
-            {authEngineer && (
+            {(authEngineer || role === 'Worker') && (
               <li>
                 <Link
                   className={` shadow-lg my-1 font-bold ${

@@ -49,6 +49,7 @@ import RequireAdmin from "./Auth/RequireAdmin";
 import WorkersTable from "./Pages/ServiceDetails/WorkersTable";
 import WorkerDetails from "./Pages/EngineerDetails/WorkerDetails";
 import Pricing from "./Pages/Homepage/Pricing/Pricing";
+import BookingPayment from "./Pages/Dashboardpage/myOrders/BookingPayment";
 
 export const DarkModeContext = createContext("");
 const queryClient = new QueryClient();
@@ -163,6 +164,7 @@ function App() {
                       </RequireAuth>
                     }
                   ></Route>
+                  <Route path='paymentFor/:id' element={<BookingPayment></BookingPayment>} ></Route>
                   <Route
                     path="bookingsThatsCarryOnMe"
                     element={
@@ -174,9 +176,9 @@ function App() {
                   <Route
                     path="bookingDetails/:id"
                     element={
-                      <RequireAdmin>
+                      
                         <BookingDetails />
-                      </RequireAdmin>
+                      
                     }
                   ></Route>
                   <Route

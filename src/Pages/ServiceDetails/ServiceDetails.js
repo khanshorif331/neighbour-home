@@ -13,11 +13,11 @@ const ServiceDetails = () => {
 
 
   return (
-    <section className={`${darkMode && "dark-theme"} bg-gray-200  duration-300 lg:px-16`}>
+    <section className={`${darkMode && "dark-theme"} bg-gray-200 py-12  duration-300 lg:px-16`}>
       <div
         className={`hero min-h-screen ${darkMode && "dark-theme"}`}
       >
-        <div className={`hero-content ${darkMode ? 'bg-teal-600' : 'bg-white'} shadow-2xl py-12 lg:px-12 flex-col lg:flex-row mt-20`}>
+        <div className={`hero-content ${darkMode ? 'bg-teal-600' : 'bg-white'} mx-12 shadow-2xl py-12 lg:px-12 flex-col lg:flex-row mt-20`}>
           <Fade right duration={1500}>
             <div className="">
               <img
