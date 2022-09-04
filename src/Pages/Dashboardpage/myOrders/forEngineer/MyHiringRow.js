@@ -27,27 +27,27 @@ const MyHiringRow = ({ index, d, refetch }) => {
   const form = useRef();
   const lastEmail = d?.engineer?.email.split("@");
 
-  const sendEmail = (data) => {
-    emailjs
-      .sendForm(
-        "neighbourHome",
-        "template_2jdv676",
-        form.current,
-        "fjfswEx9fDSDkZnui"
-      )
-      .then(
-        (res) => {
-          console.log(res);
-          if (res.status === 200) {
-            toast.success("Message sent successfully", { id: "success" });
-            reset();
-          }
-        },
-        (err) => {
-          toast.error("Message not sent", { id: "error" });
-        }
-      );
-  };
+  // const sendEmail = (data) => {
+  //   emailjs
+  //     .sendForm(
+  //       "neighbourHome",
+  //       "template_2jdv676",
+  //       form.current,
+  //       "fjfswEx9fDSDkZnui"
+  //     )
+  //     .then(
+  //       (res) => {
+  //         console.log(res);
+  //         if (res.status === 200) {
+  //           toast.success("Message sent successfully", { id: "success" });
+  //           reset();
+  //         }
+  //       },
+  //       (err) => {
+  //         toast.error("Message not sent", { id: "error" });
+  //       }
+  //     );
+  // };
 
   const handleDelete = (id) => {
     swal({
@@ -123,6 +123,7 @@ const MyHiringRow = ({ index, d, refetch }) => {
           {bookingModal && <AcceptModal
             booking={d}
             setBookingModal={setBookingModal}
+            refetch={refetch}
             ></AcceptModal>}
         </div>
       </td>

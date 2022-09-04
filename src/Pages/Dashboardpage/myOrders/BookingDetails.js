@@ -21,7 +21,7 @@ const BookingDetails = () => {
     );
 
 
-    if (isLoading || roleLoading) return <Loading></Loading>
+    if (isLoading)  return <Loading></Loading>
     if (error) return 'An error has occurred: ' + error.message
     const { customerEmail, customerPhone, customerName, customerAddress } = data?.data;
     const { name, email, _id, photo, phone, address } = data?.engineer;

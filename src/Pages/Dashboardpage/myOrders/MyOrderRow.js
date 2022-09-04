@@ -10,7 +10,7 @@ import { DarkModeContext } from "../../../App";
 const MyOrderRow = ({ index, d, refetch }) => {
   const { customerEmail, customerPhone, customerName, customerAddress } =
     d?.data;
-  const { name, email, _id, picture, phone } = d.engineer;
+  const { name, email, _id, picture, phone, role } = d.engineer;
   const [darkMode] = useContext(DarkModeContext);
   const lastEmail = d?.engineer?.email.split("@");
   const handleDelete = (id) => {
@@ -49,7 +49,7 @@ const MyOrderRow = ({ index, d, refetch }) => {
       <td className="">{customerName}</td>
       <td className="">{customerEmail}</td>
 
-      <td className="">{name}</td>
+      <td className="">{role}</td>
       <td>
         {d?.status !== "accept" ? (
           email
@@ -90,7 +90,7 @@ const MyOrderRow = ({ index, d, refetch }) => {
           />
         </div>
         {d?.status === "complete" ? (
-          <button className="btn btn-xs btn-success">pay</button>
+          <Link to={`/dashboard/paymentFor/${d?._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>
         ) : (
           <button
             className="btn btn-xs btn-success hover:bg-slate-500"
