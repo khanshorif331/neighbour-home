@@ -1,4 +1,6 @@
 import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../../../firebase.init';
@@ -7,6 +9,8 @@ const MyProfile = () => {
 
     const [toogleProfileEdit, setToogleProfileEdit] = React.useState(false);
     const [user] = useAuthState(auth)
+    const [userData, setUserData] = useState({})
+    const {address, country, email, name, phone, photo, role, username, zip} = userData
     const {
         register,
         formState: { errors },
@@ -14,8 +18,13 @@ const MyProfile = () => {
         reset,
     } = useForm()
 
+    useEffect(() => {
+        fetch(`https://neighbour-home--server.herokuapp.com/singleUserByEmail/${user?.email}`)
+        .then(res => res.json())
+        .then(data => setUserData(data))
+    }, [user])
+
     const handeProfileUpdate = data => {
-        console.log(data);
         // const profileData = {
         //     name: data.name,
         //     phone: data.phone
@@ -44,7 +53,7 @@ const MyProfile = () => {
                 <div>
                     <div className="avatar online">
                         <div className="w-24 md:w-32 rounded-full">
-                            <img src="https://placeimg.com/192/192/people" alt='Profile' />
+                            <img src={`${photo}`} alt='Profile' />
                         </div>
                     </div>
                     {
@@ -77,6 +86,7 @@ const MyProfile = () => {
                                                 message: "Minimum 3 Character"
                                             }
                                         })}
+                                        defaultValue={name}
                                         type="text" placeholder="John Doe" class="input input-bordered w-full max-w-xs" />
                                     {errors.name?.type === 'required' && (
                                         <p className='text-red-600 text-sm font-semibold'>
@@ -106,6 +116,7 @@ const MyProfile = () => {
                                                 message: 'Minimum 5 character need'
                                             }
                                         })}
+                                        defaultValue={phone}
                                         type="text" placeholder="+8801xxxxxxxxx" class="input input-bordered w-full max-w-xs" />
                                     {errors.phone?.type === 'required' && (
                                         <p className='text-red-600 text-sm font-semibold'>
@@ -127,15 +138,15 @@ const MyProfile = () => {
                         <div className='space-y-4'>
                             <div className='space-y-2'>
                                 <h2 className='text-sm font-bold'>Full Name</h2>
-                                <p>Sadik</p>
+                                <p>{name}</p>
                             </div>
                             <div className='space-y-2'>
                                 <h2 className='text-sm font-bold'>Email</h2>
-                                <p>sadikhossain433@gmail.com</p>
+                                <p>{email}</p>
                             </div>
                             <div className='space-y-2'>
                                 <h2 className='text-sm font-bold'>Phone</h2>
-                                <p>+8801xxxxxxxxx</p>
+                                <p>{phone}</p>
                             </div>
                         </div>
                 }
