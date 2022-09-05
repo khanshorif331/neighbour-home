@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { DarkModeContext } from '../../App';
 import useEngineers from '../../hooks/useEngineers';
 import Loading from '../../Shared/Loading/Loading';
@@ -12,7 +13,10 @@ const EngineersTable = () => {
     const [darkMode, setDarkMode] = useContext(DarkModeContext);
     return (
         <div className='my-32'>
-            <h2 className={`${darkMode && "text-white"} text-2xl py-4 text-center`}>All Engineers: {engineers?.length}</h2>
+            <div className="flex items-center justify-between">
+            <Link to={`#`}><button onClick={()=> window.history.back()} className='lg:ml-24 btn btn-sm'>back</button></Link>
+            <h2 className={`${darkMode && "text-white"} text-2xl py-4 lg:mr-24`}>All Engineers: {engineers?.length}</h2>
+            </div>
             <div className="overflow-x-auto lg:mx-24 relative shadow-md sm:rounded-lg">
                 <table className={`${darkMode ? "text-gray-400" : "text-gray-500"} w-full text-sm text-left  `}>
                     <thead className={`${darkMode ? "bg-gray-700 text-gray-400" : "text-gray-700  bg-gray-50 "} text-xs uppercase`}>

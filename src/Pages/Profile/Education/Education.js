@@ -97,8 +97,12 @@ const Education = () => {
                                                 message: "Minimum 3 Character Needed"
                                             }
                                         })}
+<<<<<<< HEAD
                                         defaultValue={degree}
                                         type="text" placeholder="PHD" class="input input-bordered w-full max-w-xs" />
+=======
+                                        type="text" placeholder="PHD" className="input input-bordered w-full max-w-xs" />
+>>>>>>> 2a2a6939ddc3d123d0f8dc3fea957048a1300bbe
                                     {errors.degree?.type === 'required' && (
                                         <p className='text-red-600 text-sm font-semibold'>
                                             {errors.degree.message}
@@ -123,8 +127,12 @@ const Education = () => {
                                                 message: "Minimum 3 character Needed"
                                             }
                                         })}
+<<<<<<< HEAD
                                         defaultValue={institution}
                                         type="text" placeholder="Dhaka College" class="input input-bordered w-full max-w-xs" />
+=======
+                                        type="text" placeholder="Dhaka College" className="input input-bordered w-full max-w-xs" />
+>>>>>>> 2a2a6939ddc3d123d0f8dc3fea957048a1300bbe
                                     {errors.institution?.type === 'required' && (
                                         <p className='text-red-600 text-sm font-semibold'>
                                             {errors.institution.message}

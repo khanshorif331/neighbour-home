@@ -58,7 +58,7 @@ const Address = () => {
                                             message: "Minimum 3 Character Needed"
                                         }
                                     })}
-                                    type="text" placeholder="Bangladesh" class="input input-bordered w-full max-w-xs" />
+                                    type="text" placeholder="Bangladesh" className="input input-bordered w-full max-w-xs" />
                                 {errors.currentCountry?.type === 'required' && (
                                     <p className='text-red-600 text-sm font-semibold'>
                                         {errors.currentCountry.message}
@@ -83,7 +83,7 @@ const Address = () => {
                                             message: "Minimum 5 Character Needed"
                                         }
                                     })}
-                                    type="text" placeholder="Dhaka" class="input input-bordered w-full max-w-xs" />
+                                    type="text" placeholder="Dhaka" className="input input-bordered w-full max-w-xs" />
                                 {errors.currentAddress?.type === 'required' && (
                                     <p className='text-red-600 text-sm font-semibold'>
                                         {errors.currentAddress.message}
@@ -108,7 +108,7 @@ const Address = () => {
                                             message: "Minimum 3 Character Needed"
                                         }
                                     })}
-                                    type="number" placeholder="64611" class="input input-bordered w-full max-w-xs" />
+                                    type="number" placeholder="64611" className="input input-bordered w-full max-w-xs" />
                                 {errors.currentZip?.type === 'required' && (
                                     <p className='text-red-600 text-sm font-semibold'>
                                         {errors.currentZip.message}
@@ -133,7 +133,7 @@ const Address = () => {
                                             message: "Minimum 3 Character Needed"
                                         }
                                     })}
-                                    type="text" placeholder="USA" class="input input-bordered w-full max-w-xs" />
+                                    type="text" placeholder="USA" className="input input-bordered w-full max-w-xs" />
                                 {errors.country?.type === 'required' && (
                                     <p className='text-red-600 text-sm font-semibold'>
                                         {errors.country.message}
@@ -158,7 +158,7 @@ const Address = () => {
                                             message: "Minimum 4 Character Needed"
                                         }
                                     })}
-                                    type="text" placeholder="New York" class="input input-bordered w-full max-w-xs" />
+                                    type="text" placeholder="New York" className="input input-bordered w-full max-w-xs" />
                                 {errors.address?.type === 'required' && (
                                     <p className='text-red-600 text-sm font-semibold'>
                                         {errors.address.message}
@@ -183,7 +183,7 @@ const Address = () => {
                                             message: "Minimum 3 Character Needed"
                                         }
                                     })}
-                                    type="number" placeholder="75482" class="input input-bordered w-full max-w-xs" />
+                                    type="number" placeholder="75482" className="input input-bordered w-full max-w-xs" />
                                 {errors.zip?.type === 'required' && (
                                     <p className='text-red-600 text-sm font-semibold'>
                                         {errors.zip.message}

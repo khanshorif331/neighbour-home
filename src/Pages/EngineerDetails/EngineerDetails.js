@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import useEngineer from '../../hooks/useEngineer';
@@ -57,6 +57,7 @@ const EngineerDetails = () => {
     }
     return (
         <div className={`${darkMode && "dark-theme"} duration-300 mt-32`}>
+            <Link to={`#`}><button onClick={()=> window.history.back()} className='lg:ml-28 lg:mt-4  btn btn-sm'>back</button></Link>
             <div className={`hero min-h-screen ${darkMode && "dark-theme"}bg-base-200 py-12`}>
                 <div className="card lg:card-side bg-base-100 shadow-xl">
                     <div className="card-body">

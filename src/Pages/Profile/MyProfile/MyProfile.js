@@ -86,7 +86,6 @@ const MyProfile = () => {
                                                 message: "Minimum 3 Character"
                                             }
                                         })}
-                                        defaultValue={name}
                                         type="text" placeholder="John Doe" class="input input-bordered w-full max-w-xs" />
                                     {errors.name?.type === 'required' && (
                                         <p className='text-red-600 text-sm font-semibold'>
@@ -101,7 +100,7 @@ const MyProfile = () => {
                                 </div>
                                 <div className='space-y-1'>
                                     <label className='text-sm font-bold'>Enter Your Email</label>
-                                    <input value={user?.email} type="text" placeholder="example@mail.com" class="input input-bordered w-full max-w-xs" />
+                                    <input value={user?.email} type="text" placeholder="example@mail.com" className="input input-bordered w-full max-w-xs" />
                                 </div>
                                 <div className='space-y-1'>
                                     <label className='text-sm font-bold'>Enter Your Phone</label>

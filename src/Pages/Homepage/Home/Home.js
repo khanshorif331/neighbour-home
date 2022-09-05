@@ -21,7 +21,6 @@ const Home = () => {
       <Cards />
       <Statistics />
       <Engineers />
-      <Pricing />
       <Projects />
       <Notice />
       <Testimonials />
