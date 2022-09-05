@@ -10,7 +10,7 @@ const Education = () => {
     const [toogleEducationEdit, setToogleEducationEdit] = React.useState(false);
     const [user] = useAuthState(auth)
     const [userData, setUserData] = useState({})
-    const {address, country, email, name, phone, photo, role, username, zip} = userData
+    const { address, country, email, name, phone, photo, role, username, zip, educationLVL, degree, institution, passingYear } = userData
 
     const {
         register,
@@ -21,8 +21,11 @@ const Education = () => {
 
     useEffect(() => {
         fetch(`https://neighbour-home--server.herokuapp.com/singleUserByEmail/${user?.email}`)
-        .then(res => res.json())
-        .then(data => setUserData(data))
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setUserData(data)
+            })
     }, [user])
 
 
@@ -68,6 +71,7 @@ const Education = () => {
                                             message: "Minimum 5 Character Needed"
                                         }
                                     })}
+                                    defaultValue={educationLVL}
                                         type="text" placeholder="MSC" class="input input-bordered w-full max-w-xs" />
                                     {errors.educationLVL?.type === 'required' && (
                                         <p className='text-red-600 text-sm font-semibold'>
@@ -93,6 +97,7 @@ const Education = () => {
                                                 message: "Minimum 3 Character Needed"
                                             }
                                         })}
+                                        defaultValue={degree}
                                         type="text" placeholder="PHD" class="input input-bordered w-full max-w-xs" />
                                     {errors.degree?.type === 'required' && (
                                         <p className='text-red-600 text-sm font-semibold'>
@@ -118,6 +123,7 @@ const Education = () => {
                                                 message: "Minimum 3 character Needed"
                                             }
                                         })}
+                                        defaultValue={institution}
                                         type="text" placeholder="Dhaka College" class="input input-bordered w-full max-w-xs" />
                                     {errors.institution?.type === 'required' && (
                                         <p className='text-red-600 text-sm font-semibold'>
@@ -143,6 +149,7 @@ const Education = () => {
                                                 message: "Minimum 4 Character Needed"
                                             }
                                         })}
+                                        defaultValue={passingYear}
                                         type="text" placeholder="XXXX" class="input input-bordered w-full max-w-xs" />
                                     {errors.passingYear?.type === 'required' && (
                                         <p className='text-red-600 text-sm font-semibold'>
