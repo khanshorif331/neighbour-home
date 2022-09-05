@@ -8,7 +8,7 @@ const ManageEngineers = () => {
   const [darkMode] = useContext(DarkModeContext);
   const [manageEngrs, setManageEngrs] = useState([]);
   useEffect(() => {
-    fetch("https://neighbour-home--server.herokuapp.com/engineer")
+    fetch("https://neighbour-home--server.herokuapp.com/getUserByRole/Engineer")
       .then((res) => res.json())
       .then((data) => setManageEngrs(data));
   }, []);
@@ -37,14 +37,13 @@ const ManageEngineers = () => {
           <tr>
             <th className="py-3 ml-2">Sl.</th>
             <th className="py-3">Name</th>
-            <th className="py-3">profession</th>
             <th className="py-3">role</th>
             <th className="text-center py-3">action</th>
           </tr>
         </thead>
         <tbody>
           {manageEngrs?.map((engineer, index) => {
-            const { name, picture, role, surname, _id, bio } = engineer;
+            const { name, photo, role, surname, _id, bio } = engineer;
             const handleDeleteEng = (id) => {
               swal({
                 title: "Are you sure?",
@@ -105,10 +104,7 @@ const ManageEngineers = () => {
                   <div className="flex items-center space-x-3 my-2">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
-                        <img
-                          src={picture}
-                          alt="Avatar Tailwind CSS Component"
-                        />
+                        <img src={photo} alt="Avatar Tailwind CSS Component" />
                       </div>
                     </div>
                     <div>
@@ -117,7 +113,6 @@ const ManageEngineers = () => {
                     </div>
                   </div>
                 </td>
-                <td>{surname}</td>
                 <td>{role}</td>
                 <th className="text-center">
                   {/*------------- button to update the engineer ---------------*/}
