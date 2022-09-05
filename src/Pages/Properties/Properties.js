@@ -8,7 +8,8 @@ import SellPostModal from './SellPostModal';
 const Properties = ({ refetch, isLoading, properties }) => {
     const [manageSellPostModal, setManageSellPostModal] = useState(false)
     const [role, roleLoading] = useRole(User)
-    if (isLoading) return <Loading />
+    if (isLoading || roleLoading) return <Loading />
+    console.log(role);
     return (
         <div>
             <div className='flex items-center justify-end border py-2 pr-3'>
