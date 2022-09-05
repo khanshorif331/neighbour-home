@@ -1,4 +1,6 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../../../firebase.init';
@@ -7,12 +9,22 @@ const Education = () => {
 
     const [toogleEducationEdit, setToogleEducationEdit] = React.useState(false);
     const [user] = useAuthState(auth)
+    const [userData, setUserData] = useState({})
+    const {address, country, email, name, phone, photo, role, username, zip} = userData
+
     const {
         register,
         formState: { errors },
         handleSubmit,
         reset,
     } = useForm()
+
+    useEffect(() => {
+        fetch(`https://neighbour-home--server.herokuapp.com/singleUserByEmail/${user?.email}`)
+        .then(res => res.json())
+        .then(data => setUserData(data))
+    }, [user])
+
 
     const handleUpdateEducation = data => {
         console.log(data)
