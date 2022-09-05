@@ -6,37 +6,40 @@ const Banner = () => {
 	const [darkMode] = useContext(DarkModeContext)
 
 	return (
-		<div className='bg-gray-100'>
+		<div className="bg-gray-100">
 			<section
-				className={`${darkMode ? "bg-gray-900" : "bg-teal-600"} duration-300 cover bg-blue-teal-gradient text-center sm:text-left relative   px-4 sm:px-8 lg:px-16 xl:px-28 2xl:px-64 overflow-hidden sm:py-48 flex
+				className={`${
+					darkMode ? 'bg-gray-900' : 'bg-teal-600'
+				} duration-300 cover bg-blue-teal-gradient text-center sm:text-left relative   px-4 sm:px-8 lg:px-16 xl:px-28 2xl:px-64 overflow-hidden sm:py-48 flex
 				items-end sm:items-center h-[550px]  sm:pb-40 pb-16  sm:min-h-screen`}
 			>
-				<div className='h-full absolute top-0 left-0 right-0 z-0'>
+				<div className="h-full absolute top-0 left-0 right-0 z-0">
 					<img
-						src='https://bangladeshpost.net/webroot/uploads/featureimage/2019-12/5df111b34395a.jpg'
-						alt=''
-						className='w-full h-full object-cover opacity-20'
+						src="https://bangladeshpost.net/webroot/uploads/featureimage/2019-12/5df111b34395a.jpg"
+						alt=""
+						className="w-full h-full object-cover opacity-20"
 					/>
 				</div>
 
-				<div className='lg:w-3/4 xl:w-7/12 relative z-10 h-100 lg:mt-16'>
+				<div className="lg:w-3/4 xl:w-7/12 relative z-10 h-100 lg:mt-16">
 					<div>
-						<h1 className='text-white text-3xl sm:text-4xl font-bold leading-tight'>
+						<h1 className="text-white text-3xl sm:text-4xl font-bold leading-tight">
 							Welcome to Building Contraction Innovative for a better
 							Tomorrow
 						</h1>
-						<p className='text-blue-100 md:text-lg leading-snug mt-2 sm:px-0 px-5 sm:mt-4'>
+						<p className="text-blue-100 md:text-lg leading-snug mt-2 sm:px-0 px-5 sm:mt-4">
 							Building construction means any physical activity on the
 							site involved in the erection of a structure, cladding,
 							external finish, formwork, fixture, fitting of service
 							installation
 						</p>
-						<a
-							href='#'
-							className='px-8 py-3 bg-teal-900 hover:bg-white hover:text-teal-900  transition text-white rounded inline-block mt-4 sm:mt-8 font-semibold'
+						<Link
+							to="/properties"
+							// href="#"
+							className="px-8 py-3 bg-teal-900 hover:bg-white hover:text-teal-900  transition text-white rounded inline-block mt-4 sm:mt-8 font-semibold"
 						>
 							Buy Apartment
-						</a>
+						</Link>
 					</div>
 				</div>
 			</section>
