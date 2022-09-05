@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
 
-const AcceptModal = ({ booking, setBookingModal }) => {
+const AcceptModal = ({ booking, refetch, setBookingModal }) => {
     console.log(booking?._id);
   const {
     register,
@@ -14,9 +14,9 @@ const AcceptModal = ({ booking, setBookingModal }) => {
   } = useForm();
   const form = useRef();
 
-  const sendEmail = (data) => {
-    console.log(data);
-    setBookingModal(false);
+  // const sendEmail = (data) => {
+  //   console.log(data);
+  //   setBookingModal(false);
     // emailjs.sendForm('neighbourHome', 'template_2jdv676', form.current, 'fjfswEx9fDSDkZnui')
     //   .then((res) => {
     //     console.log(res)
@@ -27,23 +27,23 @@ const AcceptModal = ({ booking, setBookingModal }) => {
     //   }, (err) => {
     //     toast.error("Message not sent", { id: 'error' })
     //   })
-  };
+  // };
   const onSubmit = async (data) => {
-    const updatedStatus = {
+    const updateStatus = {
       ...data,
       status: "complete",
     };
-    console.log(updatedStatus);
+    console.log(updateStatus);
     axios
       .put(
         `https://neighbour-home--server.herokuapp.com/booking/${booking._id}`,
-        updatedStatus
+        updateStatus
       )
       .then((data) => {
         console.log(data.data);
 
         toast.success(`this hiring request has been Successfully accept`);
-        // refetch()
+        refetch()
       })
       .catch((error) => {
         console.log(error.response.data);

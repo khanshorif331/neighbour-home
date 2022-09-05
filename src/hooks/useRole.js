@@ -1,10 +1,13 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import auth from '../firebase.init'
+import Loading from '../Shared/Loading/Loading'
 
-const useRole = (user) => {
+const useRole = (e) => {
 	const [role, setrole] = useState("")
 	const [roleLoading, setRoleLoading] = useState(true)
-	// console.log(role);
+	let [user, loading] = useAuthState(auth);
 	useEffect(() => {
 		if (user) {
 			axios
@@ -17,7 +20,7 @@ const useRole = (user) => {
 					setRoleLoading(false)
 				})
 		}
-		else{
+		else {
 			setRoleLoading(true)
 		}
 
