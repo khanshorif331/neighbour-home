@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query';
 import Loading from '../../../Shared/Loading/Loading';
 import OrderRow from './OrderRow';
 import { DarkModeContext } from '../../../App';
