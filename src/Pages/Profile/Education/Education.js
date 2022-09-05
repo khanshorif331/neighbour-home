@@ -1,4 +1,6 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import auth from '../../../firebase.init';
@@ -7,12 +9,25 @@ const Education = () => {
 
     const [toogleEducationEdit, setToogleEducationEdit] = React.useState(false);
     const [user] = useAuthState(auth)
+    const [userData, setUserData] = useState({})
+    const { address, country, email, name, phone, photo, role, username, zip, educationLVL, degree, institution, passingYear } = userData
+
     const {
         register,
         formState: { errors },
         handleSubmit,
         reset,
     } = useForm()
+
+    useEffect(() => {
+        fetch(`https://neighbour-home--server.herokuapp.com/singleUserByEmail/${user?.email}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setUserData(data)
+            })
+    }, [user])
+
 
     const handleUpdateEducation = data => {
         console.log(data)
@@ -56,7 +71,8 @@ const Education = () => {
                                             message: "Minimum 5 Character Needed"
                                         }
                                     })}
-                                        type="text" placeholder="MSC" className="input input-bordered w-full max-w-xs" />
+                                    defaultValue={educationLVL}
+                                        type="text" placeholder="MSC" class="input input-bordered w-full max-w-xs" />
                                     {errors.educationLVL?.type === 'required' && (
                                         <p className='text-red-600 text-sm font-semibold'>
                                             {errors.educationLVL.message}
@@ -81,7 +97,8 @@ const Education = () => {
                                                 message: "Minimum 3 Character Needed"
                                             }
                                         })}
-                                        type="text" placeholder="PHD" className="input input-bordered w-full max-w-xs" />
+                                        defaultValue={degree}
+                                        type="text" placeholder="PHD" class="input input-bordered w-full max-w-xs" />
                                     {errors.degree?.type === 'required' && (
                                         <p className='text-red-600 text-sm font-semibold'>
                                             {errors.degree.message}
@@ -106,7 +123,8 @@ const Education = () => {
                                                 message: "Minimum 3 character Needed"
                                             }
                                         })}
-                                        type="text" placeholder="Dhaka College" className="input input-bordered w-full max-w-xs" />
+                                        defaultValue={institution}
+                                        type="text" placeholder="Dhaka College" class="input input-bordered w-full max-w-xs" />
                                     {errors.institution?.type === 'required' && (
                                         <p className='text-red-600 text-sm font-semibold'>
                                             {errors.institution.message}
@@ -131,7 +149,8 @@ const Education = () => {
                                                 message: "Minimum 4 Character Needed"
                                             }
                                         })}
-                                        type="text" placeholder="XXXX" className="input input-bordered w-full max-w-xs" />
+                                        defaultValue={passingYear}
+                                        type="text" placeholder="XXXX" class="input input-bordered w-full max-w-xs" />
                                     {errors.passingYear?.type === 'required' && (
                                         <p className='text-red-600 text-sm font-semibold'>
                                             {errors.passingYear.message}
