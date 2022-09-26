@@ -5,10 +5,11 @@
 Members:
 
 - Shoriful islam
-- saidul basar bappy
-- tajul islam rakib
-- sadik hasan
-- fahim muntasir
+- Saidul basar bappy
+- Tajul islam rakib
+- Nayeem Hasan
+- Sadik hasan
+- Fahim muntasir
 
 
 
@@ -18,9 +19,15 @@ Members:
 ### Website link- https://neighbour-home.web.app/
 
 
-### Admin Credentials
+### Credentials
 
-- Username: neighbourhome.bd@gmail.com
+- AdminEmail: neighbourhome.bd@gmail.com
+- Password: Abc123
+
+- EngineerEmail: ph@hnnn.com
+- Password: Abc123
+
+- WorkerEmail: sahed@hn.com
 - Password: Abc123
 
 
