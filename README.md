@@ -1,3 +1,29 @@
+# NeighbourHome
+
+### Developed By Team Explode-Legacy
+
+Members:
+
+- Shoriful islam
+- saidul basar bappy
+- tajul islam rakib
+- sadik hasan
+- fahim muntasir
+
+
+
+## Live site
+
+
+### Website link- https://neighbour-home.web.app/
+
+
+### Admin Credentials
+
+- Username: neighbourhome.bd@gmail.com
+- Password: Abc123
+
+
 Name: NeighborHome ( management portal type website )
 
 Goal: 

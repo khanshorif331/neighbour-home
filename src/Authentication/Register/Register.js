@@ -30,10 +30,10 @@ const Register = () => {
 
     useEffect(() => {
         if (token.report === 'inserted') {
-            navigate('/user_data')
+            navigate('/')
         }
         else if(token.report === 'exist'){
-            navigate('/user_data')
+            navigate('/')
         }
         else if (token.report === 'dataExist') {
             navigate(from, { replace: true });
