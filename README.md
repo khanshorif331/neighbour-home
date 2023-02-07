@@ -24,8 +24,8 @@ Members:
 
 ### Credentials
 
-- AdminEmail: neighbourhome.bd@gmail.com
-- Password: Abc123
+- AdminEmail: admin@gmail.com
+- Password: Admin123
 
 - EngineerEmail: ph@hnnn.com
 - Password: Abc123
