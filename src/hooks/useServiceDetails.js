@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
-const useServiceDetails = (serviceId) =>{
-    const [service, setService] = useState({});
-    useEffect( () =>{
-        const url = `https://neighbour-home--server.herokuapp.com/constructor/${serviceId}`;
-        fetch(url)
-        .then(res => res.json())
-        .then(data => setService(data));    
-    }, [service, serviceId]);
-    return [service, setService]
+const useServiceDetails = serviceId => {
+	const [service, setService] = useState({})
+	useEffect(() => {
+		const url = `https://neighbour-home-backend.onrender.com/constructor/${serviceId}`
+		fetch(url)
+			.then(res => res.json())
+			.then(data => setService(data))
+	}, [service, serviceId])
+	return [service, setService]
 }
 
-export default useServiceDetails;
+export default useServiceDetails

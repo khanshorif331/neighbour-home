@@ -10,3 +10,4 @@ export const decNumber = num => {
 		payload: num,
 	}
 }
+// actions

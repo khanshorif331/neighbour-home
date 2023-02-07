@@ -17,7 +17,7 @@ const Constructors = () => {
 		reset,
 	} = useForm()
 	const { isLoading, error, data, refetch } = useQuery(['constructor'], () =>
-		fetch('https://neighbour-home--server.herokuapp.com/constructor').then(
+		fetch('https://neighbour-home-backend.onrender.com/constructor').then(
 			res => res.json()
 		)
 	)
@@ -49,7 +49,7 @@ const Constructors = () => {
 						description: data.description,
 					}
 					fetch(
-						'https://neighbour-home--server.herokuapp.com/constructor',
+						'https://neighbour-home-backend.onrender.com/constructor',
 						{
 							method: 'POST',
 							headers: {
@@ -89,54 +89,59 @@ const Constructors = () => {
 	if (error) return 'An error has occurred: ' + error.message
 
 	return (
-		<div className='sm:px-10 px-2 pb-5'>
+		<div className="sm:px-10 px-2 pb-5">
 			{/* Add new button for adding constructor */}
-			<div className='text-end mb-2 w-full'>
+			<div className="text-end mb-2 w-full">
 				{/* <button className='btn w-full md:btn-wide'>Add New</button> */}
 
 				{/* <!-- The button to open modal --> */}
-				<label for='my-modal-3' className='btn modal-button w-full md:btn-wide'>
+				<label
+					for="my-modal-3"
+					className="btn modal-button w-full md:btn-wide"
+				>
 					Add New
 				</label>
 			</div>
 
 			{/* <!-- Put this part before </body> tag --> */}
-			<input type='checkbox' id='my-modal-3' className='modal-toggle' />
-			<div className='modal'>
-				<div className='modal-box block mt-40 mb-10 h-[400px] border rounded-lg'>
+			<input type="checkbox" id="my-modal-3" className="modal-toggle" />
+			<div className="modal">
+				<div className="modal-box block mt-40 mb-10 h-[400px] border rounded-lg">
 					<label
-						for='my-modal-3'
-						className='btn btn-sm btn-circle absolute right-2 top-2'
+						for="my-modal-3"
+						className="btn btn-sm btn-circle absolute right-2 top-2"
 					>
 						✕
 					</label>
-					<h3 className='text-lg font-bold'>
+					<h3 className="text-lg font-bold">
 						Please provide the following information!
 					</h3>
 					{/* form */}
 					<FormConstructor
 						getData={getData}
-					// reset={reset}
-					// handleSubmit={handleSubmit}
-					// errors={errors}
-					// register={register}
+						// reset={reset}
+						// handleSubmit={handleSubmit}
+						// errors={errors}
+						// register={register}
 					></FormConstructor>
 				</div>
 			</div>
 
-			<div className='overflow-x-auto'>
+			<div className="overflow-x-auto">
 				<table
-					className={`${darkMode ? 'text-gray-400' : 'text-gray-500 table table-zebra'
-						} w-full`}
+					className={`${
+						darkMode ? 'text-gray-400' : 'text-gray-500 table table-zebra'
+					} w-full`}
 				>
 					<thead
-						className={`${darkMode
+						className={`${
+							darkMode
 								? 'bg-gray-700 text-gray-400'
 								: 'text-gray-700  bg-gray-50 '
-							} text-xs uppercase`}
+						} text-xs uppercase`}
 					>
 						<tr>
-							<th className='py-2'>Sl.</th>
+							<th className="py-2">Sl.</th>
 							<th>Title</th>
 							<th>Type</th>
 							<th>Price</th>

@@ -23,7 +23,7 @@ const Constructor = ({ constructor, index, refetch }) => {
 			.then(result => {
 				if (result.isConfirmed) {
 					fetch(
-						`https://neighbour-home--server.herokuapp.com/constructor/${id}`,
+						`https://neighbour-home-backend.onrender.com/constructor/${id}`,
 						{
 							method: 'DELETE',
 							headers: {
@@ -73,14 +73,14 @@ const Constructor = ({ constructor, index, refetch }) => {
 			<td>{duration} days</td>
 			<td>{discount}%</td>
 			<td>{assignment} projects</td>
-			<td className='flex flex-col'>
+			<td className="flex flex-col">
 				{/* <button className='btn btn-xs mb-1'>Edit</button> */}
-				<label for={_id} className='btn modal-button btn-xs mb-1'>
+				<label for={_id} className="btn modal-button btn-xs mb-1">
 					Edit
 				</label>
 				<button
 					onClick={() => handleDelete(_id)}
-					className='btn btn-xs btn-warning'
+					className="btn btn-xs btn-warning"
 				>
 					Delete
 				</button>

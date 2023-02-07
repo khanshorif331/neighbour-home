@@ -1,40 +1,43 @@
-import React, { useContext, useEffect, useState } from "react";
-import { DarkModeContext } from "../../../App";
-import PricingCard from "./PricingCard";
+import React, { useContext, useEffect, useState } from 'react'
+import { DarkModeContext } from '../../../App'
+import PricingCard from './PricingCard'
 
 const Pricing = () => {
-  const [darkMode] = useContext(DarkModeContext);
-  const [pricing, setPricing] = useState([]);
-  useEffect(() => {
-    fetch("https://neighbour-home--server.herokuapp.com/pricing")
-      .then((res) => res.json())
-      .then((data) => setPricing(data));
-  }, []);
-  return (
-    <div>
-      <section className="py-20 mt-24">
-        <div className="container px-4 mx-auto">
-          <div className="max-w-2xl mx-auto mb-16 text-center">
-            <h2
-              style={{ fontFamily: "'Rajdhani', sans-serif" }}
-              className={`${
-                darkMode && "text-white"
-              } uppercase  font-bold text-3xl py-3 text-center`}
-            >
-              Choose your best plan
-            </h2>
-            <div className="flex justify-center">
-              <div className=" rounded-md w-32 h-1 bg-[#0D9488]"></div>
-              <div className=" rounded-md w-4 h-1 mx-2 bg-[#0D9488]"></div>
-              <div className=" rounded-md w-2 h-1 bg-[#0D9488]"></div>
-            </div>
-          </div>
-          <div className="flex flex-wrap items-stretch -mx-4">
-            {pricing?.map((pricings) => (
-              <PricingCard pricings={pricings} key={pricings._id}></PricingCard>
-            ))}
+	const [darkMode] = useContext(DarkModeContext)
+	const [pricing, setPricing] = useState([])
+	useEffect(() => {
+		fetch('https://neighbour-home-backend.onrender.com/pricing')
+			.then(res => res.json())
+			.then(data => setPricing(data))
+	}, [])
+	return (
+		<div>
+			<section className="py-20 mt-24">
+				<div className="container px-4 mx-auto">
+					<div className="max-w-2xl mx-auto mb-16 text-center">
+						<h2
+							style={{ fontFamily: "'Rajdhani', sans-serif" }}
+							className={`${
+								darkMode && 'text-white'
+							} uppercase  font-bold text-3xl py-3 text-center`}
+						>
+							Choose your best plan
+						</h2>
+						<div className="flex justify-center">
+							<div className=" rounded-md w-32 h-1 bg-[#0D9488]"></div>
+							<div className=" rounded-md w-4 h-1 mx-2 bg-[#0D9488]"></div>
+							<div className=" rounded-md w-2 h-1 bg-[#0D9488]"></div>
+						</div>
+					</div>
+					<div className="flex flex-wrap items-stretch -mx-4">
+						{pricing?.map(pricings => (
+							<PricingCard
+								pricings={pricings}
+								key={pricings._id}
+							></PricingCard>
+						))}
 
-            {/* <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0 transform hover:scale-105 transition duration-500">
+						{/* <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0 transform hover:scale-105 transition duration-500">
               <div
                 className={` ${
                   darkMode && "bg-sky-400 text-gray-900"
@@ -128,11 +131,11 @@ const Pricing = () => {
                 </a>
               </div>
             </div> */}
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-};
+					</div>
+				</div>
+			</section>
+		</div>
+	)
+}
 
-export default Pricing;
+export default Pricing
